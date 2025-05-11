@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for BookingPage */
+.booking-page {
+  @apply font-sans;
+}
+
+.hero {
+  @apply relative;
+}
+
+.hero::before {
+  content: "";
+  @apply absolute inset-0 bg-black bg-opacity-30 z-0;
+}
+
+.hero > div {
+  @apply relative z-10;
+}
+
+.btn-primary {
+  @apply bg-primary-500 text-neutral-100 font-semibold hover:bg-primary-600 hover:scale-105 transition-transform-opacity duration-300 animate-fade-in;
+}
+
+.btn-secondary {
+  @apply bg-secondary-500 text-neutral-100 font-semibold hover:bg-secondary-600 hover:scale-105 transition-transform-opacity duration-300 animate-fade-in;
+}
+
+.room-card {
+  @apply cursor-pointer;
+}
+
+.room-card img {
+  @apply transition duration-300;
+}
+
+.room-card:hover img {
+  @apply opacity-90;
+}
