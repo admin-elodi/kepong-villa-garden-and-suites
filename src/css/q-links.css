@@ -1,0 +1,143 @@
+/* Mobile-first styles */
+
+/* Reset container for mobile */
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin: 0 auto;
+  }
+  
+  /* Discover Kepong Villa Grid */
+  .discover-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100%;
+    justify-items: center;
+  }
+  
+  /* Style cards in discover-grid */
+  .discover-grid > div {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+  }
+  
+  /* Ensure images in discover-grid have uniform height */
+  .discover-grid img {
+    width: 100%;
+    height: 192px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Ensure content stretches to fill card */
+  .discover-grid > div > * {
+    flex: 0 1 auto;
+  }
+  
+  .discover-grid > div > a {
+    margin-top: auto;
+  }
+  
+  /* More to Enjoy Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 100%;
+    justify-items: center;
+    margin: 0 auto;
+  }
+  
+  /* Service Card Enhancements */
+  .service-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .service-card:hover {
+    box-shadow: 0 8px 16px rgba(255, 87, 51, 0.3);
+    transform: scale(1.05);
+  }
+  
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #FF5733, #FFD700);
+    transition: transform 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  /* Treasure Hunt Flex */
+  .treasure-hunt-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .treasure-hunt-flex img,
+  .treasure-hunt-flex .text-content {
+    width: 100%;
+  }
+  
+  /* Ensure cards take full width with no extra margins */
+  .services-grid > div {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Tablet and Desktop styles */
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 24px;
+      padding-right: 24px;
+      max-width: 1280px;
+    }
+  
+    .discover-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 32px !important;
+    }
+  
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 32px !important;
+    }
+  
+    .treasure-hunt-flex {
+      flex-direction: row !important;
+      gap: 48px !important;
+      justify-content: center !important;
+    }
+  
+    .treasure-hunt-flex img {
+      width: 33.333% !important;
+    }
+  
+    .treasure-hunt-flex .text-content {
+      width: auto !important;
+      max-width: 448px !important;
+    }
+  }
