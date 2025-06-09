@@ -1,11 +1,5 @@
 kepong-villa-garden-and-suites/
-├── assets/
-│   ├── images/
-│   │   ├── food-drink/           # Menu item images (e.g., palm_wine.jpg, suya.jpg)
-│   │   ├── entertainment/        # Club K, snooker, comedy visuals (e.g., club_k_night.jpg)
-│   │   ├── hotel/                # Room and facility photos (e.g., standard.jpg, deluxe.jpg)
-│   │   ├── services/             # Laundry, car wash, boutique images (e.g., car_wash.jpg)
-│   │   └── logo-white.png        # Kepong Village Garden logo (used in Header.jsx)
+        # Kepong Village Garden logo (used in Header.jsx)
 │   ├── icons/                    # SVG icons (e.g., fork-knife.svg, treasure-chest.svg)
 │   ├── videos/                   # Promo clips (e.g., comedy-night.mp4)
 │   └── fonts/                    # Custom fonts (e.g., Poppins.ttf, Roboto.ttf)
@@ -15,6 +9,13 @@ kepong-villa-garden-and-suites/
 │   ├── style-guide/              # Typography, colors, etc. (e.g., style-guide.pdf)
 │   └── components/               # Reusable UI elements (e.g., button-card.fig)
 ├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── food-drink/           # Menu item images (e.g., palm_wine.jpg, suya.jpg)
+│   │   ├── entertainment/        # Club K, snooker, comedy visuals (e.g., club_k_night.jpg)
+│   │   ├── hotel/                # Room and facility photos (e.g., standard.jpg, deluxe.jpg)
+│   │   ├── services/             # Laundry, car wash, boutique images (e.g., car_wash.jpg)
+│   │   └── logo-white.png
 │   ├── css/
 │   │   ├── styles.css            # Global styles (defines --primary-color, etc.)
 │   │   └── booking.css           # Booking-specific styles
@@ -64,154 +65,158 @@ kepong-villa-garden-and-suites/
 └── README.md                     # Project overview and setup instructions
 
 
+import { FaFacebookF, FaInstagram, FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import deluxeRoom from '../../public/assets/images/hotel/unsplash.jpg';
-import jollofRice from '../../public/assets/images/food-drink/naija-jollof.jpg';
-import weddingReception from '../../public/assets/images/wedding-reception.jpg';
-import treasureHuntMap from '../../public/assets/images/treasure-hunt.jpg';
 
-const QuickLinks = () => {
+const Contacts = () => {
   return (
-    <main>
-      {/* Villa Highlights */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-green-800 mb-8">
-            Discover Kepong Villa Garden & Suites
-          </h2>
-          <p className="text-lg mb-12 max-w-3xl mx-auto">
-            From luxurious rooms to vibrant nightlife, we’ve got it all.
-          </p>
-          <div className="discover-grid">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <img
-                src={deluxeRoom}
-                alt="Deluxe Room"
-                className="w-full h-48 object-cover rounded mb-4"
-              />
-              <h3 className="text-xl font-bold mb-2">Cozy Rooms</h3>
-              <p className="text-gray-600">Book deluxe suites or budget rooms with drone-delivered meals.</p>
-              <Link
-                to="/bookings"
-                className="mt-4 inline-block text-orange-500 font-bold hover:underline"
-              >
-                Book a Room
-              </Link>
+    <main className="min-h-screen animate-fade-in font-montserrat text-gray-800 py-16">
+      <div className="w-full py-12 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Hero Section */}
+          <section className="text-center mb-12 relative">
+            {/* Deep Emerald-Amber Strip */}
+            <div
+              className="absolute w-full h-[300px] bg-gradient-to-r from-emerald-900 via-amber-700 to-emerald-900 -z-10 rounded-lg shadow-xl"
+              style={{ top: '160px', left: 0 }}
+            ></div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-emerald-900 mb-4 border-b-2 border-amber-400 inline-block pb-2">
+              Connect With Us
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto text-gray-600 mb-8">
+              Reach out to Kepong Villa Garden & Suites for a premium experience tailored just for you.
+            </p>
+            {/* Contact Icons Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto z-10 relative bg-white rounded-lg p-6 border-2 border-emerald-900 shadow-md">
+              <div className="flex flex-col items-center">
+                <FaMapMarkerAlt className="text-4xl text-amber-500 mb-2" />
+                <h3 className="text-xl font-semibold text-emerald-900">Our Address</h3>
+                <p className="text-gray-600 text-center">#275 Ugwogo Nike Road, Abakpa, Enugu</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <FaPhoneAlt className="text-4xl text-amber-500 mb-2" />
+                <h3 className="text-xl font-semibold text-emerald-900">Phone</h3>
+                <a href="tel:+2349162836505" className="text-amber-500 hover:text-amber-600">
+                  0916 283 6505
+                </a>
+              </div>
+              <div className="flex flex-col items-center">
+                <FaEnvelope className="text-4xl text-amber-500 mb-2" />
+                <h3 className="text-xl font-semibold text-emerald-900">Email</h3>
+                <a href="mailto:odogwucally@gmail.com" className="text-amber-500 hover:text-amber-600">
+                  odogwucally@gmail.com
+                </a>
+              </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <img
-                src={jollofRice}
-                alt="Jollof Rice"
-                className="w-full h-48 object-cover rounded mb-4"
-              />
-              <h3 className="text-xl font-bold mb-2">Savor the Flavor</h3>
-              <p className="text-gray-600">Pre-order jollof rice or smoothies for fast drone delivery.</p>
-              <Link
-                to="/bookings"
-                className="mt-4 inline-block text-orange-500 font-bold hover:underline"
-              >
-                Order Food
-              </Link>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <img
-                src={weddingReception}
-                alt="Wedding Event"
-                className="w-full h-48 object-cover rounded mb-4"
-              />
-              <h3 className="text-xl font-bold mb-2">Memorable Events</h3>
-              <p className="text-gray-600">Host weddings or birthdays with seamless booking.</p>
-              <Link
-                to="/bookings"
-                className="mt-4 inline-block text-orange-500 font-bold hover:underline"
-              >
-                Plan an Event
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+            <Link
+              to="/bookings"
+              className="mt-8 inline-block bg-amber-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-amber-600 hover:scale-105 transition-transform duration-300 animate-fade-in border-2 border-amber-400 shadow-sm"
+              aria-label="Book your experience now"
+            >
+              Book Now
+            </Link>
+          </section>
 
-      {/* Treasure Hunt Teaser */}
-      <section className="py-16 bg-yellow-100">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-green-800 mb-8">Embark on a Treasure Hunt!</h2>
-          <p className="text-lg mb-12 max-w-3xl mx-auto">
-            Fun for kids and adults – solve clues, explore the villa, and win rewards!
-          </p>
-          <div className="treasure-hunt-flex">
-            <img
-              src={treasureHuntMap}
-              alt="Treasure Hunt Map"
-              className="h-64 object-cover rounded-lg"
-            />
-            <div className="text-content">
-              <p className="text-lg mb-4">
-                Register now for an interactive adventure. Free to start, premium clues for exclusive
-                prizes!
-              </p>
-              <Link
-                to="/entertainment"
-                className="inline-block bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-600"
-              >
-                Join the Hunt
-              </Link>
+          {/* Map Section */}
+          <section className="py-8 sm:py-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16">
+              <div className="bg-white rounded-xl transition-all duration-300 border-2 border-emerald-900 shadow-md">
+                <div className="rounded-lg p-8 bg-white flex flex-col min-h-[300px]">
+                  <h2 className="text-3xl font-bold text-emerald-900 mb-6 border-b-2 border-amber-400 pb-2">
+                    Find Us On The Map
+                  </h2>
+                  <p className="text-gray-600 text-base mb-4">
+                    Come see the charm and elegance of Kepong Villa Garden & Suites in person.
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl overflow-hidden transition-all duration-300 border-2 border-emerald-900 shadow-md">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.022447115724!2d7.51408447404588!3d6.518842023219413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044a378f42fc857%3A0xd6efa19237e1a2b9!2sKepong%20Villa%20Garden%20%26%20Suites!5e0!3m2!1sen!2sng!4v1745647133234!5m2!1sen!2sng"
+                  width="100%"
+                  height="500"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  title="Kepong Villa Garden & Suites Location"
+                ></iframe>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Services Showcase */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-green-800 mb-8">More to Enjoy</h2>
-          <p className="text-lg mb-12 max-w-3xl mx-auto">
-            From shawarma to laundry, we’ve got you covered.
-          </p>
-          <div className="services-grid">
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Shawarma Bar</h3>
-              <p className="text-gray-600">Tasty bites delivered by drone.</p>
+          {/* Message Form */}
+          <section className="max-w-3xl mx-auto py-8 sm:py-12">
+            <h2 className="text-3xl font-bold text-emerald-900 text-center mb-8 border-b-2 border-amber-400 pb-2">
+              Send Us a Message
+            </h2>
+            <div className="bg-white rounded-lg transition-all duration-300 border-4 border-white shadow-lg relative">
+              <div className="absolute inset-0 rounded-lg border-2 border-white opacity-50 pointer-events-none"></div>
+              <form className="p-8 bg-white space-y-6 flex flex-col min-h-[400px]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-emerald-900 mb-1">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      className="w-full bg-gray-100 text-gray-800 px-4 py-2 rounded-md border border-emerald-900 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-emerald-900 mb-1">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      className="w-full bg-gray-100 text-gray-800 px-4 py-2 rounded-md border border-emerald-900 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-emerald-900 mb-1">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    rows="5"
+                    className="w-full bg-gray-100 text-gray-800 px-4 py-2 rounded-md border border-emerald-900 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                    required
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-amber-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-600 hover:scale-105 transition-transform duration-300 animate-fade-in border-2 border-amber-400 shadow-sm"
+                >
+                  Send Message
+                </button>
+              </form>
             </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Laundry</h3>
-              <p className="text-gray-600">Quick and reliable cleaning.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Car Wash</h3>
-              <p className="text-gray-600">Keep your ride sparkling.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Nightclub</h3>
-              <p className="text-gray-600">Dance the night away in style.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Unisex Hair Care</h3>
-              <p className="text-gray-600">Slay with fresh cuts and vibrant styles at our chic salon.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Boutique</h3>
-              <p className="text-gray-600">Rock the latest Ankara fits and trendy accessories.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Nsukka Palm Wine</h3>
-              <p className="text-gray-600">Savor the sweet, frothy taste of authentic Nsukka palm wine.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Snooker Options</h3>
-              <p className="text-gray-600">Hustle and flex your skills at our sleek snooker lounge.</p>
-            </div>
-          </div>
-          <Link
-            to="/services"
-            className="mt-8 inline-block bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600"
-          >
-            Explore Services
-          </Link>
+          </section>
+
+          {/* Call to Action */}
+          <section className="text-center py-8 sm:py-12">
+            <h2 className="text-3xl font-bold text-emerald-900 mb-4 border-b-2 border-amber-400 pb-2">
+              Visit Us Today
+            </h2>
+            <p className="text-gray-600 mb-6 max-w-xl mx-auto text-sm sm:text-base">
+              Discover the charm and elegance of Kepong Villa Garden & Suites in the heart of Enugu.
+            </p>
+            <Link
+              to="/bookings"
+              className="inline-block bg-amber-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-amber-600 hover:scale-105 transition-transform duration-300 animate-fade-in border-2 border-amber-400 shadow-sm"
+              aria-label="Book your visit now"
+            >
+              Book Now
+            </Link>
+          </section>
         </div>
-      </section>
+      </div>
     </main>
   );
 };
 
-export default QuickLinks;
+export default Contacts;
