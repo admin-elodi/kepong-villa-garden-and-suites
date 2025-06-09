@@ -1,151 +1,237 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import deluxeRoom from '@/assets/images/hotel/unsplash.jpg';
 import jollofRice from '@/assets/images/food-drink/naija-jollof.jpg';
-import weddingReception from '@/assets/images/wedding-reception.jpg';
+import weddingReception from '@/assets/images/birthday.jpg';
 import treasureHuntMap from '@/assets/images/treasure-hunt.jpg';
 import '../css/q-links.css';
 
-
 const QuickLinks = () => {
+  const topCards = [
+    {
+      img: deluxeRoom,
+      alt: 'Deluxe Room',
+      title: 'Cozy Rooms',
+      desc: 'Standard - Deluxe - Executive',
+      link: '/bookings',
+      btnLabel: 'Book a Room',
+    },
+    {
+      img: jollofRice,
+      alt: 'Jollof Rice',
+      title: 'Savor the Flavor',
+      desc: 'Local & Foreign Dishes',
+      link: '/bookings',
+      btnLabel: 'Order Food',
+    },
+    {
+      img: weddingReception,
+      alt: 'Wedding Event',
+      title: 'Plan Memorable Events',
+      desc: 'Birthdays, Weddings, etc',
+      link: '/bookings',
+      btnLabel: 'Book Event Venue',
+    },
+  ];
+
+  const moreServices = [
+    {
+      title: 'Shawarma Bar',
+      phone: '+234 801 234 5678',
+      social: '@shawarmabar.ng',
+      socialLink: 'https://instagram.com/shawarmabar.ng',
+    },
+    {
+      title: 'Laundry',
+      phone: '+234 802 345 6789',
+      social: '@laundryexpress',
+    },
+    {
+      title: 'Car Wash',
+      phone: '+234 803 456 7890',
+      social: '@cleancars.ng',
+      socialLink: 'https://facebook.com/cleancars.ng',
+    },
+    {
+      title: 'Nightclub',
+      phone: '+234 804 567 8901',
+      social: '@nightlife.kepong',
+      socialLink: 'https://instagram.com/nightlife.kepong',
+    },
+    {
+      title: 'Games',
+      phone: '+234 805 678 9012',
+      social: '@funhub.kepong',
+    },
+    {
+      title: 'Hotel',
+      phone: '+234 806 789 0123',
+      social: '@keponghotel',
+      socialLink: 'https://twitter.com/keponghotel',
+    },
+    {
+      title: 'Boutique',
+      phone: '+234 807 890 1234',
+      social: '@style.kepong',
+    },
+    {
+      title: 'Nsukka Palm Wine',
+      phone: '+234 808 901 2345',
+      social: '@palmwine.ng',
+      socialLink: 'https://instagram.com/palmwine.ng',
+    },
+  ];
+
+  const [revealedServices, setRevealedServices] = useState({});
+
+  const toggleReveal = (index) => {
+    setRevealedServices((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   return (
-    <main>
-      {/* Villa Highlights */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-green-800 mb-8">
-            Discover Kepong Villa Garden & Suites
-          </h2>
-          <p className="text-lg mb-12 max-w-3xl mx-auto">
-            From luxurious rooms to vibrant nightlife, we’ve got it all.
-          </p>
-          <div className="discover-grid md:grid-cols-3">
-            <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col min-h-[360px]">
-              <img
-                src={deluxeRoom}
-                alt="Deluxe Room"
-                className="w-full h-48 object-cover rounded mb-4"
-              />
-              <h3 className="text-xl font-bold mb-2">Cozy Rooms</h3>
-              <p className="text-gray-600">Book deluxe suites or budget rooms with drone-delivered meals.</p>
-              <Link
-                to="/bookings"
-                className="mt-auto inline-block text-orange-500 font-bold hover:underline"
-              >
-                Book a Room
-              </Link>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col min-h-[360px]">
-              <img
-                src={jollofRice}
-                alt="Jollof Rice"
-                className="w-full h-48 object-cover rounded mb-4"
-              />
-              <h3 className="text-xl font-bold mb-2">Savor the Flavor</h3>
-              <p className="text-gray-600">Pre-order jollof rice or smoothies for fast drone delivery.</p>
-              <Link
-                to="/bookings"
-                className="mt-auto inline-block text-orange-500 font-bold hover:underline"
-              >
-                Order Food
-              </Link>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col min-h-[360px]">
-              <img
-                src={weddingReception}
-                alt="Wedding Event"
-                className="w-full h-48 object-cover rounded mb-4"
-              />
-              <h3 className="text-xl font-bold mb-2">Memorable Events</h3>
-              <p className="text-gray-600">Host weddings or birthdays with seamless booking.</p>
-              <Link
-                to="/bookings"
-                className="mt-auto inline-block text-orange-500 font-bold hover:underline"
-              >
-                Plan an Event
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+    <main className="mt-0 font-montserrat text-gray-800">
+      {/* White borders on top and bottom */}
+      <div className="w-full border-t-4 border-b-4 border-white">
+        <section className="py-12 bg-black bg-opacity-90">
+          <div className="container max-w-screen-xl mx-auto text-center">
+            {/* Top Cards Section */}
+            <section className="py-12 flex justify-center">
+              <div className="bg-black opacity-90 rounded-lg p-8 max-w-6xl w-full text-center shadow-xl">
+                <h2
+                  className="text-3xl md:text-4xl font-dancing mb-8 animate-fade-in-up"
+                  style={{
+                    color: 'white',
+                    textShadow: '0 6px 8px rgba(0,0,0,0.5)',
+                  }}
+                >
+                  Book room, food, events, etc...
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {topCards.map((card, index) => (
+                    <div
+                      key={index}
+                      className="bg-gray-200 text-sm text-black p-2 rounded-lg shadow-xl flex flex-col min-h-[360px] transition-transform hover:scale-105 hover:shadow-2xl"
+                    >
+                      <img
+                        src={card.img}
+                        alt={card.alt}
+                        className="w-full h-48 object-cover rounded-lg mb-4"
+                      />
+                      <h3 className="text-xl font-bold mb-2 drop-shadow-md">
+                        {card.title}
+                      </h3>
+                      <p>{card.desc}</p>
+                      <Link
+                        to={card.link}
+                        className="mt-auto inline-block bg-emerald-900 text-white py-2 px-4 rounded-lg hover:bg-emerald-700 transition-transform hover:scale-105 duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500"
+                        aria-label={card.btnLabel}
+                      >
+                        {card.btnLabel}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
 
-      {/* Treasure Hunt Teaser */}
-      <section className="py-16 bg-yellow-100">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-green-800 mb-8">Embark on a Treasure Hunt!</h2>
-          <p className="text-lg mb-12 max-w-3xl mx-auto">
-            Fun for kids and adults – solve clues, explore the villa, and win rewards!
-          </p>
-          <div className="treasure-hunt-flex md:flex-row md:justify-center">
-            <img
-              src={treasureHuntMap}
-              alt="Treasure Hunt Map"
-              className="h-64 object-cover rounded-lg md:w-1/3"
-            />
-            <div className="text-content md:max-w-md">
-              <p className="text-lg mb-4">
-                Register now for an interactive adventure. Free to start, premium clues for exclusive
-                prizes!
-              </p>
-              <Link
-                to="/entertainment"
-                className="inline-block bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-600"
-              >
-                Join the Hunt
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+            {/* Treasure Hunt Teaser */}
+            <section className="py-12 flex justify-center">
+              <div className="bg-black opacity-90 rounded-2xl p-8 max-w-3xl w-full flex flex-col items-center text-center shadow-xl">
+                <h2
+                  className="text-3xl md:text-4xl font-dancing mb-4 animate-fade-in-up"
+                  style={{
+                    color: 'white',
+                    textShadow: '0 6px 8px rgba(0,0,0,0.5)',
+                  }}
+                >
+                  Solve entertainment puzzles and win big!...
+                </h2>
+                <p className="text-lg md:text-xl mb-6 max-w-2xl text-white">
+                  Fun for kids and adults – solve entertainment clues and win rewards!
+                </p>
+                <img
+                  src={treasureHuntMap}
+                  alt="Treasure Hunt Map"
+                  className="w-full h-64 object-cover rounded-xl shadow-lg mb-6"
+                />
+                <p className="text-lg mb-6 text-white">
+                  Register now for an interactive adventure and win prizes!
+                </p>
+                <Link
+                  to="/entertainment"
+                  className="inline-block bg-emerald-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-emerald-700 transition-transform hover:scale-105 duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500"
+                  aria-label="Join the Treasure Hunt"
+                >
+                  Join the Hunt
+                </Link>
+              </div>
+            </section>
 
-      {/* Services Showcase */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-green-800 mb-8">More to Enjoy</h2>
-          <p className="text-lg mb-12 max-w-3xl mx-auto">
-            From shawarma to laundry, we’ve got you covered.
-          </p>
-          <div className="services-grid md:grid-cols-4">
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Shawarma Bar</h3>
-              <p className="text-gray-600">Tasty bites delivered by drone.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Laundry</h3>
-              <p className="text-gray-600">Quick and reliable cleaning.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Car Wash</h3>
-              <p className="text-gray-600">Keep your ride sparkling.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Nightclub</h3>
-              <p className="text-gray-600">Dance the night away in style.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Unisex Hair Care</h3>
-              <p className="text-gray-600">Slay with fresh cuts and vibrant styles at our chic salon.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Boutique</h3>
-              <p className="text-gray-600">Rock the latest Ankara fits and trendy accessories.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Nsukka Palm Wine</h3>
-              <p className="text-gray-600">Savor the sweet, frothy taste of authentic Nsukka palm wine.</p>
-            </div>
-            <div className="service-card bg-gradient-to-br from-orange-100 to-yellow-100 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <h3 className="text-xl font-bold mb-2 text-orange-600">Snooker Options</h3>
-              <p className="text-gray-600">Hustle and flex your skills at our sleek snooker lounge.</p>
-            </div>
+            {/* More Services To Enjoy */}
+            <section className="py-12 flex justify-center">
+              <div className="bg-black opacity-90 rounded-2xl p-8 max-w-6xl w-full text-center shadow-xl">
+                <h2 className="text-3xl md:text-4xl font-dancing mb-8 text-white drop-shadow-lg">
+                  More Services...
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                  {moreServices.map((service, index) => (
+                    <div
+                      key={index}
+                      className="backdrop-blur-lg text-white p-6 rounded-2xl border-4 border-emerald-900 transform transition hover:scale-105 hover:shadow-2xl cursor-pointer"
+                      role="button"
+                      tabIndex="0"
+                      onClick={() => toggleReveal(index)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          toggleReveal(index);
+                        }
+                      }}
+                    >
+                      <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                      {revealedServices[index] ? (
+                        <div className="text-sm text-white mt-2">
+                          <p>
+                            <strong>Phone:</strong> {service.phone}
+                          </p>
+                          <p>
+                            <strong>Social:</strong>{' '}
+                            {service.socialLink ? (
+                              <a
+                                href={service.socialLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-amber-400 hover:underline"
+                              >
+                                {service.social}
+                              </a>
+                            ) : (
+                              service.social
+                            )}
+                          </p>
+                        </div>
+                      ) : (
+                        <p className="text-gray-200">Click to reveal contact info</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8">
+                  <Link
+                    to="/bookings"
+                    className="inline-block bg-emerald-900 text-white font-bold py-3 px-6 rounded-lg hover:bg-yellow-200 hover:text-black transition-transform hover:scale-105 duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500"
+                    aria-label="Explore Services"
+                  >
+                    Explore Services
+                  </Link>
+                </div>
+              </div>
+            </section>
           </div>
-          <Link
-            to="/booking"
-            className="mt-8 inline-block bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600"
-          >
-            Explore Services
-          </Link>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 };

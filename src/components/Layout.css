@@ -1,0 +1,10 @@
+.layout {
+  min-height: 100vh; /* Full viewport height */
+  background-color: #f0f0f0; /* Example background color */
+  /* Add other background styles, e.g., images, gradients */
+  /* background-image: url('/path/to/background.jpg'); */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+}
