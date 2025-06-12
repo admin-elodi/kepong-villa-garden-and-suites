@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import RoomCard from '../components/booking/RoomCard';
 import BookingForm from '../components/booking/BookingForm';
-import ScrollToTop from '../components/ScrollToTop'; // Assuming this is your component
+import ScrollToTop from '../components/ScrollToTop';
 import standardRoom from '@/assets/images/hotel/standard-room.jpg';
 import deluxe from '@/assets/images/hotel/deluxe.jpg';
 import executive from '@/assets/images/hotel/executive.jpg';
-
 import promoVideo from '@/assets/videos/couple.mp4';
 
 const rooms = [
@@ -36,8 +35,8 @@ const BookingPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
-  const [userEmail, setUserEmail] = useState(''); // Store user's email from form
-  const confirmationRef = useRef(null); // Ref for confirmation section
+  const [userEmail, setUserEmail] = useState('');
+  const confirmationRef = useRef(null);
 
   const handleRoomSelect = (room) => {
     setSelectedRoom(room);
@@ -50,13 +49,11 @@ const BookingPage = () => {
   };
 
   const handleBookingSubmit = (bookingData) => {
-    console.log('Booking Data:', bookingData);
-    setUserEmail(bookingData.email); // Store email from form
+    setUserEmail(bookingData.email);
     setShowForm(false);
     setBookingConfirmed(true);
   };
 
-  // Scroll to confirmation section when bookingConfirmed changes to true
   useEffect(() => {
     if (bookingConfirmed && confirmationRef.current) {
       confirmationRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -65,7 +62,6 @@ const BookingPage = () => {
 
   return (
     <div className="min-h-screen font-montserrat bg-black text-gray-100">
-      {/* Scroll reset */}
       <ScrollToTop />
 
       {/* Hero Section with Video Background */}
@@ -78,23 +74,32 @@ const BookingPage = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
           aria-hidden="true"
-         
         >
           Your browser does not support the video tag.
         </video>
 
         {/* Overlay for better text contrast */}
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 sm:px-12 lg:px-24">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-yellow-100 mb-4 leading-tight">
-            Book Your Stay at...
-          </h1>
-          <h2 className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-yellow-100 via-amber-500 to-yellow-300 bg-clip-text text-transparent mb-6 leading-tight drop-shadow-md">
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-12 lg:px-24 overflow-auto">
+          <h2
+            className="text-2xl md:text-4xl text-yellow-200 font-bold mb-4 leading-tight drop-shadow-xl opacity-0 animate-fadeInUp"
+            style={{
+            
+              lineHeight: '1.1',
+              animationDelay: '0.6s',
+              animationFillMode: 'forwards',
+            }}
+          >
             Kepong Villa Garden & Suites
           </h2>
-          <p className="text-lg sm:text-xl font-medium max-w-3xl text-white drop-shadow-md leading-relaxed">
-            Reserve room, meals & drinks — in one simple step.
-            <br />
-            Arrive at your suite, food & drinks ready and waiting.
+          <p
+            className="md:text-xl font-medium max-w-xl text-white drop-shadow-lg leading-snug opacity-0 animate-fadeInUp"
+            style={{
+              animationDelay: '0.9s',
+              animationFillMode: 'forwards',
+              marginTop: '0.2rem',
+            }}
+          >
+            Book room with optional food & drink
           </p>
         </div>
       </section>
@@ -112,7 +117,7 @@ const BookingPage = () => {
               <div className="text-center mt-10">
                 <button
                   onClick={handleFoodAndDrinksOnly}
-                  className="bg-amber-500 text-emerald-900 px-8 py-3 rounded-lg hover:bg-amber-600 transition transform hover:scale-105 font-semibold text-lg border-2 border-amber-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-amber-400"
+                  className="bg-yellow-100 text-emerald-900 px-8 py-3 rounded-lg hover:bg-amber-600 transition transform hover:scale-105 font-semibold text-lg border-2 border-amber-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-amber-400"
                   aria-label="Book food and drinks only"
                 >
                   Book Food & Drinks Only
@@ -159,6 +164,27 @@ const BookingPage = () => {
           </section>
         )}
       </main>
+
+      {/* Animations */}
+      <style>
+        {`
+          @keyframes fadeInUp {
+            0% {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-fadeInUp {
+            animation-name: fadeInUp;
+            animation-duration: 0.8s;
+            animation-timing-function: ease-out;
+          }
+        `}
+      </style>
     </div>
   );
 };

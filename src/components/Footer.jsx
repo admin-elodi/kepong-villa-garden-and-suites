@@ -95,7 +95,6 @@ const Footer = () => {
               {[
                 { to: '/club-k', label: 'Club K' },
                 { to: '/entertainment', label: 'Featured Entertainers' },
-                { to: '/treasure-hunt', label: 'Treasure Hunt' },
                 { to: '/booking', label: 'Book Now' },
                 { to: '/contact', label: 'Contact Us' },
               ].map((item) => (
@@ -133,7 +132,7 @@ const Footer = () => {
               {success && <p className="text-emerald-300 text-sm">{success}</p>}
               <button
                 type="submit"
-                className="bg-amber-400 text-emerald-900 font-semibold px-4 py-3 rounded-lg hover:bg-amber-500 transform hover:scale-105 transition-all duration-300 w-full border-2 border-amber-400"
+                className="bg-yellow-100 text-emerald-900 font-semibold px-4 py-3 rounded-lg hover:bg-amber-500 transform hover:scale-105 transition-all duration-300 w-full border-2 border-amber-400"
               >
                 Subscribe
               </button>

@@ -51,7 +51,7 @@ const Header = () => {
         <ul
           className={`${
             isMenuOpen ? 'flex bg-white' : 'hidden'
-          } md:flex md:bg-transparent flex-col md:flex-row text-center absolute md:static top-full left-0 w-full md:w-auto space-y-4 md:space-y-0 md:space-x-6 py-4 px-6 md:p-0 transition-all duration-300 ease-in-out ${
+          } md:flex md:bg-transparent flex-col md:flex-row text-center absolute md:static top-full left-0 w-full md:w-auto space-y-4 md:space-y-0 md:space-x-20 py-4 px-6 md:p-0 transition-all duration-300 ease-in-out ${
             isMenuOpen ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 md:opacity-100 md:max-h-full'
           } md:items-center shadow-lg md:shadow-none z-40`}
           aria-hidden={!isMenuOpen}
@@ -90,15 +90,6 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Bookings
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/treasure-hunt"
-              className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Treasure-Hunt
             </NavLink>
           </li>
           <li>
