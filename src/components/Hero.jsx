@@ -49,7 +49,7 @@ const Hero = ({ setIsModalOpen }) => {
       >
         {/* Welcome Text */}
         <p
-          className="text-lg sm:text-xl md:text-2xl font-dancing text-white font-bold mb-2 animate-fade-in-up"
+          className="text-base sm:text-xl md:text-2xl font-dancing text-white font-bold mb-2 animate-fade-in-up"
           style={{
             background:
               'linear-gradient(to bottom, rgba(255,255,255,0.85) 30%, rgba(255,255,255,0))',
@@ -64,7 +64,7 @@ const Hero = ({ setIsModalOpen }) => {
 
         {/* Main Title */}
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-yellow-100 mb-4 animate-fade-in-up delay-100"
+          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-yellow-100 mb-4 animate-fade-in-up delay-100"
           style={{
             textShadow: '0 6px 8px rgba(0,0,0,0.5)',
             animation: 'growText 4s ease-in-out forwards',
@@ -89,20 +89,20 @@ const Hero = ({ setIsModalOpen }) => {
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center animate-fade-in-up delay-300 max-w-lg w-full">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center animate-fade-in-up delay-300 w-full">
           {/* Book Now */}
           <Link
             to="/bookings"
             className="bg-emerald-900 text-white font-semibold text-base sm:text-lg py-3 px-6 rounded-lg hover:bg-emerald-700 hover:scale-105 transition-transform duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none flex-1 sm:flex-none sm:w-auto text-center"
             aria-label="Book your stay at Kepong Villa"
           >
-            Book Now
+            Book Hotel
           </Link>
 
           {/* Reserve a Table */}
           <button
             onClick={openReserveModal}
-            className="bg-amber-500 text-emerald-900 font-semibold text-base sm:text-lg py-3 px-6 rounded-lg hover:bg-orange-500 hover:text-white hover:scale-105 transition-transform duration-300 border-2 border-amber-400 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none flex-1 sm:flex-none sm:w-auto text-center"
+            className="bg-yellow-100 text-black font-semibold text-base sm:text-lg py-3 px-6 border-2 border-black rounded-lg hover:bg-yellow-500 hover:text-white hover:scale-105 transition-transform duration-300 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none flex-1 sm:flex-none sm:w-auto text-center"
             aria-label="Reserve a table for entertainment"
           >
             Reserve a Table

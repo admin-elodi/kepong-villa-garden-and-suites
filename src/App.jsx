@@ -8,7 +8,6 @@ import Home from './pages/Home.jsx';
 import ClubK from './pages/ClubK.jsx';
 import FeaturedEntertainers from './pages/FeaturedEntertainers.jsx';
 import BookingPage from './pages/BookingPage.jsx';
-import TreasureHunt from './pages/TreasureHunt.jsx';
 import Contacts from './pages/Contacts.jsx';
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
         <Route path="/club-k" element={<ClubK />} />
         <Route path="/featured-entertainers" element={<FeaturedEntertainers />} />
         <Route path="/bookings" element={<BookingPage />} />
-        <Route path="/treasure-hunt" element={<TreasureHunt />} />
         <Route path="/contacts" element={<Contacts />} />
       </Routes>
       <Footer />

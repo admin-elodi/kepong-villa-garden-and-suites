@@ -10,18 +10,15 @@ const Contacts = () => {
           {/* Hero Section */}
           <section className="text-center mb-12 relative">
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 inline-block pb-2"
+              className="text-4xl md:text-4xl font-bold tracking-tight mb-4 inline-block pb-2"
               style={{
                 color: 'white',
                 textShadow: '0 6px 12px rgba(0,0,0,0.7)',
-                borderBottom: '2px solid #fbbf24', // amber-400
               }}
             >
-              Connect With Us
+              Contact Us
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto text-gray-300 mb-8">
-              Reach out to Kepong Villa Garden & Suites for a premium experience tailored just for you.
-            </p>
+        
 
             {/* Contact Icons Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto relative bg-black bg-opacity-70 rounded-lg p-6 border-2 border-white shadow-lg">
@@ -46,13 +43,6 @@ const Contacts = () => {
               </div>
             </div>
 
-            <Link
-              to="/bookings"
-              className="mt-8 inline-block bg-emerald-900 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-emerald-700 hover:scale-105 transition-transform duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"
-              aria-label="Book your experience now"
-            >
-              Book Now
-            </Link>
           </section>
 
           {/* Map & Message Section */}
@@ -63,7 +53,7 @@ const Contacts = () => {
               <h2
                 className="text-3xl font-bold text-white text-center mb-8 border-b-2 border-amber-400 pb-2"
               >
-                Send Us a Message
+                Send us a Message
               </h2>
               <div className="bg-black bg-opacity-80 rounded-lg border-4 border-white shadow-xl relative">
                 <div className="absolute inset-0 rounded-lg border-2 border-white opacity-50 pointer-events-none"></div>
@@ -105,7 +95,7 @@ const Contacts = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-amber-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-600 hover:scale-105 transition-transform duration-300 border-2 border-amber-400 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                    className="w-full bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-600 hover:scale-105 transition-transform duration-300 border-2 border-amber-400 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"
                   >
                     Send Message
                   </button>
@@ -135,15 +125,8 @@ const Contacts = () => {
               Visit Us Today
             </h2>
             <p className="text-gray-400 mb-6 max-w-xl mx-auto text-sm sm:text-base">
-              Discover the charm and elegance of Kepong Villa Garden & Suites in the heart of Enugu.
+              Discover the elegance of Kepong Villa Garden & Suites, Enugu.
             </p>
-            <Link
-              to="/bookings"
-              className="inline-block bg-emerald-900 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-emerald-700 hover:scale-105 transition-transform duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"
-              aria-label="Book your visit now"
-            >
-              Book Now
-            </Link>
           </section>
         </div>
       </div>

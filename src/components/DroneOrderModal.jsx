@@ -1,32 +1,123 @@
-import { useState, useEffect, useRef } from 'react'; 
+import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import droneImage from '@/assets/images/drone.jpeg'; // Change path as needed
+
+const enquiryPhoneNumber = '0916 283 6505';
+
+const PACKAGES = [
+  {
+    value: 'party-starter',
+    name: 'Party Starter',
+    price: 3500,
+    teaser: 'Kick off your night with this lively combo!',
+    contents: [
+      'Palm Wine (1L)',
+      'Mini Suya Platter',
+      'Peppered Snails',
+      '2 Soft Drinks'
+    ]
+  },
+  {
+    value: 'african-delight',
+    name: 'African Delight',
+    price: 6500,
+    teaser: 'A taste of the best local flavors.',
+    contents: [
+      'Isi Ewu (Goat Head)',
+      'Grilled Fish',
+      'Palm Wine (2L)',
+      'Spicy Yam Fries'
+    ]
+  },
+  {
+    value: 'luxury-lounge',
+    name: 'Luxury Lounge',
+    price: 12000,
+    teaser: 'For when you want to go all out.',
+    contents: [
+      'Bottle of Champagne',
+      'Full Suya Board',
+      'Isi Ewu',
+      'Fruit Platter',
+      'Cocktail Mixer Kit'
+    ]
+  },
+  {
+    value: 'veggie-vibes',
+    name: 'Veggie Vibes',
+    price: 4000,
+    teaser: 'For the healthy and happy crowd.',
+    contents: [
+      'Grilled Veggie Skewers',
+      'Fruit Salad',
+      'Chilled Zobo Drink (1L)',
+      'Spicy Yam Fries'
+    ]
+  }
+];
 
 function DroneOrderModal({ isOpen, setIsModalOpen }) {
   const [orderStatus, setOrderStatus] = useState('');
   const [userCoords, setUserCoords] = useState(null);
+  const [selected, setSelected] = useState(PACKAGES[0].value);
+  const [showContents, setShowContents] = useState(null);
+  const [address, setAddress] = useState('');
+  const [isLocating, setIsLocating] = useState(false);
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [showBank, setShowBank] = useState(false);
   const modalRef = useRef(null);
+
+  const selectedPackage = PACKAGES.find(pkg => pkg.value === selected);
+
+  useEffect(() => {
+    if (isOpen && modalRef.current) modalRef.current.focus();
+  }, [isOpen]);
+
+  useEffect(() => {
+    let watchId;
+    if (isOpen && navigator.geolocation) {
+      watchId = navigator.geolocation.watchPosition(
+        (position) => {
+          setUserCoords({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+          setOrderStatus('Device location captured! Please stand where you want the drone to deliver.');
+        },
+        (error) => {
+          setOrderStatus('Failed to get device location. Please try again.');
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+      );
+    }
+    return () => {
+      if (watchId) navigator.geolocation.clearWatch(watchId);
+    };
+  }, [isOpen]);
 
   const handleClose = () => setIsModalOpen(false);
 
   const handleOutsideClick = (e) => {
-    if (e.target.classList.contains('modal')) handleClose();
+    if (e.target.classList.contains('modal-overlay')) handleClose();
   };
 
   const handleGetLocation = () => {
     if (navigator.geolocation) {
+      setIsLocating(true);
       setOrderStatus('Fetching your location...');
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const coords = {
+          setUserCoords({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
-          };
-          setUserCoords(coords);
-          setOrderStatus('Device location captured! Please stand where you want the drone to deliver (e.g., balcony or front of house).');
+          });
+          setOrderStatus('Device location captured! Please stand where you want the drone to deliver.');
+          setIsLocating(false);
         },
         (error) => {
-          console.error('Geolocation error:', error);
           setOrderStatus('Failed to get device location. Please try again.');
+          setIsLocating(false);
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
       );
@@ -41,16 +132,18 @@ function DroneOrderModal({ isOpen, setIsModalOpen }) {
       setOrderStatus('Error: Please capture your device location before submitting.');
       return;
     }
-
-    const address = e.target.address.value || 'No additional address provided';
+    if (!date || !time) {
+      setOrderStatus('Please select your desired delivery date and time.');
+      return;
+    }
     setOrderStatus('Processing order...');
-
     const kepongCoords = { lat: 6.4385, lng: 7.4951 };
     const deliveryCoords = userCoords;
-
     const distance = calculateDistance(kepongCoords, deliveryCoords);
     if (distance <= 5) {
-      setOrderStatus(`Order confirmed! Drone launching to your device location. Additional info: ${address}`);
+      setOrderStatus(
+        `Order confirmed! Drone launching to your device location on ${date} at ${time}. Additional info: ${address || 'None'}`
+      );
       await launchDrone(deliveryCoords);
     } else {
       setOrderStatus('Sorry, your device location is beyond 5km from Kepong Villa.');
@@ -72,75 +165,17 @@ function DroneOrderModal({ isOpen, setIsModalOpen }) {
   async function launchDrone(coords) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        console.log(`DJI FlyCart 30 launched to: Lat ${coords.lat}, Lng ${coords.lng}`);
         setOrderStatus('Drone en route to your device location!');
         resolve();
       }, 2000);
     });
   }
 
-  // Focus management for accessibility
-  useEffect(() => {
-    if (isOpen && modalRef.current) {
-      modalRef.current.focus();
-      const focusableElements = modalRef.current.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-      );
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      const handleKeyDown = (e) => {
-        if (e.key === 'Tab') {
-          if (e.shiftKey && document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement.focus();
-          } else if (!e.shiftKey && document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement.focus();
-          }
-        }
-        if (e.key === 'Escape') handleClose();
-      };
-
-      modalRef.current.addEventListener('keydown', handleKeyDown);
-      return () => modalRef.current?.removeEventListener('keydown', handleKeyDown);
-    }
-  }, [isOpen]);
-
-  // Geolocation cleanup
-  useEffect(() => {
-    let watchId;
-    if (isOpen && navigator.geolocation) {
-      watchId = navigator.geolocation.watchPosition(
-        (position) => {
-          const coords = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          setUserCoords(coords);
-          setOrderStatus('Device location captured! Please stand where you want the drone to deliver (e.g., balcony or front of house).');
-        },
-        (error) => {
-          console.error('Geolocation error:', error);
-          setOrderStatus('Failed to get device location. Please try again.');
-        },
-        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-      );
-    }
-    return () => {
-      if (watchId) navigator.geolocation.clearWatch(watchId);
-    };
-  }, [isOpen]);
-
-  // Only render modal if isOpen is true
   if (!isOpen) return null;
 
   return createPortal(
     <div
-      id="order-modal"
-      className={`modal fixed inset-0 flex items-center justify-center transition-opacity duration-300 z-[1000] ${
-        isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-      }`}
+      className="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
       onClick={handleOutsideClick}
       role="dialog"
       aria-labelledby="order-title"
@@ -148,68 +183,181 @@ function DroneOrderModal({ isOpen, setIsModalOpen }) {
     >
       <div
         ref={modalRef}
-        className="modal-content bg-black rounded-lg p-6 max-w-md w-full shadow-lg relative"
+        className="bg-gray-900 rounded-lg shadow-xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto"
         tabIndex="-1"
       >
+        {/* Drone image at the top */}
+        <div
+          className="w-full h-40 bg-gray-700 rounded-lg mb-4 bg-center bg-cover"
+          style={{
+            backgroundImage: `url(${droneImage})`,
+            backgroundColor: '#1F2937',
+          }}
+          aria-label="Drone delivery"
+        />
         <button
-          className="modal-close absolute top-4 right-4 bg-white text-[#FF5733] hover:bg-[#FF5733] hover:text-white text-xl font-bold w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#FF5733]"
-          aria-label="Close modal"
           onClick={handleClose}
+          className="absolute top-2 right-2 text-white hover:text-amber-400 focus:ring-2 focus:ring-amber-500 focus:outline-none text-2xl"
+          aria-label="Close modal"
+          type="button"
         >
-          ×
+          ✕
         </button>
-        <h2 id="order-title" className="text-2xl font-semibold text-white mb-4">
+        <h2 id="order-title" className="text-2xl font-bold text-white mb-2 text-center">
           Order by Drone
         </h2>
-        <form id="drone-order-form" onSubmit={handleSubmit}>
-          <label htmlFor="item" className="block text-white font-medium mb-2">
-            Select Item:
-          </label>
-          <select
-            id="item"
-            name="item"
-            required
-            className="text-gray-800 w-full border-2 border-[#333333] rounded px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-[#FF5733] bg-white"
+        <div className="mb-2 text-center text-gray-300 text-sm">
+          <span className="font-semibold text-amber-400">Delivery Area:</span> Within 5km of Kepong Villa. <br />
+          <span className="font-semibold text-amber-400">Payment:</span> Prepay required.
+        </div>
+        {/* Bank details toggle */}
+        <div className="text-center mb-4">
+          <button
+            className="text-amber-400 underline font-semibold focus:outline-none"
+            onClick={() => setShowBank((v) => !v)}
+            type="button"
           >
-            <option value="palm-wine">Palm Wine - ₦500</option>
-            <option value="suya">Suya - ₦1000</option>
-            <option value="isi-ewu">IsiEwu - ₦4000</option>
-            <option value="fish">Suya - ₦4500</option>
-          </select>
-          <label htmlFor="address" className="block text-white font-medium mb-2">
-            Delivery Address (Optional):
-          </label>
-          <div className="flex flex-col sm:flex-row gap-2 items-center mb-4">
+            {showBank ? 'Hide Bank Details' : 'Show Bank Details'}
+          </button>
+          {showBank && (
+            <div className="bg-gray-800 rounded-lg p-3 mt-2 text-center animate-fadeInUp">
+              <p className="font-semibold text-gray-200 mb-1">Kepong Villa Garden & Suites</p>
+              <p className="text-gray-200">Bank: Wema Bank</p>
+              <p className="text-gray-200">Account Number: 0125564025</p>
+              <p className="text-gray-400 text-xs">Send proof of payment if requested.</p>
+            </div>
+          )}
+        </div>
+        <form id="drone-order-form" onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="package" className="block text-sm font-medium text-gray-200 mb-1">
+              Select Package
+            </label>
+            <div className="space-y-2">
+              {PACKAGES.map(pkg => (
+                <div
+                  key={pkg.value}
+                  className={`rounded-lg border-2 p-3 cursor-pointer transition ${
+                    selected === pkg.value
+                      ? 'border-amber-400 bg-gray-800'
+                      : 'border-gray-700 bg-gray-900 hover:border-amber-300'
+                  }`}
+                  onClick={() => {
+                    setSelected(pkg.value);
+                    setShowContents(showContents === pkg.value ? null : pkg.value);
+                  }}
+                  tabIndex={0}
+                  onKeyPress={e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      setSelected(pkg.value);
+                      setShowContents(showContents === pkg.value ? null : pkg.value);
+                    }
+                  }}
+                  aria-label={`Select ${pkg.name} package`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-lg font-bold text-amber-400">{pkg.name}</span>
+                      <span className="ml-2 text-gray-300 text-sm">{pkg.teaser}</span>
+                    </div>
+                    <span className="text-emerald-400 font-bold">₦{pkg.price.toLocaleString()}</span>
+                  </div>
+                  <button
+                    type="button"
+                    className="mt-2 text-xs text-amber-400 underline focus:outline-none"
+                    onClick={e => {
+                      e.stopPropagation();
+                      setShowContents(showContents === pkg.value ? null : pkg.value);
+                    }}
+                  >
+                    {showContents === pkg.value ? 'Hide contents' : 'Show contents'}
+                  </button>
+                  {showContents === pkg.value && (
+                    <ul className="mt-2 pl-4 text-gray-200 list-disc text-sm">
+                      {pkg.contents.map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <label htmlFor="date" className="block text-sm font-medium text-gray-200 mb-1">
+              Desired Delivery Date
+            </label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              value={date}
+              onChange={e => setDate(e.target.value)}
+              required
+              className="w-full px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label htmlFor="time" className="block text-sm font-medium text-gray-200 mb-1">
+              Desired Delivery Time
+            </label>
+            <input
+              type="time"
+              id="time"
+              name="time"
+              value={time}
+              onChange={e => setTime(e.target.value)}
+              required
+              className="w-full px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label htmlFor="address" className="block text-sm font-medium text-gray-200 mb-1">
+              Delivery Address (Optional)
+            </label>
             <input
               type="text"
               id="address"
               name="address"
               placeholder="e.g., Apartment 3B, 2nd floor"
-              className="flex-1 border-2 border-[#333333] rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#FF5733] bg-white w-full"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
+              className="w-full px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-amber-500 focus:outline-none"
             />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-2 items-center">
             <button
               type="button"
-              className="bg-[#FF5733] text-white font-semibold px-3 py-2 rounded-full hover:bg-[#e64e2e] transition focus:outline-none focus:ring-2 focus:ring-[#FF5733] text-xs sm:text-sm w-full sm:w-auto whitespace-nowrap"
+              className="bg-amber-500 text-emerald-900 font-semibold px-4 py-2 rounded-lg hover:bg-orange-500 hover:text-white transition focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm w-full sm:w-auto"
               onClick={handleGetLocation}
               aria-label="Capture device location for drone delivery"
+              disabled={isLocating}
             >
-              📍 Use Device Location
+              {isLocating ? 'Locating...' : '📍 Use Device Location'}
             </button>
+            {userCoords && (
+              <span className="text-emerald-400 text-xs text-center w-full sm:w-auto">
+                Location captured!
+              </span>
+            )}
+          </div>
+          <div className="text-center text-amber-400 font-semibold mt-2">
+            Total: ₦{selectedPackage.price.toLocaleString()}
           </div>
           <button
             type="submit"
-            className="w-full bg-[#FF5733] text-white font-semibold px-4 py-2 rounded-full hover:bg-[#e64e2e] transition focus:outline-none focus:ring-2 focus:ring-[#FF5733] disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="w-full bg-emerald-900 text-white font-semibold px-4 py-3 rounded-lg hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-500 shadow-sm focus:ring-2 focus:ring-amber-500 focus:outline-none disabled:bg-gray-400 disabled:cursor-not-allowed"
             aria-label="Confirm drone order"
             disabled={!userCoords}
           >
             Confirm Order
           </button>
         </form>
-        <p id="order-status" className="text-white mt-4 text-center" aria-live="polite">
+        <p id="order-status" className="text-white mt-4 text-center min-h-[32px]" aria-live="polite">
           {orderStatus}
         </p>
         <p className="text-gray-400 text-center text-xs mt-3">
-          Need help? Call <span className="text-white font-semibold">0916 283 6505</span>
+          Need help? Call <a href={`tel:${enquiryPhoneNumber}`} className="text-amber-400 font-semibold hover:underline">{enquiryPhoneNumber}</a>
         </p>
       </div>
     </div>,
