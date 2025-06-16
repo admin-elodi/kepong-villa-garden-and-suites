@@ -75,7 +75,7 @@ const FeaturedEntertainers = () => {
   };
 
   return (
-    <main className="bg-black bg-opacity-90 min-h-screen font-montserrat text-white py-16">
+    <main className="bg-black bg-opacity-90 min-h-screen font-montserrat text-white py-32">
       {/* Animation style for fadeInUpBlock */}
       <style>
         {`
@@ -101,22 +101,22 @@ const FeaturedEntertainers = () => {
             {/* Page Heading */}
             <section className="text-center mb-4 relative">
               <h1
-                className="text-4xl sm:text-5xl md:text-4xl font-bold tracking-tight text-white mb-4 inline-block pb-2"
+                className="text-4xl sm:text-5xl md:text-4xl font-semibold tracking-tight text-white mb-4 inline-block pb-2"
               >
-                Entertainment
+                Weekend Entertainment
               </h1>
               <p
                 className="text-lg sm:text-xl md:text-xl max-w-2xl mx-auto text-gray-200 mb-4"
               >
-                Reserve Table for Entertainment Fridays to Sundays
+                Fridays to Sundays
               </p>
             </section>
 
             {/* This Weekend's Lineup Announcement */}
             <div className="max-w-7xl mx-auto mb-6 px-4 sm:px-0">
               <h2 className="flex items-center justify-center text-2xl sm:text-3xl font-semibold text-gray-400 mb-2 text-center gap-2">
-                <span className="inline-block text-3xl" style={{ color: '#b0b3b8' }}>🎤</span>
-                This Weekend’s Lineup (Fri–Sun)
+                <div className="inline-block text-3xl" style={{ color: '#b0b3b8' }}>🎤</div>
+                 <p>This Weekend’s Lineup</p>
               </h2>
               <div className="flex flex-col sm:flex-row justify-center gap-6 mb-4">
                 <div className="bg-black bg-opacity-70 border-2 border-emerald-500 rounded-lg p-4 min-w-[220px]">
@@ -151,7 +151,7 @@ const FeaturedEntertainers = () => {
                   style={{ minWidth: 260, width: 320, maxWidth: '95vw' }}
                   aria-label="Book your table now for an unforgettable weekend!"
                 >
-                  Reserve a Table
+                  Reserve Table-4-Four
                 </button>
               </div>
             </div>
@@ -209,7 +209,7 @@ const FeaturedEntertainers = () => {
           {/* Minimalist Promo & Reserve Button (BOTTOM) */}
           <div className="flex flex-col items-center my-8">
             <p className="text-base text-amber-400 font-medium mb-4 text-center">
-              Reserve your table for the weekend’s entertainment.
+              Reserve table-4-Four 
             </p>
             <button
               onClick={handleReserveTable}
@@ -217,7 +217,7 @@ const FeaturedEntertainers = () => {
               style={{ minWidth: 220, maxWidth: '95vw' }}
               aria-label="Reserve your table for weekend entertainment"
             >
-              Reserve a Table
+              Reserve Table-4-Four
             </button>
           </div>
 

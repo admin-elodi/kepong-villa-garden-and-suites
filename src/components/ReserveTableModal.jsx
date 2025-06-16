@@ -193,7 +193,6 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
               Total cost: ₦{((parseInt(formData.tables, 10) || 0) * 50000).toLocaleString()}
             </div>
           </div>
-
           {/* Show/Hide Account Details Button */}
           <div className="flex justify-center my-4">
             <button
@@ -205,8 +204,7 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
               {showBank ? "Hide Account Details" : "Show Account Details"}
             </button>
           </div>
-
-          {/* Account Details (shown after fields, before submit) */}
+          {/* Account Details and Submit Button */}
           {showBank && (
             <div className="mb-4 bg-emerald-900 bg-opacity-95 p-5 rounded-lg shadow text-white text-center border-2 border-yellow-200">
               <h3 className="text-lg font-bold mb-2 text-yellow-200">Bank Account Details</h3>
@@ -221,20 +219,19 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
               <div className="text-sm text-amber-200 mt-2">
                 Use your full name as payment reference.
               </div>
-              
+              {/* Send Booking Details button is ONLY inside this area */}
+              <button
+                type="submit"
+                disabled={isSending}
+                className={`w-full mt-4 bg-emerald-900 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-500 shadow-sm focus:ring-2 focus:ring-amber-500 focus:outline-none ${
+                  isSending ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+                aria-label="Send booking details"
+              >
+                {isSending ? 'Sending...' : 'Send Booking Details'}
+              </button>
             </div>
           )}
-
-          <button
-            type="submit"
-            disabled={isSending}
-            className={`w-full bg-emerald-900 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-500 shadow-sm focus:ring-2 focus:ring-amber-500 focus:outline-none ${
-              isSending ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-            aria-label="Send booking details"
-          >
-            {isSending ? 'Sending...' : 'Send Booking Details'}
-          </button>
         </form>
         <p className="text-gray-400 text-center text-xs mt-3">
           For enquiries, call <a href={`tel:${enquiryPhoneNumber}`} className="text-amber-400 font-semibold hover:underline">{enquiryPhoneNumber}</a>

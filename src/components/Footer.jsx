@@ -12,7 +12,7 @@ const Footer = () => {
     'transform hover:scale-125 transition-all duration-300 rounded-full p-2 border-2';
 
   const socialBtnColors =
-    'text-gray-200 hover:text-amber-300 border-2 border-amber-200';
+    'text-gray-200 hover:text-yellow-200 border-2 border-amber-200';
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -56,7 +56,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Kepong Villa Vibes Section */}
-          <div className="space-y-6 text-center border-2 border-amber-500/50 rounded-lg p-6 bg-emerald-800/50">
+          <div className="space-y-6 text-center border-4 border-emerald-900 rounded-lg p-6 bg-transparent">
             <h3 className="text-2xl font-bold text-emerald-300 animate-pulse">
               Kepong Villa Vibes
             </h3>
@@ -89,7 +89,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="space-y-6 text-center border-2 border-amber-500/50 rounded-lg p-6 bg-emerald-800/50">
+          <div className="space-y-6 text-center border-4 border-emerald-900 rounded-lg p-6 bg-transparent">
             <h3 className="text-2xl font-bold text-emerald-300">Get in the Groove</h3>
             <ul className="space-y-3 text-sm">
               {[
@@ -101,7 +101,7 @@ const Footer = () => {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-gray-200 hover:text-amber-300 hover:underline transition-colors duration-300 border-b border-amber-400/50 pb-1"
+                    className="text-gray-200 hover:text-yellow-200 hover:underline transition-colors duration-300 border-b border-amber-400/50 pb-1"
                   >
                     {item.label}
                   </Link>
@@ -111,7 +111,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter & Contact Section */}
-          <div className="space-y-6 text-center border-2 border-amber-500/50 rounded-lg p-6 bg-emerald-800/50">
+          <div className="space-y-6 text-center border-4 border-emerald-900 rounded-lg p-6 bg-transparent">
             <h3 className="text-2xl font-bold text-emerald-300">Entertainment Updates</h3>
             <p className="text-gray-200 font-semibold text-sm max-w-md mx-auto">
               Subscribe for cool Enugu Entertainment News
@@ -163,10 +163,10 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-amber-400/20 text-center">
-          <p className="text-gray-200 font-bold text-lg">
+          <p className="text-gray-200 font-bold md:text-lg text-xs">
             © {new Date().getFullYear()} Kepong Villa Garden & Suites. All rights reserved.
           </p>
-          <small className="text-gray-400 opacity-40 text-sm mt-2 block">
+          <small className="text-gray-400 opacity-40 text-xs mt-2 block">
             Site Designed by Elodi Nigeria Enterprises, Enugu
           </small>
         </div>

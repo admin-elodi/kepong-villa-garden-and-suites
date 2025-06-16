@@ -61,7 +61,7 @@ const BookingPage = () => {
   }, [bookingConfirmed]);
 
   return (
-    <div className="min-h-screen font-montserrat bg-black text-gray-100">
+    <div className="min-h-screen font-montserrat bg-black text-gray-100 py-32">
       <ScrollToTop />
 
       {/* Hero Section with Video Background */}
@@ -89,18 +89,8 @@ const BookingPage = () => {
               animationFillMode: 'forwards',
             }}
           >
-            Kepong Villa Garden & Suites
+            Book Hotel with Room Service
           </h2>
-          <p
-            className="md:text-xl font-medium max-w-xl text-white drop-shadow-lg leading-snug opacity-0 animate-fadeInUp"
-            style={{
-              animationDelay: '0.9s',
-              animationFillMode: 'forwards',
-              marginTop: '0.2rem',
-            }}
-          >
-            Book room with optional food & drink
-          </p>
         </div>
       </section>
 

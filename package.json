@@ -14,7 +14,6 @@
     "@paystack/inline-js": "^2.22.3",
     "@sendgrid/mail": "^8.1.3",
     "date-fns": "^3.6.0",
-    "firebase": "^10.14.1",
     "jspdf": "^2.5.1",
     "nodemailer": "^7.0.3",
     "paystack-api": "^2.0.6",

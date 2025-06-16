@@ -10,20 +10,25 @@ const Header = () => {
   };
 
   const navLinkClasses =
-    'block text-base sm:text-lg font-semibold text-emerald-900 hover:text-amber-500 hover:border-b-2 hover:border-amber-300 transition-all duration-300 py-2';
-  const activeClasses = 'text-emerald-900 border-b-2 border-amber-300';
+    'block text-base sm:text-lg font-bold text-emerald-900 hover:text-amber-500 hover:border-b-2 hover:border-amber-300 transition-all duration-300 py-2';
+  const activeClasses = 'text-emerald-900 border-b-4 border-emerald-900';
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-white font-montserrat shadow-md"
-      style={{
-        borderBottom: 'double 8px black'
-      }}
+      className="fixed top-0 left-0 w-full z-50 bg-white font-montserrat shadow-md border-b-4 border-black"
+   
     >
+      {/* Desktop: Title above nav */}
+      <div className="hidden md:flex justify-center bg-white border-b-4 border-black py-2">
+        <h1 className="text-2xl font-bold text-emerald-900 tracking-wide select-none">
+          Kepong Villa Garden & Suites
+        </h1>
+      </div>
+
       <nav className="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6">
         <NavLink
           to="/"
-          className="p-2 rounded-lg hover:scale-105 transition-transform duration-300"
+          className="p-2 rounded-lg hover:scale-105 transition-transform duration-300 flex items-center"
         >
           <img
             src={logo}
@@ -31,6 +36,13 @@ const Header = () => {
             className="w-10 h-10 rounded-full border-2 border-black"
           />
         </NavLink>
+
+        {/* Mobile: Title between logo and hamburger */}
+        <div className="flex-1 flex justify-center md:hidden">
+          <span className="text-lg font-extrabold text-emerald-900 select-none truncate max-w-xs">
+            Kepong Villa Garden & Suites
+          </span>
+        </div>
 
         {/* Hamburger Icon for Mobile */}
         <button
@@ -90,6 +102,15 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Bookings
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/events"
+              className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Events
             </NavLink>
           </li>
           <li>

@@ -76,7 +76,7 @@ const ClubK = () => {
               textShadow: '0 6px 12px rgba(0,0,0,0.7)',
             }}
           >
-            Club K Nightclub
+            Club-K Nightclub
           </h1>
           <p
             className="text-lg sm:text-xl md:text-2xl mx-auto text-gray-200 animate-fadeInUp-delayed max-w-[340px] sm:max-w-none mb-4"
@@ -93,13 +93,13 @@ const ClubK = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-xl mx-auto px-4 mt-2">
             <button
               onClick={handleOrderDrinks}
-              className="bg-emerald-900 text-white px-7 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
+              className="bg-emerald-900 text-white px-7 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-900 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
             >
               Order Premium Drinks
             </button>
             <button
               onClick={handleBookVIP}
-              className="bg-amber-400 text-black px-7 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
+              className="bg-yellow-100 text-black px-7 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-900 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
             >
               Reserve Private Area
             </button>
@@ -136,20 +136,15 @@ const ClubK = () => {
           {/* Features Section */}
           <section className="py-12 sm:py-16">
             <h2
-              className="text-3xl font-bold text-center mb-12 pb-3"
-              style={{
-                color: 'white',
-                textShadow: '0 4px 10px rgba(0,0,0,0.6)',
-                borderBottom: '2px solid #fff',
-              }}
+              className="text-3xl text-yellow-100 font-bold text-center mb-12 pb-3"
             >
-              Why Club K?
+              Experience Club K
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 sm:gap-x-12 max-w-6xl mx-auto">
               {features.map(({ title, img, desc }, i) => (
                 <div
                   key={i}
-                  className="rounded-lg overflow-hidden border-4 border-white shadow-xl bg-black bg-opacity-70 flex flex-col items-center text-center"
+                  className="rounded-lg overflow-hidden border-4 border-emerald-900 shadow-xl bg-black bg-opacity-70 flex flex-col items-center text-center"
                   style={{ height: '340px' }}
                 >
                   <img
@@ -160,8 +155,8 @@ const ClubK = () => {
                   />
                   <div className="p-6 flex flex-col flex-grow justify-between w-full">
                     <div>
-                      <h3 className="text-xl font-semibold mb-4 text-white drop-shadow-md">{title}</h3>
-                      <p className="text-gray-200 text-base">{desc}</p>
+                      <h3 className="text-xl font-semibold mb-4 text-yellow-100 drop-shadow-md">{title}</h3>
+                      <p className="text-yellow-100 text-base">{desc}</p>
                     </div>
                   </div>
                 </div>

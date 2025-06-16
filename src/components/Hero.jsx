@@ -47,24 +47,10 @@ const Hero = ({ setIsModalOpen }) => {
       <div
         className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 lg:px-12 max-w-screen-xl mx-auto"
       >
-        {/* Welcome Text */}
-        <p
-          className="text-base sm:text-xl md:text-2xl font-dancing text-white font-bold mb-2 animate-fade-in-up"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(255,255,255,0.85) 30%, rgba(255,255,255,0))',
-            WebkitBackgroundClip: 'text',
-            color: 'white',
-            textShadow: '0 4px 6px rgba(0,0,0,0.4)',
-            animation: 'growText 3s ease-in-out forwards',
-          }}
-        >
-          Welcome to Enugu’s Premier Entertainment Destination
-        </p>
 
         {/* Main Title */}
         <h1
-          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-yellow-100 mb-4 animate-fade-in-up delay-100"
+          className="text-2xl mb-8 sm:text-4xl md:text-5xl lg:text-6xl font-bold text-yellow-100 mb-4 animate-fade-in-up delay-100"
           style={{
             textShadow: '0 6px 8px rgba(0,0,0,0.5)',
             animation: 'growText 4s ease-in-out forwards',
@@ -72,21 +58,6 @@ const Hero = ({ setIsModalOpen }) => {
         >
           Kepong Villa Garden & Suites
         </h1>
-
-        {/* Description */}
-        <p
-          className="text-base sm:text-lg md:text-xl text-white font-bold mb-8 animate-fade-in-up delay-200"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(255,255,255,0.85) 30%, rgba(255,255,255,0))',
-            WebkitBackgroundClip: 'text',
-            color: 'white',
-            textShadow: '0 4px 6px rgba(0,0,0,0.4)',
-            animation: 'growText 5s ease-in-out forwards',
-          }}
-        >
-          Book a Room, Enjoy Club K, Live Entertainment and More...
-        </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center animate-fade-in-up delay-300 w-full">
@@ -105,7 +76,7 @@ const Hero = ({ setIsModalOpen }) => {
             className="bg-yellow-100 text-black font-semibold text-base sm:text-lg py-3 px-6 border-2 border-black rounded-lg hover:bg-yellow-500 hover:text-white hover:scale-105 transition-transform duration-300 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none flex-1 sm:flex-none sm:w-auto text-center"
             aria-label="Reserve a table for entertainment"
           >
-            Reserve a Table
+            Reserve Table-4-Four
           </button>
 
           {/* Order by Drone (full width below) */}

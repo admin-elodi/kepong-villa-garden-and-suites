@@ -4,13 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Core color scheme for the project (unchanged)
         'primary-red': '#E63946',
         'pure-white': '#FFFFFF',
         'light-gray': '#F1F3F5',
         'dark-gray': '#6B7280',
         'black': '#1D1D1D',
-        // Legacy colors (unchanged)
         primary: {
           100: '#FFF3E0',
           200: '#FFE0B2',
@@ -33,25 +31,26 @@ export default {
         dark: '#1D1D1D',
         grayDark: '#2D2D2D',
         grayLight: '#D3D3D3',
-        // Navigation colors (unchanged)
         nav: {
           text: '#ffffff',
           hover: '#d1d5db',
           border: '#ffffff',
         },
-        // High-concentration emerald colors
         emerald: {
-          100: 'rgb(204, 251, 225)', // Vibrant, light green for placeholders, card content
-          200: 'rgb(110, 231, 183)', // Rich, saturated green for rectangle, tab hover
-          900: 'rgb(6, 78, 59)',     // Deep green for borders, text
+          100: 'rgb(204, 251, 225)',
+          200: 'rgb(110, 231, 183)',
+          900: 'rgb(6, 78, 59)',
         },
-        // High-concentration amber colors
         amber: {
-          300: 'rgb(253, 230, 138)', // Soft amber for borders
-          400: 'rgb(252, 211, 77)',  // Bright for headings (if needed)
-          500: 'rgb(251, 191, 36)',  // Vivid for buttons, active tabs
-          600: 'rgb(245, 158, 11)',  // Deeper for button hover
+          300: 'rgb(253, 230, 138)',
+          400: 'rgb(252, 211, 77)',
+          500: 'rgb(251, 191, 36)',
+          600: 'rgb(245, 158, 11)',
         },
+      },
+      fontSize: {
+        '2xs': '0.625rem', // 10px
+        '3xs': '0.5rem',   // 8px
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
