@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import promoVideo from '@/assets/videos/rise.mp4';
+import promoVideo from '@/assets/videos/hero.mp4';
 import DroneOrderModal from './DroneOrderModal';
 
 // Import your ReserveTableModal component or define it here
