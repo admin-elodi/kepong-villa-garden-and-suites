@@ -114,7 +114,7 @@ const Footer = () => {
           <div className="space-y-6 text-center border-4 border-emerald-900 rounded-lg p-6 bg-transparent">
             <h3 className="text-2xl font-bold text-emerald-300">Entertainment Updates</h3>
             <p className="text-gray-200 font-semibold text-sm max-w-md mx-auto">
-              Subscribe for cool Enugu Entertainment News
+              Subscribe for Entertainment News
             </p>
             <form
               onSubmit={handleNewsletterSubmit}

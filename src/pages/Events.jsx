@@ -65,7 +65,7 @@ const Events = () => {
           }
         `}
       </style>
-      <div className="relative w-full max-w-4xl md:max-w-8xl md:w-[95%] mx-auto rounded-lg shadow-2xl border border-white px-4 md:px-10 py-8 bg-black/95">
+      <div className="relative w-full max-w-4xl md:max-w-8xl md:w-[95%] mx-auto rounded-lg shadow-2xl px-4 md:px-10 py-8 bg-black/95">
         <header className="mb-10 flex flex-col items-center text-center">
           <h1 className="text-2xl md:text-4xl font-semibold tracking-tight text-yellow-200 mb-2 drop-shadow-lg fade-in">
             <span className="pb-1"> Events Announcement Page</span>
