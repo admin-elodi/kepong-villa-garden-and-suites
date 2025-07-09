@@ -7,7 +7,7 @@ import '../css/q-links.css';
 
 const QuickLinks = () => {
   const topCards = [
-      {
+    {
       img: jollofRice,
       alt: 'Jollof Rice',
       title: 'Savor the Flavor',
@@ -23,7 +23,6 @@ const QuickLinks = () => {
       link: '/bookings',
       btnLabel: 'Book a Room',
     },
-  
     {
       img: weddingReception,
       alt: 'Wedding Event',
@@ -92,14 +91,14 @@ const QuickLinks = () => {
   };
 
   return (
-    <main className="mt-0 font-montserrat text-gray-800">
+    <main className="mt-0 font-montserrat text-yellow-100 bg-black">
       {/* White borders on top and bottom */}
-      <div className="w-full border-t-4 border-b-4 border-white">
+      <div className="w-full border-t-2 border-b-2 border-white">
         <section className="py-12 bg-black bg-opacity-90">
           <div className="container max-w-screen-xl mx-auto text-center">
             {/* Top Cards Section */}
             <section className="py-12 flex justify-center">
-              <div className="bg-black opacity-90 rounded-lg p-8 max-w-6xl w-full text-center shadow-xl">
+              <div className="bg-black bg-opacity-90 rounded-lg p-8 max-w-6xl w-full text-center shadow-xl">
                 <h2
                   className="
                     text-3xl
@@ -110,13 +109,8 @@ const QuickLinks = () => {
                     animate-fade-in-up
                     leading-tight
                     tracking-wide
-                    text-transparent
-                    bg-clip-text
-                    bg-gradient-to-r
-                    from-yellow-300
-                    via-orange-400
-                    to-red-500
-                    drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]
+                    text-yellow-100
+                    drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]
                   "
                 >
                   Book room, food, events, etc...
@@ -126,7 +120,7 @@ const QuickLinks = () => {
                   {topCards.map((card, index) => (
                     <div
                       key={index}
-                      className="bg-gray-200 text-sm text-black p-2 rounded-lg shadow-xl flex flex-col min-h-[360px] transition-transform hover:scale-105 hover:shadow-2xl"
+                      className="bg-black bg-opacity-80 text-yellow-100 p-4 rounded-lg shadow-xl flex flex-col min-h-[360px] transition-transform hover:scale-105 hover:shadow-2xl"
                     >
                       <img
                         src={card.img}
@@ -139,7 +133,7 @@ const QuickLinks = () => {
                       <p>{card.desc}</p>
                       <Link
                         to={card.link}
-                        className="mt-auto inline-block bg-emerald-900 text-white py-2 px-4 rounded-lg hover:bg-emerald-700 transition-transform hover:scale-105 duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500"
+                        className="mt-auto inline-block bg-yellow-100 text-black py-2 px-4 rounded-lg hover:bg-amber-400 transition-transform hover:scale-105 duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500"
                         aria-label={card.btnLabel}
                       >
                         {card.btnLabel}
@@ -148,19 +142,19 @@ const QuickLinks = () => {
                   ))}
                 </div>
               </div>
-            </section>            
+            </section>
 
             {/* More Services To Enjoy */}
             <section className="py-12 flex justify-center">
-              <div className="bg-black opacity-90 rounded-2xl p-8 max-w-6xl w-full text-center shadow-xl">
-                <h2 className="text-3xl md:text-4xl font-dancing mb-8 text-white drop-shadow-lg">
+              <div className="bg-black bg-opacity-90 rounded-2xl p-8 max-w-6xl w-full text-center shadow-xl">
+                <h2 className="text-3xl md:text-4xl font-dancing mb-8 text-yellow-100 drop-shadow-lg">
                   More Services...
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                   {moreServices.map((service, index) => (
                     <div
                       key={index}
-                      className="backdrop-blur-lg text-white p-6 rounded-2xl border-4 border-emerald-900 transform transition hover:scale-105 hover:shadow-2xl cursor-pointer"
+                      className="backdrop-blur-lg text-yellow-100 p-6 rounded-2xl border-4 border-yellow-100 transform transition hover:scale-105 hover:shadow-2xl cursor-pointer"
                       role="button"
                       tabIndex="0"
                       onClick={() => toggleReveal(index)}
@@ -172,7 +166,7 @@ const QuickLinks = () => {
                     >
                       <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                       {revealedServices[index] ? (
-                        <div className="text-sm text-white mt-2">
+                        <div className="text-sm mt-2">
                           <p>
                             <strong>Phone:</strong> {service.phone}
                           </p>
@@ -193,12 +187,11 @@ const QuickLinks = () => {
                           </p>
                         </div>
                       ) : (
-                        <p className="text-gray-200">Click to reveal contact info</p>
+                        <p className="text-yellow-300">Click to reveal contact info</p>
                       )}
                     </div>
                   ))}
                 </div>
-              
               </div>
             </section>
           </div>

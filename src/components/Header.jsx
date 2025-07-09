@@ -10,17 +10,16 @@ const Header = () => {
   };
 
   const navLinkClasses =
-    'block text-base sm:text-lg font-bold text-emerald-900 hover:text-amber-500 hover:border-b-2 hover:border-amber-300 transition-all duration-300 py-2';
-  const activeClasses = 'text-emerald-900 border-b-4 border-emerald-900';
+    'block text-base sm:text-lg font-bold text-yellow-100 hover:text-amber-400 hover:border-b-2 hover:border-amber-400 transition-all duration-300 py-2';
+  const activeClasses = 'text-yellow-100 border-b-2 border-yellow-100';
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-white font-montserrat shadow-md border-b-4 border-black"
-   
+      className="fixed top-0 left-0 w-full z-50 bg-black font-montserrat shadow-md border-b-2 border-yellow-100"
     >
       {/* Desktop: Title above nav */}
-      <div className="hidden md:flex justify-center bg-white border-b-4 border-black py-2">
-        <h1 className="text-2xl font-bold text-emerald-900 tracking-wide select-none">
+      <div className="hidden md:flex justify-center bg-black border-b-2 border-yellow-100 py-2">
+        <h1 className="text-2xl font-bold text-yellow-100 tracking-wide select-none uppercase">
           Kepong Villa Garden & Suites
         </h1>
       </div>
@@ -33,38 +32,60 @@ const Header = () => {
           <img
             src={logo}
             alt="Kepong Villa Garden and Suites Logo"
-            className="w-10 h-10 rounded-full border-2 border-black"
+            className="w-10 h-10 rounded-full border-2 border-yellow-100"
           />
         </NavLink>
 
         {/* Mobile: Title between logo and hamburger */}
-        <div className="flex-1 flex justify-center md:hidden">
-          <span className="text-lg font-extrabold text-emerald-900 select-none truncate max-w-xs">
+        <div className="flex-1 flex justify-center md:hidden px-4">
+          <span className="text-xs font-bold text-yellow-100 select-none max-w-[calc(100vw-120px)] break-words text-center">
             Kepong Villa Garden & Suites
           </span>
         </div>
 
+
+
         {/* Hamburger Icon for Mobile */}
-        <button
-          id="menu-toggle"
-          className="md:hidden text-black focus:outline-none focus:ring-2 focus:ring-amber-400 rounded"
-          aria-label="Toggle Navigation Menu"
-          aria-expanded={isMenuOpen}
-          onClick={toggleMenu}
-        >
-          <div className="flex flex-col justify-between w-7 h-6">
-            <span className="block h-[3px] bg-black rounded"></span>
-            <span className="block h-[3px] bg-black rounded"></span>
-            <span className="block h-[3px] bg-black rounded"></span>
-          </div>
-        </button>
+      <button
+  id="menu-toggle"
+  className="md:hidden text-yellow-100 focus:outline-none focus:ring-2 focus:ring-amber-400 rounded"
+  aria-label="Toggle Navigation Menu"
+  aria-expanded={isMenuOpen}
+  onClick={toggleMenu}
+>
+  {isMenuOpen ? (
+    // X icon
+    <svg
+      className="w-7 h-7"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      viewBox="0 0 24 24"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  ) : (
+    // Hamburger icon
+    <div className="flex flex-col justify-between w-7 h-6">
+      <span className="block h-[3px] bg-yellow-100 rounded"></span>
+      <span className="block h-[3px] bg-yellow-100 rounded"></span>
+      <span className="block h-[3px] bg-yellow-100 rounded"></span>
+    </div>
+  )}
+</button>
+
 
         {/* Navigation Links */}
         <ul
           className={`${
-            isMenuOpen ? 'flex bg-white' : 'hidden'
+            isMenuOpen ? 'flex bg-black' : 'hidden'
           } md:flex md:bg-transparent flex-col md:flex-row text-center absolute md:static top-full left-0 w-full md:w-auto space-y-4 md:space-y-0 md:space-x-20 py-4 px-6 md:p-0 transition-all duration-300 ease-in-out ${
-            isMenuOpen ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 md:opacity-100 md:max-h-full'
+            isMenuOpen
+              ? 'opacity-100 max-h-screen'
+              : 'opacity-0 max-h-0 md:opacity-100 md:max-h-full'
           } md:items-center shadow-lg md:shadow-none z-40`}
           aria-hidden={!isMenuOpen}
         >

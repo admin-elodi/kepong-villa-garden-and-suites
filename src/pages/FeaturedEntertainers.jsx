@@ -75,7 +75,7 @@ const FeaturedEntertainers = () => {
   };
 
   return (
-    <main className="bg-black bg-opacity-90 min-h-screen font-montserrat text-white py-32">
+    <main className="bg-black bg-opacity-95 min-h-screen font-montserrat text-yellow-100 py-32">
       {/* Animation style for fadeInUpBlock */}
       <style>
         {`
@@ -101,12 +101,14 @@ const FeaturedEntertainers = () => {
             {/* Page Heading */}
             <section className="text-center mb-4 relative">
               <h1
-                className="text-4xl sm:text-5xl md:text-4xl font-semibold tracking-tight text-white mb-4 inline-block pb-2"
+                className="text-4xl sm:text-5xl md:text-4xl font-semibold tracking-tight mb-4 inline-block pb-2"
+                style={{ color: '#fef3c7' }} // yellow-100
               >
                 Weekend Entertainment
               </h1>
               <p
-                className="text-lg sm:text-xl md:text-xl max-w-2xl mx-auto text-gray-200 mb-4"
+                className="text-lg sm:text-xl md:text-xl max-w-2xl mx-auto mb-4"
+                style={{ color: '#fef3c7cc' }} // yellow-100 with opacity
               >
                 Fridays to Sundays
               </p>
@@ -114,41 +116,33 @@ const FeaturedEntertainers = () => {
 
             {/* This Weekend's Lineup Announcement */}
             <div className="max-w-7xl mx-auto mb-6 px-4 sm:px-0">
-              <h2 className="flex items-center justify-center text-2xl sm:text-3xl font-semibold text-gray-400 mb-2 text-center gap-2">
-                <div className="inline-block text-3xl" style={{ color: '#b0b3b8' }}>🎤</div>
-                 <p>This Weekend’s Lineup</p>
+              <h2 className="flex items-center justify-center text-2xl sm:text-3xl font-semibold mb-2 text-center gap-2" style={{ color: '#fbbf24' }}>
+                <div className="inline-block text-3xl">🎤</div>
+                <p>This Weekend’s Lineup</p>
               </h2>
               <div className="flex flex-col sm:flex-row justify-center gap-6 mb-4">
-                <div className="bg-black bg-opacity-70 border-2 border-emerald-500 rounded-lg p-4 min-w-[220px]">
-                  <h3 className="text-lg font-bold text-white mb-1 text-center">Comedians</h3>
-                  <ul className="text-gray-300 text-center">
-                    {weekendLineup.comedians.map((name) => (
-                      <li key={name}>{name}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="bg-black bg-opacity-70 border-2 border-emerald-500 rounded-lg p-4 min-w-[220px]">
-                  <h3 className="text-lg font-bold text-white mb-1 text-center">Dancers</h3>
-                  <ul className="text-gray-300 text-center">
-                    {weekendLineup.dancers.map((name) => (
-                      <li key={name}>{name}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="bg-black bg-opacity-70 border-2 border-emerald-500 rounded-lg p-4 min-w-[220px]">
-                  <h3 className="text-lg font-bold text-white mb-1 text-center">Hypemen</h3>
-                  <ul className="text-gray-300 text-center">
-                    {weekendLineup.hypemen.map((name) => (
-                      <li key={name}>{name}</li>
-                    ))}
-                  </ul>
-                </div>
+                {['comedians', 'dancers', 'hypemen'].map((category) => (
+                  <div
+                    key={category}
+                    className="bg-black bg-opacity-80 border-2 rounded-lg p-4 min-w-[220px]"
+                    style={{ borderColor: '#fef3c7' }} // yellow-100 border
+                  >
+                    <h3 className="text-lg font-bold mb-1 text-center" style={{ color: '#fef3c7' }}>
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </h3>
+                    <ul className="text-yellow-200 text-center space-y-1">
+                      {weekendLineup[category].map((name) => (
+                        <li key={name}>{name}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
               <div className="flex justify-center">
                 <button
                   onClick={handleReserveTable}
-                  className="bg-emerald-900 text-white px-12 py-4 rounded-lg font-semibold text-lg hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-500 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"
-                  style={{ minWidth: 260, width: 320, maxWidth: '95vw' }}
+                  className="bg-black bg-opacity-90 text-yellow-100 px-12 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 shadow-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                  style={{ borderColor: '#fef3c7', minWidth: 260, width: 320, maxWidth: '95vw' }}
                   aria-label="Book your table now for an unforgettable weekend!"
                 >
                   Reserve Table-4-Four
@@ -173,25 +167,30 @@ const FeaturedEntertainers = () => {
                 <button
                   key={cat.category}
                   onClick={() => setActiveCategory(cat.category)}
-                  className={`px-6 py-2 rounded-full font-semibold border-2 transition
-                    ${activeCategory === cat.category
-                      ? 'bg-emerald-900 text-white border-emerald-500'
-                      : 'bg-black text-gray-300 border-gray-700 hover:bg-emerald-900 hover:text-white hover:border-emerald-500'}
+                  className={`px-6 py-2 rounded-full font-semibold border-2 transition w-full
+                    ${
+                      activeCategory === cat.category
+                        ? 'bg-black text-yellow-100'
+                        : 'bg-transparent text-yellow-300 border-yellow-500 hover:bg-black hover:text-yellow-100'
+                    }
                   `}
-                  style={{ width: '100%' }}
+                  style={{ borderColor: '#fef3c7' }}
                 >
                   {cat.category}
                 </button>
               ))}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {entertainers.find((cat) => cat.category === activeCategory)?.performers.map((perf, idx) => (
+              {entertainers.find((cat) => cat.category === activeCategory)?.performers.map((perf) => (
                 <div
                   key={perf.name}
-                  className="bg-black bg-opacity-80 border-2 border-emerald-900 rounded-lg p-6 flex flex-col items-center text-center shadow-lg"
+                  className="bg-black bg-opacity-90 border-2 rounded-lg p-6 flex flex-col items-center text-center shadow-lg"
+                  style={{ borderColor: '#fef3c7' }}
                 >
-                  <h3 className="text-xl font-bold text-amber-400 mb-2">{perf.name}</h3>
-                  <p className="text-gray-200 mb-4">{perf.description}</p>
+                  <h3 className="text-xl font-bold mb-2" style={{ color: '#fbbf24' }}>
+                    {perf.name}
+                  </h3>
+                  <p className="text-yellow-200 mb-4">{perf.description}</p>
                   {perf.video && (
                     <ReactPlayer
                       url={perf.video}
@@ -202,19 +201,21 @@ const FeaturedEntertainers = () => {
                     />
                   )}
                 </div>
-              )) || <div className="col-span-3 text-center text-gray-400">No performers in this category yet.</div>}
+              )) || (
+                <div className="col-span-3 text-center text-yellow-400">No performers in this category yet.</div>
+              )}
             </div>
           </section>
 
           {/* Minimalist Promo & Reserve Button (BOTTOM) */}
           <div className="flex flex-col items-center my-8">
-            <p className="text-base text-amber-400 font-medium mb-4 text-center">
-              Reserve table-4-Four 
+            <p className="text-base font-medium mb-4 text-center" style={{ color: '#fbbf24' }}>
+              Reserve table-4-Four
             </p>
             <button
               onClick={handleReserveTable}
-              className="bg-emerald-900 text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-500 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"
-              style={{ minWidth: 220, maxWidth: '95vw' }}
+              className="bg-black bg-opacity-90 text-yellow-100 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 shadow-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+              style={{ borderColor: '#fef3c7', minWidth: 220, maxWidth: '95vw' }}
               aria-label="Reserve your table for weekend entertainment"
             >
               Reserve Table-4-Four

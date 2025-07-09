@@ -53,7 +53,7 @@ const ClubK = () => {
   };
 
   return (
-    <main className="bg-black bg-opacity-90 min-h-screen font-montserrat text-white border-t-4 border-b-4 border-white pt-[90px] sm:pt-[110px]">
+    <main className="bg-black bg-opacity-90 min-h-screen font-montserrat text-yellow-100 border-t-4 border-b-4 border-yellow-100 pt-[90px] sm:pt-[110px]">
       {/* Hero Section */}
       <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] overflow-hidden m-0 p-0">
         <video
@@ -67,19 +67,19 @@ const ClubK = () => {
         >
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
         <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center max-w-4xl mx-auto gap-8 sm:gap-10">
           <h1
             className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 pb-0 animate-fadeInUp"
             style={{
-              color: 'white',
-              textShadow: '0 6px 12px rgba(0,0,0,0.7)',
+              color: '#fef3c7', // yellow-100
+              textShadow: '0 6px 12px rgba(0,0,0,0.85)',
             }}
           >
             Club-K Nightclub
           </h1>
           <p
-            className="text-lg sm:text-xl md:text-2xl mx-auto text-gray-200 animate-fadeInUp-delayed max-w-[340px] sm:max-w-none mb-4"
+            className="text-lg sm:text-xl md:text-2xl mx-auto text-yellow-200 animate-fadeInUp-delayed max-w-[340px] sm:max-w-none mb-4"
             style={{
               textShadow: '0 4px 8px rgba(0,0,0,0.7)',
               wordBreak: 'break-word',
@@ -93,13 +93,13 @@ const ClubK = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-xl mx-auto px-4 mt-2">
             <button
               onClick={handleOrderDrinks}
-              className="bg-emerald-900 text-white px-7 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-900 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
+              className="bg-black bg-opacity-80 text-yellow-100 px-7 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
             >
               Order Premium Drinks
             </button>
             <button
               onClick={handleBookVIP}
-              className="bg-yellow-100 text-black px-7 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-900 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
+              className="bg-yellow-100 text-black px-7 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
             >
               Reserve Private Area
             </button>
@@ -144,7 +144,7 @@ const ClubK = () => {
               {features.map(({ title, img, desc }, i) => (
                 <div
                   key={i}
-                  className="rounded-lg overflow-hidden border-4 border-emerald-900 shadow-xl bg-black bg-opacity-70 flex flex-col items-center text-center"
+                  className="rounded-lg overflow-hidden border-4 border-yellow-100 shadow-xl bg-black bg-opacity-80 flex flex-col items-center text-center"
                   style={{ height: '340px' }}
                 >
                   <img
@@ -156,7 +156,7 @@ const ClubK = () => {
                   <div className="p-6 flex flex-col flex-grow justify-between w-full">
                     <div>
                       <h3 className="text-xl font-semibold mb-4 text-yellow-100 drop-shadow-md">{title}</h3>
-                      <p className="text-yellow-100 text-base">{desc}</p>
+                      <p className="text-yellow-200 text-base">{desc}</p>
                     </div>
                   </div>
                 </div>
