@@ -38,7 +38,7 @@ const Header = () => {
 
         {/* Mobile: Title between logo and hamburger */}
         <div className="flex-1 flex justify-center md:hidden px-4">
-          <span className="text-xs font-bold text-yellow-100 select-none max-w-[calc(100vw-120px)] break-words text-center">
+          <span className="text-[14px] uppercase font-bold text-yellow-100 select-none max-w-[calc(100vw-120px)] break-words text-center">
             Kepong Villa Garden & Suites
           </span>
         </div>
