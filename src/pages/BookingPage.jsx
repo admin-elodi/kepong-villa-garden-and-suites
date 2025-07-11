@@ -81,7 +81,7 @@ const BookingPage = () => {
         {/* Overlay for better text contrast */}
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-12 lg:px-24 overflow-auto">
           <h2
-            className="text-2xl md:text-4xl text-yellow-200 font-bold mb-4 leading-tight drop-shadow-xl opacity-0 animate-fadeInUp"
+            className="text-xl md:text-3xl text-black font-bold mb-4 leading-tight drop-shadow-xl opacity-0 animate-fadeInUp"
             style={{
             
               lineHeight: '1.1',

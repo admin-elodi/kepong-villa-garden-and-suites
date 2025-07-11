@@ -93,7 +93,7 @@ const QuickLinks = () => {
   return (
     <main className="mt-0 font-montserrat text-yellow-100 bg-black">
       {/* White borders on top and bottom */}
-      <div className="w-full border-t-2 border-b-2 border-white">
+      <div className="w-full border-t border-b border-white">
         <section className="py-12 bg-black bg-opacity-90">
           <div className="container max-w-screen-xl mx-auto text-center">
             {/* Top Cards Section */}
@@ -108,8 +108,8 @@ const QuickLinks = () => {
                     mb-8
                     animate-fade-in-up
                     leading-tight
-                    tracking-wide
-                    text-yellow-100
+                    tracking-wider
+                    text-yellow-300
                     drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]
                   "
                 >
@@ -133,7 +133,7 @@ const QuickLinks = () => {
                       <p>{card.desc}</p>
                       <Link
                         to={card.link}
-                        className="mt-auto inline-block bg-yellow-100 text-black py-2 px-4 rounded-lg hover:bg-amber-400 transition-transform hover:scale-105 duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500"
+                        className="mt-auto inline-block bg-yellow-300 text-black font-bold py-2 px-4 rounded-lg hover:bg-amber-400 transition-transform hover:scale-105 duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500"
                         aria-label={card.btnLabel}
                       >
                         {card.btnLabel}

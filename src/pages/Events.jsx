@@ -302,7 +302,7 @@ const Events = () => {
 {/* Event title */}
 <h2
   className="
-    text-yellow-200 
+    text-yellow-300 
     font-bold 
     drop-shadow-md 
     text-center 
@@ -368,7 +368,7 @@ const Events = () => {
               className="bg-yellow-100 text-black font-bold py-3 px-8 rounded-lg shadow transition w-full md:w-auto hover:bg-amber-400 hover:text-black"
               aria-label="Endorse Amaka's Birthday Bash"
             >
-              Endorse
+              Endorse This Event
             </button>
           </div>
         </div>
@@ -628,7 +628,7 @@ const Events = () => {
       <section className="booking-invite slide-up delay-6" aria-label="Booking Invitation">
         <p>
           Want to <strong>book this page</strong> for your event? <br />
-          Call us at <a href="tel:08132234434">0813 223 4434</a>
+          Call us at <a href="tel:08132234434">08162836505</a>
         </p>
       </section>
     </main>

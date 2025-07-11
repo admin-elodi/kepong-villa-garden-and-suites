@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import clubkHero from '@/assets/videos/club.mp4';
 import dance2 from '@/assets/images/club/dance2.jpg';
@@ -8,9 +8,20 @@ import drink1 from '@/assets/images/club/drink1.jpeg';
 import vip1 from '@/assets/images/club/vip1.jpeg';
 import dance1 from '@/assets/images/club/dance1.jpeg';
 import ambience1 from '@/assets/images/club/ambience1.jpg';
+import redLabel from '@/assets/images/club/red-label.jpg';
+import vodka from '@/assets/images/club/vodka.jpg';
+import redWine from '@/assets/images/club/red-wine.jpg';
 
 const ClubK = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showBankDetails, setShowBankDetails] = useState(false);
+
+  // State to track selected drinks and their quantities
+  const [selectedDrinks, setSelectedDrinks] = useState({});
+
+  // Ref for modal content to detect outside clicks
+  const modalRef = useRef(null);
 
   const features = [
     {
@@ -45,12 +56,102 @@ const ClubK = () => {
     },
   ];
 
+  // Define drinks available for ordering with prices and images
+  const drinksList = [
+    {
+      id: 'red_label',
+      name: 'Red Label',
+      price: 25000,
+      img: redLabel,
+    },
+    {
+      id: 'vodka',
+      name: 'Tsars Vodka',
+      price: 18000,
+      img: vodka,
+    },
+    {
+      id: 'red_wine',
+      name: 'Red Wine',
+      price: 15500,
+      img: redWine,
+    },
+  ];
+
+  // Service charge fixed at 10%
+  const SERVICE_CHARGE_RATE = 0.05;
+
+  // Contact info & WhatsApp group link
+  const phoneNumber = '+2348012345678'; // Replace with actual phone number
+  const whatsappNumber = '2348012345678'; // WhatsApp number for payment evidence
+  const whatsappGroupLink = 'https://chat.whatsapp.com/YourKepongGroupInviteLink'; // Replace with actual group invite link
+
   const handleBookVIP = () => {
     navigate('/bookings');
   };
-  const handleOrderDrinks = () => {
-    navigate('/order');
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    setShowBankDetails(false);
+    setSelectedDrinks({});
   };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setShowBankDetails(false);
+    setSelectedDrinks({});
+  };
+
+  // Close modal when clicking outside modal content
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isModalOpen]);
+
+  // Update quantity of a selected drink
+  const updateDrinkQuantity = (id, qty) => {
+    if (qty < 0) return;
+    setSelectedDrinks((prev) => {
+      const newSelection = { ...prev };
+      if (qty === 0) {
+        delete newSelection[id];
+      } else {
+        newSelection[id] = qty;
+      }
+      return newSelection;
+    });
+  };
+
+  // Calculate total price based on selected drinks
+  const totalPrice = Object.entries(selectedDrinks).reduce((total, [id, qty]) => {
+    const drink = drinksList.find((d) => d.id === id);
+    return total + (drink ? drink.price * qty : 0);
+  }, 0);
+
+  // Calculate service charge
+  const serviceCharge = Math.round(totalPrice * SERVICE_CHARGE_RATE);
+
+  const handlePayNow = () => {
+    if (totalPrice === 0) {
+      alert('Please select at least one drink before proceeding to pay.');
+      return;
+    }
+    setShowBankDetails(true);
+  };
+
+  // WhatsApp message link with prefilled message including total amount (subtotal + service charge)
+  const whatsappMessage = encodeURIComponent(
+    `Hello Club-K, I have made payment for the Premium Drinks order totaling ₦${(totalPrice + serviceCharge).toLocaleString()}. Please find attached my payment evidence.`
+  );
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <main className="bg-black bg-opacity-90 min-h-screen font-montserrat text-yellow-100 border-t-4 border-b-4 border-yellow-100 pt-[90px] sm:pt-[110px]">
@@ -92,7 +193,7 @@ const ClubK = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-xl mx-auto px-4 mt-2">
             <button
-              onClick={handleOrderDrinks}
+              onClick={openModal}
               className="bg-black bg-opacity-80 text-yellow-100 px-7 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
             >
               Order Premium Drinks
@@ -107,27 +208,185 @@ const ClubK = () => {
         </div>
       </section>
 
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 px-4">
+          <div
+            ref={modalRef}
+            className="bg-yellow-100 rounded-xl shadow-2xl max-w-md w-full p-0 relative max-h-[90vh] overflow-y-auto"
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-3 right-3 text-gray-700 text-2xl font-bold hover:text-red-500 focus:outline-none"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+
+            {/* Image Section */}
+            <img
+              src={vodka}
+              alt="Premium Drink"
+              className="w-full h-40 object-cover rounded-t-xl"
+            />
+
+            {/* Modal Content */}
+            <div className="p-6">
+              {!showBankDetails ? (
+                <>
+                  <h2 className="text-xl font-bold mb-4 text-black">Select Your Drinks</h2>
+                  <div className="space-y-4 mb-6">
+                    {drinksList.map(({ id, name, price, img }) => {
+                      const qty = selectedDrinks[id] || 0;
+                      return (
+                        <div key={id} className="flex items-center gap-4">
+                          <img
+                            src={img}
+                            alt={name}
+                            className="w-16 h-16 object-cover rounded-lg border border-yellow-300"
+                          />
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold text-black">{name}</h3>
+                            <p className="text-green-700 font-bold">₦{price.toLocaleString()}</p>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <button
+                              onClick={() => updateDrinkQuantity(id, qty - 1)}
+                              className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded disabled:opacity-50"
+                              disabled={qty === 0}
+                              aria-label={`Decrease quantity of ${name}`}
+                            >
+                              −
+                            </button>
+                            <input
+                              type="number"
+                              min="0"
+                              value={qty}
+                              onChange={(e) => {
+                                const val = Math.max(0, Number(e.target.value));
+                                updateDrinkQuantity(id, val);
+                              }}
+                              className="w-12 text-center rounded border border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black bg-white"
+                              aria-label={`Quantity of ${name}`}
+                            />
+                            <button
+                              onClick={() => updateDrinkQuantity(id, qty + 1)}
+                              className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded"
+                              aria-label={`Increase quantity of ${name}`}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="flex flex-col gap-2 mb-6 border-t border-yellow-300 pt-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-lg font-semibold text-black">Subtotal:</span>
+                      <span className="text-lg font-semibold text-green-700">₦{totalPrice.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-lg font-semibold text-black">Service Charge (5%):</span>
+                      <span className="text-lg font-semibold text-green-700">₦{serviceCharge.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between items-center font-bold text-xl border-t border-yellow-300 pt-2">
+                      <span>Total:</span>
+                      <span className="text-green-800">₦{(totalPrice + serviceCharge).toLocaleString()}</span>
+                    </div>
+                  </div>
+
+                  {/* Marketing pitch & contact info */}
+                  <p className="mb-4 text-black text-justify font-medium">
+                    Is this your first order? Join our{' '}
+                    <a
+                      href={whatsappGroupLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-yellow-600"
+                    >
+                      WhatsApp community
+                    </a>{' '}
+                       to make your future orders very easy and smooth.
+                       Feel free to chat us up on WhatsApp or call us at{' '}
+                    <a href={`tel:${phoneNumber}`} className="underline hover:text-yellow-600">
+                      {phoneNumber}
+                    </a>
+                    . We are here to assist you!
+                  </p>
+
+                  <p className="mb-4 text-black font-medium">
+                 
+                  </p>
+
+                  <button
+                    onClick={handlePayNow}
+                    className={`w-full bg-black text-yellow-100 font-bold py-3 rounded-lg transition-colors ${
+                      totalPrice === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-yellow-300 hover:text-black'
+                    }`}
+                    disabled={totalPrice === 0}
+                  >
+                    Proceed to Payment Instructions
+                  </button>
+                </>
+              ) : (
+                <>
+                  <h2 className="text-xl font-bold mb-4 text-black">Bank Details</h2>
+                  <div className="mb-6 space-y-3 text-gray-900">
+                    <div>
+                      <span className="font-semibold">Bank Name:</span> Wema Bank
+                    </div>
+                    <div>
+                      <span className="font-semibold">Account Name:</span> Kepong Villa Garden & Suites
+                    </div>
+                    <div>
+                      <span className="font-semibold">Account Number:</span> 0125564025
+                    </div>
+                    <div>
+                      <span className="font-semibold">Amount:</span> ₦{(totalPrice + serviceCharge).toLocaleString()}
+                    </div>
+                  </div>
+                  <p className="mb-4 text-gray-800">
+                    After completing your payment, please send your payment evidence to our WhatsApp number below.
+                  </p>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block w-full text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition-colors"
+                  >
+                    Send Payment Evidence on WhatsApp
+                  </a>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Custom animation for text */}
       <style>
         {`
           @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          .animate-fadeInUp {
-            animation: fadeInUp 0.8s ease-out forwards;
-          }
-          .animate-fadeInUp-delayed {
-            animation: fadeInUp 1s ease-out forwards;
-            animation-delay: 0.2s;
-            opacity: 0;
-          }
+             from {
+               opacity: 0;
+               transform: translateY(20px);
+             }
+             to {
+               opacity: 1;
+               transform: translateY(0);
+             }
+           }
+           .animate-fadeInUp {
+             animation: fadeInUp 0.8s ease-out forwards;
+           }
+           .animate-fadeInUp-delayed {
+             animation: fadeInUp 1s ease-out forwards;
+             animation-delay: 0.2s;
+             opacity: 0;
+           }
         `}
       </style>
 

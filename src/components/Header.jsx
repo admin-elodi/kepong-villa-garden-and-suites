@@ -10,16 +10,16 @@ const Header = () => {
   };
 
   const navLinkClasses =
-    'block text-base sm:text-lg font-bold text-yellow-100 hover:text-amber-400 hover:border-b-2 hover:border-amber-400 transition-all duration-300 py-2';
-  const activeClasses = 'text-yellow-100 border-b-2 border-yellow-100';
+    'block text-base sm:text-lg tracking-wider font-semibold text-white hover:text-amber-400 hover:border-b-2 hover:border-amber-400 transition-all duration-300 py-2';
+  const activeClasses = 'text-white border-b-2 border-yellow-100';
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-black font-montserrat shadow-md border-b-2 border-yellow-100"
+      className="fixed top-0 left-0 w-full z-50 bg-black font-montserrat shadow-md border-b border-yellow-400"
     >
       {/* Desktop: Title above nav */}
-      <div className="hidden md:flex justify-center bg-black border-b-2 border-yellow-100 py-2">
-        <h1 className="text-2xl font-bold text-yellow-100 tracking-wide select-none uppercase">
+      <div className="hidden md:flex justify-center bg-black border-b border-yellow-400 py-2">
+        <h1 className="text-2xl font-semibold text-white tracking-[10px] select-none uppercase">
           Kepong Villa Garden & Suites
         </h1>
       </div>
@@ -27,7 +27,7 @@ const Header = () => {
       <nav className="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6">
         <NavLink
           to="/"
-          className="p-2 rounded-lg hover:scale-105 transition-transform duration-300 flex items-center"
+          className="p-2 rounded-lg hover:scale-105 transition-transform duration-300 flex items-center shrink-0" // Added shrink-0
         >
           <img
             src={logo}
@@ -37,46 +37,49 @@ const Header = () => {
         </NavLink>
 
         {/* Mobile: Title between logo and hamburger */}
-        <div className="flex-1 flex justify-center md:hidden px-4">
-          <span className="text-[14px] uppercase font-bold text-yellow-100 select-none max-w-[calc(100vw-120px)] break-words text-center">
+        <div className="flex-1 flex justify-center md:hidden px-2 min-w-0"> {/* Adjusted px-2 and added min-w-0 */}
+          <span
+            className="text-[12px] sm:text-[16px] tracking-wide uppercase font-bold text-yellow-100 select-none whitespace-nowrap overflow-hidden text-ellipsis" // Adjusted tracking
+            style={{
+              letterSpacing: '0.08em', // Adjusted letter spacing for better fit
+              maxWidth: '100%', // Ensure it doesn't exceed container width
+            }}
+          >
             Kepong Villa Garden & Suites
           </span>
         </div>
 
-
-
         {/* Hamburger Icon for Mobile */}
-      <button
-  id="menu-toggle"
-  className="md:hidden text-yellow-100 focus:outline-none focus:ring-2 focus:ring-amber-400 rounded"
-  aria-label="Toggle Navigation Menu"
-  aria-expanded={isMenuOpen}
-  onClick={toggleMenu}
->
-  {isMenuOpen ? (
-    // X icon
-    <svg
-      className="w-7 h-7"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3"
-      viewBox="0 0 24 24"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <line x1="18" y1="6" x2="6" y2="18" />
-      <line x1="6" y1="6" x2="18" y2="18" />
-    </svg>
-  ) : (
-    // Hamburger icon
-    <div className="flex flex-col justify-between w-7 h-6">
-      <span className="block h-[3px] bg-yellow-100 rounded"></span>
-      <span className="block h-[3px] bg-yellow-100 rounded"></span>
-      <span className="block h-[3px] bg-yellow-100 rounded"></span>
-    </div>
-  )}
-</button>
-
+        <button
+          id="menu-toggle"
+          className="md:hidden text-yellow-100 focus:outline-none focus:ring-2 focus:ring-amber-400 rounded shrink-0" // Added shrink-0
+          aria-label="Toggle Navigation Menu"
+          aria-expanded={isMenuOpen}
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? (
+            // X icon
+            <svg
+              className="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              viewBox="0 0 24 24"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            // Hamburger icon
+            <div className="flex flex-col justify-between w-7 h-6">
+              <span className="block h-[3px] bg-yellow-100 rounded"></span>
+              <span className="block h-[3px] bg-yellow-100 rounded"></span>
+              <span className="block h-[3px] bg-yellow-100 rounded"></span>
+            </div>
+          )}
+        </button>
 
         {/* Navigation Links */}
         <ul
@@ -136,11 +139,11 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              to="/contacts"
+              to="/odogwu"
               className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact
+              Odogwu-Cally
             </NavLink>
           </li>
         </ul>
