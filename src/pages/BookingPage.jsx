@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import RoomCard from '../components/booking/RoomCard';
 import BookingForm from '../components/booking/BookingForm';
 import ScrollToTop from '../components/ScrollToTop';
@@ -37,6 +38,23 @@ const BookingPage = () => {
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [userEmail, setUserEmail] = useState('');
   const confirmationRef = useRef(null);
+  const formRef = useRef(null);
+  const location = useLocation();
+
+  // Check location state to show food form on navigation
+  useEffect(() => {
+    if (location.state?.showFoodForm) {
+      setSelectedRoom(null);
+      setShowForm(true);
+    }
+  }, [location.state]);
+
+  // Scroll to form when shown
+  useEffect(() => {
+    if (showForm && formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [showForm]);
 
   const handleRoomSelect = (room) => {
     setSelectedRoom(room);
@@ -54,6 +72,7 @@ const BookingPage = () => {
     setBookingConfirmed(true);
   };
 
+  // Scroll to confirmation when shown
   useEffect(() => {
     if (bookingConfirmed && confirmationRef.current) {
       confirmationRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -83,7 +102,6 @@ const BookingPage = () => {
           <h2
             className="text-xl md:text-3xl text-black font-bold mb-4 leading-tight drop-shadow-xl opacity-0 animate-fadeInUp"
             style={{
-            
               lineHeight: '1.1',
               animationDelay: '0.6s',
               animationFillMode: 'forwards',
@@ -116,11 +134,13 @@ const BookingPage = () => {
             </div>
           </>
         ) : showForm ? (
-          <BookingForm
-            selectedRoom={selectedRoom}
-            onBack={() => setShowForm(false)}
-            onSubmit={handleBookingSubmit}
-          />
+          <div ref={formRef}>
+            <BookingForm
+              selectedRoom={selectedRoom}
+              onBack={() => setShowForm(false)}
+              onSubmit={handleBookingSubmit}
+            />
+          </div>
         ) : (
           <section
             ref={confirmationRef}

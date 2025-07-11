@@ -14,6 +14,7 @@ const QuickLinks = () => {
       desc: 'Local & Foreign Dishes',
       link: '/bookings',
       btnLabel: 'Order Food',
+      state: { showFoodForm: true }, // Signal to show food form
     },
     {
       img: deluxeRoom,
@@ -28,8 +29,8 @@ const QuickLinks = () => {
       alt: 'Wedding Event',
       title: 'Plan Memorable Events',
       desc: 'Birthdays, Weddings, etc',
-      link: '/bookings',
-      btnLabel: 'Book Event Venue',
+      link: '/events',
+      btnLabel: 'Book Event Page',
     },
   ];
 
@@ -132,7 +133,10 @@ const QuickLinks = () => {
                       </h3>
                       <p>{card.desc}</p>
                       <Link
-                        to={card.link}
+                        to={{
+                          pathname: card.link,
+                          state: card.state, // Pass state for food form
+                        }}
                         className="mt-auto inline-block bg-yellow-300 text-black font-bold py-2 px-4 rounded-lg hover:bg-amber-400 transition-transform hover:scale-105 duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500"
                         aria-label={card.btnLabel}
                       >
