@@ -143,7 +143,7 @@ const Header = () => {
               className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Odogwu-Cally
+              Odogwu Cally
             </NavLink>
           </li>
         </ul>
