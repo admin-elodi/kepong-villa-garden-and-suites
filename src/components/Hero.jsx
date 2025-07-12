@@ -121,7 +121,7 @@ const Hero = ({ setIsModalOpen }) => {
           <div className="flex flex-col gap-6 sm:hidden mt-8">
             <Link
               to="/bookings"
-              className="bg-yellow-100 text-black font-bold text-base py-3 rounded-lg hover:bg-emerald-700 hover:scale-105 transition-transform duration-300 border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-center"
+              className="bg-white text-black font-bold text-base py-3 rounded-lg hover:bg-emerald-700 hover:scale-105 transition-transform duration-300 border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-center"
               aria-label="Book your stay at Kepong Villa"
             >
               Book Hotel
@@ -129,7 +129,7 @@ const Hero = ({ setIsModalOpen }) => {
 
             <button
               onClick={openReserveModal}
-              className="bg-black text-yellow-400 font-bold text-base py-3 border-2 border-yellow-100 rounded-lg hover:bg-yellow-500 hover:text-white hover:scale-105 transition-transform duration-300 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-center"
+              className="bg-black text-white font-bold text-base py-3 border-2 border-white rounded-lg hover:bg-yellow-500 hover:text-white hover:scale-105 transition-transform duration-300 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-center"
               aria-label="Reserve a table for entertainment"
             >
               Reserve Table

@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import RoomCard from '../components/booking/RoomCard';
 import BookingForm from '../components/booking/BookingForm';
 import ScrollToTop from '../components/ScrollToTop';
-import standardRoom from '@/assets/images/hotel/standard-room.jpg';
-import deluxe from '@/assets/images/hotel/deluxe.jpg';
-import executive from '@/assets/images/hotel/executive.jpg';
+import standardRoom from '@/assets/images/hotel/standard.webp';
+import deluxe from '@/assets/images/hotel/deluxe.webp';
+import executive from '@/assets/images/hotel/executive.webp';
 import promoVideo from '@/assets/videos/couple.mp4';
 
 const rooms = [

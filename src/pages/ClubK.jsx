@@ -2,15 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import clubkHero from '@/assets/videos/club.mp4';
-import dance2 from '@/assets/images/club/dance2.jpg';
-import dj from '@/assets/images/club/dj.jpg';
-import drink1 from '@/assets/images/club/drink1.jpeg';
-import vip1 from '@/assets/images/club/vip1.jpeg';
-import dance1 from '@/assets/images/club/dance1.jpeg';
-import ambience1 from '@/assets/images/club/ambience1.jpg';
-import redLabel from '@/assets/images/club/red-label.jpg';
-import vodka from '@/assets/images/club/vodka.jpg';
-import redWine from '@/assets/images/club/red-wine.jpg';
+import dance2 from '@/assets/images/club/dance2.webp';
+import dj from '@/assets/images/club/dj.webp';
+import drink1 from '@/assets/images/club/drink1.webp';
+import vip1 from '@/assets/images/club/vip1.webp';
+import dance1 from '@/assets/images/club/dance1.webp';
+import ambience1 from '@/assets/images/club/ambience1.webp';
+import redLabel from '@/assets/images/club/red-label.webp';
+import vodka from '@/assets/images/club/vodka.webp';
+import redWine from '@/assets/images/club/red-wine.webp';
 
 const ClubK = () => {
   const navigate = useNavigate();

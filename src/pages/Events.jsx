@@ -10,8 +10,9 @@ import {
   FaHandsHelping,
   FaCommentDots,
 } from 'react-icons/fa';
-import eventBirthday from '@/assets/images/amaka.jpg';
+import eventBirthday from '@/assets/images/amaka.webp';
 import backgroundVideo from '@/assets/videos/background.mp4';
+import redVideo from '@/assets/videos/events.mp4'; // Added for page background
 
 const event = {
   title: "Amaka's 30th Birthday Bash",
@@ -84,7 +85,22 @@ const Events = () => {
   );
 
   return (
-    <main className="min-h-screen bg-black bg-opacity-90 py-32 flex flex-col items-center font-montserrat text-yellow-100 px-4">
+    <main className="relative min-h-screen bg-black bg-opacity-90 py-32 flex flex-col items-center font-montserrat text-yellow-100 px-4">
+      {/* Background Video */}
+      <video
+        src={redVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0 }}
+      >
+        Your browser does not support the video tag.
+      </video>
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
+
       <style>
         {`
           .fade-in {
@@ -214,7 +230,7 @@ const Events = () => {
             color: #fbbf24;
             flex-shrink: 0;
           }
-          textarea.support-message {
+          .textarea.support-message {
             width: 100%;
             background: #1f1f1f;
             border-radius: 8px;
@@ -225,7 +241,7 @@ const Events = () => {
             font-family: inherit;
             font-size: 1rem;
           }
-          textarea.support-message::placeholder {
+          .textarea.support-message::placeholder {
             color: #fbbf24aa;
           }
           .send-msg-btn {
@@ -276,51 +292,46 @@ const Events = () => {
       </style>
 
       {/* Page Caption and Event Title Section */}
-      <header className="mb-12 mt-8 text-center max-w-4xl px-4">
-        {/* Page caption */}
-       {/* Page caption */}
-<h1
-  className="
-    text-yellow-100 
-    font-extrabold 
-    uppercase 
-    tracking-wide
-    drop-shadow-lg 
-    mb-2 
-    whitespace-nowrap 
-    overflow-hidden 
-    text-ellipsis
-    max-w-full
-    text-center
-    text-[clamp(1.25rem,4vw,2rem)]
-  "
-  title="Events Announcement Page"
->
-  Events Announcement Page
-</h1>
-
-{/* Event title */}
-<h2
-  className="
-    text-yellow-300 
-    font-bold 
-    drop-shadow-md 
-    text-center 
-    whitespace-nowrap 
-    overflow-hidden 
-    text-ellipsis
-    max-w-full
-    text-[clamp(1.25rem,4vw,1.75rem)]
-  "
-  title={event.title}
->
-  {event.title}
-</h2>
-
+      <header className="relative z-20 mb-12 mt-8 text-center max-w-4xl px-4">
+        <h1
+          className="
+            text-yellow-100 
+            font-semibold 
+            uppercase 
+            tracking-wide
+            drop-shadow-lg 
+            mb-2 
+            whitespace-nowrap 
+            overflow-hidden 
+            text-ellipsis
+            max-w-full
+            text-center
+            text-[clamp(1.25rem,4vw,2rem)]
+          "
+          title="Events Announcement Page"
+        >
+          Events Announcement Page
+        </h1>
+        <h2
+          className="
+            text-yellow-300 
+            font-bold 
+            drop-shadow-md 
+            text-center 
+            whitespace-nowrap 
+            overflow-hidden 
+            text-ellipsis
+            max-w-full
+            text-[clamp(1.25rem,4vw,1.75rem)]
+          "
+          title={event.title}
+        >
+          {event.title}
+        </h2>
       </header>
 
       {/* Event Visual & Details */}
-      <section className="flex flex-col items-center max-w-5xl w-full mb-20 slide-up delay-3">
+      <section className="relative z-20 flex flex-col items-center max-w-5xl w-full mb-20 slide-up delay-3">
         <div className="bg-neutral-900 bg-opacity-90 rounded-md shadow-xl p-6 flex flex-col items-center border border-yellow-100 w-full">
           <img
             src={event.img}
@@ -355,27 +366,11 @@ const Events = () => {
               <span className="text-yellow-100 text-center">{event.desc}</span>
             </div>
           </div>
-          <div className="flex flex-col gap-4 mt-10 w-full md:flex-row md:justify-center">
-            <button
-              onClick={() => setShowRSVP(true)}
-              className="bg-black bg-opacity-80 hover:bg-yellow-200 hover:text-black text-yellow-100 font-bold py-3 border border-yellow-100 px-8 rounded-lg shadow transition w-full md:w-auto"
-              aria-label="RSVP to Amaka's Birthday Bash"
-            >
-              RSVP
-            </button>
-            <button
-              onClick={() => setShowEndorse(true)}
-              className="bg-yellow-100 text-black font-bold py-3 px-8 rounded-lg shadow transition w-full md:w-auto hover:bg-amber-400 hover:text-black"
-              aria-label="Endorse Amaka's Birthday Bash"
-            >
-              Endorse This Event
-            </button>
-          </div>
         </div>
       </section>
 
       {/* Pre Event Video */}
-      <section className="mb-20 w-full max-w-5xl slide-up delay-4">
+      <section className="relative z-20 mb-20 w-full max-w-5xl slide-up delay-4">
         <h3 className="text-xl text-center font-semibold text-yellow-100 mb-6 border-b-2 border-yellow-200 pb-2">
           Pre Event Highlights
         </h3>
@@ -394,8 +389,26 @@ const Events = () => {
         </div>
       </section>
 
+      {/* RSVP and Endorse Buttons */}
+      <section className="relative z-20 mb-20 w-full max-w-5xl flex flex-col gap-4 md:flex-row md:justify-center slide-up delay-5">
+        <button
+          onClick={() => setShowRSVP(true)}
+          className="bg-black bg-opacity-80 hover:bg-yellow-200 hover:text-black text-yellow-100 font-bold py-3 border border-yellow-100 px-8 rounded-lg shadow transition w-full md:w-auto"
+          aria-label="RSVP to Amaka's Birthday Bash"
+        >
+          RSVP
+        </button>
+        <button
+          onClick={() => setShowEndorse(true)}
+          className="bg-yellow-100 text-black font-bold py-3 px-8 rounded-lg shadow transition w-full md:w-auto hover:bg-amber-400 hover:text-black"
+          aria-label="Endorse Amaka's Birthday Bash"
+        >
+          Endorse This Event
+        </button>
+      </section>
+
       {/* Social Sharing */}
-      <section className="mb-20 text-center max-w-md mx-auto">
+      <section className="relative z-20 mb-20 text-center max-w-md mx-auto slide-up delay-6">
         <h3 className="text-yellow-100 text-2xl font-semibold mb-4">Share This Celebration</h3>
         <div className="flex justify-center">
           <a
@@ -625,7 +638,7 @@ const Events = () => {
       )}
 
       {/* Booking Invitation for Others */}
-      <section className="booking-invite slide-up delay-6" aria-label="Booking Invitation">
+      <section className="relative z-20 booking-invite slide-up delay-7" aria-label="Booking Invitation">
         <p>
           Want to <strong>book this page</strong> for your event? <br />
           Call us at <a href="tel:08132234434">08162836505</a>

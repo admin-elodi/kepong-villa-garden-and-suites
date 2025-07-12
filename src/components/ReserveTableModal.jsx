@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import tableImage from '@/assets/images/table-for-four.jpg';
+import tableImage from '@/assets/images/table-for-four.webp';
 
 const enquiryPhoneNumber = '+234 916 283 6505';
 

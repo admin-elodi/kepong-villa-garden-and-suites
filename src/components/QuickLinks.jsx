@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import deluxeRoom from '@/assets/images/hotel/unsplash.jpg';
-import jollofRice from '@/assets/images/food-drink/naija-jollof.jpg';
-import weddingReception from '@/assets/images/birthday.jpg';
+import deluxeRoom from '@/assets/images/hotel/unsplash.webp';
+import jollofRice from '@/assets/images/food-drink/naija-jollof.webp';
+import weddingReception from '@/assets/images/birthday.webp';
 import '../css/q-links.css';
 
 const QuickLinks = () => {

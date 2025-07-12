@@ -1,4 +1,4 @@
-import heroBg from '@/assets/images/hotel/hotel-front.png';
+import heroBg from '@/assets/images/hotel/hotel-front.webp';
 
 const ConfirmationPage = ({ paymentMethod }) => {
   return (

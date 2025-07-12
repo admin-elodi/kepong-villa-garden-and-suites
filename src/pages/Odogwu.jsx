@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import promoVideo from '@/assets/videos/stars.mp4'; // Import the video
-import proprietorImage from '@/assets/images/ceo.jpg';
-import manager from '@/assets/images/man.jpg';
-import dj from '@/assets/images/man.jpg';
+import proprietorImage from '@/assets/images/ceo.webp';
+import manager from '@/assets/images/man.webp';
+import dj from '@/assets/images/man.webp';
 import planner from '@/assets/images/babe.webp';
 import light from '@/assets/images/hair.webp';
 import sound from '@/assets/images/babe.webp';
@@ -47,7 +47,7 @@ const Odogwu = () => {
       />
 
       {/* Overlay content */}
-      <div className="relative z-10 bg-yellow-700/30 rounded-lg p-6 md:p-12 max-w-7xl mx-auto">
+      <div className="relative z-10 bg-yellow-700/50 rounded-lg p-6 md:p-12 max-w-7xl mx-auto">
         {/* Glowing Heading */}
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}

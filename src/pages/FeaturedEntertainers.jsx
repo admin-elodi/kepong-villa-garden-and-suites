@@ -4,6 +4,7 @@ import FeaturedVideos from '../components/FeaturedVideos';
 import ReserveTableModal from '../components/ReserveTableModal';
 
 import comedyNightVideo from '@/assets/videos/comedian1.mp4';
+import rappersImage from '@/assets/images/rappers.webp'; // Added for background
 
 const entertainers = [
   {
@@ -75,8 +76,15 @@ const FeaturedEntertainers = () => {
   };
 
   return (
-    <main className="bg-black bg-opacity-95 min-h-screen font-montserrat text-yellow-100 py-32">
-      {/* Animation style for fadeInUpBlock */}
+    <main className="relative min-h-screen font-montserrat text-yellow-100 py-32">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{ backgroundImage: `url(${rappersImage})`, zIndex: 0 }}
+      />
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
+
       <style>
         {`
           @keyframes fadeInUpBlock {
@@ -94,12 +102,12 @@ const FeaturedEntertainers = () => {
           }
         `}
       </style>
-      <div className="w-full py-12 relative">
+      <div className="relative z-20 w-full py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Animated block starts here */}
           <div className="animate-fadeInUpBlock">
             {/* Page Heading */}
-            <section className="text-center mb-4 relative">
+            <section className="text-center mb-4">
               <h1
                 className="text-4xl sm:text-5xl md:text-4xl font-semibold tracking-tight mb-4 inline-block pb-2"
                 style={{ color: '#fef3c7' }} // yellow-100
@@ -125,7 +133,7 @@ const FeaturedEntertainers = () => {
                   <div
                     key={category}
                     className="bg-black bg-opacity-80 border-2 rounded-lg p-4 min-w-[220px]"
-                    style={{ borderColor: '#fef3c7' }} // yellow-100 border
+                    style={{ borderColor: '#fef3c7' }}
                   >
                     <h3 className="text-lg font-bold mb-1 text-center" style={{ color: '#fef3c7' }}>
                       {category.charAt(0).toUpperCase() + category.slice(1)}

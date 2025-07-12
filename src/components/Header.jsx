@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '@/assets/images/company.jpg';
+import logo from '@/assets/images/company.webp';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,7 +39,7 @@ const Header = () => {
         {/* Mobile: Title between logo and hamburger */}
         <div className="flex-1 flex justify-center md:hidden px-2 min-w-0"> {/* Adjusted px-2 and added min-w-0 */}
           <span
-            className="text-[12px] sm:text-[16px] tracking-wide uppercase font-bold text-yellow-100 select-none whitespace-nowrap overflow-hidden text-ellipsis" // Adjusted tracking
+            className="text-[12px] sm:text-[16px] tracking-wide uppercase font-bold text-white select-none whitespace-nowrap overflow-hidden text-ellipsis" // Adjusted tracking
             style={{
               letterSpacing: '0.08em', // Adjusted letter spacing for better fit
               maxWidth: '100%', // Ensure it doesn't exceed container width
@@ -74,9 +74,9 @@ const Header = () => {
           ) : (
             // Hamburger icon
             <div className="flex flex-col justify-between w-7 h-6">
-              <span className="block h-[3px] bg-yellow-100 rounded"></span>
-              <span className="block h-[3px] bg-yellow-100 rounded"></span>
-              <span className="block h-[3px] bg-yellow-100 rounded"></span>
+              <span className="block h-[3px] bg-white rounded"></span>
+              <span className="block h-[3px] bg-white rounded"></span>
+              <span className="block h-[3px] bg-white rounded"></span>
             </div>
           )}
         </button>
