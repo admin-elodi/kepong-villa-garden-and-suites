@@ -78,7 +78,7 @@ const ClubK = () => {
     },
   ];
 
-  // Service charge fixed at 10%
+  // Service charge fixed at 5%
   const SERVICE_CHARGE_RATE = 0.05;
 
   // Contact info & WhatsApp group link
@@ -168,39 +168,35 @@ const ClubK = () => {
         >
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-10" />
-        <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center max-w-4xl mx-auto gap-8 sm:gap-10">
+
+        {/* Dark translucent blurred overlay for text readability */}
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm z-10" />
+
+        {/* Centered text container */}
+        <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 pb-0 animate-fadeInUp"
-            style={{
-              color: '#fef3c7', // yellow-100
-              textShadow: '0 6px 12px rgba(0,0,0,0.85)',
-            }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight text-yellow-100 drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)]"
           >
             Club-K Nightclub
           </h1>
           <p
-            className="text-lg sm:text-xl md:text-2xl mx-auto text-yellow-200 animate-fadeInUp-delayed max-w-[340px] sm:max-w-none mb-4"
-            style={{
-              textShadow: '0 4px 8px rgba(0,0,0,0.7)',
-              wordBreak: 'break-word',
-            }}
+            className="text-lg sm:text-xl md:text-2xl text-yellow-300 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)]"
           >
-            Open Wednesdays & Weekends
-            <br className="block sm:hidden" />
-            <span className="hidden sm:inline"> — </span>
-            The Heartbeat of Enugu Nightlife
+            Open Wednesdays & Weekends<br className="block sm:hidden" />
+   
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-xl mx-auto px-4 mt-2">
             <button
               onClick={openModal}
               className="bg-black bg-opacity-80 text-yellow-100 px-7 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
+              aria-label="Order Premium Drinks"
             >
               Order Premium Drinks
             </button>
             <button
               onClick={handleBookVIP}
               className="bg-yellow-100 text-black px-7 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
+              aria-label="Reserve Private Area"
             >
               Reserve Private Area
             </button>
@@ -245,6 +241,7 @@ const ClubK = () => {
                             src={img}
                             alt={name}
                             className="w-16 h-16 object-cover rounded-lg border border-yellow-300"
+                            loading="lazy"
                           />
                           <div className="flex-1">
                             <h3 className="text-lg font-semibold text-black">{name}</h3>
@@ -309,16 +306,12 @@ const ClubK = () => {
                     >
                       WhatsApp community
                     </a>{' '}
-                       to make your future orders very easy and smooth.
-                       Feel free to chat us up on WhatsApp or call us at{' '}
+                    to make your future orders very easy and smooth.
+                    Feel free to chat us up on WhatsApp or call us at{' '}
                     <a href={`tel:${phoneNumber}`} className="underline hover:text-yellow-600">
                       {phoneNumber}
                     </a>
                     . We are here to assist you!
-                  </p>
-
-                  <p className="mb-4 text-black font-medium">
-                 
                   </p>
 
                   <button
@@ -370,23 +363,23 @@ const ClubK = () => {
       <style>
         {`
           @keyframes fadeInUp {
-             from {
-               opacity: 0;
-               transform: translateY(20px);
-             }
-             to {
-               opacity: 1;
-               transform: translateY(0);
-             }
-           }
-           .animate-fadeInUp {
-             animation: fadeInUp 0.8s ease-out forwards;
-           }
-           .animate-fadeInUp-delayed {
-             animation: fadeInUp 1s ease-out forwards;
-             animation-delay: 0.2s;
-             opacity: 0;
-           }
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+          }
+          .animate-fadeInUp-delayed {
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+          }
         `}
       </style>
 

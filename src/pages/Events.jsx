@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import {
   FaFacebookF,
   FaTwitter,
@@ -9,10 +8,14 @@ import {
   FaShareAlt,
   FaHandsHelping,
   FaCommentDots,
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+  FaMusic,
+  FaPhoneAlt,
 } from 'react-icons/fa';
 import eventBirthday from '@/assets/images/amaka.webp';
-import backgroundVideo from '@/assets/videos/background.mp4';
-import redVideo from '@/assets/videos/events.mp4'; // Added for page background
+import backgroundVideo from '@/assets/videos/space.mp4';
+import preEventVideo from '@/assets/videos/ready.mp4';
 
 const event = {
   title: "Amaka's 30th Birthday Bash",
@@ -34,10 +37,8 @@ const Events = () => {
   const [message, setMessage] = useState('');
   const [messageSent, setMessageSent] = useState(false);
   const [donationAmount, setDonationAmount] = useState('');
-
   const modalRef = useRef(null);
 
-  // Close modal on outside click
   useEffect(() => {
     function handleClickOutside(event) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -76,7 +77,6 @@ const Events = () => {
   const handleDonate = (amount) => {
     setDonationAmount(amount);
     alert(`Thank you for your donation of ₦${amount}!`);
-    // Integrate payment here if needed
   };
 
   const shareUrl = window.location.href;
@@ -88,7 +88,7 @@ const Events = () => {
     <main className="relative min-h-screen bg-black bg-opacity-90 py-32 flex flex-col items-center font-montserrat text-yellow-100 px-4">
       {/* Background Video */}
       <video
-        src={redVideo}
+        src={backgroundVideo}
         autoPlay
         loop
         muted
@@ -98,7 +98,7 @@ const Events = () => {
       >
         Your browser does not support the video tag.
       </video>
-      {/* Overlay for readability */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
 
       <style>
@@ -123,13 +123,6 @@ const Events = () => {
           .slide-up.delay-3 { animation-delay: 0.7s; }
           @keyframes slideUp {
             to { opacity: 1; transform: translateY(0); }
-          }
-          .event-info-bg {
-            background: rgba(38, 38, 38, 0.95);
-            border: 1px solid rgba(254, 243, 199, 0.3);
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
           }
           .btn-yellow {
             background-color: #fef3c7;
@@ -291,79 +284,75 @@ const Events = () => {
         `}
       </style>
 
-      {/* Page Caption and Event Title Section */}
+      {/* Header */}
       <header className="relative z-20 mb-12 mt-8 text-center max-w-4xl px-4">
         <h1
-          className="
-            text-yellow-100 
-            font-semibold 
-            uppercase 
-            tracking-wide
-            drop-shadow-lg 
-            mb-2 
-            whitespace-nowrap 
-            overflow-hidden 
-            text-ellipsis
-            max-w-full
-            text-center
-            text-[clamp(1.25rem,4vw,2rem)]
-          "
+          className="text-yellow-100 font-semibold uppercase tracking-wide drop-shadow-lg mb-2 whitespace-nowrap overflow-hidden text-ellipsis max-w-full text-[clamp(1.25rem,4vw,2rem)]"
           title="Events Announcement Page"
         >
           Events Announcement Page
         </h1>
         <h2
-          className="
-            text-yellow-300 
-            font-bold 
-            drop-shadow-md 
-            text-center 
-            whitespace-nowrap 
-            overflow-hidden 
-            text-ellipsis
-            max-w-full
-            text-[clamp(1.25rem,4vw,1.75rem)]
-          "
+          className="text-yellow-300 font-bold drop-shadow-md text-center whitespace-nowrap overflow-hidden text-ellipsis max-w-full text-[clamp(1.25rem,4vw,1.75rem)]"
           title={event.title}
         >
           {event.title}
         </h2>
       </header>
 
-      {/* Event Visual & Details */}
+      {/* Event Visual & Details (Centered Vertically and Orderly) */}
       <section className="relative z-20 flex flex-col items-center max-w-5xl w-full mb-20 slide-up delay-3">
-        <div className="bg-neutral-900 bg-opacity-90 rounded-md shadow-xl p-6 flex flex-col items-center border border-yellow-100 w-full">
+        <div className="bg-gradient-to-tr from-yellow-700/80 via-yellow-600/70 to-yellow-700/90 rounded-lg shadow-2xl p-8 w-full max-w-4xl flex flex-col md:flex-row items-center gap-12">
           <img
             src={event.img}
             alt={event.alt}
-            className="w-full md:w-3/5 h-[28rem] md:h-[32rem] object-cover rounded-md mb-8 shadow-lg"
+            className="w-full md:w-3/5 h-[28rem] md:h-[32rem] object-cover rounded-lg shadow-lg"
           />
-          <div className="flex flex-col py-14 gap-8 w-full md:w-2/4 mx-auto event-info-bg">
-            <div className="flex flex-col items-center">
-              <span className="uppercase text-xs text-yellow-200 font-bold tracking-widest mb-1">
-                Date & Time
-              </span>
-              <span className="text-base text-yellow-100 font-semibold">
-                {event.date} - {event.time}
-              </span>
+          <div className="flex flex-col justify-center gap-10 text-yellow-100 font-montserrat flex-1">
+            {/* Date & Time */}
+            <div className="flex items-center gap-4">
+              <FaCalendarAlt className="text-3xl text-yellow-300" aria-hidden="true" />
+              <div>
+                <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">
+                  Date & Time
+                </p>
+                <p className="text-xl font-semibold drop-shadow-md">
+                  {event.date} <span className="mx-1">|</span> {event.time}
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <span className="uppercase text-xs text-yellow-200 font-bold tracking-widest mb-1">
-                Venue
-              </span>
-              <span className="text-sm text-yellow-100 font-medium">{event.venue}</span>
+
+            {/* Venue */}
+            <div className="flex items-center gap-4">
+              <FaMapMarkerAlt className="text-3xl text-yellow-300" aria-hidden="true" />
+              <div>
+                <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">
+                  Venue
+                </p>
+                <p className="text-lg font-medium drop-shadow-sm">{event.venue}</p>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <span className="uppercase text-xs text-yellow-200 font-bold tracking-widest mb-1">
-                Masters of a Good Time
-              </span>
-              <span className="text-sm text-yellow-100 font-medium">{event.host}</span>
+
+            {/* Hosts */}
+            <div className="flex items-center gap-4">
+              <FaMusic className="text-3xl text-yellow-300" aria-hidden="true" />
+              <div>
+                <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">
+                  Masters of a Good Time
+                </p>
+                <p className="text-lg font-medium drop-shadow-sm">{event.host}</p>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <span className="uppercase text-xs text-yellow-200 font-bold tracking-widest mb-1">
-                Organisers
-              </span>
-              <span className="text-yellow-100 text-center">{event.desc}</span>
+
+            {/* Contact */}
+            <div className="flex items-center gap-4">
+              <FaPhoneAlt className="text-3xl text-yellow-300" aria-hidden="true" />
+              <div>
+                <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">
+                  Contact
+                </p>
+                <p className="text-lg font-medium drop-shadow-sm">{event.desc}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -376,7 +365,7 @@ const Events = () => {
         </h3>
         <div className="flex justify-center">
           <video
-            src={backgroundVideo}
+            src={preEventVideo}
             controls
             autoPlay
             loop
@@ -593,7 +582,7 @@ const Events = () => {
                 </form>
               </div>
 
-              {/* Monetary Support - less prominent */}
+              {/* Monetary Support */}
               <div className="donation-section">
                 <h4 className="font-semibold mb-3 flex items-center gap-2">
                   <FaHeart className="support-icon" /> Donate (Optional)
@@ -637,7 +626,7 @@ const Events = () => {
         </div>
       )}
 
-      {/* Booking Invitation for Others */}
+      {/* Booking Invitation */}
       <section className="relative z-20 booking-invite slide-up delay-7" aria-label="Booking Invitation">
         <p>
           Want to <strong>book this page</strong> for your event? <br />
