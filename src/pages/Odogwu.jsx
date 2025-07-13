@@ -34,17 +34,19 @@ const itemVariants = {
 
 const Odogwu = () => {
   return (
-    <main className="relative min-h-screen text-yellow-100 font-montserrat px-6 py-32 md:py-40 overflow-hidden">
+    <main className="relative min-h-screen text-yellow-100 font-montserrat px-6 py-32 md:py-40 overflow-hidden bg-black">
       {/* Background Video */}
-      <video
-        src={promoVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover -z-10"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 w-full h-full -z-10 bg-black">
+        <video
+          src={promoVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          aria-hidden="true"
+        />
+      </div>
 
       {/* Overlay content */}
       <div className="relative z-10 bg-yellow-700/50 rounded-lg p-6 md:p-12 max-w-7xl mx-auto">

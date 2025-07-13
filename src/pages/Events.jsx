@@ -14,8 +14,9 @@ import {
   FaPhoneAlt,
 } from 'react-icons/fa';
 import eventBirthday from '@/assets/images/amaka.webp';
-import backgroundVideo from '@/assets/videos/space.mp4';
 import preEventVideo from '@/assets/videos/ready.mp4';
+import backgroundVideo from '@/assets/videos/events.mp4'; // Ensure this path is correct
+// Optional: If using public folder, use src="/videos/space.mp4" instead of import
 
 const event = {
   title: "Amaka's 30th Birthday Bash",
@@ -88,18 +89,22 @@ const Events = () => {
     <main className="relative min-h-screen bg-black bg-opacity-90 py-32 flex flex-col items-center font-montserrat text-yellow-100 px-4">
       {/* Background Video */}
       <video
-        src={backgroundVideo}
         autoPlay
         loop
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ zIndex: 0 }}
+        style={{ zIndex: 20 }}
+        aria-hidden="true"
+        onError={(e) => console.error('Video failed to load:', e)}
       >
+        <source src={backgroundVideo} type="video/mp4" />
+        {/* Optional: Add WebM fallback for broader browser support */}
+        <source src="/videos/space.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
+      {/* Overlay with reduced opacity for better video visibility */}
+      <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
 
       <style>
         {`
@@ -302,13 +307,13 @@ const Events = () => {
 
       {/* Event Visual & Details (Centered Vertically and Orderly) */}
       <section className="relative z-20 flex flex-col items-center max-w-5xl w-full mb-20 slide-up delay-3">
-        <div className="bg-gradient-to-tr from-yellow-700/80 via-yellow-600/70 to-yellow-700/90 rounded-lg shadow-2xl p-8 w-full max-w-4xl flex flex-col md:flex-row items-center gap-12">
+        <div className="bg-yellow-700/80 rounded-lg shadow-2xl p-8 w-full max-w-4xl flex flex-col md:flex-row items-center gap-12">
           <img
             src={event.img}
             alt={event.alt}
             className="w-full md:w-3/5 h-[28rem] md:h-[32rem] object-cover rounded-lg shadow-lg"
           />
-          <div className="flex flex-col justify-center gap-10 text-yellow-100 font-montserrat flex-1">
+          <div className="flex flex-col justify-center gap-10 text-white font-montserrat flex-1">
             {/* Date & Time */}
             <div className="flex items-center gap-4">
               <FaCalendarAlt className="text-3xl text-yellow-300" aria-hidden="true" />
@@ -363,7 +368,7 @@ const Events = () => {
         <h3 className="text-xl text-center font-semibold text-yellow-100 mb-6 border-b-2 border-yellow-200 pb-2">
           Pre Event Highlights
         </h3>
-        <div className="flex justify-center">
+        <div className="flex justify-center border border-white rounded-lg">
           <video
             src={preEventVideo}
             controls

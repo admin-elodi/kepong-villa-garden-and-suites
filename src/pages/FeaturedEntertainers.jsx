@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import ReactPlayer from 'react-player';
 import FeaturedVideos from '../components/FeaturedVideos';
 import ReserveTableModal from '../components/ReserveTableModal';
-
+import rappersImage from '@/assets/images/rappers.webp'; // Used for background
 import comedyNightVideo from '@/assets/videos/comedian1.mp4';
-import rappersImage from '@/assets/images/rappers.webp'; // Added for background
 
 const entertainers = [
   {
@@ -76,11 +75,12 @@ const FeaturedEntertainers = () => {
   };
 
   return (
-    <main className="relative min-h-screen font-montserrat text-yellow-100 py-32">
+    <main className="relative min-h-screen font-montserrat text-black py-32">
       {/* Background Image */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${rappersImage})`, zIndex: 0 }}
+        className="absolute inset-0 w-full min-h-screen bg-cover bg-center"
+        style={{ backgroundImage: `url(${rappersImage})`, zIndex: 20 }}
+        aria-hidden="true"
       />
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
@@ -107,16 +107,15 @@ const FeaturedEntertainers = () => {
           {/* Animated block starts here */}
           <div className="animate-fadeInUpBlock">
             {/* Page Heading */}
-            <section className="text-center mb-4">
+            <section className="mx-auto max-w-2xl bg-black/60 rounded-lg py-4 px-4 mb-4 text-center">
               <h1
-                className="text-4xl sm:text-5xl md:text-4xl font-semibold tracking-tight mb-4 inline-block pb-2"
-                style={{ color: '#fef3c7' }} // yellow-100
+                className="text-4xl sm:text-5xl md:text-4xl font-bold tracking-tight mb-4 text-white"
               >
                 Weekend Entertainment
               </h1>
               <p
                 className="text-lg sm:text-xl md:text-xl max-w-2xl mx-auto mb-4"
-                style={{ color: '#fef3c7cc' }} // yellow-100 with opacity
+                style={{ color: '#fef3c7cc' }}
               >
                 Fridays to Sundays
               </p>
@@ -124,7 +123,10 @@ const FeaturedEntertainers = () => {
 
             {/* This Weekend's Lineup Announcement */}
             <div className="max-w-7xl mx-auto mb-6 px-4 sm:px-0">
-              <h2 className="flex items-center justify-center text-2xl sm:text-3xl font-semibold mb-2 text-center gap-2" style={{ color: '#fbbf24' }}>
+              <h2
+                className="flex items-center justify-center text-2xl sm:text-3xl font-semibold mb-2 text-center gap-2"
+                style={{ color: '#fbbf24' }}
+              >
                 <div className="inline-block text-3xl">🎤</div>
                 <p>This Weekend’s Lineup</p>
               </h2>
@@ -132,10 +134,13 @@ const FeaturedEntertainers = () => {
                 {['comedians', 'dancers', 'hypemen'].map((category) => (
                   <div
                     key={category}
-                    className="bg-black bg-opacity-80 border-2 rounded-lg p-4 min-w-[220px]"
+                    className="bg-black/60 border-2 rounded-lg p-4 min-w-[220px]"
                     style={{ borderColor: '#fef3c7' }}
                   >
-                    <h3 className="text-lg font-bold mb-1 text-center" style={{ color: '#fef3c7' }}>
+                    <h3
+                      className="text-lg font-bold mb-1 text-center"
+                      style={{ color: '#fef3c7' }}
+                    >
                       {category.charAt(0).toUpperCase() + category.slice(1)}
                     </h3>
                     <ul className="text-yellow-200 text-center space-y-1">
@@ -169,7 +174,6 @@ const FeaturedEntertainers = () => {
 
           {/* Entertainers Tabs */}
           <section className="mb-10">
-            {/* Responsive button group: vertical on mobile, horizontal on sm+ */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6 w-full max-w-xs sm:max-w-none mx-auto">
               {entertainers.map((cat) => (
                 <button
@@ -189,37 +193,41 @@ const FeaturedEntertainers = () => {
               ))}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {entertainers.find((cat) => cat.category === activeCategory)?.performers.map((perf) => (
-                <div
-                  key={perf.name}
-                  className="bg-black bg-opacity-90 border-2 rounded-lg p-6 flex flex-col items-center text-center shadow-lg"
-                  style={{ borderColor: '#fef3c7' }}
-                >
-                  <h3 className="text-xl font-bold mb-2" style={{ color: '#fbbf24' }}>
-                    {perf.name}
-                  </h3>
-                  <p className="text-yellow-200 mb-4">{perf.description}</p>
-                  {perf.video && (
-                    <ReactPlayer
-                      url={perf.video}
-                      controls
-                      width="100%"
-                      height="180px"
-                      className="rounded-lg overflow-hidden"
-                    />
-                  )}
+              {entertainers
+                .find((cat) => cat.category === activeCategory)
+                ?.performers.map((perf) => (
+                  <div
+                    key={perf.name}
+                    className="bg-black bg-opacity-90 border-2 rounded-lg p-6 flex flex-col items-center text-center shadow-lg"
+                    style={{ borderColor: '#fef3c7' }}
+                  >
+                    <h3
+                      className="text-xl font-bold mb-2"
+                      style={{ color: '#fbbf24' }}
+                    >
+                      {perf.name}
+                    </h3>
+                    <p className="text-yellow-200 mb-4">{perf.description}</p>
+                    {perf.video && (
+                      <ReactPlayer
+                        url={perf.video}
+                        controls
+                        width="100%"
+                        height="180px"
+                        className="rounded-lg overflow-hidden"
+                      />
+                    )}
+                  </div>
+                )) || (
+                <div className="col-span-3 text-center text-yellow-400">
+                  No performers in this category yet.
                 </div>
-              )) || (
-                <div className="col-span-3 text-center text-yellow-400">No performers in this category yet.</div>
               )}
             </div>
           </section>
 
           {/* Minimalist Promo & Reserve Button (BOTTOM) */}
           <div className="flex flex-col items-center my-8">
-            <p className="text-base font-medium mb-4 text-center" style={{ color: '#fbbf24' }}>
-              Reserve table-4-Four
-            </p>
             <button
               onClick={handleReserveTable}
               className="bg-black bg-opacity-90 text-yellow-100 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 shadow-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none"

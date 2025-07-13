@@ -8,9 +8,9 @@ import drink1 from '@/assets/images/club/drink1.webp';
 import vip1 from '@/assets/images/club/vip1.webp';
 import dance1 from '@/assets/images/club/dance1.webp';
 import ambience1 from '@/assets/images/club/ambience1.webp';
-import redLabel from '@/assets/images/club/red-label.webp';
+import redLabel from '@/assets/images/club/red.webp';
 import vodka from '@/assets/images/club/vodka.webp';
-import redWine from '@/assets/images/club/red-wine.webp';
+import redWine from '@/assets/images/club/wine.webp';
 
 const ClubK = () => {
   const navigate = useNavigate();
@@ -175,7 +175,7 @@ const ClubK = () => {
         {/* Centered text container */}
         <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight text-yellow-100 drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)]"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight text-white drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)]"
           >
             Club-K Nightclub
           </h1>
@@ -224,7 +224,7 @@ const ClubK = () => {
             <img
               src={vodka}
               alt="Premium Drink"
-              className="w-full h-40 object-cover rounded-t-xl"
+              className="w-full h-40 object-cover rounded-t-xl border border-white"
             />
 
             {/* Modal Content */}
@@ -383,7 +383,7 @@ const ClubK = () => {
         `}
       </style>
 
-      <div className="w-full py-16 relative">
+      <div className="w-full relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Features Section */}
           <section className="py-12 sm:py-16">
