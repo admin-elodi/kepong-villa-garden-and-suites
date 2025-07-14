@@ -143,17 +143,17 @@ const ClubK = () => {
 
         {/* Modal */}
         {isModalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
-            <div ref={modalRef} className="bg-yellow-100 rounded-xl shadow-2xl max-w-md w-full p-0 relative max-h-[70vh]">
+          <div className="fixed inset-0 mt-16 md:mt-40 flex items-center justify-center z-50 px-4">
+            <div ref={modalRef} className="bg-[#fef3c7] rounded-xl shadow-2xl max-w-md w-full p-0 relative max-h-[80vh] overflow-y-auto">
               <button
                 onClick={closeModal}
-                className="absolute top-3 right-3 text-gray-700 text-2xl font-bold hover:text-red-500 focus:outline-none"
-                aria-label="Close"
+                className="absolute top-3 right-3 text-gray-700 text-2xl font-bold hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                aria-label="Close modal"
               >
                 ×
               </button>
-              <img src={vodka} alt="Premium Drink" className="w-full h-40 object-cover rounded-t-xl border border-white" />
-              <div className="p-6">
+              <img src={vodka} alt="Premium Drink" className="w-full h-40 object-cover rounded-t-xl border border-white" loading="lazy" />
+              <div className="p-4 sm:p-6">
                 {!showBankDetails ? (
                   <>
                     <h2 className="text-xl font-bold mb-4 text-black">Select Your Drinks</h2>
@@ -185,7 +185,7 @@ const ClubK = () => {
                                   updateDrinkQuantity(id, val);
                                 }}
                                 className="w-12 text-center rounded border border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black bg-white"
-                                aria-label={`Quantity1 of ${name}`}
+                                aria-label={`Quantity of ${name}`}
                               />
                               <button
                                 onClick={() => updateDrinkQuantity(id, qty + 1)}
@@ -217,13 +217,14 @@ const ClubK = () => {
                       Is this your first order? Call us on
                       <a href={`tel:${phoneNumber}`} className="underline hover:text-yellow-600">
                         {phoneNumber}
-                      </a>{' '} if you need immediate information. Otherwise click button 
-                      below after choosing your drinks
+                      </a>{' '}
+                      if you need immediate information. Otherwise click button below after choosing your drinks
                     </p>
                     <button
                       onClick={handlePayNow}
                       className={`w-full bg-black text-yellow-100 font-bold py-3 rounded-lg transition-colors ${totalPrice === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-yellow-300 hover:text-black'}`}
                       disabled={totalPrice === 0}
+                      aria-label="Proceed to payment instructions"
                     >
                       Proceed to Payment Instructions
                     </button>
@@ -243,6 +244,7 @@ const ClubK = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block w-full text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition-colors"
+                      aria-label="Send payment evidence to WhatsApp group"
                     >
                       Send Payment Evidence to WhatsApp Group
                     </a>
@@ -282,6 +284,20 @@ const ClubK = () => {
             }
             .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
             .animate-fadeInUp-delayed { animation: fadeInUp 1s ease-out forwards; animation-delay: 0.2s; opacity: 0; }
+            .modal-content::-webkit-scrollbar {
+              width: 8px;
+            }
+            .modal-content::-webkit-scrollbar-track {
+              background: #f1f1f1;
+              border-radius: 4px;
+            }
+            .modal-content::-webkit-scrollbar-thumb {
+              background: #888;
+              border-radius: 4px;
+            }
+            .modal-content::-webkit-scrollbar-thumb:hover {
+              background: #555;
+            }
           `}
         </style>
       </div>
