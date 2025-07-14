@@ -110,7 +110,7 @@ const QuickLinks = () => {
                     animate-fade-in-up
                     leading-tight
                     tracking-wider
-                    text-yellow-300
+                    text-yellow-200
                     drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]
                   "
                 >
@@ -137,7 +137,7 @@ const QuickLinks = () => {
                           pathname: card.link,
                           state: card.state, // Pass state for food form
                         }}
-                        className="mt-auto inline-block bg-yellow-300 text-black font-bold py-2 px-4 rounded-lg hover:bg-amber-400 transition-transform hover:scale-105 duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500"
+                        className="mt-auto inline-block bg-yellow-200 text-black font-bold py-2 px-4 rounded-lg hover:bg-amber-400 transition-transform hover:scale-105 duration-300 border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500"
                         aria-label={card.btnLabel}
                       >
                         {card.btnLabel}

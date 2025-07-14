@@ -107,7 +107,7 @@ const Header = () => {
               className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Club-K
+              Club K
             </NavLink>
           </li>
           <li>

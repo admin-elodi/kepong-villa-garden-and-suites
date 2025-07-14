@@ -109,7 +109,7 @@ const FeaturedEntertainers = () => {
             {/* Page Heading */}
             <section className="mx-auto max-w-2xl bg-black/60 rounded-lg py-4 px-4 mb-4 text-center">
               <h1
-                className="text-4xl sm:text-5xl md:text-4xl font-bold tracking-tight mb-4 text-white"
+                className="text-4xl sm:text-5xl md:text-4xl font-semibold tracking-widest mb-4 text-white"
               >
                 Weekend Entertainment
               </h1>

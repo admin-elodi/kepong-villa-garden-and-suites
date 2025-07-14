@@ -57,7 +57,7 @@ const Hero = ({ setIsModalOpen }) => {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 lg:px-12 max-w-screen-xl mx-auto">
         {/* Debug title to confirm file renders */}
         <h1
-          className="text-2xl mt-24 sm:text-4xl md:text-5xl font-bold text-white mb-16 animate-fade-in-up delay-100"
+          className="text-2xl mt-24 sm:text-4xl md:text-5xl font-semibold text-white tracking-widest mb-16 animate-fade-in-up delay-100"
           style={{
             textShadow: '0 6px 8px rgba(0,0,0,0.5)',
             animation: 'growText 4s ease-in-out forwards',
