@@ -206,7 +206,7 @@ const ClubK = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 px-4">
+        <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
           <div
             ref={modalRef}
             className="bg-yellow-100 rounded-xl shadow-2xl max-w-md w-full p-0 relative max-h-[90vh] overflow-y-auto"

@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa';
 import eventBirthday from '@/assets/images/amaka.webp';
 import preEventVideo from '@/assets/videos/ready.mp4';
-import backgroundVideo from '@/assets/videos/events.mp4'; // Ensure this path is correct
+import backgroundVideo from '@/assets/videos/events.mp4';
 
 const event = {
   title: "Amaka's 30th Birthday Bash",
@@ -47,7 +47,7 @@ const Events = () => {
         <source src="/videos/space.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
-      {/* Overlay with reduced opacity for better video visibility */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
 
       <style>
@@ -125,31 +125,44 @@ const Events = () => {
              text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
            }
 
-           /* New styles to clamp image top-left */
+           /* Event image container styles */
            .event-image-container {
-             position: relative;
              flex-shrink: 0;
              width: 60%;
              height: 32rem;
-             margin: 0; /* Remove any default margin */
-             padding: 0; /* Remove padding */
+             margin: 0;
+             padding: 0;
+             position: relative;
+             display: flex;
+             flex-direction: column;
+             overflow: hidden; /* Ensure no overflow issues */
            }
            .event-image-container img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover; /* Ensure image covers the container */
+             object-position: left top; /* Align to left and top for desktop */
+             border-radius: 0; /* Remove border-radius for desktop to touch edges */
+             display: block;
              position: absolute;
              top: 0;
              left: 0;
-             width: 100%;
-             height: 100%;
-             object-fit: cover;
-             border-radius: 0.5rem; /* Keep rounded corners */
-             box-shadow: 0 10px 15px rgba(0,0,0,0.5);
+             bottom: 0; /* Ensure it touches bottom */
            }
 
            @media (max-width: 768px) {
              .event-image-container {
                width: 100%;
                height: 28rem;
-               position: relative;
+               overflow: hidden; /* Ensure no overflow */
+             }
+             .event-image-container img {
+               object-position: center top; /* Align to top and center horizontally for mobile */
+               border-radius: 0; /* Remove border-radius to touch top and sides */
+               position: absolute;
+               top: 0;
+               left: 0;
+               right: 0; /* Touch both sides */
              }
            }
         `}
@@ -177,12 +190,9 @@ const Events = () => {
 
       {/* Event Visual & Details */}
       <section className="relative z-20 flex flex-col items-center max-w-5xl w-full mb-20 slide-up delay-3">
-        <div className="bg-yellow-700/80 rounded-lg shadow-2xl p-8 w-full max-w-4xl flex flex-col md:flex-row items-center gap-12">
+        <div className="bg-yellow-700/80 rounded-lg shadow-2xl p-8 w-full max-w-4xl flex flex-col md:flex-row items-stretch gap-12">
           <div className="event-image-container">
-            <img
-              src={event.img}
-              alt={event.alt}
-            />
+            <img src={event.img} alt={event.alt} />
           </div>
           <div className="flex flex-col justify-center gap-10 text-white font-montserrat flex-1">
             <div className="flex items-center gap-4">
@@ -229,7 +239,7 @@ const Events = () => {
 
       {/* Pre Event Video */}
       <section className="relative z-20 mb-20 w-full max-w-5xl slide-up delay-4">
-        <h3 className="text-xl text-center font-semibold text-yellow-100 mb-6 border-b-2 border-yellow-200 pb-2">
+        <h3 className="text-xl text-center font-semibold text-black mb-6 border-b-2 border-yellow-200 pb-2">
           Pre Event Highlights
         </h3>
         <div className="flex justify-center border border-white rounded-lg">

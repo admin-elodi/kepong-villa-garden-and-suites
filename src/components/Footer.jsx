@@ -214,7 +214,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Kepong Villa Garden & Suites. All rights reserved.
           </p>
           <small className="text-yellow-100 opacity-40 text-sm mt-2 block">
-            Site Designed by Elodi Nigeria Enterprises, Enugu
+            Site Design & Build by Elodi Nigeria Enterprises, Enugu: <a href="08136573235">08136573235</a>
           </small>
         </div>
       </div>
