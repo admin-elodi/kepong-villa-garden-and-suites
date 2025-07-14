@@ -35,7 +35,7 @@ const ClubK = () => {
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
-  const phoneNumber = '+2348100900926'; // General contact number
+  const phoneNumber = '+2348136573235'; // General contact number
   const whatsappGroupLink = 'https://chat.whatsapp.com/Kxh671CMzN18RyF9SaaFux?mode=r_c';
 
   const handleBookVIP = () => navigate('/bookings');
@@ -144,7 +144,7 @@ const ClubK = () => {
         {/* Modal */}
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center z-50 px-4">
-            <div ref={modalRef} className="bg-yellow-100 rounded-xl shadow-2xl max-w-md w-full p-0 relative max-h-[90vh] overflow-y-auto">
+            <div ref={modalRef} className="bg-yellow-100 rounded-xl shadow-2xl max-w-md w-full p-0 relative max-h-[70vh]">
               <button
                 onClick={closeModal}
                 className="absolute top-3 right-3 text-gray-700 text-2xl font-bold hover:text-red-500 focus:outline-none"

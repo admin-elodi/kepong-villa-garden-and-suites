@@ -25,7 +25,8 @@ const event = {
 };
 
 const Events = () => {
-  const [showModal, setShowModal] = useState(false);
+  // Removed showModal state and endorse button/modal logic
+
   const shareUrl = window.location.href;
   const shareText = encodeURIComponent(
     `Join us at ${event.title} - an unforgettable night at Kepong Villa!`
@@ -52,141 +53,163 @@ const Events = () => {
       <style>
         {`
           .fade-in {
-             opacity: 0;
-             animation: fadeIn 1s ease-out forwards;
-           }
-           .fade-in.delay-1 { animation-delay: 0.2s; }
-           .fade-in.delay-2 { animation-delay: 0.4s; }
-           .fade-in.delay-3 { animation-delay: 0.6s; }
-           @keyframes fadeIn {
-             to { opacity: 1; }
-           }
-           .slide-up {
-             opacity: 0;
-             transform: translateY(30px);
-             animation: slideUp 0.9s cubic-bezier(.4,1.2,.6,1) forwards;
-           }
-           .slide-up.delay-1 { animation-delay: 0.3s; }
-           .slide-up.delay-2 { animation-delay: 0.5s; }
-           .slide-up.delay-3 { animation-delay: 0.7s; }
-           .slide-up.delay-4 { animation-delay: 0.9s; }
-           .slide-up.delay-6 { animation-delay: 1.1s; }
-           .slide-up.delay-7 { animation-delay: 1.3s; }
-           @keyframes slideUp {
-             to { opacity: 1; transform: translateY(0); }
-           }
-           .btn-yellow {
-             background-color: #fef3c7;
-             color: #000;
-             font-weight: 700;
-             padding: 0.75rem 1.5rem;
-             border-radius: 0.5rem;
-             border: 2px solid #fbbf24;
-             transition: background-color 0.3s ease, color 0.3s ease;
-           }
-           .btn-yellow:hover {
-             background-color: #fbbf24;
-             color: #000;
-             transform: scale(1.05);
-           }
-           .social-icon {
-             color: #fef3c7;
-             font-size: 1.75rem;
-             margin: 0 0.75rem;
-             cursor: pointer;
-             transition: color 0.3s ease, transform 0.3s ease;
-           }
-           .social-icon:hover {
-             color: #fbbf24;
-             transform: scale(1.2);
-           }
-           .booking-invite {
-             max-width: 480px;
-             background: rgba(254, 243, 199, 0.1);
-             border: 1px solid #fbbf24;
-             border-radius: 12px;
-             padding: 1.5rem 2rem;
-             margin-top: 3rem;
-             text-align: center;
-             color: #fef3c7;
-             box-shadow: 0 0 15px rgba(251,191,36,0.4);
-           }
-           .booking-invite strong {
-             color: #fbbf24;
-           }
-           .booking-invite a {
-             color: #fbbf24;
-             font-weight: 700;
-             text-decoration: underline;
-           }
-           .text-bg {
-             background: rgba(0, 0, 0, 0.7);
-             padding: 0.5rem 1rem;
-             border-radius: 8px;
-             display: inline-block;
-             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-           }
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+          }
+          .fade-in.delay-1 { animation-delay: 0.2s; }
+          .fade-in.delay-2 { animation-delay: 0.4s; }
+          .fade-in.delay-3 { animation-delay: 0.6s; }
+          @keyframes fadeIn {
+            to { opacity: 1; }
+          }
+          .slide-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.9s cubic-bezier(.4,1.2,.6,1) forwards;
+          }
+          .slide-up.delay-1 { animation-delay: 0.3s; }
+          .slide-up.delay-2 { animation-delay: 0.5s; }
+          .slide-up.delay-3 { animation-delay: 0.7s; }
+          .slide-up.delay-4 { animation-delay: 0.9s; }
+          .slide-up.delay-6 { animation-delay: 1.1s; }
+          .slide-up.delay-7 { animation-delay: 1.3s; }
+          @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .btn-yellow {
+            background-color: #fef3c7;
+            color: #000;
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 2px solid #fbbf24;
+            transition: background-color 0.3s ease, color 0.3s ease;
+          }
+          .btn-yellow:hover {
+            background-color: #fbbf24;
+            color: #000;
+            transform: scale(1.05);
+          }
+          .social-icon {
+            color: #fef3c7;
+            font-size: 1.75rem;
+            margin: 0 0.75rem;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+          }
+          .social-icon:hover {
+            color: #fbbf24;
+            transform: scale(1.2);
+          }
+          .booking-invite {
+            max-width: 480px;
+            background: rgba(254, 243, 199, 0.1);
+            border: 1px solid #fbbf24;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: #fef3c7;
+            box-shadow: 0 0 15px rgba(251,191,36,0.4);
+          }
+          .booking-invite strong {
+            color: #fbbf24;
+          }
+          .booking-invite a {
+            color: #fbbf24;
+            font-weight: 700;
+            text-decoration: underline;
+          }
+          .text-bg {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+          }
 
-           .event-image-container {
-             flex-shrink: 0;
-             width: 60%;
-             height: 32rem;
-             margin: 0;
-             padding: 0;
-             position: relative;
-             display: flex;
-             flex-direction: column;
-             overflow: hidden;
-           }
-           .event-image-container img {
-             width: 100%;
-             height: 100%;
-             object-fit: cover;
-             object-position: left top;
-             border-radius: 0;
-             display: block;
-             position: absolute;
-             top: 0;
-             left: 0;
-             bottom: 0;
-           }
+          .event-image-container {
+            flex-shrink: 0;
+            width: 60%;
+            height: 32rem;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+          }
+          .event-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: left top;
+            border-radius: 0;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+          }
 
-           @media (max-width: 768px) {
-             .event-image-container {
-               width: 100%;
-               height: 28rem;
-               overflow: hidden;
-             }
-             .event-image-container img {
-               object-position: center top;
-               border-radius: 0;
-               position: absolute;
-               top: 0;
-               left: 0;
-               right: 0;
-             }
-           }
+          @media (max-width: 768px) {
+            .event-image-container {
+              width: 100%;
+              height: 28rem;
+              overflow: hidden;
+            }
+            .event-image-container img {
+              object-position: center top;
+              border-radius: 0;
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+            }
+          }
         `}
       </style>
 
-      <section className="flex justify-center max-w-2xl w-full bg-black py-4 px-4 mb-4 text-center slide-up">
-        <div>
-          <h1
-            className="text-4xl sm:text-5xl md:text-4xl font-bold tracking-wider md:tracking-[0.2em] md:leading-snug mb-4 text-bg"
-            style={{ color: 'white', wordSpacing: '0.3em' }}
-            title="Events Announcement Page"
-          >
-            Events Announcement Page
-          </h1>
-          <h2
-            className="text-lg sm:text-xl md:text-xl max-w-2xl mx-auto mb-4 text-bg"
-            style={{ color: '#fef3c7cc' }}
-            title={event.title}
-          >
-            {event.title}
-          </h2>
-        </div>
+      {/* Heading section - made sure text is visible */}
+ 
+      <section
+      className="relative z-20 mt-8 mb-8 slide-up delay-7 text-center"
+      aria-label="event title"
+      >
+      <div>
+        <h1
+          className="text-2xl sm:text-4xl font-bold tracking-widest mb-4 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent animate-gradient-x drop-shadow-lg"
+          style={{ letterSpacing: '0.3em' }}
+        >
+          Events Announcement Page
+        </h1>
+        <p
+          className="inline-block text-xl sm:text-2xl font-semibold text-yellow-100 bg-yellow-900 bg-opacity-30 px-6 py-2 rounded-lg tracking-wide shadow-md"
+          style={{ maxWidth: '600px', margin: '0 auto' }}
+        >
+          {event.title}
+        </p>
+      </div>
+
+      <style jsx>{`
+        @keyframes gradient-x {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        .animate-gradient-x {
+          background-size: 200% 200%;
+          animation: gradient-x 5s ease infinite;
+        }
+      `}</style>
       </section>
+
 
       <section className="relative z-20 flex flex-col items-center max-w-5xl w-full mb-20 slide-up delay-3">
         <div className="bg-yellow-700/80 rounded-lg shadow-2xl p-8 w-full max-w-4xl flex flex-col md:flex-row items-stretch gap-12">
@@ -255,14 +278,7 @@ const Events = () => {
         </div>
       </section>
 
-      <section className="mb-6 z-20 slide-up delay-6">
-        <button
-          className="btn-yellow text-center"
-          onClick={() => setShowModal(true)}
-        >
-          Endorse This Event
-        </button>
-      </section>
+      {/* Removed the "Endorse This Event" button and modal */}
 
       <section className="relative z-20 booking-invite slide-up delay-7" aria-label="Booking Invitation">
         <p>
@@ -270,25 +286,6 @@ const Events = () => {
           Call us at <a href="tel:08162836505">08162836505</a>
         </p>
       </section>
-      {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="bg-white rounded-lg p-8 w-11/12 max-w-xl shadow-xl text-black relative">
-            <h2 className="text-2xl font-bold mb-4">Endorse This Event</h2>
-            <p className="mb-4">Kepong Villa invites support from:</p>
-            <ul className="list-disc list-inside space-y-3">
-              <li><strong>🎉 Local Businesses:</strong> Gain exposure by aligning with high-energy social moments.</li>
-              <li><strong>🎤 Event Enthusiasts:</strong> Help amplify moments that matter by sharing or sponsoring celebrations.</li>
-              <li><strong>🏛 Community Leaders:</strong> Encourage positive engagements and visibility in your area.</li>
-            </ul>
-            <button
-              className="mt-6 btn-yellow"
-              onClick={() => setShowModal(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </main>
   );
 };
