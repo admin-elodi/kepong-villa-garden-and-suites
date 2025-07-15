@@ -173,9 +173,10 @@ const Events = () => {
   className="relative z-20 mt-8 slide-up delay-7 text-center"
   aria-label="event title"
 >
-  <h1 className="text-4xl sm:text-5xl md:text-4xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(254,240,138,0.8)] bg-black/70 md:px-18 py-4 rounded-lg">
-    Upcoming Kepong Events!
-  </h1>
+  <h1 className="text-4xl sm:text-5xl md:text-4xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_6px_14px_rgba(254,240,138,0.95)] bg-black/70 md:px-18 py-4 rounded-lg">
+  Upcoming Kepong Events!
+</h1>
+
   <h1 className="text-3xl mt-2 sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(56,189,248,0.7)] px-6 py-8 rounded-xl">
     {event.title}
   </h1>
