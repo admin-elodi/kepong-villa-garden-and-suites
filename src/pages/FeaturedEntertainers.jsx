@@ -108,9 +108,7 @@ const FeaturedEntertainers = () => {
           <div className="animate-fadeInUpBlock">
             {/* Page Heading */}
             <section className="mx-auto max-w-2xl bg-black/60 rounded-lg py-4 px-4 mb-4 text-center">
-              <h1
-                className="text-4xl sm:text-5xl md:text-4xl font-semibold tracking-widest mb-4 text-white"
-              >
+              <h1 className="text-4xl sm:text-5xl md:text-4xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(254,240,138,0.8)] bg-black/70 md:px-18 py-4 rounded-lg">
                 Weekend Entertainment
               </h1>
               <p
