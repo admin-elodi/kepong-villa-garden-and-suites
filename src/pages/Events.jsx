@@ -127,45 +127,42 @@ const Events = () => {
             display: inline-block;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
           }
-
           .event-image-container {
-            flex-shrink: 0;
-            width: 60%;
-            height: 32rem;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
+          width: 100%;
+          height: 45rem;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          border-radius: 5px 5px 0 0;
+          overflow: hidden;
           }
           .event-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: left top;
-            border-radius: 0;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center top;
+          border-radius: 5px 5px 0 0;
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
           }
 
           @media (max-width: 768px) {
-            .event-image-container {
-              width: 100%;
-              height: 28rem;
-              overflow: hidden;
-            }
-            .event-image-container img {
-              object-position: center top;
-              border-radius: 0;
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-            }
+          .event-image-container {
+            width: 100%;
+            height: 28rem;
+            overflow: hidden;
+          }
+          .event-image-container img {
+            object-position: center top;
+            border-radius: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+          }
           }
         `}
       </style>
@@ -173,81 +170,73 @@ const Events = () => {
       {/* Heading section - made sure text is visible */}
  
       <section
-      className="relative z-20 mt-8 mb-8 slide-up delay-7 text-center"
-      aria-label="event title"
-      >
-      <div>
-        <h1
-          className="text-2xl sm:text-4xl font-bold tracking-widest mb-4 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent animate-gradient-x drop-shadow-lg"
-          style={{ letterSpacing: '0.3em' }}
-        >
-          Events Announcement Page
-        </h1>
-        <p
-          className="inline-block text-xl sm:text-2xl font-semibold text-yellow-100 bg-yellow-900 bg-opacity-30 px-6 py-2 rounded-lg tracking-wide shadow-md"
-          style={{ maxWidth: '600px', margin: '0 auto' }}
-        >
-          {event.title}
-        </p>
-      </div>
+  className="relative z-20 mt-8 slide-up delay-7 text-center"
+  aria-label="event title"
+>
+  <h1 className="text-4xl sm:text-5xl md:text-4xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(254,240,138,0.8)] bg-black/70 md:px-30 py-6 rounded-xl">
+    Upcoming Events!
+  </h1>
+  <h1 className="text-4xl mt-2 sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(56,189,248,0.7)] px-6 py-8 rounded-xl">
+    {event.title}
+  </h1>
 
-      <style jsx>{`
-        @keyframes gradient-x {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        .animate-gradient-x {
-          background-size: 200% 200%;
-          animation: gradient-x 5s ease infinite;
-        }
-      `}</style>
-      </section>
+  <style jsx>{`
+    @keyframes gradient-x {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .animate-gradient-x {
+      background-size: 200% 200%;
+      animation: gradient-x 5s ease infinite;
+    }
+  `}</style>
+</section>
 
-
-      <section className="relative z-20 flex flex-col items-center max-w-5xl w-full mb-20 slide-up delay-3">
-        <div className="bg-yellow-700/80 rounded-lg shadow-2xl p-8 w-full max-w-4xl flex flex-col md:flex-row items-stretch gap-12">
-          <div className="event-image-container">
-            <img src={event.img} alt={event.alt} />
-          </div>
-          <div className="flex flex-col justify-center gap-10 text-white font-montserrat flex-1">
-            <div className="flex items-center gap-4">
-              <FaCalendarAlt className="text-3xl text-yellow-300" />
-              <div>
-                <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">Date & Time</p>
-                <p className="text-xl font-semibold drop-shadow-md">{event.date} <span className="mx-1">|</span> {event.time}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <FaMapMarkerAlt className="text-3xl text-yellow-300" />
-              <div>
-                <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">Venue</p>
-                <p className="text-lg font-medium drop-shadow-sm">{event.venue}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <FaMusic className="text-3xl text-yellow-300" />
-              <div>
-                <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">Masters of a Good Time</p>
-                <p className="text-lg font-medium drop-shadow-sm">{event.host}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <FaPhoneAlt className="text-3xl text-yellow-300" />
-              <div>
-                <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">Contact</p>
-                <p className="text-lg font-medium drop-shadow-sm">{event.desc}</p>
-              </div>
-            </div>
-          </div>
+<section className="relative z-20 flex flex-col items-center max-w-2xl w-full slide-up delay-3 mt-2">
+  <div className="bg-yellow-700/80 shadow-2xl w-full max-w-4xl flex flex-col md:flex-col items-stretch gap-8">
+    <div className="event-image-container">
+      <img src={event.img} alt={event.alt} />
+    </div>
+    <div className="flex flex-col justify-center pl-16 pb-8 gap-10 text-white font-montserrat">
+      <div className="flex items-center gap-4">
+        <FaCalendarAlt className="text-3xl text-yellow-300" />
+        <div>
+          <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">Date & Time</p>
+          <p className="text-xl font-semibold drop-shadow-md">{event.date} <span className="mx-1">|</span> {event.time}</p>
         </div>
-      </section>
+      </div>
+      <div className="flex items-center gap-4">
+        <FaMapMarkerAlt className="text-3xl text-yellow-300" />
+        <div>
+          <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">Venue</p>
+          <p className="text-lg font-medium drop-shadow-sm">{event.venue}</p>
+        </div>
+      </div>
+      <div className="flex items-center gap-4">
+        <FaMusic className="text-3xl text-yellow-300" />
+        <div>
+          <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">Masters of a Good Time</p>
+          <p className="text-lg font-medium drop-shadow-sm">{event.host}</p>
+        </div>
+      </div>
+      <div className="flex items-center gap-4">
+        <FaPhoneAlt className="text-3xl text-yellow-300" />
+        <div>
+          <p className="uppercase font-bold tracking-widest text-yellow-300 text-sm mb-1">Contact</p>
+          <p className="text-lg font-medium drop-shadow-sm">{event.desc}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <section className="relative z-20 mb-20 w-full max-w-5xl slide-up delay-4">
         <h3 className="text-xl text-center font-semibold text-black mb-6 border-b-2 border-black pb-2">

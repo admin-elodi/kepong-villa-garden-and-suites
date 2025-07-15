@@ -35,7 +35,7 @@ const ClubK = () => {
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
-  const phoneNumber = '+2348136573235'; // General contact number
+  const phoneNumber = '+23492836505'; // General contact number
   const whatsappGroupLink = 'https://chat.whatsapp.com/Kxh671CMzN18RyF9SaaFux?mode=r_c';
 
   const handleBookVIP = () => navigate('/bookings');
