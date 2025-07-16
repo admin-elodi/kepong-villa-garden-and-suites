@@ -11,7 +11,6 @@ import vodka from '@/assets/images/club/vodka.webp';
 import redWine from '@/assets/images/club/wine.webp';
 
 const ClubK = () => {
-  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showBankDetails, setShowBankDetails] = useState(false);
   const [selectedDrinks, setSelectedDrinks] = useState({});
@@ -33,10 +32,8 @@ const ClubK = () => {
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
-  
-  const whatsappGroupLink = 'https://chat.whatsapp.com/Kxh671CMzN18RyF9SaaFux?mode=r_c';
 
-  
+  const whatsappGroupLink = 'https://chat.whatsapp.com/Kxh671CMzN18RyF9SaaFux?mode=r_c';
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -115,10 +112,10 @@ const ClubK = () => {
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
             <div className="mb-8">
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 mb-2 rounded-xl">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
                 Club K Nightclub
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-yellow-200 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded">
+              <p className="text-lg sm:text-xl md:text-2xl text-yellow-200 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded animate-fadeInUp-delayed">
                 Open Wednesdays & Weekends<br className="block sm:hidden" />
               </p>
             </div>
@@ -130,7 +127,6 @@ const ClubK = () => {
               >
                 Order Premium Drinks
               </button>
-             
             </div>
           </div>
         </section>
@@ -149,7 +145,7 @@ const ClubK = () => {
               <img src={vodka} alt="Premium Drink" className="w-full h-40 object-cover rounded-t-xl border border-white" loading="lazy" />
               <div className="p-4 sm:p-6">
                 {!showBankDetails ? (
-                  <> 
+                  <>
                     <h2 className="text-xl font-bold mb-4 text-black">Select Your Drinks</h2>
                     <div className="space-y-4 mb-6">
                       {drinksList.map(({ id, name, price, img }) => {
@@ -160,7 +156,7 @@ const ClubK = () => {
                             <div className="flex-1">
                               <h3 className="text-lg font-semibold text-black">{name}</h3>
                               <p className="text-green-700 font-bold">₦{price.toLocaleString()}</p>
-                            </div> 
+                            </div>
                             <div className="flex items-center space-x-2">
                               <button
                                 onClick={() => updateDrinkQuantity(id, qty - 1)}
@@ -208,8 +204,8 @@ const ClubK = () => {
                       </div>
                     </div>
                     <p className="mb-4 text-black text-justify font-medium">
-                      Is this your first order? Call us on <a href="09169436106" className="hover:text-yellow-600">09169436106 </a> 
-                      or <a href="07031576094" className="hover:text-yellow-600">07031576094</a> if you need immediate information. Otherwise click button below after choosing your drinks
+                      Is this your first order? Call us on <a href="tel:09169436106" className="hover:text-yellow-600 underline">09169436106</a>
+                      or <a href="tel:07031576094" className="hover:text-yellow-600 underline">07031576094</a> if you need immediate information. Otherwise click button below after choosing your drinks
                     </p>
                     <button
                       onClick={handlePayNow}
@@ -274,7 +270,7 @@ const ClubK = () => {
               to { opacity: 1; transform: translateY(0); }
             }
             .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
-            .animate-fadeInUp-delayed { animation: fadeInUp 1s ease-out forwards; animation-delay: 0.2s; opacity: 0; }
+            .animate-fadeInUp-delayed { animation: fadeInUp 0.8s ease-out forwards; animation-delay: 0.2s; opacity: 0; }
             .modal-content::-webkit-scrollbar {
               width: 8px;
             }

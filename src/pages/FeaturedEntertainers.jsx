@@ -121,11 +121,12 @@ const FeaturedEntertainers = () => {
 
             {/* This Weekend's Lineup Announcement */}
             <div className="max-w-7xl mx-auto mb-6 px-4 sm:px-0">
+              <div className="inline-block text-3xl">🎤</div>
               <h2
                 className="flex items-center justify-center text-2xl sm:text-3xl font-semibold mb-2 text-center gap-2"
-                style={{ color: '#fbbf24' }}
+                style={{ color: 'white' }}
               >
-                <div className="inline-block text-3xl">🎤</div>
+              
                 <p>This Weekend’s Lineup</p>
               </h2>
               <div className="flex flex-col sm:flex-row justify-center gap-6 mb-4">
