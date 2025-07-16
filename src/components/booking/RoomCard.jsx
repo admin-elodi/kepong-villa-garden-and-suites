@@ -1,13 +1,17 @@
-const RoomCard = ({ room, onSelect }) => {
+const RoomCard = ({ room, onSelect, isApartment = false }) => {
   return (
-    <div className="bg-black rounded-lg overflow-hidden transition-all duration-300 border-b-2 border-yellow-300 font-montserrat shadow-sm hover:shadow-md flex flex-col">
+    <div
+      className={`bg-black rounded-lg overflow-hidden transition-all duration-300 border-b-2 border-yellow-300 font-montserrat shadow-sm hover:shadow-md flex flex-col ${
+        isApartment ? 'lg:w-[540px]' : ''
+      }`}
+    >
       <img
         src={room.imageURL}
         alt={room.roomType}
         className="w-full h-40 sm:h-56 object-cover"
         loading="lazy"
       />
-      <div className="p-2 sm:p-5 text-left bg-yellow-100 text-black flex flex-col flex-grow min-h-[300px]">
+      <div className="p-2 sm:p-5 text-left bg-yellow-100 text-black flex flex-col flex-grow min-h-[220px]">
         <div>
           <h3 className="text-xl sm:text-2xl font-semibold text-black">
             {room.roomType}
@@ -15,20 +19,37 @@ const RoomCard = ({ room, onSelect }) => {
           <p className="text-black font-semibold text-base sm:text-lg mt-1">
             ₦{room.price.toLocaleString()}/night
           </p>
-          <ul className="mt-2 text-base sm:text-lg text-black space-y-1">
-            {room.amenities.map((amenity, index) => (
-              <li key={index} className="flex items-center">
-                <svg
-                  className="w-5 h-5 mr-2 text-amber-400 flex-shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
-                </svg>
-                {amenity}
-              </li>
-            ))}
-          </ul>
+          {isApartment ? (
+            <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-base sm:text-lg text-black">
+              {room.amenities.map((amenity, index) => (
+                <div key={index} className="flex items-center">
+                  <svg
+                    className="w-5 h-5 mr-2 text-amber-400 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                  </svg>
+                  {amenity}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <ul className="mt-2 text-base sm:text-lg text-black space-y-1">
+              {room.amenities.map((amenity, index) => (
+                <li key={index} className="flex items-center">
+                  <svg
+                    className="w-5 h-5 mr-2 text-amber-400 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                  </svg>
+                  {amenity}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         {/* Button aligned to bottom */}

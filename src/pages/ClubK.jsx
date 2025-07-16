@@ -1,6 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import clubkHero from '@/assets/videos/club.mp4';
 import dance2 from '@/assets/images/club/dance2.webp';
 import dj from '@/assets/images/club/dj.webp';
@@ -13,7 +11,7 @@ import vodka from '@/assets/images/club/vodka.webp';
 import redWine from '@/assets/images/club/wine.webp';
 
 const ClubK = () => {
-  const navigate = useNavigate();
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showBankDetails, setShowBankDetails] = useState(false);
   const [selectedDrinks, setSelectedDrinks] = useState({});
@@ -38,7 +36,7 @@ const ClubK = () => {
   const phoneNumber = '+23492836505'; // General contact number
   const whatsappGroupLink = 'https://chat.whatsapp.com/Kxh671CMzN18RyF9SaaFux?mode=r_c';
 
-  const handleBookVIP = () => navigate('/bookings');
+  
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -116,12 +114,14 @@ const ClubK = () => {
         {/* Hero Section */}
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
-            <h1 className="text-2xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 rounded-xl">
-              Club K Nightclub
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-yellow-300 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded">
-              Open Wednesdays & Weekends<br className="block sm:hidden" />
-            </p>
+            <div className="mb-8">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 rounded-xl">
+                Club K Nightclub
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-yellow-300 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded">
+                Open Wednesdays & Weekends<br className="block sm:hidden" />
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-xl mx-auto px-4 mt-2">
               <button
                 onClick={openModal}
@@ -130,13 +130,7 @@ const ClubK = () => {
               >
                 Order Premium Drinks
               </button>
-              <button
-                onClick={handleBookVIP}
-                className="bg-yellow-100 text-black px-7 py-4 rounded-lg text-lg font-semibold hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
-                aria-label="Reserve Private Area"
-              >
-                Reserve Private Area
-              </button>
+             
             </div>
           </div>
         </section>

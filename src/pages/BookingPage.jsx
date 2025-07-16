@@ -30,6 +30,13 @@ const rooms = [
     imageURL: executive,
     amenities: ['King Bed', 'Wi-Fi', 'Balcony', 'Mini Bar'],
   },
+  {
+    id: 4,
+    roomType: 'Apartment',
+    price: 17000,
+    imageURL: executive, // Will be changed later
+    amenities: ['King Bed', 'Wi-Fi', 'Balcony', 'Mini Bar', 'Room Service', 'Room & Parlor'],
+  },
 ];
 
 const BookingPage = () => {
@@ -41,7 +48,6 @@ const BookingPage = () => {
   const formRef = useRef(null);
   const location = useLocation();
 
-  // Check location state to show food form on navigation
   useEffect(() => {
     if (location.state?.showFoodForm) {
       setSelectedRoom(null);
@@ -49,7 +55,6 @@ const BookingPage = () => {
     }
   }, [location.state]);
 
-  // Scroll to form when shown
   useEffect(() => {
     if (showForm && formRef.current) {
       formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -72,7 +77,6 @@ const BookingPage = () => {
     setBookingConfirmed(true);
   };
 
-  // Scroll to confirmation when shown
   useEffect(() => {
     if (bookingConfirmed && confirmationRef.current) {
       confirmationRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -97,10 +101,9 @@ const BookingPage = () => {
           Your browser does not support the video tag.
         </video>
 
-        {/* Overlay for better text contrast */}
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-12 lg:px-24 overflow-auto">
-          <h1 className="text-xl sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-black drop-shadow-[0_4px_10px_rgba(254,240,138,0.8)] bg-white/40 px-2 md:px-8 py-4 rounded-lg">
-             Book Hotel with Room Service
+          <h1 className="text-4xl sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-black drop-shadow-[0_4px_10px_rgba(254,240,138,0.8)] bg-white/40 md:px-8 py-4 rounded-lg">
+            Book Hotel with Room Service
           </h1>
         </div>
       </section>
@@ -111,9 +114,17 @@ const BookingPage = () => {
           <>
             <div className="mb-12">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
-                {rooms.map((room) => (
+                {rooms.slice(0, 3).map((room) => (
                   <RoomCard key={room.id} room={room} onSelect={handleRoomSelect} />
                 ))}
+              </div>
+              <div className="mt-8 sm:mt-12 flex justify-center">
+                <RoomCard
+                  key={rooms[3].id}
+                  room={rooms[3]}
+                  onSelect={handleRoomSelect}
+                  isApartment
+                />
               </div>
               <div className="text-center mt-10">
                 <button
@@ -168,7 +179,6 @@ const BookingPage = () => {
         )}
       </main>
 
-      {/* Animations */}
       <style>
         {`
           @keyframes fadeInUp {

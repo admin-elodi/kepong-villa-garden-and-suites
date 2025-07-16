@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import promoVideo from '@/assets/videos/stars.mp4'; // Import the video
-import proprietorImage from '@/assets/images/ceo.webp';
+
 import manager from '@/assets/images/man.webp';
 import dj from '@/assets/images/man.webp';
 import planner from '@/assets/images/babe.webp';
@@ -77,7 +77,7 @@ const Odogwu = () => {
             className="flex flex-col items-center justify-center h-full text-center md:text-center"
           >
             <motion.img
-              src={proprietorImage}
+              src=''
               alt="Uche Odogwu - CEO"
               className="rounded-full border-4 border-black shadow-lg w-48 h-48 md:w-64 md:h-64 object-cover"
               whileHover={{ scale: 1.05, boxShadow: '0 0 20px #FFD700' }}
