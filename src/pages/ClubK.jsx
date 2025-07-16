@@ -33,7 +33,7 @@ const ClubK = () => {
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
-  const phoneNumber = '+23492836505'; // General contact number
+  
   const whatsappGroupLink = 'https://chat.whatsapp.com/Kxh671CMzN18RyF9SaaFux?mode=r_c';
 
   
@@ -125,7 +125,7 @@ const ClubK = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-xl mx-auto px-4 mt-2">
               <button
                 onClick={openModal}
-                className="bg-black bg-opacity-80 text-yellow-100 px-7 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none w-full"
+                className="bg-black bg-opacity-80 text-yellow-100 px-4 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-yellow-100 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none md:w-[400px]"
                 aria-label="Order Premium Drinks"
               >
                 Order Premium Drinks
@@ -208,11 +208,8 @@ const ClubK = () => {
                       </div>
                     </div>
                     <p className="mb-4 text-black text-justify font-medium">
-                      Is this your first order? Call us on
-                      <a href={`tel:${phoneNumber}`} className="underline hover:text-yellow-600">
-                        {phoneNumber}
-                      </a>{' '}
-                      if you need immediate information call 09169436106 or 07031576094. Otherwise click button below after choosing your drinks
+                      Is this your first order? Call us on <a href="09169436106" className="hover:text-yellow-600">09169436106 </a> 
+                      or <a href="07031576094" className="hover:text-yellow-600">07031576094</a> if you need immediate information. Otherwise click button below after choosing your drinks
                     </p>
                     <button
                       onClick={handlePayNow}
@@ -251,8 +248,8 @@ const ClubK = () => {
 
         <div className="w-full relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <section className="py-12 sm:py-16">
-              <h2 className="text-3xl text-yellow-100 font-bold text-center mb-12 pb-3 px-4 py-2 rounded">Experience Club K</h2>
+            <section className="py-4 sm:py-16">
+              <h2 className="text-3xl text-yellow-100 font-bold text-center mb-4 pb-3 px-4 py-2 rounded">Experience Club K</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 sm:gap-x-12 max-w-6xl mx-auto">
                 {features.map(({ title, img, desc }, i) => (
                   <div key={i} className="rounded-lg overflow-hidden border-4 border-yellow-100 shadow-xl bg-black/80 flex flex-col items-center text-center" style={{ height: '340px' }}>
