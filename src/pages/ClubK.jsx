@@ -115,7 +115,7 @@ const ClubK = () => {
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
             <div className="mb-8">
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 rounded-xl">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 mb-2 rounded-xl">
                 Club K Nightclub
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-yellow-300 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded">
@@ -252,7 +252,7 @@ const ClubK = () => {
         <div className="w-full relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <section className="py-12 sm:py-16">
-              <h2 className="text-3xl text-yellow-100 font-bold text-center mb-12 pb-3 bg-black/60 px-4 py-2 rounded">Experience Club K</h2>
+              <h2 className="text-3xl text-yellow-100 font-bold text-center mb-12 pb-3 px-4 py-2 rounded">Experience Club K</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 sm:gap-x-12 max-w-6xl mx-auto">
                 {features.map(({ title, img, desc }, i) => (
                   <div key={i} className="rounded-lg overflow-hidden border-4 border-yellow-100 shadow-xl bg-black/80 flex flex-col items-center text-center" style={{ height: '340px' }}>
