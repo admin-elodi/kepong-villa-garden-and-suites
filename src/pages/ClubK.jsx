@@ -118,7 +118,7 @@ const ClubK = () => {
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 mb-2 rounded-xl">
                 Club K Nightclub
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-yellow-300 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded">
+              <p className="text-lg sm:text-xl md:text-2xl text-yellow-200 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded">
                 Open Wednesdays & Weekends<br className="block sm:hidden" />
               </p>
             </div>
