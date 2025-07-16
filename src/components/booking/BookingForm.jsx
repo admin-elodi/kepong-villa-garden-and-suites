@@ -3,16 +3,15 @@ import emailjs from '@emailjs/browser';
 
 const BookingForm = ({ selectedRoom, onBack, onSubmit }) => {
   const foodOptions = [
-    { name: 'Jollof Rice', price: 2000 },
-    { name: 'Egusi Soup with Pounded Yam', price: 3500 },
-    { name: 'Fried Rice and Chicken', price: 4500 },
-    { name: 'Vegetable Soup with Fufu', price: 3000 },
-    { name: 'Pepper Soup', price: 1500 },
+    { name: 'Jollof Rice', price: 2500 },
+    { name: 'Egusi Soup with Pounded Yam', price: 2500 },
+    { name: 'Fried Rice and Chicken', price: 2500 },
+    { name: 'Vegetable Soup with Fufu', price: 2500 },
+    { name: 'Goat meat Pepper Soup', price: 1500 },
   ];
   const drinkOptions = [
     { name: 'Chapman', price: 2500 },
-    { name: 'Zobo', price: 800 },
-    { name: 'Palm Wine', price: 1200 },
+    { name: 'Palm Wine', price: 1500 },
     { name: 'Soft Drinks', price: 500 },
     { name: 'Cocktails', price: 2000 },
   ];

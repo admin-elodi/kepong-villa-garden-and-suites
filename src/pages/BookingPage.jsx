@@ -11,22 +11,22 @@ import promoVideo from '@/assets/videos/couple.mp4';
 const rooms = [
   {
     id: 1,
-    roomType: 'Standard Room',
-    price: 15000,
+    roomType: 'Single',
+    price: 7000,
     imageURL: standardRoom,
     amenities: ['Double Bed', 'Wi-Fi'],
   },
   {
     id: 2,
-    roomType: 'Deluxe Suite',
-    price: 20000,
+    roomType: 'Deluxe',
+    price: 10000,
     imageURL: deluxe,
     amenities: ['Queen Bed', 'Wi-Fi', 'Work Desk'],
   },
   {
     id: 3,
-    roomType: 'Executive Suite',
-    price: 25000,
+    roomType: 'Executive',
+    price: 15000,
     imageURL: executive,
     amenities: ['King Bed', 'Wi-Fi', 'Balcony', 'Mini Bar'],
   },
@@ -99,7 +99,7 @@ const BookingPage = () => {
 
         {/* Overlay for better text contrast */}
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-12 lg:px-24 overflow-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-black drop-shadow-[0_4px_10px_rgba(254,240,138,0.8)] bg-white/40 md:px-8 py-4 rounded-lg">
+          <h1 className="text-xl sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-black drop-shadow-[0_4px_10px_rgba(254,240,138,0.8)] bg-white/40 px-2 md:px-8 py-4 rounded-lg">
              Book Hotel with Room Service
           </h1>
         </div>

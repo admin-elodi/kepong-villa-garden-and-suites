@@ -106,7 +106,7 @@ const Events = () => {
             background: rgba(254, 243, 199, 0.1);
             border: 1px solid #fbbf24;
             border-radius: 12px;
-            padding: 1.5rem 2rem;
+            padding: 1.5rem;
             margin-top: 3rem;
             text-align: center;
             color: #fef3c7;
@@ -272,8 +272,9 @@ const Events = () => {
 
       <section className="relative z-20 booking-invite slide-up delay-7" aria-label="Booking Invitation">
         <p>
-          Want to <strong>book this page</strong> for your event? <br />
-          Call us at <a href="tel:08162836505">08162836505</a>
+          Want to <strong>book this page</strong> for advertizing your Kepong Event?
+          Call us at <a href="tel:08162836505">08162836505</a><br />
+          <a href="">07031576094</a>
         </p>
       </section>
     </main>

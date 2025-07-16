@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import promoVideo from '@/assets/videos/stars.mp4';
+import promoVideo from '@/assets/videos/stars.webm';
 import DroneOrderModal from './DroneOrderModal';
 import ReserveTableModal from '../components/ReserveTableModal'; // Adjust path if needed
 

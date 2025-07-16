@@ -59,13 +59,13 @@ const QuickLinks = () => {
       socialLink: 'https://instagram.com/nightlife.kepong',
     },
     {
-      title: 'Games',
-      phone: '+234 805 678 9012',
+      title: 'Snooker',
+      phone: '+234 916 350 0634',
       social: '@funhub.kepong',
     },
     {
-      title: 'Hotel',
-      phone: '+234 806 789 0123',
+      title: 'Assorted Meat & Food',
+      phone: '+234 816 654 0841',
       social: '@keponghotel',
       socialLink: 'https://twitter.com/keponghotel',
     },

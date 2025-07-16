@@ -10,7 +10,7 @@ import light from '@/assets/images/hair.webp';
 import sound from '@/assets/images/babe.webp';
 
 const crewMembers = [
-  { id: 1, name: 'Manager, Chinedu', role: 'General Management', img: manager },
+  { id: 1, name: 'General Manager, Kepong Villa, John ', role: 'General Management', img: manager },
   { id: 2, name: 'DJ, Nneka', role: 'Master of Beats', img: dj },
   { id: 3, name: 'Planner Ifeoma', role: 'Event Planner', img: planner },
   { id: 4, name: 'Light Crew Kelechi', role: 'Lighting Specialist', img: light },
