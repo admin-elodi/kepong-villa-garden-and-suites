@@ -26,14 +26,15 @@ const ClubK = () => {
   ];
 
   const drinksList = [
-    { id: 'red_label', name: 'Red Label', price: 25000, img: redLabel },
-    { id: 'vodka', name: 'Tsars Vodka', price: 18000, img: vodka },
-    { id: 'red_wine', name: 'Red Wine', price: 15500, img: redWine },
+    { id: 'whisky', name: 'Don Julio', price: 500000, img: redLabel },
+    { id: 'hennessyxo', name: 'Henessy X.O', price: 450000, img: vodka }, // changed id from 'whisky' to 'hennessyxo' for uniqueness
+    { id: 'wine', name: 'Four cousins', price: 20000, img: redWine },
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
 
-  const whatsappGroupLink = 'https://chat.whatsapp.com/Kxh671CMzN18RyF9SaaFux?mode=r_c';
+  // WhatsApp number for bar man (in international format, no '+' or spaces)
+  const barmanNumber = '2349169436106'; // Nigeria: '234' country code, remove initial '0'
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -71,6 +72,7 @@ const ClubK = () => {
     });
   };
 
+  // Adjusted to include unique drink ids for accurate calculations
   const totalPrice = Object.entries(selectedDrinks).reduce((total, [id, qty]) => {
     const drink = drinksList.find((d) => d.id === id);
     return total + (drink ? drink.price * qty : 0);
@@ -86,10 +88,21 @@ const ClubK = () => {
     setShowBankDetails(true);
   };
 
+  // Build detailed order breakdown message
+  const orderLines = Object.entries(selectedDrinks)
+    .map(([id, qty]) => {
+      const drink = drinksList.find(d => d.id === id);
+      if (!drink) return null;
+      return `- ${drink.name} × ${qty} = ₦${(drink.price * qty).toLocaleString()}`;
+    })
+    .filter(x => x)
+    .join('\n');
+
+  // Prefill message to barman (short, clear, professional)
   const whatsappMessage = encodeURIComponent(
-    `Hello Club-K, I have made payment for the Premium Drinks order. Subtotal: ₦${totalPrice.toLocaleString()}, Service Charge (5%): ₦${serviceCharge.toLocaleString()}, Total: ₦${(totalPrice + serviceCharge).toLocaleString()}. Please find attached my payment evidence.`
+    `Hello, I have made payment for the following drinks at Club K:\n${orderLines}\n\nSubtotal: ₦${totalPrice.toLocaleString()}\nService Charge (5%): ₦${serviceCharge.toLocaleString()}\nTOTAL: ₦${(totalPrice + serviceCharge).toLocaleString()}\n\nPlease find my payment evidence attached.`
   );
-  const whatsappLink = `${whatsappGroupLink}&text=${whatsappMessage}`;
+  const whatsappLink = `https://wa.me/${barmanNumber}?text=${whatsappMessage}`;
 
   return (
     <main className="relative min-h-screen font-montserrat text-yellow-100">
@@ -116,7 +129,7 @@ const ClubK = () => {
                 Club K Nightclub
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-yellow-200 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded animate-fadeInUp-delayed">
-                Open Wednesdays & Weekends<br className="block sm:hidden" />
+                Open Wednesdays, Fridays & Sundays<br className="block sm:hidden" />
               </p>
             </div>
             <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-xl mx-auto px-4 mt-2">
@@ -204,8 +217,8 @@ const ClubK = () => {
                       </div>
                     </div>
                     <p className="mb-4 text-black text-justify font-medium">
-                      Is this your first order? Call us on <a href="tel:09169436106" className="hover:text-yellow-600 underline">09169436106</a>
-                      or <a href="tel:07031576094" className="hover:text-yellow-600 underline">07031576094</a> if you need immediate information. Otherwise click button below after choosing your drinks
+                      Is this your first order? Call us on <a href="tel:09169436106" className="hover:text-yellow-600">09169436106 </a>
+                      or <a href="tel:07031576094" className="hover:text-yellow-600">07031576094</a> if you need immediate information. Otherwise click button below after choosing your drinks
                     </p>
                     <button
                       onClick={handlePayNow}
@@ -225,15 +238,17 @@ const ClubK = () => {
                       <div><span className="font-semibold">Account Number:</span> 0125564025</div>
                       <div><span className="font-semibold">Amount:</span> ₦{(totalPrice + serviceCharge).toLocaleString()}</div>
                     </div>
-                    <p className="mb-4 text-gray-800">After completing your payment, please send your payment evidence to our WhatsApp group below.</p>
+                    <p className="mb-4 text-gray-800">
+                      After completing your payment, please send your payment evidence privately to our barman using the WhatsApp button below.
+                    </p>
                     <a
                       href={whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block w-full text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-lg transition-colors"
-                      aria-label="Send payment evidence to WhatsApp group"
+                      aria-label="Send payment evidence to barman on WhatsApp"
                     >
-                      Send Payment Evidence to WhatsApp Group
+                      Send Payment Evidence via WhatsApp
                     </a>
                   </>
                 )}

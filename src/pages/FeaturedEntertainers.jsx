@@ -115,7 +115,7 @@ const FeaturedEntertainers = () => {
                 className="text-lg sm:text-xl md:text-xl max-w-2xl mx-auto mb-4"
                 style={{ color: '#fef3c7cc' }}
               >
-                Fridays to Sundays
+                Wednesdays, Fridays & Sundays
               </p>
             </section>
 

@@ -9,8 +9,8 @@ const FeaturedVideos = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-white border-b-2 border-amber-400 inline-block pb-2">
             🎧 Featured Kepong DJ
           </h2>
-          <h1 className="text-lg sm:text-xl text-emerald-100 mt-2">
-            DJ TRANSITION
+          <h1 className="text-lg sm:text-xl font-bold text-emerald-100 mt-2">
+            DJ TEE MASTER
           </h1>
           <p className="text-yellow-100">Lighting up the weekend with good music</p>
         </div>

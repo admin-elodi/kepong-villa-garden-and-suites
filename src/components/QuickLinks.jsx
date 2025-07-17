@@ -5,6 +5,18 @@ import jollofRice from '@/assets/images/food-drink/naija-jollof.webp';
 import weddingReception from '@/assets/images/birthday.webp';
 import '../css/q-links.css';
 
+// Icon set for services
+const serviceIcons = [
+  "🌯", // Shawarma Bar
+  "💈", // Barber Shop
+  "🚗", // Car Wash
+  "🎶", // Nightclub
+  "🎱", // Snooker Boardman
+  "🍖", // Assorted Meat
+  "👗", // Boutique
+  "🍶", // Palm Wine
+];
+
 const QuickLinks = () => {
   const topCards = [
     {
@@ -42,9 +54,9 @@ const QuickLinks = () => {
       socialLink: 'https://instagram.com/shawarmabar.ng',
     },
     {
-      title: 'Laundry',
-      phone: '+234 802 345 6789',
-      social: '@laundryexpress',
+      title: 'Barber Shop',
+      phone: '+234 806 492 1157',
+      social: '@kingsley',
     },
     {
       title: 'Car Wash',
@@ -54,17 +66,17 @@ const QuickLinks = () => {
     },
     {
       title: 'Nightclub',
-      phone: '+234 804 567 8901',
-      social: '@nightlife.kepong',
-      socialLink: 'https://instagram.com/nightlife.kepong',
+      phone: '+234 916 943 6106',
+      social: '@Sunccent1_',
+      socialLink: 'https://x.com/Sunccent1_?t=7LDrva2RghLEEJfOl1vWHg&s=09',
     },
     {
-      title: 'Snooker',
+      title: 'Snooker Boardman',
       phone: '+234 916 350 0634',
       social: '@funhub.kepong',
     },
     {
-      title: 'Assorted Meat & Food',
+      title: 'Assorted Meat',
       phone: '+234 816 654 0841',
       social: '@keponghotel',
       socialLink: 'https://twitter.com/keponghotel',
@@ -75,8 +87,8 @@ const QuickLinks = () => {
       social: '@style.kepong',
     },
     {
-      title: 'Nsukka Palm Wine',
-      phone: '+234 808 901 2345',
+      title: 'Nsukka Palm Wine & Food',
+      phone: '+234 814 559 8866',
       social: '@palmwine.ng',
       socialLink: 'https://instagram.com/palmwine.ng',
     },
@@ -93,7 +105,6 @@ const QuickLinks = () => {
 
   return (
     <main className="mt-0 font-montserrat text-yellow-100 bg-black">
-      {/* White borders on top and bottom */}
       <div className="w-full border-t border-b border-white">
         <section className="py-12 bg-black bg-opacity-90">
           <div className="container max-w-screen-xl mx-auto text-center">
@@ -135,7 +146,7 @@ const QuickLinks = () => {
                       <Link
                         to={{
                           pathname: card.link,
-                          state: card.state, // Pass state for food form
+                          state: card.state,
                         }}
                         className="mt-auto inline-block bg-yellow-200 text-black font-bold py-2 px-4 rounded-lg hover:bg-amber-400 transition-transform hover:scale-105 duration-300 border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500"
                         aria-label={card.btnLabel}
@@ -158,7 +169,7 @@ const QuickLinks = () => {
                   {moreServices.map((service, index) => (
                     <div
                       key={index}
-                      className="backdrop-blur-lg text-yellow-100 p-6 rounded-2xl border-4 border-yellow-100 transform transition hover:scale-105 hover:shadow-2xl cursor-pointer"
+                      className="backdrop-blur-lg text-yellow-100 p-6 rounded-2xl border-4 border-yellow-100 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                       role="button"
                       tabIndex="0"
                       onClick={() => toggleReveal(index)}
@@ -168,6 +179,7 @@ const QuickLinks = () => {
                         }
                       }}
                     >
+                      <span className="text-3xl mb-2 block">{serviceIcons[index % serviceIcons.length]}</span>
                       <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                       {revealedServices[index] ? (
                         <div className="text-sm mt-2">
