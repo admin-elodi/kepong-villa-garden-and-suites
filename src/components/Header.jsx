@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   const navLinkClasses =
-    'block text-base sm:text-lg tracking-wider font-semibold text-white hover:text-amber-400 hover:border-b-2 hover:border-amber-400 transition-all duration-300 py-2';
+    'block text-base sm:text-lg tracking-wider font-semibold text-indigo-900 hover:text-yellow-200 hover:border-b-2 hover:border-yellow-200 transition-all duration-300 py-2';
   const activeClasses = 'text-white border-b-2 border-yellow-100';
 
   return (

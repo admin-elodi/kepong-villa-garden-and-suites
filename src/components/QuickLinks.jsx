@@ -5,7 +5,7 @@ import jollofRice from '@/assets/images/food-drink/naija-jollof.webp';
 import weddingReception from '@/assets/images/birthday.webp';
 import '../css/q-links.css';
 
-// Icon set for services
+// Icon set for services (emoji)
 const serviceIcons = [
   "🌯", // Shawarma Bar
   "💈", // Barber Shop
@@ -55,7 +55,7 @@ const QuickLinks = () => {
     },
     {
       title: 'Barber Shop',
-      phone: '+234 806 492 1157',
+      phone: '+234 915 177 6589',
       social: '@kingsley',
     },
     {
@@ -87,7 +87,7 @@ const QuickLinks = () => {
       social: '@style.kepong',
     },
     {
-      title: 'Nsukka Palm Wine & Food',
+      title: 'Nsukka Palm Wine & Native Food',
       phone: '+234 814 559 8866',
       social: '@palmwine.ng',
       socialLink: 'https://instagram.com/palmwine.ng',
@@ -179,7 +179,12 @@ const QuickLinks = () => {
                         }
                       }}
                     >
-                      <span className="text-3xl mb-2 block">{serviceIcons[index % serviceIcons.length]}</span>
+                      {/* Colored emoji icons with custom colors, no red */}
+                      <span
+                        className={`text-3xl mb-2 block service-icon-color-${index % 4}`}
+                      >
+                        {serviceIcons[index % serviceIcons.length]}
+                      </span>
                       <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                       {revealedServices[index] ? (
                         <div className="text-sm mt-2">
@@ -213,6 +218,15 @@ const QuickLinks = () => {
           </div>
         </section>
       </div>
+
+      {/* --- Add styles for icon colors --- */}
+      <style>{`
+        /* White to grey to light blue icon colors */
+        .service-icon-color-0 { color: #f0f0f0; }      /* white */
+        .service-icon-color-1 { color: #a0a0a0; }      /* medium grey */
+        .service-icon-color-2 { color: #c0d9f7; }      /* light blue */
+        .service-icon-color-3 { color: #d7e6fb; }      /* very light blue */
+      `}</style>
     </main>
   );
 };
