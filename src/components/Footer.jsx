@@ -11,7 +11,7 @@ const Footer = () => {
   const socialBtnBase =
     'transform hover:scale-125 transition-all duration-300 rounded-full p-2 border-2';
   const socialBtnColors =
-    'text-yellow-100 hover:text-yellow-300 border-yellow-300';
+    'text-yellow-100 hover:text-yellow-300 border-indigo-400';
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -148,7 +148,7 @@ const Footer = () => {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-white hover:text-yellow-200 hover:underline transition-colors duration-300 border-b border-yellow-400/50 pb-1"
+                    className="text-white hover:text-yellow-200 hover:underline transition-colors duration-300 border-b border-indigo-400 pb-1"
                   >
                     {item.label}
                   </Link>
@@ -172,14 +172,14 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email"
-                className="w-full bg-yellow-100 text-black px-4 py-3 rounded-lg border-2 border-yellow-400 focus:ring-2 focus:ring-yellow-300 focus:outline-none"
+                className="w-full bg-yellow-100 text-black px-4 py-3 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none"
                 required
               />
               {error && <p className="text-red-400 text-sm">{error}</p>}
               {success && <p className="text-yellow-300 text-sm">{success}</p>}
               <button
                 type="submit"
-                className="bg-yellow-100 text-black font-semibold px-4 py-3 rounded-lg hover:bg-amber-500 hover:text-black transform hover:scale-105 transition-all duration-300 w-full border-2 border-yellow-400"
+                className="bg-yellow-100 text-black font-semibold px-4 py-3 rounded-lg hover:bg-amber-500 hover:text-black transform hover:scale-105 transition-all duration-300 w-full"
               >
                 Subscribe
               </button>
@@ -188,7 +188,7 @@ const Footer = () => {
               <p>
                 <a
                   href="tel:+2349162836505"
-                  className="hover:text-amber-400 transition-colors border-b border-yellow-400/50 pb-1"
+                  className="hover:text-amber-400 transition-colors border-b border-indigo-400 pb-1"
                 >
                   0916 283 6505
                 </a>
@@ -196,12 +196,12 @@ const Footer = () => {
               <p>
                 <a
                   href="mailto:odogwucally@gmail.com"
-                  className="hover:text-amber-400 transition-colors border-b border-yellow-400/50 pb-1"
+                  className="hover:text-amber-400 transition-colors border-b border-indigo-400 pb-1"
                 >
                   odogwucally@gmail.com
                 </a>
               </p>
-              <p className="border-b border-yellow-400/50 pb-1">
+              <p className="border-b border-indigo-400 pb-1">
                 #275 Ugwogo Nike Road, Abakpa, Enugu
               </p>
             </div>
