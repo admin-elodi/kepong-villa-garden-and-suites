@@ -352,23 +352,43 @@ const Events = () => {
             }
             .modal-content { min-width: 470px; }
           }
+          /* --- Custom header mobile improvements --- */
+          @media (max-width: 639px) {
+            .header-upcoming-kepong {
+              font-size: 1.5rem !important;
+              letter-spacing: 5px !important;
+              padding-top: 1rem !important;
+              padding-bottom: 1rem !important;
+              border-radius: 0.75rem !important;
+              background-color: rgba(0, 0, 0, 0.6) !important;
+              max-width: 95% !important;
+              margin-left: auto !important;
+              margin-right: auto !important;
+              box-shadow: 0 2px 12px rgba(0,0,0,0.25) !important;
+              text-shadow: 1px 1px 4px rgba(0,0,0,0.6) !important;
+              /* Override any tracking from tailwind for smaller screens */
+              letter-spacing: 5px;
+            }
+          }
         `}
       </style>
 
-      {/* --------- TEXT HERO (unchanged styling, just moved above carousel) --------- */}
+      {/* --------- TEXT HERO (updated header styling) --------- */}
       <section className="relative mt-4 z-20 slide-up delay-7 text-center w-full mb-0">
         <div className="relative w-full h-[150px] overflow-hidden">
-            <video
-              className="absolute top-0 left-0 w-full h-full object-cover z-0"
-              src={backgroundVideo}
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-            <h1 className="md:case uppercase relative z-10 sm:text-5xl md:text-3xl font-extrabold tracking-[15px] leading-tight text-white md:px-18 py-12 mb-4 bg-black/50 rounded-lg">
-              Upcoming Kepong Events!
-            </h1>
+          <video
+            className="absolute top-0 left-0 w-full h-full object-cover z-0"
+            src={backgroundVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <h1
+            className="md:text-2xl header-upcoming-kepong uppercase relative z-10 font-extrabold text-white bg-black/50 tracking-[15px] sm:tracking-[15px] md:tracking-[15px] md:px-18 py-12 mb-4 rounded-lg"
+          >
+            Upcoming Kepong Events!
+          </h1>
         </div>
 
         <h1 className="text-lg sm:text-4xl md:text-3xl font-extrabold tracking-widest leading-tight text-black drop-shadow-[0_4px_10px_rgba(56,189,248,0.7)] bg-slate-400 border-b-4 border-black px-6 py-4">
@@ -376,7 +396,8 @@ const Events = () => {
         </h1>
       </section>
 
-      {/* --------- CAROUSEL SECTION (No overlay text inside) --------- */}
+      {/* ----------- Remaining unchanged code ----------- */}
+
       <section className="relative z-20 w-full">
         <div className="carousel-container">
           {carouselImages.map((image, index) => (
