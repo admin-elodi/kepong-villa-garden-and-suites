@@ -87,7 +87,7 @@ const Hero = ({ setIsModalOpen }) => {
 
               <button
                 onClick={openReserveModal}
-                className="bg-indigo-900 text-white font-bold text-base cursor-pointer sm:text-lg py-3 border-2 border-yellow-100 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-yellow-200 hover:text-indigo-900 hover:border-yellow-700 hover:scale-105"
+                className="bg-indigo-300 text-black font-bold text-base cursor-pointer sm:text-lg py-3 border-2 border-yellow-100 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-yellow-200 hover:text-indigo-900 hover:border-yellow-700 hover:scale-105"
                 aria-label="Reserve a table for entertainment"
                 style={{
                   width: getButtonWidth('reserveTable'),
@@ -137,7 +137,7 @@ const Hero = ({ setIsModalOpen }) => {
 
             <button
               onClick={openDroneModal}
-              className="bg-transparent text-white font-semibold text-base py-3 rounded-lg border-2 border-indigo-400 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-indigo-400 hover:text-white hover:border-indigo-700 text-center"
+              className="bg-transparent text-white font-semibold text-base py-3 rounded-lg border-2 border-indigo-300 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-indigo-400 hover:text-white hover:border-indigo-700 text-center"
               aria-label="Order food or drinks by drone"
             >
               Order by Drone

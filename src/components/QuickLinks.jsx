@@ -105,7 +105,7 @@ const QuickLinks = () => {
 
   return (
     <main className="mt-0 font-montserrat text-yellow-100 bg-black">
-      <div className="w-full border-t border-b border-indigo-400">
+      <div className="w-full border-t border-b border-indigo-300">
         <section className="py-12 bg-black bg-opacity-90">
           <div className="container max-w-screen-xl mx-auto text-center">
             {/* Top Cards Section */}
@@ -121,7 +121,7 @@ const QuickLinks = () => {
                     animate-fade-in-up
                     leading-tight
                     tracking-wider
-                    text-yellow-200
+                    text-yellow-100
                     drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]
                   "
                 >
@@ -132,7 +132,7 @@ const QuickLinks = () => {
                   {topCards.map((card, index) => (
                     <div
                       key={index}
-                      className="bg-black bg-opacity-80 text-yellow-100 p-4 rounded-lg shadow-xl flex flex-col min-h-[360px] transition-transform hover:scale-105 hover:shadow-2xl"
+                      className="bg-black bg-opacity-80 text-indigo-300 p-4 rounded-lg shadow-xl flex flex-col min-h-[360px] transition-transform hover:scale-105 hover:shadow-2xl"
                     >
                       <img
                         src={card.img}
@@ -148,7 +148,7 @@ const QuickLinks = () => {
                           pathname: card.link,
                           state: card.state,
                         }}
-                        className="mt-auto inline-block bg-yellow-200 text-black font-bold py-2 px-4 rounded-lg hover:bg-amber-400 transition-transform hover:scale-105 duration-300 border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500"
+                        className="mt-auto inline-block bg-yellow-100 text-black font-bold py-2 px-4 rounded-lg hover:bg-amber-400 transition-transform hover:scale-105 duration-300 border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500"
                         aria-label={card.btnLabel}
                       >
                         {card.btnLabel}
@@ -160,7 +160,7 @@ const QuickLinks = () => {
             </section>
 
             {/* More Services To Enjoy */}
-            <section className="py-12 flex justify-center border-t-2 border-indigo-400">
+            <section className="py-12 flex justify-center border-t-2 border-indigo-300">
               <div className="bg-black bg-opacity-90 rounded-2xl p-8 max-w-6xl w-full text-center shadow-xl">
                 <h2 className="text-3xl md:text-4xl font-dancing mb-8 text-yellow-100 drop-shadow-lg">
                   More Services...
@@ -169,7 +169,7 @@ const QuickLinks = () => {
                   {moreServices.map((service, index) => (
                     <div
                       key={index}
-                      className="backdrop-blur-lg text-yellow-100 p-6 rounded-2xl border-4 border-indigo-400 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+                      className="backdrop-blur-lg text-yellow-100 p-6 rounded-2xl border-4 border-indigo-300 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                       role="button"
                       tabIndex="0"
                       onClick={() => toggleReveal(index)}
