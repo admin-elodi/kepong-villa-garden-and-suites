@@ -57,7 +57,7 @@ const Hero = ({ setIsModalOpen }) => {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 lg:px-12 max-w-screen-xl mx-auto">
         {/* Debug title to confirm file renders */}
         <h1
-          className="text-2xl mt-24 sm:text-4xl md:text-5xl font-bold text-indigo-900 tracking-widest mb-16 animate-fade-in-up delay-100"
+          className="text-2xl mt-24 sm:text-4xl md:text-5xl font-bold text-white tracking-widest mb-16 animate-fade-in-up delay-100"
           style={{
             textShadow: '0 6px 8px rgba(0,0,0,0.5)',
             animation: 'growText 4s ease-in-out forwards',
@@ -72,7 +72,7 @@ const Hero = ({ setIsModalOpen }) => {
             <div className="flex justify-center gap-6 mb-4">
               <Link
                 to="/bookings"
-                className="bg-yellow-100 text-black font-bold cursor-pointer text-base sm:text-lg py-3 rounded-lg hover:bg-indigo-900 hover:border-yellow-400 hover:scale-105 hover:text-white transition-transform duration-300 border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                className="bg-yellow-100 text-black font-bold cursor-pointer text-base sm:text-lg py-3 rounded-lg border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-indigo-700 hover:text-white hover:border-yellow-300 hover:scale-105"
                 aria-label="Book your stay at Kepong Villa"
                 style={{
                   width: getButtonWidth('bookHotel'),
@@ -87,7 +87,7 @@ const Hero = ({ setIsModalOpen }) => {
 
               <button
                 onClick={openReserveModal}
-                className="bg-black text-white font-bold text-base cursor-pointer sm:text-lg py-3 border-2 border-yellow-100 rounded-lg hover:bg-indigo-900 hover:text-black hover:scale-105 transition-transform duration-300 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                className="bg-indigo-900 text-white font-bold text-base cursor-pointer sm:text-lg py-3 border-2 border-yellow-100 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-yellow-200 hover:text-indigo-900 hover:border-yellow-700 hover:scale-105"
                 aria-label="Reserve a table for entertainment"
                 style={{
                   width: getButtonWidth('reserveTable'),
@@ -104,7 +104,7 @@ const Hero = ({ setIsModalOpen }) => {
             <div className="flex justify-center">
               <button
                 onClick={openDroneModal}
-                className="bg-transparent text-white font-bold cursor-pointer text-base sm:text-lg py-3 rounded-lg hover:bg-gray-900 hover:text-black transition-colors duration-300 border-2 border-yellow-400 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                className="bg-transparent text-white font-bold cursor-pointer text-base sm:text-lg py-3 rounded-lg border-2 border-indigo-400 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-indigo-400 hover:text-white hover:border-indigo-700"
                 aria-label="Order food or drinks by drone"
                 style={{
                   width: getButtonWidth('orderDrone'),
@@ -121,7 +121,7 @@ const Hero = ({ setIsModalOpen }) => {
           <div className="flex flex-col gap-6 sm:hidden mt-8">
             <Link
               to="/bookings"
-              className="bg-white text-black font-bold text-base py-3 rounded-lg hover:scale-105 transition-transform duration-300 border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-center"
+              className="bg-white text-black font-bold text-base py-3 rounded-lg border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-indigo-700 hover:text-white hover:border-yellow-300 hover:scale-105 text-center"
               aria-label="Book your stay at Kepong Villa"
             >
               Book Hotel
@@ -129,7 +129,7 @@ const Hero = ({ setIsModalOpen }) => {
 
             <button
               onClick={openReserveModal}
-              className="bg-indigo-900 text-white font-bold text-base py-3 rounded-lg hover:text-white hover:scale-105 transition-transform duration-300 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-center"
+              className="bg-indigo-900 text-white font-bold text-base py-3 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-yellow-200 hover:text-indigo-900 hover:border-yellow-700 hover:scale-105 text-center"
               aria-label="Reserve a table for entertainment"
             >
               Reserve Table
@@ -137,7 +137,7 @@ const Hero = ({ setIsModalOpen }) => {
 
             <button
               onClick={openDroneModal}
-              className="bg-transparent text-white font-semibold text-base py-3 rounded-lg hover:bg-yellow-200 transition-colors duration-300 border-2 border-yellow-400 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-center"
+              className="bg-transparent text-white font-semibold text-base py-3 rounded-lg border-2 border-indigo-400 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-indigo-400 hover:text-white hover:border-indigo-700 text-center"
               aria-label="Order food or drinks by drone"
             >
               Order by Drone

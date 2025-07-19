@@ -10,15 +10,15 @@ const Header = () => {
   };
 
   const navLinkClasses =
-    'block text-base sm:text-lg tracking-wider font-semibold text-indigo-900 hover:text-yellow-200 hover:border-b-2 hover:border-yellow-200 transition-all duration-300 py-2';
+    'block text-base sm:text-lg tracking-wider font-semibold text-indigo-400 hover:text-yellow-200 hover:border-b-2 hover:border-yellow-200 transition-all duration-300 py-2';
   const activeClasses = 'text-white border-b-2 border-yellow-100';
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-black font-montserrat shadow-md border-b border-yellow-400"
+      className="fixed top-0 left-0 w-full z-50 bg-black font-montserrat shadow-md border-b border-indigo-400"
     >
       {/* Desktop: Title above nav */}
-      <div className="hidden md:flex justify-center bg-black border-b border-yellow-400 py-2">
+      <div className="hidden md:flex justify-center bg-black border-b border-indigo-400 py-2">
         <h1 className="text-2xl font-semibold text-white tracking-[10px] select-none uppercase">
           Kepong Villa Garden & Suites
         </h1>
@@ -74,9 +74,9 @@ const Header = () => {
           ) : (
             // Hamburger icon
             <div className="flex flex-col justify-between w-7 h-6">
-              <span className="block h-[3px] bg-indigo-900 rounded"></span>
-              <span className="block h-[3px] bg-indigo-900 rounded"></span>
-              <span className="block h-[3px] bg-indigo-900 rounded"></span>
+              <span className="block h-[3px] bg-indigo-400 rounded"></span>
+              <span className="block h-[3px] bg-indigo-400 rounded"></span>
+              <span className="block h-[3px] bg-indigo-400 rounded"></span>
       
             </div>
           )}

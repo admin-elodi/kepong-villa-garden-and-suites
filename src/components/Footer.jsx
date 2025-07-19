@@ -54,7 +54,7 @@ const Footer = () => {
     <footer className="bg-black bg-opacity-95 text-yellow-100 py-16 font-montserrat">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Contact Section */}
-        <div className="border-t-2 border-b-2 border-yellow-300 py-6 mb-8">
+        <div className="border-t-2 border-b-2 border-indigo-400 py-6 mb-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Contact Details */}
             <div className="flex flex-wrap justify-center gap-8 text-sm">
@@ -101,7 +101,7 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Kepong Villa Vibes Section */}
-          <div className="space-y-6 text-center border-4 border-yellow-200 rounded-lg p-6 bg-black bg-opacity-80">
+          <div className="space-y-6 text-center border-4 border-indigo-400 rounded-lg p-6 bg-black bg-opacity-80">
             <h3 className="text-2xl font-bold animate-pulse text-yellow-100">
               Kepong Villa Vibes
             </h3>
@@ -134,7 +134,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="space-y-6 text-center border-4 border-yellow-200 rounded-lg p-6 bg-black bg-opacity-80">
+          <div className="space-y-6 text-center border-4 border-indigo-400 rounded-lg p-6 bg-black bg-opacity-80">
             <h3 className="text-2xl font-bold text-yellow-100">Get in the Groove</h3>
             <ul className="space-y-3 text-sm">
               {[
@@ -158,7 +158,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter & Contact Section */}
-          <div className="space-y-6 text-center border-4 border-yellow-200 rounded-lg p-6 bg-black bg-opacity-80">
+          <div className="space-y-6 text-center border-4 border-indigo-400 rounded-lg p-6 bg-black bg-opacity-80">
             <h3 className="text-2xl font-bold text-yellow-100">Entertainment Updates</h3>
             <p className="text-sm max-w-md mx-auto text-white">
               Subscribe for Entertainment News

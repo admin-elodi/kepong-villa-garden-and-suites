@@ -125,7 +125,7 @@ const ClubK = () => {
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
             <div className="mb-8">
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-indigo-400 drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
                 Club K Nightclub
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-yellow-200 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded animate-fadeInUp-delayed">

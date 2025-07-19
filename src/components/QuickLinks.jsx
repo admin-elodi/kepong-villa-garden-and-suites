@@ -105,7 +105,7 @@ const QuickLinks = () => {
 
   return (
     <main className="mt-0 font-montserrat text-yellow-100 bg-black">
-      <div className="w-full border-t border-b border-white">
+      <div className="w-full border-t border-b border-indigo-400">
         <section className="py-12 bg-black bg-opacity-90">
           <div className="container max-w-screen-xl mx-auto text-center">
             {/* Top Cards Section */}
@@ -160,7 +160,7 @@ const QuickLinks = () => {
             </section>
 
             {/* More Services To Enjoy */}
-            <section className="py-12 flex justify-center">
+            <section className="py-12 flex justify-center border-t-2 border-indigo-400">
               <div className="bg-black bg-opacity-90 rounded-2xl p-8 max-w-6xl w-full text-center shadow-xl">
                 <h2 className="text-3xl md:text-4xl font-dancing mb-8 text-yellow-100 drop-shadow-lg">
                   More Services...
@@ -169,7 +169,7 @@ const QuickLinks = () => {
                   {moreServices.map((service, index) => (
                     <div
                       key={index}
-                      className="backdrop-blur-lg text-yellow-100 p-6 rounded-2xl border-4 border-yellow-100 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+                      className="backdrop-blur-lg text-yellow-100 p-6 rounded-2xl border-4 border-indigo-400 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                       role="button"
                       tabIndex="0"
                       onClick={() => toggleReveal(index)}
@@ -208,7 +208,7 @@ const QuickLinks = () => {
                           </p>
                         </div>
                       ) : (
-                        <p className="text-yellow-300">Click to reveal contact info</p>
+                        <p className="text-yellow-200">Click to reveal contact info</p>
                       )}
                     </div>
                   ))}
