@@ -74,9 +74,10 @@ const Header = () => {
           ) : (
             // Hamburger icon
             <div className="flex flex-col justify-between w-7 h-6">
-              <span className="block h-[3px] bg-white rounded"></span>
-              <span className="block h-[3px] bg-white rounded"></span>
-              <span className="block h-[3px] bg-white rounded"></span>
+              <span className="block h-[3px] bg-indigo-900 rounded"></span>
+              <span className="block h-[3px] bg-indigo-900 rounded"></span>
+              <span className="block h-[3px] bg-indigo-900 rounded"></span>
+      
             </div>
           )}
         </button>
