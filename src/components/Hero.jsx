@@ -72,7 +72,7 @@ const Hero = ({ setIsModalOpen }) => {
             <div className="flex justify-center gap-6 mb-4">
               <Link
                 to="/bookings"
-                className="bg-yellow-100 text-black font-bold cursor-pointer text-base sm:text-lg py-3 rounded-lg border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-indigo-700 hover:text-white hover:border-yellow-300 hover:scale-105"
+                className="bg-yellow-100 text-black font-bold cursor-pointer text-base sm:text-lg py-3 rounded-lg border-2 border-black shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-slate-500 hover:text-white hover:scale-105"
                 aria-label="Book your stay at Kepong Villa"
                 style={{
                   width: getButtonWidth('bookHotel'),
@@ -87,7 +87,7 @@ const Hero = ({ setIsModalOpen }) => {
 
               <button
                 onClick={openReserveModal}
-                className="bg-indigo-300 text-black font-bold text-base cursor-pointer sm:text-lg py-3 border-2 border-yellow-100 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-yellow-200 hover:text-indigo-900 hover:border-yellow-700 hover:scale-105"
+                className="bg-indigo-300 text-black font-bold text-base cursor-pointer sm:text-lg py-3 border-2 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-slate-500 hover:text-white hover:scale-105"
                 aria-label="Reserve a table for entertainment"
                 style={{
                   width: getButtonWidth('reserveTable'),
@@ -104,7 +104,7 @@ const Hero = ({ setIsModalOpen }) => {
             <div className="flex justify-center">
               <button
                 onClick={openDroneModal}
-                className="bg-transparent text-white font-bold cursor-pointer text-base sm:text-lg py-3 rounded-lg border-2 border-indigo-400 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-indigo-400 hover:text-white hover:border-indigo-700"
+                className="bg-transparent text-white font-bold cursor-pointer text-base sm:text-lg py-3 rounded-lg border-2 border-indigo-300 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-slate-500 hover:text-black"
                 aria-label="Order food or drinks by drone"
                 style={{
                   width: getButtonWidth('orderDrone'),
@@ -129,7 +129,7 @@ const Hero = ({ setIsModalOpen }) => {
 
             <button
               onClick={openReserveModal}
-              className="bg-indigo-900 text-white font-bold text-base py-3 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-yellow-200 hover:text-indigo-900 hover:border-yellow-700 hover:scale-105 text-center"
+              className="bg-indigo-300 text-black font-bold text-base py-3 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-yellow-200 hover:text-indigo-900 hover:border-yellow-700 hover:scale-105 text-center"
               aria-label="Reserve a table for entertainment"
             >
               Reserve Table

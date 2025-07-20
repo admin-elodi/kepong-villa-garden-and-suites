@@ -10,8 +10,8 @@ const Header = () => {
   };
 
   const navLinkClasses =
-    'block text-base sm:text-lg tracking-wider font-semibold text-indigo-300 hover:text-yellow-200 hover:border-b-2 hover:border-yellow-200 transition-all duration-300 py-2';
-  const activeClasses = 'text-white border-b-2 border-yellow-100';
+    'block text-base sm:text-lg tracking-wider font-semibold text-indigo-300 hover:text-yellow-100 hover:border-b-2 hover:border-yellow-100 transition-all duration-300 py-2';
+  const activeClasses = 'text-yellow-100 border-b-2 border-yellow-100';
 
   return (
     <header
@@ -74,9 +74,9 @@ const Header = () => {
           ) : (
             // Hamburger icon
             <div className="flex flex-col justify-between w-7 h-6">
-              <span className="block h-[3px] bg-indigo-400 rounded"></span>
-              <span className="block h-[3px] bg-indigo-400 rounded"></span>
-              <span className="block h-[3px] bg-indigo-400 rounded"></span>
+              <span className="block h-[3px] bg-indigo-300 rounded"></span>
+              <span className="block h-[3px] bg-indigo-300 rounded"></span>
+              <span className="block h-[3px] bg-indigo-300 rounded"></span>
       
             </div>
           )}

@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import clubkHero from '@/assets/videos/club.mp4';
+import clubkHero from '@/assets/videos/clubbing.mp4';
 import dance2 from '@/assets/images/club/dance2.webp';
 import dj from '@/assets/images/club/dj.webp';
 import drink1 from '@/assets/images/club/drink1.webp';
 import vip1 from '@/assets/images/club/vip1.webp';
 import dance1 from '@/assets/images/club/dance1.webp';
 import ambience1 from '@/assets/images/club/ambience1.webp';
-import redLabel from '@/assets/images/club/red.webp';
-import vodka from '@/assets/images/club/vodka.webp';
+import redLabel from '@/assets/images/club/don.jpg';
+import vodka from '@/assets/images/club/donj.jpg';
 import redWine from '@/assets/images/club/wine.webp';
 
 const ClubK = () => {
@@ -125,10 +125,10 @@ const ClubK = () => {
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
             <div className="mb-8">
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-indigo-400 drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-indigo-300 drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] bg-black/50 px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
                 Club K Nightclub
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-yellow-200 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded animate-fadeInUp-delayed">
+              <p className="text-lg sm:text-xl md:text-2xl text-yellow-100 max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] bg-black/60 px-4 py-2 rounded animate-fadeInUp-delayed">
                 Open Wednesdays, Fridays & Sundays<br className="block sm:hidden" />
               </p>
             </div>
@@ -260,7 +260,7 @@ const ClubK = () => {
         <div className="w-full relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <section className="py-4 sm:py-16">
-              <h2 className="text-3xl text-yellow-100 font-bold text-center mb-4 pb-3 px-4 py-2 rounded">Experience Club K</h2>
+              <h2 className="text-3xl text-indigo-300 font-bold text-center mb-4 pb-3 px-4 py-2 rounded">Experience Club K</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 sm:gap-x-12 max-w-6xl mx-auto">
                 {features.map(({ title, img, desc }, i) => (
                   <div key={i} className="rounded-lg overflow-hidden border-4 border-yellow-100 shadow-xl bg-black/80 flex flex-col items-center text-center" style={{ height: '340px' }}>

@@ -1,63 +1,21 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import FeaturedVideos from '../components/FeaturedVideos';
 import ReserveTableModal from '../components/ReserveTableModal';
-import rappersImage from '@/assets/images/rappers.webp'; // Used for background
-import comedyNightVideo from '@/assets/videos/comedian1.mp4';
 
-const entertainers = [
+import starsVideo from '@/assets/videos/stars.webm';
+import coupleVideo from '@/assets/videos/couple.mp4';
+
+const ENTERTAINER_CAROUSEL = [
   {
-    category: 'Comedians',
-    performers: [
-      {
-        name: 'Chuks D General',
-        description: 'Hilarious Nigerian humor with witty punchlines.',
-        video: comedyNightVideo,
-      },
-      {
-        name: 'MC Edo Pikin',
-        description: 'High-energy comedy with pidgin flair.',
-      },
-      {
-        name: 'MC Bar Beach',
-        description: 'Side-splitting jokes that captivate all.',
-      },
-    ],
+    label: 'Traditional Dance Band',
+    video: starsVideo,
   },
   {
-    category: 'Dancers',
-    performers: [
-      {
-        name: 'Afrobeat Crew',
-        description: 'Dynamic Afrobeat and street dance.',
-      },
-      {
-        name: 'Zanku Legends',
-        description: 'Precise, electrifying Zanku dance moves.',
-      },
-      {
-        name: 'Linda Fire',
-        description: 'Fiery, electrifying dance performances.',
-      },
-    ],
+    label: 'Hype Men',
+    video: coupleVideo,
   },
-  {
-    category: 'Hypemen',
-    performers: [
-      {
-        name: 'HypeKing Lagos',
-        description: 'Crowd-pumping energy all night.',
-      },
-      {
-        name: 'MC Energy',
-        description: 'Vibrant hype for Club K crowds.',
-      },
-      {
-        name: 'GrandMasterHype',
-        description: 'Lively energy for unforgettable events.',
-      },
-    ],
-  },
+  // more to add later
 ];
 
 const weekendLineup = {
@@ -67,179 +25,100 @@ const weekendLineup = {
 };
 
 const FeaturedEntertainers = () => {
-  const [activeCategory, setActiveCategory] = useState(entertainers[0].category);
   const [showModal, setShowModal] = useState(false);
+  const [carouselIdx, setCarouselIdx] = useState(0);
 
-  const handleReserveTable = () => {
-    setShowModal(true);
-  };
+  const handleReserveTable = () => setShowModal(true);
+
+  // Carousel controls
+  const prevSlide = () => setCarouselIdx((idx) => (idx === 0 ? ENTERTAINER_CAROUSEL.length - 1 : idx - 1));
+  const nextSlide = () => setCarouselIdx((idx) => (idx === ENTERTAINER_CAROUSEL.length - 1 ? 0 : idx + 1));
 
   return (
-    <main className="relative min-h-screen font-montserrat text-black py-32">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 w-full min-h-screen bg-cover bg-center"
-        style={{ backgroundImage: `url(${rappersImage})`, zIndex: 20 }}
-        aria-hidden="true"
-      />
-      {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-60 z-10" />
+    <main className="min-h-screen bg-white font-montserrat text-black py-20">
+      <div className="w-full max-w-5xl mx-auto px-4 sm:px-8">
+        {/* Minimalist Header */}
+        <header className="pt-2 pb-6 text-center">
+          <h1 className="text-3xl sm:text-5xl font-bold lowercase tracking-tight mb-1">
+            entertainment
+          </h1>
+          <p className="text-gray-700 text-lg mt-1">Wednesdays, Fridays & Sundays</p>
+        </header>
 
-      <style>
-        {`
-          @keyframes fadeInUpBlock {
-            from {
-              opacity: 0;
-              transform: translateY(40px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          .animate-fadeInUpBlock {
-            animation: fadeInUpBlock 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both;
-          }
-        `}
-      </style>
-      <div className="relative z-20 w-full py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Animated block starts here */}
-          <div className="animate-fadeInUpBlock">
-            {/* Page Heading */}
-            <section className="mx-auto max-w-2xl bg-black/60 rounded-lg py-4 px-4 mb-4 text-center">
-              <h1 className="text-4xl sm:text-5xl md:text-4xl font-bold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(254,240,138,0.8)] bg-black/70 md:px-18 py-4 rounded-lg">
-                Weekend Entertainment
-              </h1>
-              <p
-                className="text-lg sm:text-xl md:text-xl max-w-2xl mx-auto mb-4"
-                style={{ color: '#fef3c7cc' }}
-              >
-                Wednesdays, Fridays & Sundays
-              </p>
-            </section>
+        {/* Featured DJ Videos – now at top */}
+        <section className="mb-12">
+          <FeaturedVideos />
+        </section>
 
-            {/* This Weekend's Lineup Announcement */}
-            <div className="max-w-7xl mx-auto mb-6 px-4 sm:px-0">
-              <div className="inline-block text-3xl">🎤</div>
-              <h2
-                className="flex items-center justify-center text-2xl sm:text-3xl font-semibold mb-2 text-center gap-2"
-                style={{ color: 'white' }}
-              >
-              
-                <p>This Weekend’s Lineup</p>
-              </h2>
-              <div className="flex flex-col sm:flex-row justify-center gap-6 mb-4">
-                {['comedians', 'dancers', 'hypemen'].map((category) => (
-                  <div
-                    key={category}
-                    className="bg-black/60 border-2 rounded-lg p-4 min-w-[220px]"
-                    style={{ borderColor: '#fef3c7' }}
-                  >
-                    <h3
-                      className="text-lg font-bold mb-1 text-center"
-                      style={{ color: '#fef3c7' }}
-                    >
-                      {category.charAt(0).toUpperCase() + category.slice(1)}
-                    </h3>
-                    <ul className="text-yellow-200 text-center space-y-1">
-                      {weekendLineup[category].map((name) => (
-                        <li key={name}>{name}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-              <div className="flex justify-center">
-                <button
-                  onClick={handleReserveTable}
-                  className="bg-black bg-opacity-90 text-yellow-100 px-12 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 shadow-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none"
-                  style={{ borderColor: '#fef3c7', minWidth: 260, width: 320, maxWidth: '95vw' }}
-                  aria-label="Book your table now for an unforgettable weekend!"
-                >
-                  Reserve Table-4-Four
-                </button>
-              </div>
-            </div>
-          </div>
-          {/* Animated block ends here */}
-
-          {/* Featured DJ Video Section */}
-          <section className="py-8 sm:py-12 rounded-lg">
-            <div className="text-center mb-6">
-              <FeaturedVideos />
-            </div>
-          </section>
-
-          {/* Entertainers Tabs */}
-          <section className="mb-10">
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6 w-full max-w-xs sm:max-w-none mx-auto">
-              {entertainers.map((cat) => (
-                <button
-                  key={cat.category}
-                  onClick={() => setActiveCategory(cat.category)}
-                  className={`px-6 py-2 rounded-full font-semibold border-2 transition w-full
-                    ${
-                      activeCategory === cat.category
-                        ? 'bg-black text-yellow-100'
-                        : 'bg-transparent text-yellow-300 border-yellow-500 hover:bg-black hover:text-yellow-100'
-                    }
-                  `}
-                  style={{ borderColor: '#fef3c7' }}
-                >
-                  {cat.category}
-                </button>
-              ))}
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {entertainers
-                .find((cat) => cat.category === activeCategory)
-                ?.performers.map((perf) => (
-                  <div
-                    key={perf.name}
-                    className="bg-black bg-opacity-90 border-2 rounded-lg p-6 flex flex-col items-center text-center shadow-lg"
-                    style={{ borderColor: '#fef3c7' }}
-                  >
-                    <h3
-                      className="text-xl font-bold mb-2"
-                      style={{ color: '#fbbf24' }}
-                    >
-                      {perf.name}
-                    </h3>
-                    <p className="text-yellow-200 mb-4">{perf.description}</p>
-                    {perf.video && (
-                      <ReactPlayer
-                        url={perf.video}
-                        controls
-                        width="100%"
-                        height="180px"
-                        className="rounded-lg overflow-hidden"
-                      />
-                    )}
-                  </div>
-                )) || (
-                <div className="col-span-3 text-center text-yellow-400">
-                  No performers in this category yet.
-                </div>
-              )}
-            </div>
-          </section>
-
-          {/* Minimalist Promo & Reserve Button (BOTTOM) */}
-          <div className="flex flex-col items-center my-8">
+        {/* Carousel of Entertainers (video slider) */}
+        <section className="mb-16">
+          <div className="flex items-center gap-4 justify-center">
             <button
-              onClick={handleReserveTable}
-              className="bg-black bg-opacity-90 text-yellow-100 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 shadow-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none"
-              style={{ borderColor: '#fef3c7', minWidth: 220, maxWidth: '95vw' }}
-              aria-label="Reserve your table for weekend entertainment"
+              aria-label="Previous"
+              onClick={prevSlide}
+              className="rounded-full bg-gray-100 border text-lg w-9 h-9 flex items-center justify-center hover:bg-gray-200"
             >
-              Reserve Table-4-Four
+              ‹
+            </button>
+            <div className="flex-1 max-w-md mx-2 rounded-xl border bg-gray-50 shadow md:flex md:flex-col md:items-center p-3">
+              <div className="rounded-lg overflow-hidden aspect-video w-full mb-2">
+                <video
+                  src={ENTERTAINER_CAROUSEL[carouselIdx].video}
+                  controls
+                  loop
+                  muted
+                  className="w-full h-full bg-black"
+                  poster=""
+                  style={{ borderRadius: 10 }}
+                />
+              </div>
+              <div className="text-center text-lg font-semibold text-gray-800">
+                {ENTERTAINER_CAROUSEL[carouselIdx].label}
+              </div>
+            </div>
+            <button
+              aria-label="Next"
+              onClick={nextSlide}
+              className="rounded-full bg-gray-100 border text-lg w-9 h-9 flex items-center justify-center hover:bg-gray-200"
+            >
+              ›
             </button>
           </div>
+        </section>
 
-          {/* Reserve Table Modal */}
-          <ReserveTableModal isOpen={showModal} setIsModalOpen={setShowModal} />
+        {/* This Weekend's Lineup minimalist */}
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-center mb-3">This Weekend’s Lineup</h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {Object.entries(weekendLineup).map(([category, names]) => (
+              <div
+                key={category}
+                className="flex-1 min-w-[160px] border rounded-md p-3 bg-white"
+              >
+                <div className="text-gray-600 text-sm font-semibold mb-1 capitalize">
+                  {category}
+                </div>
+                <ul className="text-gray-900 font-medium space-y-1 text-sm">
+                  {names.map((n) => <li key={n}>{n}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Reserve Table (primary call-to-action) */}
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={handleReserveTable}
+            className="bg-black text-white px-8 py-3 rounded-lg font-semibold text-base hover:bg-gray-800 shadow-sm transition"
+            aria-label="Reserve your table"
+          >
+            Reserve Table-4-Four
+          </button>
         </div>
+
+        {/* Modal */}
+        <ReserveTableModal isOpen={showModal} setIsModalOpen={setShowModal} />
       </div>
     </main>
   );

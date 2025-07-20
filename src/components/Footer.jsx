@@ -60,15 +60,15 @@ const Footer = () => {
             <div className="flex flex-wrap justify-center gap-8 text-sm">
               <div className="flex items-center space-x-2">
                 <FaMapMarkerAlt className="text-xl text-yellow-200" />
-                <p className="text-yellow-200">
+                <p className="text-yellow-100">
                   #275 Ugwogo Nike Road, Abakpa, Enugu
                 </p>
               </div>
               <div className="flex items-center space-x-2">
-                <FaPhoneAlt className="text-xl text-yellow-200" />
+                <FaPhoneAlt className="text-xl text-yellow-100" />
                 <a
                   href="tel:+2349162836505"
-                  className="text-yellow-200 hover:text-amber-500 transition-colors"
+                  className="text-yellow-100 hover:text-amber-500 transition-colors"
                 >
                   0916 283 6505
                 </a>
@@ -77,7 +77,7 @@ const Footer = () => {
                 <FaEnvelope className="text-xl text-yellow-200" />
                 <a
                   href="mailto:odogwucally@gmail.com"
-                  className="text-yellow-200 hover:text-amber-500 transition-colors"
+                  className="text-yellow-100 hover:text-amber-500 transition-colors"
                 >
                   odogwucally@gmail.com
                 </a>
