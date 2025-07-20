@@ -10,16 +10,16 @@ const Header = () => {
   };
 
   const navLinkClasses =
-    'block text-base sm:text-lg tracking-wider font-semibold text-indigo-300 hover:text-yellow-100 hover:border-b-2 hover:border-yellow-100 transition-all duration-300 py-2';
-  const activeClasses = 'text-yellow-100 border-b-2 border-yellow-100';
+    'block text-base sm:text-lg tracking-wider font-semibold text-red-600 hover:text-white hover:border-b-2 hover:border-white transition-all duration-300 py-2';
+  const activeClasses = 'text-white border-b-2 border-white';
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-black font-montserrat shadow-md border-b border-indigo-400"
+      className="fixed top-0 left-0 w-full z-50 bg-black font-montserrat shadow-md border-b border-white"
     >
       {/* Desktop: Title above nav */}
-      <div className="hidden md:flex justify-center bg-black border-b border-indigo-400 py-2">
-        <h1 className="text-2xl font-semibold text-white tracking-[10px] select-none uppercase">
+      <div className="hidden md:flex justify-center bg-black border-b border-white py-2">
+        <h1 className="text-2xl font-semibold text-red-600 tracking-[10px] select-none uppercase">
           Kepong Villa Garden & Suites
         </h1>
       </div>
@@ -74,10 +74,9 @@ const Header = () => {
           ) : (
             // Hamburger icon
             <div className="flex flex-col justify-between w-7 h-6">
-              <span className="block h-[3px] bg-indigo-300 rounded"></span>
-              <span className="block h-[3px] bg-indigo-300 rounded"></span>
-              <span className="block h-[3px] bg-indigo-300 rounded"></span>
-      
+              <span className="block h-[3px] bg-red-600"></span>
+              <span className="block h-[3px] bg-red-600"></span>
+              <span className="block h-[3px] bg-red-600"></span>
             </div>
           )}
         </button>

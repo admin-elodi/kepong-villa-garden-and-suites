@@ -11,7 +11,7 @@ const Footer = () => {
   const socialBtnBase =
     'transform hover:scale-125 transition-all duration-300 rounded-full p-2 border-2';
   const socialBtnColors =
-    'text-yellow-100 hover:text-yellow-300 border-indigo-400';
+    'text-white hover:text-yellow-100 border-red-600';
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -51,33 +51,33 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black bg-opacity-95 text-yellow-100 py-16 font-montserrat">
+    <footer className="bg-black bg-opacity-95 text-white py-16 font-montserrat">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Contact Section */}
-        <div className="border-t-2 border-b-2 border-indigo-300 py-6 mb-8">
+        <div className="border-t-2 border-b-2 border-red-600 py-6 mb-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Contact Details */}
             <div className="flex flex-wrap justify-center gap-8 text-sm">
               <div className="flex items-center space-x-2">
-                <FaMapMarkerAlt className="text-xl text-yellow-200" />
-                <p className="text-yellow-100">
+                <FaMapMarkerAlt className="text-xl" />
+                <p>
                   #275 Ugwogo Nike Road, Abakpa, Enugu
                 </p>
               </div>
               <div className="flex items-center space-x-2">
-                <FaPhoneAlt className="text-xl text-yellow-100" />
+                <FaPhoneAlt className="text-xl" />
                 <a
                   href="tel:+2349162836505"
-                  className="text-yellow-100 hover:text-amber-500 transition-colors"
+                  className="hover:text-yellow-100 transition-colors"
                 >
                   0916 283 6505
                 </a>
               </div>
               <div className="flex items-center space-x-2">
-                <FaEnvelope className="text-xl text-yellow-200" />
+                <FaEnvelope className="text-xl" />
                 <a
                   href="mailto:odogwucally@gmail.com"
-                  className="text-yellow-100 hover:text-amber-500 transition-colors"
+                  className="hover:text-yellow-100 transition-colors"
                 >
                   odogwucally@gmail.com
                 </a>
@@ -101,8 +101,8 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Kepong Villa Vibes Section */}
-          <div className="space-y-6 text-center border-4 border-indigo-300 rounded-lg p-6 bg-black bg-opacity-80">
-            <h3 className="text-2xl font-bold animate-pulse text-yellow-100">
+          <div className="space-y-6 text-center border-4 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
+            <h3 className="text-2xl font-bold animate-pulse text-white">
               Kepong Villa Vibes
             </h3>
             <p className="text-sm max-w-md mx-auto text-white">
@@ -134,8 +134,8 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="space-y-6 text-center border-4 border-indigo-300 rounded-lg p-6 bg-black bg-opacity-80">
-            <h3 className="text-2xl font-bold text-yellow-100">Get in the Groove</h3>
+          <div className="space-y-6 text-center border-4 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
+            <h3 className="text-2xl font-bold text-white">Get in the Groove</h3>
             <ul className="space-y-3 text-sm">
               {[
                 { to: '/odogwu', label: 'Odogwu Cally' },
@@ -148,7 +148,7 @@ const Footer = () => {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-white hover:text-yellow-200 hover:underline transition-colors duration-300 border-b border-indigo-400 pb-1"
+                    className="text-white hover:text-yellow-200 hover:underline transition-colors duration-300 border-b border-red-600 pb-1"
                   >
                     {item.label}
                   </Link>
@@ -158,8 +158,8 @@ const Footer = () => {
           </div>
 
           {/* Newsletter & Contact Section */}
-          <div className="space-y-6 text-center border-4 border-indigo-300 rounded-lg p-6 bg-black bg-opacity-80">
-            <h3 className="text-2xl font-bold text-yellow-100">Entertainment Updates</h3>
+          <div className="space-y-6 text-center border-4 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
+            <h3 className="text-2xl font-bold text-white">Entertainment Updates</h3>
             <p className="text-sm max-w-md mx-auto text-white">
               Subscribe for Entertainment News
             </p>
@@ -188,7 +188,7 @@ const Footer = () => {
               <p>
                 <a
                   href="tel:+2349162836505"
-                  className="hover:text-amber-400 transition-colors border-b border-indigo-400 pb-1"
+                  className="hover:text-amber-400 transition-colors border-b border-red-600 pb-1"
                 >
                   0916 283 6505
                 </a>
@@ -196,12 +196,12 @@ const Footer = () => {
               <p>
                 <a
                   href="mailto:odogwucally@gmail.com"
-                  className="hover:text-amber-400 transition-colors border-b border-indigo-400 pb-1"
+                  className="hover:text-amber-400 transition-colors border-b border-red-600 pb-1"
                 >
                   odogwucally@gmail.com
                 </a>
               </p>
-              <p className="border-b border-indigo-400 pb-1">
+              <p className="border-b border-red-600 pb-1">
                 #275 Ugwogo Nike Road, Abakpa, Enugu
               </p>
             </div>
@@ -209,8 +209,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-indigo-300 text-center">
-          <p className="font-bold md:text-lg text-xs text-yellow-100">
+        <div className="mt-12 pt-8 border-t border-white text-center">
+          <p className="font-bold md:text-lg text-xs text-white">
             © {new Date().getFullYear()} Kepong Villa Garden & Suites. All rights reserved.
           </p>
           <small className="text-yellow-100 opacity-40 text-sm mt-2 block">

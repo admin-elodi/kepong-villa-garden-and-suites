@@ -65,7 +65,7 @@ const Odogwu = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="text-center text-xl md:text-5xl font-semibold mb-8 select-none text-yellow-100 drop-shadow-[0_0_10px_rgba(255,215,0,0.9)] tracking-widest"
+          className="text-center text-xl md:text-5xl font-semibold mb-8 select-none text-red-600 drop-shadow-[0_0_10px_rgba(255,215,0,0.9)] tracking-widest"
         >
           Face Behind The Vibe
         </motion.h1>
@@ -115,10 +115,10 @@ const Odogwu = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
             <button
               onClick={() => setActiveSet('crew')}
-              className={`px-6 py-3 rounded-lg font-semibold text-lg border-2 border-amber-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-400 transition-transform duration-300 ${
+              className={`px-6 py-3 rounded-lg font-semibold text-lg border-2 border-red-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-400 transition-transform duration-300 ${
                 activeSet === 'crew'
                   ? 'bg-yellow-100 text-black'
-                  : 'bg-black bg-opacity-80 text-yellow-100 hover:bg-amber-600 hover:text-black hover:scale-105'
+                  : 'bg-black bg-opacity-80 text-white hover:bg-amber-600 hover:text-black hover:scale-105'
               }`}
               aria-label="Show Kepong crew members"
             >
@@ -126,14 +126,14 @@ const Odogwu = () => {
             </button>
             <button
               onClick={() => setActiveSet('customers')}
-              className={`px-6 py-3 rounded-lg font-semibold text-lg border-2 border-amber-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-400 transition-transform duration-300 ${
+              className={`px-6 py-3 rounded-lg font-semibold text-lg border-2 border-red-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-400 transition-transform duration-300 ${
                 activeSet === 'customers'
                   ? 'bg-yellow-100 text-black'
                   : 'bg-black bg-opacity-80 text-yellow-100 hover:bg-amber-600 hover:text-black hover:scale-105'
               }`}
               aria-label="Show Kepong customers"
             >
-              Regulars
+              Kepong Ballers
             </button>
           </div>
           <motion.div

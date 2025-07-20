@@ -21,7 +21,7 @@ const ENTERTAINER_CAROUSEL = [
 const weekendLineup = {
   comedians: ['Chuks D General', 'MC Edo Pikin'],
   dancers: ['Afrobeat Crew', 'Linda Fire'],
-  hypemen: ['HypeKing Lagos', 'GrandMasterHype'],
+  hypemen: ['DoubleClassique', 'GrandMasterHype'],
 };
 
 const FeaturedEntertainers = () => {
@@ -35,14 +35,14 @@ const FeaturedEntertainers = () => {
   const nextSlide = () => setCarouselIdx((idx) => (idx === ENTERTAINER_CAROUSEL.length - 1 ? 0 : idx + 1));
 
   return (
-    <main className="min-h-screen bg-white font-montserrat text-black py-20">
+    <main className="min-h-screen font-bold bg-gray-800 font-montserrat text-red-600 py-40">
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-8">
         {/* Minimalist Header */}
         <header className="pt-2 pb-6 text-center">
-          <h1 className="text-3xl sm:text-5xl font-bold lowercase tracking-tight mb-1">
-            entertainment
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-1">
+            Entertainment
           </h1>
-          <p className="text-gray-700 text-lg mt-1">Wednesdays, Fridays & Sundays</p>
+          <p className="text-white text-lg mt-1">Wednesdays, Fridays & Sundays</p>
         </header>
 
         {/* Featured DJ Videos – now at top */}
@@ -113,7 +113,7 @@ const FeaturedEntertainers = () => {
             className="bg-black text-white px-8 py-3 rounded-lg font-semibold text-base hover:bg-gray-800 shadow-sm transition"
             aria-label="Reserve your table"
           >
-            Reserve Table-4-Four
+            Reserve Table
           </button>
         </div>
 
