@@ -110,7 +110,7 @@ const QuickLinks = () => {
           <div className="container bg-black/70 rounded-lg max-w-screen-xl mx-auto text-center">
             {/* Top Cards Section */}
             <section className="py-12 flex justify-center">
-              <div className="bg-black rounded-lg p-8 max-w-6xl w-full text-center shadow-xl">
+              <div className="rounded-lg p-8 max-w-6xl w-full text-center shadow-xl">
                 <h2
                   className="
                     text-xl
@@ -147,7 +147,7 @@ const QuickLinks = () => {
                           pathname: card.link,
                           state: card.state,
                         }}
-                        className="mt-auto inline-block bg-white text-black font-bold py-2 px-4 rounded-lg hover:bg-slate-500 transition-transform hover:scale-105 duration-300 border-2 border-red shadow-lg focus:ring-2 focus:ring-amber-500"
+                        className="mt-auto inline-block bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-slate-500 transition-transform hover:scale-105 duration-300 border-2 border-red shadow-lg focus:ring-2 focus:ring-amber-500"
                         aria-label={card.btnLabel}
                       >
                         {card.btnLabel}
@@ -160,7 +160,7 @@ const QuickLinks = () => {
 
             {/* More Services To Enjoy */}
             <section className="py-12 flex justify-center border-t-2 border-red-600">
-              <div className="rounded-2xl p-8 max-w-6xl w-full text-center shadow-xl">
+              <div className="p-8 max-w-6xl w-full text-center shadow-xl">
                 <h2 className="text-xl md:text-xl font-bold mb-8 text-white drop-shadow-lg">
                   More Services...
                 </h2>
@@ -186,7 +186,7 @@ const QuickLinks = () => {
                       </span>
                       <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                       {revealedServices[index] ? (
-                        <div className="text-sm mt-2">
+                        <div className="text-sm mt-2 text-white">
                           <p>
                             <strong>Phone:</strong> {service.phone}
                           </p>
@@ -197,7 +197,7 @@ const QuickLinks = () => {
                                 href={service.socialLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-amber-400 hover:underline"
+                                className="text-yellow-200 hover:underline"
                               >
                                 {service.social}
                               </a>

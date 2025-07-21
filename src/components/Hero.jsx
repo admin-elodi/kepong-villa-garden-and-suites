@@ -14,6 +14,7 @@ const promotionalTexts = [
   'Play Games',
   'Enjoy Club K',
   'Nigerian & Ghana Jollof',
+  'Drone Delivery Coming Soon',
 ];
 
 const Hero = ({ setIsModalOpen }) => {

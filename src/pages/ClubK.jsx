@@ -125,10 +125,10 @@ const ClubK = () => {
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
             <div className="mb-8">
-              <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
+              <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-red-600 px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
                 Club K Nightclub
               </h1>
-              <p className="bg-white/10 rounded-lg text-lg sm:text-xl md:text-2xl text-red-600 font-bold max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] px-2 py-2 md:px-4 rounded animate-fadeInUp-delayed">
+              <p className="bg-white/10 rounded-lg text-lg sm:text-xl md:text-2xl text-white font-bold max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] px-2 py-2 md:px-4 rounded animate-fadeInUp-delayed">
                 Open Wednesdays, Fridays & Sundays<br className="block sm:hidden" />
               </p>
             </div>
