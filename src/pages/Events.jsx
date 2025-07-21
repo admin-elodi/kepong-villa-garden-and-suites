@@ -254,8 +254,9 @@ const Events = () => {
           .modal-content {
             background: #282828;
             border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 0 2px #fbbf24;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 0 2px #851b0bff;
             padding: 2.5rem 2rem 2rem 2rem;
+            border: 4px red solid;
             min-width: 90vw;
             max-width: 320px;
             color: #fff7db;
@@ -272,7 +273,7 @@ const Events = () => {
             right: 18px;
             background: none;
             border: none;
-            color: #fbbf24;
+            color: red;
             font-size: 1.6rem;
             cursor: pointer;
           }
@@ -280,7 +281,7 @@ const Events = () => {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1.15rem;
-            color: #fbbf24;
+            color: white;
             text-align: center;
             letter-spacing: 0.01em;
           }
@@ -296,8 +297,8 @@ const Events = () => {
             gap: 1rem;
             padding: 0.9rem 1.2rem;
             border-radius: 10px;
-            background: #fbbf24;
-            color: #232323;
+            background: red;
+            color: white;
             font-weight: 700;
             font-size: 1.14rem;
             border: none;
