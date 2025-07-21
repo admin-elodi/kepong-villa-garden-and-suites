@@ -15,11 +15,11 @@ const Header = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-black font-montserrat shadow-md border-b border-white"
+      className="fixed top-0 left-0 w-full z-50 bg-white md:bg-black font-montserrat border-b border-white"
     >
       {/* Desktop: Title above nav */}
-      <div className="hidden md:flex justify-center bg-black border-b border-white py-2">
-        <h1 className="text-2xl font-semibold text-red-600 tracking-[10px] select-none uppercase">
+      <div className="hidden md:flex justify-center bg-white border-b border-white py-2">
+        <h1 className="text-2xl font-bold text-red-600 tracking-[10px] select-none uppercase">
           Kepong Villa Garden & Suites
         </h1>
       </div>

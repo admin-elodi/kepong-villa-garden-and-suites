@@ -4,12 +4,30 @@ import promoVideo from '@/assets/videos/stars.webm';
 import DroneOrderModal from './DroneOrderModal';
 import ReserveTableModal from '../components/ReserveTableModal'; // Adjust path if needed
 
+const promotionalTexts = [
+  '24hrs Light',
+  'Free WiFi',
+  'Quick & Responsive Services',
+  'Comfortable Rooms',
+  'Special Table for Four',
+];
+
 const Hero = ({ setIsModalOpen }) => {
   const [isDroneModalOpen, setIsDroneModalOpen] = useState(false);
   const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
 
+  // Slideshow state for promotional texts
+  const [currentPromoIndex, setCurrentPromoIndex] = useState(0);
+
   useEffect(() => {
     console.log('✅ Hero component rendered');
+
+    // Auto-rotate promotional texts every 3 seconds
+    const interval = setInterval(() => {
+      setCurrentPromoIndex((prevIndex) => (prevIndex + 1) % promotionalTexts.length);
+    }, 3000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   const buttonWidths = {
@@ -55,9 +73,9 @@ const Hero = ({ setIsModalOpen }) => {
 
       {/* Overlay Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 lg:px-12 max-w-screen-xl mx-auto">
-        {/* Debug title to confirm file renders */}
+        {/* Main Title */}
         <h1
-          className="text-2xl mt-24 sm:text-4xl md:text-5xl font-bold text-white tracking-widest mb-16 animate-fade-in-up delay-100"
+          className="text-2xl mt-24 sm:text-4xl md:text-5xl font-bold text-white tracking-widest mb-6 animate-fade-in-up delay-100"
           style={{
             textShadow: '0 6px 8px rgba(0,0,0,0.5)',
             animation: 'growText 4s ease-in-out forwards',
@@ -65,6 +83,20 @@ const Hero = ({ setIsModalOpen }) => {
         >
           Kepong Villa Garden & Suites
         </h1>
+
+        {/* Promotional Text Slideshow */}
+        <p
+          key={currentPromoIndex} // key triggers re-render for animation
+          className="text-yellow-200 text-xl sm:text-xl md:text-4xl font-semibold mb-16 transition-opacity duration-1000 ease-in-out"
+          style={{
+            textShadow: '0 4px 6px rgba(0,0,0,0.6)',
+            opacity: 1,
+          }}
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {promotionalTexts[currentPromoIndex]}
+        </p>
 
         <div className="w-full max-w-[600px]" style={{ minWidth: '280px' }}>
           {/* Desktop View */}
@@ -157,6 +189,19 @@ const Hero = ({ setIsModalOpen }) => {
             0% { opacity: 0; transform: scale(0.9); }
             50% { opacity: 0.5; transform: scale(1.05); }
             100% { opacity: 1; transform: scale(1); }
+          }
+          .animate-fade-in-up {
+            animation: fadeInUp 1s ease forwards;
+          }
+          @keyframes fadeInUp {
+            0% {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
         `}
       </style>

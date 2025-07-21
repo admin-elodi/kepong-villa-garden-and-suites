@@ -104,28 +104,27 @@ const QuickLinks = () => {
   };
 
   return (
-    <main className="mt-0 font-montserrat text-yellow-100 bg-black">
+    <main className="mt-0 font-montserrat text-yellow-100 bg-white">
       <div className="w-full border-t border-b border-red-600">
-        <section className="py-12 bg-black bg-opacity-90">
+        <section className="py-12">
           <div className="container max-w-screen-xl mx-auto text-center">
             {/* Top Cards Section */}
             <section className="py-12 flex justify-center">
-              <div className="bg-black bg-opacity-90 rounded-lg p-8 max-w-6xl w-full text-center shadow-xl">
+              <div className="bg-white border-2 border-red-600 rounded-lg p-8 max-w-6xl w-full text-center shadow-xl">
                 <h2
                   className="
-                    text-3xl
-                    md:text-4xl
+                    text-xl
+                    md:text-2xl
                     font-dancing
                     font-bold
                     mb-8
                     animate-fade-in-up
                     leading-tight
                     tracking-wider
-                    text-white
-                    drop-shadow-[0_4px_8px_rgba(0,0,0,0.7)]
+                    text-red-600
                   "
                 >
-                  Book room, food, events, etc...
+                  Book room, events, etc...
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -148,7 +147,7 @@ const QuickLinks = () => {
                           pathname: card.link,
                           state: card.state,
                         }}
-                        className="mt-auto inline-block bg-white text-black font-bold py-2 px-4 rounded-lg hover:bg-slate-500 transition-transform hover:scale-105 duration-300 border-2 border-red shadow-lg focus:ring-2 focus:ring-amber-500"
+                        className="mt-auto inline-block bg-white text-red-600 font-bold py-2 px-4 rounded-lg hover:bg-slate-500 transition-transform hover:scale-105 duration-300 border-2 border-red shadow-lg focus:ring-2 focus:ring-amber-500"
                         aria-label={card.btnLabel}
                       >
                         {card.btnLabel}
@@ -161,11 +160,11 @@ const QuickLinks = () => {
 
             {/* More Services To Enjoy */}
             <section className="py-12 flex justify-center border-t-2 border-red-600">
-              <div className="bg-black bg-opacity-90 rounded-2xl p-8 max-w-6xl w-full text-center shadow-xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white drop-shadow-lg">
+              <div className="bg-black/50 rounded-2xl p-8 max-w-6xl w-full text-center shadow-xl">
+                <h2 className="text-xl md:text-2xl font-bold mb-8 text-red-600 drop-shadow-lg">
                   More Services...
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 p-4 rounded-xl bg-black gap-8">
                   {moreServices.map((service, index) => (
                     <div
                       key={index}

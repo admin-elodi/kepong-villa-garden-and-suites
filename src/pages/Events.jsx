@@ -586,7 +586,7 @@ const Events = () => {
       )}
 
       {/* Booking Invite */}
-      <section className="relative z-20 booking-invite slide-up delay-7 mb-20" aria-label="Booking Invitation">
+      <section className="relative z-20 booking-invite slide-up delay-7 mb-2" aria-label="Booking Invitation">
         <p>
           Want to <strong>book this page</strong> for advertising your Kepong Event?
           Call us at <a href="tel:08162836505">08162836505</a> or <a href="tel:07031576094">07031576094</a>
