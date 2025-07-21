@@ -114,11 +114,11 @@ const Events = () => {
           }
           .btn-yellow {
             background-color: red;
-            color: #000;
+            color: white;
             font-weight: 700;
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
-            border: 4px solid black;
+            border: 2px solid white;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
             margin-top: 1.5rem;
             margin-bottom: 0.5rem;
@@ -391,7 +391,7 @@ const Events = () => {
           </h1>
         </div>
 
-        <h1 className="text-lg sm:text-4xl md:text-3xl font-extrabold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(56,189,248,0.7)] bg-red-600 border-b-4 border-black px-6 py-2">
+        <h1 className="text-lg sm:text-4xl md:text-3xl font-extrabold tracking-widest leading-tight text-white bg-red-600 border-b-4 border-black px-6 py-2">
           {event.title}
         </h1>
       </section>
