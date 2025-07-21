@@ -11,7 +11,9 @@ const promotionalTexts = [
   'Comfortable Rooms',
   'Special Table for Four',
   'Local & Foreign Foods',
+  'Play Games',
   'Enjoy Club K',
+  'Nigerian & Ghana Jollof',
 ];
 
 const Hero = ({ setIsModalOpen }) => {

@@ -125,17 +125,17 @@ const ClubK = () => {
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
             <div className="mb-8">
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-red-600 drop-shadow-[0_4px_10px_rgba(251,191,36,0.9)] px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
+              <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
                 Club K Nightclub
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-white max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] px-4 py-2 rounded animate-fadeInUp-delayed">
+              <p className="bg-white/10 rounded-lg text-lg sm:text-xl md:text-2xl text-red-600 font-bold max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] px-2 py-2 md:px-4 rounded animate-fadeInUp-delayed">
                 Open Wednesdays, Fridays & Sundays<br className="block sm:hidden" />
               </p>
             </div>
             <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-xl mx-auto px-4 mt-2">
               <button
                 onClick={openModal}
-                className="bg-black bg-opacity-80 text-yellow-100 px-4 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-red-600 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none md:w-[400px]"
+                className="bg-black/50 text-yellow-100 px-4 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-red-600 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none md:w-[400px]"
                 aria-label="Order Premium Drinks"
               >
                 Order Premium Drinks
@@ -260,7 +260,7 @@ const ClubK = () => {
         <div className="w-full relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <section className="py-4 sm:py-16">
-              <h2 className="text-3xl text-red-600 font-bold text-center mb-4 pb-3 px-4 py-2 rounded">Experience Club K</h2>
+              <h2 className="text-3xl text-white font-bold text-center mb-4 pb-3 px-4 py-2 rounded">Experience Club K</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 sm:gap-x-12 max-w-6xl mx-auto">
                 {features.map(({ title, img, desc }, i) => (
                   <div key={i} className="rounded-lg overflow-hidden border-4 border-red-600 shadow-xl bg-black/80 flex flex-col items-center text-center" style={{ height: '340px' }}>
