@@ -257,7 +257,7 @@ const Events = () => {
             box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 0 2px #fbbf24;
             padding: 2.5rem 2rem 2rem 2rem;
             min-width: 90vw;
-            max-width: 400px;
+            max-width: 320px;
             color: #fff7db;
             animation: modalPop 0.27s cubic-bezier(.51, 1.36, .78, 1.01);
             position: relative;
