@@ -113,19 +113,19 @@ const Events = () => {
             to { opacity: 1; transform: translateY(0); }
           }
           .btn-yellow {
-            background-color: #fef3c7;
+            background-color: red;
             color: #000;
             font-weight: 700;
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
-            border: 2px solid #fbbf24;
+            border: 4px solid black;
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
             margin-top: 1.5rem;
             margin-bottom: 0.5rem;
             display: inline-block;
           }
           .btn-yellow:hover {
-            background-color: #fbbf24;
+            background-color: black;
             color: #000;
             transform: scale(1.05);
           }
@@ -141,9 +141,9 @@ const Events = () => {
             transform: scale(1.2);
           }
           .booking-invite {
-            max-width: 490px;
+            max-width: 300px;
             background: rgba(254, 243, 199, 0.1);
-            border: 1px solid #fbbf24;
+            border: 1px solid red;
             border-radius: 12px;
             padding: 1.4rem;
             text-align: center;
@@ -151,11 +151,11 @@ const Events = () => {
             box-shadow: 0 0 18px rgba(251,191,36,0.35);
           }
           .booking-invite strong {
-            color: #fbbf24;
+            color: red;
           }
           .booking-invite a {
-            color: #fbbf24;
-            font-weight: 700;
+            color: red;
+            font-weight: 500;
             text-decoration: underline;
           }
           .text-bg {
@@ -205,10 +205,10 @@ const Events = () => {
             background: rgba(251, 191, 36, 0.8);
           }
           .carousel-button.left {
-            left: 1rem;
+            left: 0.5rem;
           }
           .carousel-button.right {
-            right: 1rem;
+            right: 0.5rem;
           }
           .carousel-dots {
             position: absolute;
@@ -453,12 +453,12 @@ const Events = () => {
             e.currentTarget.style.display = "none";
           }}
         />
-        <div className="absolute inset-0 bg-black/60 z-0" />
+        <div className="absolute inset-0 bg-black/70 z-0" />
         <div className="relative z-10 flex flex-col items-center justify-center text-center gap-6 w-full max-w-3xl mx-auto mb-4">
-          <div className="text-3xl md:text-4xl font-bold text-yellow-200 mb-2">You're Invited!</div>
+          <div className="text-3xl md:text-4xl font-bold text-red-600 mb-2">You're Invited!</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-7 text-lg">
             <div className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-2 shadow">
-              <FaCalendarAlt className="text-yellow-300 text-2xl" />
+              <FaCalendarAlt className="text-red-600 text-2xl" />
               <span>
                 <span className="font-semibold">{event.date}</span>
                 <span className="mx-1">|</span>
@@ -466,15 +466,15 @@ const Events = () => {
               </span>
             </div>
             <div className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-2 shadow">
-              <FaMapMarkerAlt className="text-yellow-300 text-2xl" />
+              <FaMapMarkerAlt className="text-red-600 text-2xl" />
               <span>{event.venue}</span>
             </div>
             <div className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-2 shadow">
-              <FaMusic className="text-yellow-300 text-2xl" />
+              <FaMusic className="text-red-600 text-2xl" />
               <span>{event.host}</span>
             </div>
             <div className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-2 shadow">
-              <FaPhoneAlt className="text-yellow-300 text-2xl" />
+              <FaPhoneAlt className="text-red-600 text-2xl" />
               <span>{event.contact}</span>
             </div>
           </div>
@@ -504,7 +504,7 @@ const Events = () => {
 
       {/* Socials & Endorse Button */}
       <section className="relative z-20 mb-8 text-center max-w-md mx-auto slide-up delay-6">
-        <h3 className="text-yellow-100 text-2xl font-semibold mb-4">Share This Celebration</h3>
+        <h3 className="text-red-600 text-2xl font-semibold mb-4">Share This Celebration</h3>
         <div className="flex justify-center">
           <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" className="social-icon"><FaFacebookF /></a>
           <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${shareText}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter" className="social-icon"><FaTwitter /></a>

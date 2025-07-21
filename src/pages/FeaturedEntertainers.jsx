@@ -35,7 +35,7 @@ const FeaturedEntertainers = () => {
   const nextSlide = () => setCarouselIdx((idx) => (idx === ENTERTAINER_CAROUSEL.length - 1 ? 0 : idx + 1));
 
   return (
-    <main className="min-h-screen font-bold bg-gray-800 font-montserrat text-red-600 py-40">
+    <main className="min-h-screen font-bold bg-black/70 font-montserrat text-red-600 py-40">
       <div className="w-full max-w-5xl mx-auto px-4 sm:px-8">
         {/* Minimalist Header */}
         <header className="pt-2 pb-6 text-center">
@@ -110,7 +110,7 @@ const FeaturedEntertainers = () => {
         <div className="flex justify-center mt-8">
           <button
             onClick={handleReserveTable}
-            className="bg-black text-white px-8 py-3 rounded-lg font-semibold text-base hover:bg-gray-800 shadow-sm transition"
+            className="bg-red-600 text-black font-bold border-4 border-black px-8 py-3 rounded-lg font-semibold text-base hover:bg-gray-800 shadow-sm transition"
             aria-label="Reserve your table"
           >
             Reserve Table

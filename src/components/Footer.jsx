@@ -101,7 +101,7 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Kepong Villa Vibes Section */}
-          <div className="space-y-6 text-center border-4 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
+          <div className="space-y-6 text-center border-2 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
             <h3 className="text-2xl font-bold animate-pulse text-white">
               Kepong Villa Vibes
             </h3>
@@ -134,7 +134,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="space-y-6 text-center border-4 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
+          <div className="space-y-6 text-center border-2 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
             <h3 className="text-2xl font-bold text-white">Get in the Groove</h3>
             <ul className="space-y-3 text-sm">
               {[
@@ -158,7 +158,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter & Contact Section */}
-          <div className="space-y-6 text-center border-4 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
+          <div className="space-y-6 text-center border-2 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
             <h3 className="text-2xl font-bold text-white">Entertainment Updates</h3>
             <p className="text-sm max-w-md mx-auto text-white">
               Subscribe for Entertainment News
