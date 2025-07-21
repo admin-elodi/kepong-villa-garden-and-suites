@@ -21,7 +21,7 @@ import preEventVideo from '@/assets/videos/ready.mp4';
 import backgroundVideo from '@/assets/videos/stars.webm';
 
 const event = {
-  title: "Amaka's 30th Birthday Bash",
+  title: "Amaka's 30th Birthday Bash!",
   date: 'July 20, 2025',
   time: '5:00 PM',
   contact: '08134493949',
@@ -391,7 +391,7 @@ const Events = () => {
           </h1>
         </div>
 
-        <h1 className="text-lg sm:text-4xl md:text-3xl font-extrabold tracking-widest leading-tight text-black drop-shadow-[0_4px_10px_rgba(56,189,248,0.7)] bg-indigo-300 border-b-4 border-black px-6 py-2">
+        <h1 className="text-lg sm:text-4xl md:text-3xl font-extrabold tracking-widest leading-tight text-white drop-shadow-[0_4px_10px_rgba(56,189,248,0.7)] bg-red-600 border-b-4 border-black px-6 py-2">
           {event.title}
         </h1>
       </section>
