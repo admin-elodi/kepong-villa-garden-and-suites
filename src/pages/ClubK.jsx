@@ -135,7 +135,7 @@ const ClubK = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-xl mx-auto px-4 mt-2">
               <button
                 onClick={openModal}
-                className="bg-black/50 text-yellow-100 px-4 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-red-600 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none md:w-[400px]"
+                className="bg-black/50 text-white px-4 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-100 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-red-600 shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none md:w-[400px]"
                 aria-label="Order Premium Drinks"
               >
                 Order Premium Drinks
@@ -267,8 +267,8 @@ const ClubK = () => {
                     <img src={img} alt={title} className="w-full h-40 object-cover mb-4" loading="lazy" />
                     <div className="p-6 flex flex-col flex-grow justify-between w-full">
                       <div>
-                        <h3 className="text-xl font-semibold mb-4 text-yellow-100 drop-shadow-md">{title}</h3>
-                        <p className="text-yellow-200 text-base">{desc}</p>
+                        <h3 className="text-xl font-semibold mb-4 text-white drop-shadow-md">{title}</h3>
+                        <p className="text-white text-base">{desc}</p>
                       </div>
                     </div>
                   </div>
