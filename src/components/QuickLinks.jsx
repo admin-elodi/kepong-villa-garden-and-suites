@@ -168,7 +168,7 @@ const QuickLinks = () => {
                   {moreServices.map((service, index) => (
                     <div
                       key={index}
-                      className="text-red-600 bg-black p-6 rounded-2xl border-4 border-red-600 0 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+                      className="text-white bg-black p-6 rounded-2xl border-4 border-red-600 0 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                       role="button"
                       tabIndex="0"
                       onClick={() => toggleReveal(index)}

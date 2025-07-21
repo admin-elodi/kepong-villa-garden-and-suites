@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 bg-white md:bg-black font-montserrat border-b border-white"
+       className="fixed top-0 left-0 w-full z-50 bg-white md:bg-black font-montserrat border-2 border-red-600 md:border-b md:border-white md:border-x-0 md:border-t-0"
     >
       {/* Desktop: Title above nav */}
       <div className="hidden md:flex justify-center bg-white border-2 border-red-600 py-2">
