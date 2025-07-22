@@ -27,14 +27,14 @@ const ClubK = () => {
 
   const drinksList = [
     { id: 'whisky', name: 'Don Julio', price: 500000, img: redLabel },
-    { id: 'hennessyxo', name: 'Henessy X.O', price: 450000, img: vodka }, // changed id from 'whisky' to 'hennessyxo' for uniqueness
+    { id: 'hennessyxo', name: 'Henessy X.O', price: 450000, img: vodka },
     { id: 'wine', name: 'Four cousins', price: 20000, img: redWine },
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
 
-  // WhatsApp number for bar man (in international format, no '+' or spaces)
-  const barmanNumber = '2349169436106'; // Nigeria: '234' country code, remove initial '0'
+  // WhatsApp number for barman (international format, no '+' or spaces)
+  const barmanNumber = '2349169436106';
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -72,7 +72,6 @@ const ClubK = () => {
     });
   };
 
-  // Adjusted to include unique drink ids for accurate calculations
   const totalPrice = Object.entries(selectedDrinks).reduce((total, [id, qty]) => {
     const drink = drinksList.find((d) => d.id === id);
     return total + (drink ? drink.price * qty : 0);
@@ -88,7 +87,6 @@ const ClubK = () => {
     setShowBankDetails(true);
   };
 
-  // Build detailed order breakdown message
   const orderLines = Object.entries(selectedDrinks)
     .map(([id, qty]) => {
       const drink = drinksList.find(d => d.id === id);
@@ -98,7 +96,6 @@ const ClubK = () => {
     .filter(x => x)
     .join('\n');
 
-  // Prefill message to barman (short, clear, professional)
   const whatsappMessage = encodeURIComponent(
     `Hello, I have made payment for the following drinks at Club K:\n${orderLines}\n\nSubtotal: ₦${totalPrice.toLocaleString()}\nService Charge (5%): ₦${serviceCharge.toLocaleString()}\nTOTAL: ₦${(totalPrice + serviceCharge).toLocaleString()}\n\nPlease find my payment evidence attached.`
   );
@@ -147,10 +144,13 @@ const ClubK = () => {
         {/* Modal */}
         {isModalOpen && (
           <div className="fixed inset-0 mt-16 md:mt-40 flex items-center justify-center z-50 px-4">
-            <div ref={modalRef} className="bg-[#fef3c7] rounded-xl shadow-2xl max-w-md w-full p-0 relative max-h-[80vh] overflow-y-auto">
+            <div
+              ref={modalRef}
+              className="bg-[#fef3c7] rounded-xl border-4 border-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] max-w-md w-full p-0 relative max-h-[80vh] overflow-y-auto"
+            >
               <button
                 onClick={closeModal}
-                className="absolute top-3 right-3 text-gray-700 text-2xl font-bold hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="absolute top-3 right-3 text-gray-700 text-2xl font-bold hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-600"
                 aria-label="Close modal"
               >
                 ×
@@ -159,7 +159,7 @@ const ClubK = () => {
               <div className="p-4 sm:p-6">
                 {!showBankDetails ? (
                   <>
-                    <h2 className="text-xl font-bold mb-4 text-black">Select Your Drinks</h2>
+                    <h2 className="text-xl font-bold mb-4 text-red-600">Select Your Drinks</h2>
                     <div className="space-y-4 mb-6">
                       {drinksList.map(({ id, name, price, img }) => {
                         const qty = selectedDrinks[id] || 0;
@@ -217,8 +217,9 @@ const ClubK = () => {
                       </div>
                     </div>
                     <p className="mb-4 text-black text-justify font-medium">
-                      Is this your first order? Call us on <a href="tel:09169436106" className="hover:text-yellow-600">09169436106 </a>
-                      or <a href="tel:07031576094" className="hover:text-yellow-600">07031576094</a> if you need immediate information. Otherwise click button below after choosing your drinks
+                      Is this your first order? Call us on{' '}
+                      <a href="tel:09169436106" className="hover:text-yellow-600">09169436106</a> or{' '}
+                      <a href="tel:07031576094" className="hover:text-yellow-600">07031576094</a> if you need immediate information. Otherwise click button below after choosing your drinks
                     </p>
                     <button
                       onClick={handlePayNow}
@@ -231,7 +232,7 @@ const ClubK = () => {
                   </>
                 ) : (
                   <>
-                    <h2 className="text-xl font-bold mb-4 text-black">Bank Details</h2>
+                    <h2 className="text-xl font-bold mb-4 text-red-600">Bank Details</h2>
                     <div className="mb-6 space-y-3 text-gray-900">
                       <div><span className="font-semibold">Bank Name:</span> Wema Bank</div>
                       <div><span className="font-semibold">Account Name:</span> Kepong Villa Garden & Suites</div>

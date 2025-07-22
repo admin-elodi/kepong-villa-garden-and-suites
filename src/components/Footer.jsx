@@ -1,57 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaTwitter, FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-
   // Centralized Social Button Styles
   const socialBtnBase =
     'transform hover:scale-125 transition-all duration-300 rounded-full p-2 border-2';
   const socialBtnColors =
     'text-white hover:text-yellow-100 border-red-600';
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const handleNewsletterSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setSuccess('');
-
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
-
-    try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Subscription failed. Please try again.');
-      }
-
-      setSuccess(
-        'Thanks for subscribing! Check your email for updates from Kepong Villa!'
-      );
-      setEmail('');
-    } catch (err) {
-      setError(err.message || 'An error occurred. Please try again later.');
-    }
-  };
-
   return (
-    <footer className="bg-black bg-opacity-95 text-white py-16 font-montserrat">
+    <footer className="bg-black/70 text-white py-16 font-montserrat">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Contact Section */}
         <div className="border-t-2 border-b-2 border-red-600 py-6 mb-8">
@@ -60,9 +19,7 @@ const Footer = () => {
             <div className="flex flex-wrap justify-center gap-8 text-sm">
               <div className="flex items-center space-x-2">
                 <FaMapMarkerAlt className="text-xl" />
-                <p>
-                  #275 Ugwogo Nike Road, Abakpa, Enugu
-                </p>
+                <p>#275 Ugwogo Nike Road, Abakpa, Enugu</p>
               </div>
               <div className="flex items-center space-x-2">
                 <FaPhoneAlt className="text-xl" />
@@ -142,8 +99,6 @@ const Footer = () => {
                 { to: '/club-k', label: 'Club K' },
                 { to: '/booking', label: 'Book Now' },
                 { to: '/featured-entertainers', label: 'Featured Entertainers' },
-          
-           
               ].map((item) => (
                 <li key={item.to}>
                   <Link
@@ -157,54 +112,18 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter & Contact Section */}
+          {/* Enugu Nightlife Spotlight Section */}
           <div className="space-y-6 text-center border-2 border-red-600 rounded-lg p-6 bg-black bg-opacity-80">
-            <h3 className="text-2xl font-bold text-white">Entertainment Updates</h3>
-            <p className="text-sm max-w-md mx-auto text-white">
-              Subscribe for Entertainment News
+            <h3 className="text-2xl font-bold text-white">Enugu Nightlife Spotlight</h3>
+            <p className="text-sm max-w-md mx-auto text-white leading-relaxed">
+              Celebrate the vibrant rhythm of Enugu’s nightlife—where Afrobeat, highlife, and dancehall infuse the air with unmatched energy.
             </p>
-            <form
-              onSubmit={handleNewsletterSubmit}
-              className="flex flex-col space-y-4 max-w-sm mx-auto"
-            >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email"
-                className="w-full bg-yellow-100 text-black px-4 py-3 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none"
-                required
-              />
-              {error && <p className="text-red-400 text-sm">{error}</p>}
-              {success && <p className="text-yellow-300 text-sm">{success}</p>}
-              <button
-                type="submit"
-                className="bg-yellow-100 text-black font-semibold px-4 py-3 rounded-lg hover:bg-amber-500 hover:text-black transform hover:scale-105 transition-all duration-300 w-full"
-              >
-                Subscribe
-              </button>
-            </form>
-            <div className="space-y-3 text-sm font-semibold text-white">
-              <p>
-                <a
-                  href="tel:+2349162836505"
-                  className="hover:text-amber-400 transition-colors border-b border-red-600 pb-1"
-                >
-                  0916 283 6505
-                </a>
-              </p>
-              <p>
-                <a
-                  href="mailto:odogwucally@gmail.com"
-                  className="hover:text-amber-400 transition-colors border-b border-red-600 pb-1"
-                >
-                  odogwucally@gmail.com
-                </a>
-              </p>
-              <p className="border-b border-red-600 pb-1">
-                #275 Ugwogo Nike Road, Abakpa, Enugu
-              </p>
-            </div>
+            <p className="text-sm max-w-md mx-auto text-yellow-300 font-semibold">
+              This weekend: Live Percussion Show & Afrobeat Jam Session at Club K.
+            </p>
+            <p className="text-xs text-gray-400 italic max-w-md mx-auto">
+              Experience the heart of Enugu — music, dance, and great company await.
+            </p>
           </div>
         </div>
 

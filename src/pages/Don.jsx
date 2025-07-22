@@ -40,7 +40,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const Odogwu = () => {
+const Don = () => {
   const [activeSet, setActiveSet] = useState('crew');
 
   return (
@@ -59,50 +59,52 @@ const Odogwu = () => {
         <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
       </div>
 
-      {/* Overlay content container with subtle frosted backdrop for readability and minimalist elegance */}
+      {/* Overlay container */}
       <div className="relative z-10 max-w-7xl mx-auto bg-yellow-700/20 backdrop-blur-md rounded-xl p-8 md:p-12 shadow-xl">
         {/* Glowing Heading */}
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="text-center text-2xl md:text-5xl font-semibold mb-12 select-none text-red-600 drop-shadow-[0_0_15px_rgba(255,215,0,0.95)] tracking-widest"
+          className="text-center text-2xl md:text-5xl font-semibold mb-12 select-none text-red-600 tracking-widest"
         >
           Face Behind The Vibe
         </motion.h1>
 
-        {/* Proprietor Section */}
-        <motion.section
+       <motion.section
           className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 mb-28"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
         >
-          {/* Left: Image with elegant border and subtle glow on hover */}
+          {/* Left: Image with border and hover glow */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col items-center justify-center h-full text-center md:text-left"
+            className="flex flex-col items-center justify-center h-full text-center"
           >
             <motion.img
               alt="Uche Odogwu - CEO"
-              className="rounded-full border-4 border-black shadow-lg w-48 h-48 md:w-64 md:h-64 object-cover filter drop-shadow-lg"
-              whileHover={{ scale: 1.07, boxShadow: '0 0 25px #FFD700' }}
+              className="rounded-full border-4 border-red-600 shadow-lg w-48 h-48 md:w-64 md:h-64 object-cover filter drop-shadow-lg"
+              whileHover={{ scale: 1.07, boxShadow: '0 0 25px #DC2626' }}
               transition={{ type: 'spring', stiffness: 250, damping: 16 }}
               src={manager}
               loading="lazy"
             />
-            <div className="mt-6 text-center md:text-center">
+            <div className="mt-6">
               <h2 className="text-3xl font-bold text-white leading-tight">Uche Odogwu</h2>
-              <p className="text-yellow-100 text-sm font-semibold uppercase tracking-wider mt-1">
+              <p className="text-red-600 text-sm font-bold uppercase tracking-wider mt-1">
                 CEO, Kepong Villa Garden & Suites
               </p>
             </div>
           </motion.div>
 
-          {/* Right: Bio with improved typography and spacing */}
-          <motion.div variants={itemVariants} className="max-w-xl text-center md:text-left">
-            <p className="text-lg text-white leading-relaxed tracking-wide" style={{ textAlign: 'justify' }}>
+          {/* Right: Bio with justified text */}
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center h-full max-w-xl text-center md:text-left"
+          >
+            <p className="text-lg white leading-relaxed tracking-wide" style={{ textAlign: 'justify' }}>
               Uche Odogwu, affectionately called Odogwu Cally, is the driving force and face behind
               the vibe at Kepong Villa Garden & Suites. His visionary leadership masterfully blends
               Igbo culture with modern hospitality — inspiring the crew and engaging guests alike,
@@ -122,10 +124,10 @@ const Odogwu = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-6 mb-10">
             <button
               onClick={() => setActiveSet('crew')}
-              className={`px-8 py-3 rounded-lg font-semibold text-lg border-2 border-red-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-400 transition duration-300 transform ${
+              className={`px-8 py-3 rounded-lg font-semibold text-lg border-2 border-red-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-300 transform ${
                 activeSet === 'crew'
-                  ? 'bg-yellow-100 text-black'
-                  : 'bg-black bg-opacity-70 text-white hover:bg-amber-600 hover:text-black hover:scale-105'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-black bg-opacity-70 text-red-600 hover:bg-red-600 hover:text-white hover:scale-105'
               }`}
               aria-label="Show Kepong crew members"
             >
@@ -133,10 +135,10 @@ const Odogwu = () => {
             </button>
             <button
               onClick={() => setActiveSet('customers')}
-              className={`px-8 py-3 rounded-lg font-semibold text-lg border-2 border-red-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-400 transition duration-300 transform ${
+              className={`px-8 py-3 rounded-lg font-semibold text-lg border-2 border-red-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-300 transform ${
                 activeSet === 'customers'
-                  ? 'bg-yellow-100 text-black'
-                  : 'bg-black bg-opacity-70 text-yellow-100 hover:bg-amber-600 hover:text-black hover:scale-105'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-black bg-opacity-70 text-red-600 hover:bg-red-600 hover:text-white hover:scale-105'
               }`}
               aria-label="Show Kepong customers"
             >
@@ -144,7 +146,7 @@ const Odogwu = () => {
             </button>
           </div>
 
-          {/* Grid of members with smooth fade-in and subtle hover glow */}
+          {/* Grid of members */}
           <motion.div
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8"
             key={activeSet}
@@ -157,7 +159,7 @@ const Odogwu = () => {
                 key={id}
                 className="flex flex-col items-center text-center"
                 variants={itemVariants}
-                whileHover={{ scale: 1.1, boxShadow: '0 0 15px #A52A2A' }}
+                whileHover={{ scale: 1.1, boxShadow: '0 0 15px #DC2626' }} // red-600 subtle glow
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 tabIndex={0}
                 role="figure"
@@ -166,12 +168,12 @@ const Odogwu = () => {
                 <img
                   src={img}
                   alt={`${name} - ${role}`}
-                  className="rounded-full border-2 border-yellow-100 shadow-md w-24 h-24 object-cover mb-3 transition-transform duration-300"
+                  className="rounded-full border-2 border-red-600 shadow-md w-24 h-24 object-cover mb-3 transition-transform duration-300"
                   loading="lazy"
                   draggable={false}
                 />
                 <h4 className="font-semibold text-white text-base truncate max-w-full">{name}</h4>
-                <p className="text-sm text-yellow-100 uppercase tracking-wide">{role}</p>
+                <p className="text-sm text-red-600 font-bold uppercase tracking-wide">{role}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -181,4 +183,4 @@ const Odogwu = () => {
   );
 };
 
-export default Odogwu;
+export default Don;

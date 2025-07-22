@@ -9,7 +9,7 @@ import ClubK from './pages/ClubK.jsx';
 import FeaturedEntertainers from './pages/FeaturedEntertainers.jsx';
 import BookingPage from './pages/BookingPage.jsx';
 import Events from './pages/Events.jsx';
-import Odogwu from './pages/Odogwu.jsx';
+import Don from './pages/Don.jsx';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,7 +29,7 @@ function App() {
         <Route path="/featured-entertainers" element={<FeaturedEntertainers />} />
         <Route path="/bookings" element={<BookingPage />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/odogwu" element={<Odogwu />} />
+        <Route path="/don" element={<Don />} />
       </Routes>
       <Footer />
     </Router>
