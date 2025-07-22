@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '@/assets/images/company.webp';
+import logo from '@/assets/images/k-logo.jpg';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header
-       className="fixed top-0 left-0 w-full z-50 bg-white md:bg-black font-montserrat border-2 border-red-600 md:border-b md:border-white md:border-x-0 md:border-t-0"
+       className="fixed top-0 left-0 w-full z-50 bg-white md:bg-black font-montserrat border-2 border-red-600 md:border-b md:border-red-600 md:border-x-0 md:border-t-0"
     >
       {/* Desktop: Title above nav */}
       <div className="hidden md:flex justify-center bg-white border-2 border-red-600 py-2">
@@ -32,7 +32,7 @@ const Header = () => {
           <img
             src={logo}
             alt="Kepong Villa Garden and Suites Logo"
-            className="w-10 h-10 rounded-full border-2 border-yellow-100"
+            className="w-10 h-10 rounded-sm"
           />
         </NavLink>
 

@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import RoomCard from '../components/booking/RoomCard';
-import BookingForm from '../components/booking/BookingForm';
 import ScrollToTop from '../components/ScrollToTop';
 import standardRoom from '@/assets/images/hotel/standard.webp';
 import deluxe from '@/assets/images/hotel/deluxe.webp';
 import executive from '@/assets/images/hotel/executive.webp';
 import promoVideo from '@/assets/videos/couple.mp4';
+import shadesImage from '@/assets/images/shades.jpg';
 
 const rooms = [
   {
@@ -14,74 +13,69 @@ const rooms = [
     roomType: 'Single',
     price: 7000,
     imageURL: standardRoom,
-    amenities: ['Double Bed', 'Wi-Fi'],
+    amenities: ['Double Bed', 'Flatscreen'],
   },
   {
     id: 2,
     roomType: 'Deluxe',
     price: 10000,
     imageURL: deluxe,
-    amenities: ['Queen Bed', 'Wi-Fi', 'Work Desk'],
+    amenities: ['Queen Bed', 'Work Desk', 'Flatscreen'],
   },
   {
     id: 3,
     roomType: 'Executive',
     price: 15000,
     imageURL: executive,
-    amenities: ['King Bed', 'Wi-Fi', 'Balcony', 'Mini Bar'],
+    amenities: ['King Bed', 'Balcony', 'Flatscreen', 'Mini Bar'],
   },
   {
     id: 4,
     roomType: 'Apartment',
     price: 17000,
     imageURL: executive, // Will be changed later
-    amenities: ['King Bed', 'Wi-Fi', 'Balcony', 'Mini Bar', 'Room Service', 'Room & Parlor'],
+    amenities: ['King Bed', 'Balcony', 'Mini Bar', 'Flatscreen', 'Room Service', 'Room & Parlor'],
   },
 ];
 
+const promoTexts = [
+  'Book Room or Apartment',
+  'Room Service',
+  'Dry Cleaning',
+  'Luxury Comfort',
+  'Exclusive Suites',
+  'Unforgettable Stays',
+];
+
 const BookingPage = () => {
-  const [showForm, setShowForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
-  const [bookingConfirmed, setBookingConfirmed] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
-  const confirmationRef = useRef(null);
-  const formRef = useRef(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.state?.showFoodForm) {
-      setSelectedRoom(null);
-      setShowForm(true);
-    }
-  }, [location.state]);
-
-  useEffect(() => {
-    if (showForm && formRef.current) {
-      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, [showForm]);
+  const [currentPromoIndex, setCurrentPromoIndex] = useState(0);
+  const modalRef = useRef(null);
 
   const handleRoomSelect = (room) => {
     setSelectedRoom(room);
-    setShowForm(true);
+    setShowModal(true);
   };
 
-  const handleFoodAndDrinksOnly = () => {
-    setSelectedRoom(null);
-    setShowForm(true);
-  };
-
-  const handleBookingSubmit = (bookingData) => {
-    setUserEmail(bookingData.email);
-    setShowForm(false);
-    setBookingConfirmed(true);
-  };
+  // Slideshow effect for promo texts
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPromoIndex((prevIndex) => (prevIndex + 1) % promoTexts.length);
+    }, 3000); // Change text every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
-    if (bookingConfirmed && confirmationRef.current) {
-      confirmationRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (showModal && modalRef.current) {
+      modalRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [bookingConfirmed]);
+  }, [showModal]);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedRoom(null);
+  };
 
   return (
     <div className="min-h-screen font-montserrat bg-black text-gray-100 py-32">
@@ -102,75 +96,74 @@ const BookingPage = () => {
         </video>
 
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-12 lg:px-24 overflow-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-red-600 drop-shadow-[0_4px_10px_rgba(254,240,138,0.8)] bg-white/40 md:px-8 py-4 rounded-lg">
-            Book Room or Apartment
+          <h1
+            key={currentPromoIndex}
+            className="text-4xl sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-red-600 md:px-8 py-4 rounded-lg animate-fadeInUp"
+          >
+            {promoTexts[currentPromoIndex]}
           </h1>
         </div>
       </section>
 
       {/* Content Section */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {!showForm && !bookingConfirmed ? (
-          <>
-            <div className="mb-12">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
-                {rooms.slice(0, 3).map((room) => (
-                  <RoomCard key={room.id} room={room} onSelect={handleRoomSelect} />
-                ))}
-              </div>
-              <div className="mt-8 sm:mt-12 flex justify-center">
-                <RoomCard
-                  key={rooms[3].id}
-                  room={rooms[3]}
-                  onSelect={handleRoomSelect}
-                  isApartment
-                />
-              </div>
-              <div className="text-center mt-10">
-                <button
-                  onClick={handleFoodAndDrinksOnly}
-                  className="bg-yellow-100 text-emerald-900 px-8 py-3 rounded-lg hover:bg-amber-600 transition transform hover:scale-105 font-semibold text-lg border-2 border-amber-300 shadow-lg focus:outline-none focus:ring-4 focus:ring-amber-400"
-                  aria-label="Book food and drinks only"
-                >
-                  Book Food & Drinks Only
-                </button>
-              </div>
+      <main
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${shadesImage})`,
+          backgroundColor: 'rgba(0, 0, 0, 0.7)', // Subtle overlay for readability
+          backgroundBlendMode: 'darken',
+        }}
+      >
+        {!showModal ? (
+          <div className="mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
+              {rooms.slice(0, 3).map((room) => (
+                <RoomCard key={room.id} room={room} onSelect={handleRoomSelect} />
+              ))}
             </div>
-          </>
-        ) : showForm ? (
-          <div ref={formRef}>
-            <BookingForm
-              selectedRoom={selectedRoom}
-              onBack={() => setShowForm(false)}
-              onSubmit={handleBookingSubmit}
-            />
+            <div className="mt-6 sm:mt-8 flex justify-center">
+              <RoomCard
+                key={rooms[3].id}
+                room={rooms[3]}
+                onSelect={handleRoomSelect}
+                isApartment
+              />
+            </div>
           </div>
         ) : (
           <section
-            ref={confirmationRef}
-            className="text-center py-16 rounded-lg bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-700 shadow-lg max-w-3xl mx-auto"
+            ref={modalRef}
+            className="text-center py-12 rounded-lg bg-gradient-to-br from-red-600 to-red-800 shadow-lg max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-semibold text-yellow-300 mb-6 drop-shadow-md">
-              Booking Confirmed!
+            <h2 className="text-3xl font-semibold text-white mb-6 drop-shadow-md">
+              Booking Confirmation
             </h2>
-            <p className="text-gray-200 mb-8 text-lg leading-relaxed px-6">
-              Thank you for booking with Kepong Villa Garden & Suites! Please check your email
-              (including spam/junk folder) for your booking details and payment instructions.
-              Complete your payment via bank transfer using the details in the email. Use your full
-              name as the reference to ensure quick confirmation.
+            <p className="text-gray-100 mb-4 text-lg leading-relaxed px-6">
+              Thank you for booking a {selectedRoom?.roomType} at Kepong Villa Garden & Suites! Please make your payment via bank transfer using the details below:
+            </p>
+            <div className="text-left max-w-md mx-auto bg-gray-900/50 p-4 rounded-lg mb-6">
+              <p className="text-gray-100 mb-2"><strong>Bank:</strong> Wema Bank</p>
+              <p className="text-gray-100 mb-2"><strong>Account Name:</strong> Kepong Villa Garden & Suites</p>
+              <p className="text-gray-100 mb-2"><strong>Account Number:</strong> 0125564025</p>
+              <p className="text-gray-100 mb-2"><strong>Reference:</strong> Your Full Name</p>
+            </div>
+            <p className="text-gray-100 mb-6 text-lg leading-relaxed px-6">
+              For further assistance, please call us at <a href="tel:08134493949" className="text-white underline">08134493949</a>.
             </p>
             <div className="flex justify-center gap-6">
               <a
-                href={`mailto:${userEmail}`}
-                className="bg-yellow-400 text-emerald-900 px-8 py-3 rounded-lg hover:bg-yellow-500 transition font-semibold text-lg border-2 border-yellow-300 shadow-md focus:outline-none focus:ring-4 focus:ring-yellow-400"
-                aria-label="Check email for booking and payment details"
+                href="https://wa.me/08134493949?text=Hello,%20I%20have%20made%20a%20booking%20for%20a%20room%20at%20Kepong%20Villa.%20Please%20confirm%20my%20payment."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold text-lg border-2 border-white shadow-md hover:bg-gray-100 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
+                aria-label="Contact us on WhatsApp to confirm your booking"
               >
-                Check Your Email
+                Confirm via WhatsApp
               </a>
               <button
-                onClick={() => setBookingConfirmed(false)}
-                className="bg-gray-700 text-gray-100 px-8 py-3 rounded-lg hover:bg-gray-800 transition font-semibold text-lg border-2 border-gray-600 shadow-md focus:outline-none focus:ring-4 focus:ring-gray-600"
-                aria-label="Close confirmation message"
+                onClick={handleCloseModal}
+                className="bg-gray-700 text-gray-100 px-8 py-3 rounded-lg font-semibold text-lg border-2 border-gray-600 shadow-md hover:bg-gray-800 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-600"
+                aria-label="Close confirmation modal"
               >
                 Close
               </button>

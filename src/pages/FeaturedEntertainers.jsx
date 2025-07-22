@@ -45,7 +45,7 @@ const FeaturedEntertainers = () => {
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-8">
         {/* Minimalist Header */}
         <header className="pt-2 pb-6 text-center">
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-1 text-white drop-shadow-md">
+          <h1 className="text-3xl sm:text-5xl border-b-2 tracking-widest border-red-600 inline-block font-bold tracking-tight mb-1 text-white drop-shadow-md">
             Entertainment
           </h1>
           <p className="text-white text-lg mt-1 font-medium">Wednesdays, Fridays & Sundays</p>
@@ -108,10 +108,10 @@ const FeaturedEntertainers = () => {
                 key={category}
                 className="flex-1 min-w-[180px] border border-gray-700 rounded-lg p-4 bg-gray-900/50 shadow-md"
               >
-                <div className="text-red-600 text-base font-bold mb-2 capitalize">
+                <div className="text-red-600 text-xl font-bold mb-2 capitalize">
                   {category}
                 </div>
-                <ul className="text-white font-medium space-y-2 text-sm">
+                <ul className="text-white font-medium space-y-2 text-lg">
                   {names.map((n) => (
                     <li key={n} className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-red-600 rounded-full"></span>

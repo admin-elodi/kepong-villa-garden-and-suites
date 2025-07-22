@@ -1,7 +1,7 @@
 const RoomCard = ({ room, onSelect, isApartment = false }) => {
   return (
     <div
-      className={`bg-black rounded-lg overflow-hidden transition-all duration-300 border-b-2 border-yellow-300 font-montserrat shadow-sm hover:shadow-md flex flex-col ${
+      className={`bg-black rounded-lg overflow-hidden transition-all duration-300 border-b-2 border-red-600 font-montserrat shadow-sm hover:shadow-md flex flex-col ${
         isApartment ? 'lg:w-[540px]' : ''
       }`}
     >
@@ -11,20 +11,20 @@ const RoomCard = ({ room, onSelect, isApartment = false }) => {
         className="w-full h-40 sm:h-56 object-cover"
         loading="lazy"
       />
-      <div className="p-2 sm:p-5 text-left bg-yellow-100 text-black flex flex-col flex-grow min-h-[220px]">
+      <div className="p-2 sm:p-5 text-left bg-gray-900/50 text-white flex flex-col flex-grow min-h-[220px]">
         <div>
-          <h3 className="text-xl sm:text-2xl font-semibold text-black">
+          <h3 className="text-xl sm:text-2xl font-semibold text-red-600">
             {room.roomType}
           </h3>
-          <p className="text-black font-semibold text-base sm:text-lg mt-1">
+          <p className="text-white font-semibold text-base sm:text-lg mt-1">
             ₦{room.price.toLocaleString()}/night
           </p>
           {isApartment ? (
-            <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-base sm:text-lg text-black">
+            <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-base sm:text-lg text-white">
               {room.amenities.map((amenity, index) => (
                 <div key={index} className="flex items-center">
                   <svg
-                    className="w-5 h-5 mr-2 text-amber-400 flex-shrink-0"
+                    className="w-5 h-5 mr-2 text-red-600 flex-shrink-0"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -35,11 +35,11 @@ const RoomCard = ({ room, onSelect, isApartment = false }) => {
               ))}
             </div>
           ) : (
-            <ul className="mt-2 text-base sm:text-lg text-black space-y-1">
+            <ul className="mt-2 text-base sm:text-lg text-white space-y-1">
               {room.amenities.map((amenity, index) => (
                 <li key={index} className="flex items-center">
                   <svg
-                    className="w-5 h-5 mr-2 text-amber-400 flex-shrink-0"
+                    className="w-5 h-5 mr-2 text-red-600 flex-shrink-0"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -56,7 +56,7 @@ const RoomCard = ({ room, onSelect, isApartment = false }) => {
         <div className="mt-auto pt-4">
           <button
             onClick={() => onSelect(room)}
-            className="w-full bg-black bg-opacity-80 text-yellow-100 py-2 rounded-lg hover:bg-amber-400 hover:text-black hover:scale-105 transition-transform duration-300 text-base sm:text-lg font-semibold border-2 border-yellow-300"
+            className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 hover:text-white transition-transform duration-300 text-base sm:text-lg font-semibold border-2 border-red-600 shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
             aria-label={`Book ${room.roomType}`}
           >
             Book Now

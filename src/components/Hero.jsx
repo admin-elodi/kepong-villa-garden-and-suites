@@ -80,7 +80,7 @@ const Hero = ({ setIsModalOpen }) => {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 sm:px-6 lg:px-12 max-w-screen-xl mx-auto">
         {/* Main Title */}
         <h1
-          className="text-2xl mt-24 sm:text-4xl md:text-4xl font-bold text-red-600 tracking-widest mb-6 animate-fade-in-up delay-100"
+          className="text-2xl mt-24 sm:text-4xl md:text-4xl font-bold text-white tracking-widest mb-6 animate-fade-in-up delay-100"
           style={{
             textShadow: '0 6px 8px rgba(0,0,0,0.5)',
             animation: 'growText 4s ease-in-out forwards',
@@ -92,7 +92,7 @@ const Hero = ({ setIsModalOpen }) => {
         {/* Promotional Text Slideshow */}
         <p
           key={currentPromoIndex} // key triggers re-render for animation
-          className="rounded-lg p-4 text-white text-xl sm:text-xl md:text-3xl font-semibold mb-16 transition-opacity duration-1000 ease-in-out"
+          className="p-4 text-white text-xl sm:text-xl border-b-4 border-red-600 md:text-3xl font-semibold mb-16 transition-opacity duration-1000 ease-in-out"
           style={{
             textShadow: '0 4px 6px rgba(0,0,0,0.6)',
             opacity: 1,
