@@ -7,12 +7,12 @@ const FeaturedVideos = () => {
       <div className="w-full px-0">
         <div className="text-center mb-6 max-w-2xl mx-auto rounded-lg">
          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white border-b-2 border-red-600 inline-block pb-2">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white pb-2">
               🎧 Featured Kepong DJ
             </h2>
           </div>
           <div className="mt-2">
-            <h1 className="text-lg sm:text-xl font-bold text-white pb-1">
+            <h1 className="text-lg sm:text-xl border-b-4 border-red-600 inline-block font-bold text-white pb-1">
               DJ TEE MASTER
             </h1>
           </div>
@@ -20,7 +20,7 @@ const FeaturedVideos = () => {
           
         </div>
 
-        <div className="w-full mx-auto mb-6">
+        <div className="w-full mx-auto mb-6 border-t-4 border-b-4 border-red-600">
           <div
             className="overflow-hidden shadow-xl"
             style={{

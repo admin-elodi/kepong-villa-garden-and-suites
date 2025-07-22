@@ -35,17 +35,17 @@ const FeaturedEntertainers = () => {
 
   return (
     <main
-      className="min-h-screen font-montserrat text-red-600 py-40 bg-cover bg-center bg-fixed"
+      className="min-h-screen font-montserrat text-red-600 py-34 bg-cover bg-center bg-fixed"
       style={{
         backgroundImage: `url(${rappersImage})`,
         backgroundColor: 'rgba(0, 0, 0, 0.7)', // Subtle overlay for readability
         backgroundBlendMode: 'darken',
       }}
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8">
+      <div className="w-full">
         {/* Minimalist Header */}
-        <header className="pt-2 pb-6 text-center">
-          <h1 className="text-3xl sm:text-5xl border-b-2 tracking-widest border-red-600 inline-block font-bold tracking-tight mb-1 text-white drop-shadow-md">
+        <header className="pt-2 pb-6 text-center bg-red-600/50">
+          <h1 className="text-3xl sm:text-5xl tracking-widest font-bold tracking-tight mb-1 text-white drop-shadow-md">
             Entertainment
           </h1>
           <p className="text-white text-lg mt-1 font-medium">Wednesdays, Fridays & Sundays</p>
