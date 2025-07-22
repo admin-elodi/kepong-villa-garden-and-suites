@@ -361,8 +361,8 @@ const Events = () => {
           }
           .fixed-caption-container {
             width: 100%;
-            background-color: #A52A2A; /* Contrasting background color (Brown) */
-            padding: 10px 0;
+            
+            
             text-align: center;
             border-bottom: 2px solid #FFF; /* White border for contrast */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -429,7 +429,7 @@ const Events = () => {
         </div>
 
         {/* Moving Promo Text */}
-        <div className="promo-text-container">
+        <div className="promo-text-container bg-red-600">
           <div className="promo-text">
             {promoTexts[currentPromoIndex]} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Book your unforgettable birthday, wedding reception, or corporate event at Kepong! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Make your special moments truly shine! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Attract guests and create lasting memories!
           </div>
