@@ -166,7 +166,7 @@ const Hero = ({ setIsModalOpen }) => {
 
             <button
               onClick={openReserveModal}
-              className="bg-red-600 text-black font-bold text-base py-3 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-yellow-200 hover:text-yellow-100 hover:border-yellow-700 hover:scale-105 text-center"
+              className="bg-red-600 text-white font-bold text-base py-3 rounded-lg shadow-lg focus:ring-2 focus:ring-amber-500 focus:outline-none transition-colors duration-300 hover:bg-yellow-200 hover:text-yellow-100 hover:border-yellow-700 hover:scale-105 text-center"
               aria-label="Reserve a table for entertainment"
             >
               Reserve Table

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import ReactPlayer from 'react-player';
-import FeaturedVideos from '../components/FeaturedVideos';
 import ReserveTableModal from '../components/ReserveTableModal';
-
-import starsVideo from '@/assets/videos/stars.webm';
-import coupleVideo from '@/assets/videos/couple.mp4';
+import FeaturedVideos from '../components/FeaturedVideos';
+import starsVideo from '@/assets/videos/club.mp4';
+import coupleVideo from '@/assets/videos/clubbing.mp4';
+import rappersImage from '@/assets/images/rappers.webp';
 
 const ENTERTAINER_CAROUSEL = [
   {
@@ -35,82 +34,101 @@ const FeaturedEntertainers = () => {
   const nextSlide = () => setCarouselIdx((idx) => (idx === ENTERTAINER_CAROUSEL.length - 1 ? 0 : idx + 1));
 
   return (
-    <main className="min-h-screen font-bold bg-black/70 font-montserrat text-red-600 py-40">
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-8">
+    <main
+      className="min-h-screen font-montserrat text-red-600 py-40 bg-cover bg-center bg-fixed"
+      style={{
+        backgroundImage: `url(${rappersImage})`,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Subtle overlay for readability
+        backgroundBlendMode: 'darken',
+      }}
+    >
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8">
         {/* Minimalist Header */}
         <header className="pt-2 pb-6 text-center">
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-1">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-1 text-white drop-shadow-md">
             Entertainment
           </h1>
-          <p className="text-white text-lg mt-1">Wednesdays, Fridays & Sundays</p>
+          <p className="text-white text-lg mt-1 font-medium">Wednesdays, Fridays & Sundays</p>
         </header>
 
-        {/* Featured DJ Videos – now at top */}
+        {/* Featured DJ Videos */}
         <section className="mb-12">
           <FeaturedVideos />
         </section>
 
-        {/* Carousel of Entertainers (video slider) */}
+        {/* Carousel of Entertainers */}
         <section className="mb-16">
-          <div className="flex items-center gap-4 justify-center">
-            <button
-              aria-label="Previous"
-              onClick={prevSlide}
-              className="rounded-full bg-gray-100 border text-lg w-9 h-9 flex items-center justify-center hover:bg-gray-200"
-            >
-              ‹
-            </button>
-            <div className="flex-1 max-w-md mx-2 rounded-xl border bg-gray-50 shadow md:flex md:flex-col md:items-center p-3">
-              <div className="rounded-lg overflow-hidden aspect-video w-full mb-2">
+          <div className="w-full mx-auto">
+            <div className="rounded-xl border border-gray-700 bg-gray-900/50 shadow-lg p-4">
+              <div className="rounded-lg overflow-hidden aspect-video w-full sm:max-w-6xl mx-auto mb-4">
                 <video
                   src={ENTERTAINER_CAROUSEL[carouselIdx].video}
                   controls
                   loop
                   muted
-                  className="w-full h-full bg-black"
+                  className="w-full sm:w-full h-full bg-black md:max-w-6xl mx-auto"
                   poster=""
                   style={{ borderRadius: 10 }}
                 />
               </div>
-              <div className="text-center text-lg font-semibold text-gray-800">
+              <div className="text-center text-xl font-semibold text-white mb-4">
                 {ENTERTAINER_CAROUSEL[carouselIdx].label}
               </div>
+              {/* Navigation Buttons */}
+              <div className="flex justify-center gap-4">
+                <button
+                  aria-label="Previous"
+                  onClick={prevSlide}
+                  className="px-4 py-2 rounded-md bg-red-600 text-white font-semibold hover:bg-red-700 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
+                >
+                  Previous
+                </button>
+                <button
+                  aria-label="Next"
+                  onClick={nextSlide}
+                  className="px-4 py-2 rounded-md bg-red-600 text-white font-semibold hover:bg-red-700 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
+                >
+                  Next
+                </button>
+              </div>
             </div>
-            <button
-              aria-label="Next"
-              onClick={nextSlide}
-              className="rounded-full bg-gray-100 border text-lg w-9 h-9 flex items-center justify-center hover:bg-gray-200"
-            >
-              ›
-            </button>
           </div>
         </section>
 
-        {/* This Weekend's Lineup minimalist */}
+        {/* Weekend Lineup */}
         <section className="mb-10">
-          <h2 className="text-xl font-semibold text-center mb-3">This Weekend’s Lineup</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
+            <h2 className="text-2xl font-bold text-white mb-4 border-b-2 border-red-600 inline-block pb-2 text-center">
+              Weekend Lineup
+            </h2>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             {Object.entries(weekendLineup).map(([category, names]) => (
               <div
                 key={category}
-                className="flex-1 min-w-[160px] border rounded-md p-3 bg-white"
+                className="flex-1 min-w-[180px] border border-gray-700 rounded-lg p-4 bg-gray-900/50 shadow-md"
               >
-                <div className="text-gray-600 text-sm font-semibold mb-1 capitalize">
+                <div className="text-red-600 text-base font-bold mb-2 capitalize">
                   {category}
                 </div>
-                <ul className="text-gray-900 font-medium space-y-1 text-sm">
-                  {names.map((n) => <li key={n}>{n}</li>)}
+                <ul className="text-white font-medium space-y-2 text-sm">
+                  {names.map((n) => (
+                    <li key={n} className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-red-600 rounded-full"></span>
+                      {n}
+                    </li>
+                  ))}
                 </ul>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Reserve Table (primary call-to-action) */}
+        {/* Reserve Table */}
         <div className="flex justify-center mt-8">
           <button
             onClick={handleReserveTable}
-            className="bg-red-600 text-black font-bold border-4 border-black px-8 py-3 rounded-lg font-semibold text-base hover:bg-gray-800 shadow-sm transition"
+            className="bg-red-600 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-700 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
             aria-label="Reserve your table"
           >
             Reserve Table
