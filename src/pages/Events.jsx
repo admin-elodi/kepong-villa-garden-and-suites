@@ -189,7 +189,6 @@ const Events = () => {
             position: relative;
             overflow: hidden;
             background: #11182780;
-            border: 1px solid #374151;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 0; /* Ensure no gap to the section above */
           }
@@ -342,7 +341,7 @@ const Events = () => {
             white-space: nowrap;
             box-sizing: border-box;
             margin-bottom: 0px; /* Adjust to bring closer to the next section */
-            background-color: #333; /* Dark background for the moving text */
+            
             padding: 10px 0;
             border-bottom: 2px solid #dc2626;
           }
@@ -361,10 +360,7 @@ const Events = () => {
           }
           .fixed-caption-container {
             width: 100%;
-            
-            
             text-align: center;
-            border-bottom: 2px solid #FFF; /* White border for contrast */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
           }
           .fixed-caption-text {
@@ -392,7 +388,7 @@ const Events = () => {
               padding-top: 1rem !important;
               padding-bottom: 1rem !important;
               border-radius: 0.75rem !important;
-              background-color: rgba(0, 0, 0, 0.6) !important;
+              
               max-width: 95% !important;
               margin-left: auto !important;
               margin-right: auto !important;
@@ -429,7 +425,7 @@ const Events = () => {
         </div>
 
         {/* Moving Promo Text */}
-        <div className="promo-text-container bg-red-600">
+        <div className="promo-text-container border-t-2 border-red-600">
           <div className="promo-text">
             {promoTexts[currentPromoIndex]} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Book your unforgettable birthday, wedding reception, or corporate event at Kepong! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Make your special moments truly shine! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Attract guests and create lasting memories!
           </div>
