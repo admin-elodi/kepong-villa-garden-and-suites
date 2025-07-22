@@ -364,12 +364,12 @@ const Events = () => {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
           }
           .fixed-caption-text {
-            font-size: 1.8rem; /* Prominent font size */
+            font-size: 1.4rem; /* Prominent font size */
             font-weight: bolder;
             color: #FFF; /* White color for high contrast */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             letter-spacing: 2px;
-            text-transform: uppercase;
+          
           }
           @media (min-width: 768px) {
             .carousel-container {
