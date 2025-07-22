@@ -39,15 +39,18 @@ const Header = () => {
         {/* Mobile: Title between logo and hamburger */}
         <div className="flex-1 flex justify-center md:hidden px-2 min-w-0"> {/* Adjusted px-2 and added min-w-0 */}
           <span
-            className="text-[12px] sm:text-[16px] tracking-wide uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis" // Adjusted tracking
+            className="text-[13px] sm:text-[16px] tracking-wide uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
             style={{
               letterSpacing: '0.08em', // Adjusted letter spacing for better fit
-              maxWidth: '100%', // Ensure it doesn't exceed container width
+              maxWidth: '100%',       // Ensure it doesn't exceed container width
+              transformOrigin: 'center',
+              transform: 'scaleY(1.8)', // Slightly taller without width increase
             }}
           >
             Kepong Villa Garden & Suites
           </span>
         </div>
+
 
         {/* Hamburger Icon for Mobile */}
         <button

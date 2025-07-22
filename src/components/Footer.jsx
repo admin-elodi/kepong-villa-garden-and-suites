@@ -118,8 +118,8 @@ const Footer = () => {
             <p className="text-sm max-w-md mx-auto text-white leading-relaxed">
               Celebrate the vibrant rhythm of Enugu’s nightlife—where Afrobeat, highlife, and dancehall infuse the air with unmatched energy.
             </p>
-            <p className="text-sm max-w-md mx-auto text-yellow-300 font-semibold">
-              This weekend: Live Percussion Show & Afrobeat Jam Session at Club K.
+            <p className="text-sm max-w-md mx-auto text-yellow-200 font-semibold">
+              This weekend: Live Percussion Show & Afrobeat Jam Session at Club K as Usual
             </p>
             <p className="text-xs text-gray-400 italic max-w-md mx-auto">
               Experience the heart of Enugu — music, dance, and great company await.
