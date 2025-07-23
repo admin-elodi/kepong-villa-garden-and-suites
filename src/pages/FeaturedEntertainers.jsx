@@ -35,16 +35,16 @@ const FeaturedEntertainers = () => {
 
   return (
     <main
-      className="min-h-screen font-montserrat text-red-600 py-34 bg-cover bg-center bg-fixed"
+      className="min-h-screen font-montserrat text-red-600 pt-20 md:pt-34 pb-34 bg-cover bg-center bg-fixed z-10"
       style={{
         backgroundImage: `url(${rappersImage})`,
-        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Subtle overlay for readability
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
         backgroundBlendMode: 'darken',
       }}
     >
       <div className="w-full">
         {/* Minimalist Header */}
-        <header className="pt-2 pb-6 text-center bg-red-600/50">
+        <header className="text-center bg-red-600/50 m-0 p-4">
           <h1 className="text-3xl sm:text-5xl tracking-widest font-bold tracking-tight mb-1 text-white drop-shadow-md">
             Entertainment
           </h1>
@@ -86,7 +86,8 @@ const FeaturedEntertainers = () => {
                 <button
                   aria-label="Next"
                   onClick={nextSlide}
-                  className="px-4 py-2 rounded-md bg-red-600 text-white font-semibold hover:bg-red-700 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
+                  className="px-4 py-2 rounded-md bg-red-600 text-white font-semibold hover:bg-red-700 transition transform hove
+r:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
                 >
                   Next
                 </button>

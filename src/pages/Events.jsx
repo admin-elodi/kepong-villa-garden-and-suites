@@ -81,11 +81,11 @@ const Events = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Auto-rotate promo text every 3 seconds
+  // Auto-rotate promo text every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPromoIndex((prevIndex) => (prevIndex + 1) % promoTexts.length);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -337,26 +337,36 @@ const Events = () => {
           }
           .promo-text-container {
             width: 100%;
+            height: 2.5rem;
             overflow: hidden;
-            white-space: nowrap;
-            box-sizing: border-box;
-            margin-bottom: 0px; /* Adjust to bring closer to the next section */
-            
-            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 2px solid #dc2626;
             border-bottom: 2px solid #dc2626;
+            padding: 10px 0;
+            position: relative;
           }
           .promo-text {
-            display: inline-block;
-            padding-left: 100%;
-            animation: move-left 20s linear infinite;
-            font-size: 1.5rem; /* Larger font size */
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            display: none;
+            font-size: 1.5rem;
             font-weight: bold;
-            color: white; /* Gold color for attraction */
+            color: white;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
           }
-          @keyframes move-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+          .promo-text.active {
+            display: block;
+            animation: lazySlideText 4s ease-out forwards;
+          }
+          @keyframes lazySlideText {
+            0% { opacity: 0; transform: translateY(20px); }
+            20% { opacity: 1; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(0); }
+            70% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 0; transform: translateY(-20px); }
           }
           .fixed-caption-container {
             width: 100%;
@@ -364,12 +374,11 @@ const Events = () => {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
           }
           .fixed-caption-text {
-            font-size: 1.4rem; /* Prominent font size */
+            font-size: 1.4rem;
             font-weight: bolder;
-            color: #FFF; /* White color for high contrast */
+            color: #FFF;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             letter-spacing: 2px;
-          
           }
           @media (min-width: 768px) {
             .carousel-container {
@@ -380,7 +389,6 @@ const Events = () => {
             }
             .modal-content { min-width: 470px; }
           }
-          /* --- Custom header mobile improvements --- */
           @media (max-width: 639px) {
             .header-upcoming-kepong {
               font-size: 1.5rem !important;
@@ -388,7 +396,6 @@ const Events = () => {
               padding-top: 1rem !important;
               padding-bottom: 1rem !important;
               border-radius: 0.75rem !important;
-              
               max-width: 95% !important;
               margin-left: auto !important;
               margin-right: auto !important;
@@ -424,11 +431,16 @@ const Events = () => {
           </h1>
         </div>
 
-        {/* Moving Promo Text */}
-        <div className="promo-text-container border-t-2 border-red-600">
-          <div className="promo-text">
-            {promoTexts[currentPromoIndex]} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Book your unforgettable birthday, wedding reception, or corporate event at Kepong! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Make your special moments truly shine! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Attract guests and create lasting memories!
-          </div>
+        {/* Text Slideshow */}
+        <div className="promo-text-container md:py-6">
+          {promoTexts.map((text, index) => (
+            <div
+              key={index}
+              className={`promo-text ${index === currentPromoIndex ? 'active' : ''}`}
+            >
+              {text}
+            </div>
+          ))}
         </div>
 
         {/* Fixed Caption Container */}
@@ -473,7 +485,7 @@ const Events = () => {
       </section>
 
       {/* Event Details Section */}
-      <section className="relative border-b border-t border-white w-full min-h-[360px] flex flex-col items-center justify-center py-14">
+      <section className="relative border-b border-t border-red-600 w-full min-h-[360px] flex flex-col items-center justify-center py-14">
         <video
           className="absolute inset-0 w-full h-full object-cover z-0"
           autoPlay
@@ -516,7 +528,7 @@ const Events = () => {
       </section>
 
       {/* Pre Event Highlights Video */}
-      <section className="relative w-full flex flex-col items-center mb-16 border-b border-white">
+      <section className="relative w-full flex flex-col items-center mb-16 border-b border-red-600">
         <div className="w-full relative h-[400px] md:h-[540px] overflow-hidden rounded-lg shadow-2xl">
           <video
             autoPlay

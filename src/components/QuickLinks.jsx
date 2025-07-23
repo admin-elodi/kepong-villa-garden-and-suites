@@ -26,7 +26,7 @@ const QuickLinks = () => {
       desc: 'Local & Foreign Dishes',
       link: '/bookings',
       btnLabel: 'Order Food',
-      state: { showFoodForm: true }, // Signal to show food form
+      state: { showFoodForm: true },
     },
     {
       img: deluxeRoom,
@@ -51,46 +51,44 @@ const QuickLinks = () => {
       title: 'Shawarma Bar',
       phone: '+234 806 078 6102',
       social: '@shawarmabar.ng',
-      socialLink: 'https://instagram.com/shawarmabar.ng',
+      whatsappLink: 'https://wa.me/2348060786102',
     },
     {
       title: 'Barber Shop',
       phone: '+234 915 177 6589',
-      social: '@kingsley',
+      whatsappLink: 'https://wa.me/2349151776589',
     },
     {
       title: 'Car Wash',
-      phone: '+234 803 456 7890',
-      social: '@cleancars.ng',
-      socialLink: 'https://facebook.com/cleancars.ng',
+      phone: '+234 803 757 5854',
+      whatsappLink: 'https://wa.me/2348037575854',  
     },
     {
       title: 'Nightclub',
       phone: '+234 916 943 6106',
+      whatsappLink: 'https://wa.me/2349169436106',  
       social: '@Sunccent1_',
       socialLink: 'https://x.com/Sunccent1_?t=7LDrva2RghLEEJfOl1vWHg&s=09',
     },
     {
       title: 'Snooker Boardman',
       phone: '+234 916 350 0634',
-      social: '@funhub.kepong',
+      whatsappLink: 'https://wa.me/2349163500634',  
     },
     {
       title: 'Assorted Meat',
       phone: '+234 816 654 0841',
-      social: '@keponghotel',
-      socialLink: 'https://twitter.com/keponghotel',
+      whatsappLink: 'https://wa.me/2348166540841',
     },
     {
-      title: 'Boutique',
-      phone: '+234 807 890 1234',
-      social: '@style.kepong',
+      title: 'Laundry',
+      phone: '+234 807 270 1671',
+      whatsappLink: 'https://wa.me/2348072701671',
     },
     {
       title: 'Nsukka Palm Wine & Native Food',
       phone: '+234 814 559 8866',
-      social: '@palmwine.ng',
-      socialLink: 'https://instagram.com/palmwine.ng',
+      whatsappLink: 'https://wa.me/2348145598866',
     },
   ];
 
@@ -111,19 +109,7 @@ const QuickLinks = () => {
             {/* Top Cards Section */}
             <section className="py-12 flex justify-center">
               <div className="rounded-lg p-8 max-w-6xl w-full text-center shadow-xl">
-                <h2
-                  className="
-                    text-xl
-                    md:text-xl
-                    font-dancing
-                    font-bold
-                    mb-8
-                    animate-fade-in-up
-                    leading-tight
-                    tracking-wider
-                    text-white
-                  "
-                >
+                <h2 className="text-xl md:text-xl font-dancing font-bold mb-8 animate-fade-in-up leading-tight tracking-wider text-white">
                   Book room, events, etc...
                 </h2>
 
@@ -168,7 +154,7 @@ const QuickLinks = () => {
                   {moreServices.map((service, index) => (
                     <div
                       key={index}
-                      className="text-white bg-black p-6 rounded-2xl border-2 border-red-600 0 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+                      className="text-white bg-black p-6 rounded-2xl border-2 border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                       role="button"
                       tabIndex="0"
                       onClick={() => toggleReveal(index)}
@@ -185,14 +171,28 @@ const QuickLinks = () => {
                         {serviceIcons[index % serviceIcons.length]}
                       </span>
                       <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+
                       {revealedServices[index] ? (
-                        <div className="text-sm mt-2 text-white">
+                        <div className="text-sm mt-2 text-white space-y-1">
                           <p>
                             <strong>Phone:</strong> {service.phone}
                           </p>
-                          <p>
-                            <strong>Social:</strong>{' '}
-                            {service.socialLink ? (
+
+                          {service.whatsappLink ? (
+                            <p>
+                              <strong>WhatsApp:</strong>{' '}
+                              <a
+                                href={service.whatsappLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-green-300 hover:underline"
+                              >
+                                Chat on WhatsApp
+                              </a>
+                            </p>
+                          ) : service.socialLink ? (
+                            <p>
+                              <strong>Social:</strong>{' '}
                               <a
                                 href={service.socialLink}
                                 target="_blank"
@@ -201,13 +201,17 @@ const QuickLinks = () => {
                               >
                                 {service.social}
                               </a>
-                            ) : (
-                              service.social
-                            )}
-                          </p>
+                            </p>
+                          ) : service.social ? (
+                            <p>
+                              <strong>Social:</strong> {service.social}
+                            </p>
+                          ) : null}
                         </div>
                       ) : (
-                        <p className="text-yellow-100">Click to reveal contact info</p>
+                        <p className="text-yellow-100">
+                          Click to reveal contact info
+                        </p>
                       )}
                     </div>
                   ))}
@@ -220,11 +224,10 @@ const QuickLinks = () => {
 
       {/* --- Add styles for icon colors --- */}
       <style>{`
-        /* White to grey to light blue icon colors */
-        .service-icon-color-0 { color: #f0f0f0; }      /* white */
-        .service-icon-color-1 { color: #a0a0a0; }      /* medium grey */
-        .service-icon-color-2 { color: #c0d9f7; }      /* light blue */
-        .service-icon-color-3 { color: #d7e6fb; }      /* very light blue */
+        .service-icon-color-0 { color: #f0f0f0; }
+        .service-icon-color-1 { color: #a0a0a0; }
+        .service-icon-color-2 { color: #c0d9f7; }
+        .service-icon-color-3 { color: #d7e6fb; }
       `}</style>
     </main>
   );

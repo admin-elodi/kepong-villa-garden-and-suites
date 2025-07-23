@@ -5,7 +5,7 @@ import standardRoom from '@/assets/images/hotel/standard.webp';
 import deluxe from '@/assets/images/hotel/deluxe.webp';
 import executive from '@/assets/images/hotel/executive.webp';
 import promoVideo from '@/assets/videos/couple.mp4';
-import shadesImage from '@/assets/images/shades.jpg';
+import shadesImage from '@/assets/images/shades.webp';
 
 const rooms = [
   {
@@ -98,7 +98,7 @@ const BookingPage = () => {
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-12 lg:px-24 overflow-auto">
           <h1
             key={currentPromoIndex}
-            className="text-4xl sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-red-600 md:px-8 py-4 rounded-lg animate-fadeInUp"
+            className="text-2xl sm:text-5xl md:text-3xl font-bold tracking-widest leading-tight text-red-600 md:px-8 py-4 rounded-lg animate-fadeInUp"
           >
             {promoTexts[currentPromoIndex]}
           </h1>

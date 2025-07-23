@@ -13,7 +13,7 @@ const FeaturedVideos = () => {
           </div>
           <div className="mt-2">
             <h1 className="text-lg sm:text-xl border-b-4 border-red-600 inline-block font-bold text-white pb-1">
-              DJ TEE MASTER
+              DJ TEA MASTER
             </h1>
           </div>
 
