@@ -102,7 +102,7 @@ const Events = () => {
   );
 
   return (
-    <main className="relative min-h-screen bg-black bg-opacity-90 py-32 flex flex-col items-center font-montserrat text-yellow-100">
+    <main className="relative min-h-screen bg-black bg-opacity-90 py-64 flex flex-col items-center font-montserrat text-yellow-100">
       <style>
         {`
           .fade-in {
@@ -431,7 +431,7 @@ const Events = () => {
         </div>
 
         {/* Text Slideshow */}
-        <div className="promo-text-container md:py-6">
+        <div className="promo-text-container bg-white/50 md:py-6">
           {promoTexts.map((text, index) => (
             <div
               key={index}
