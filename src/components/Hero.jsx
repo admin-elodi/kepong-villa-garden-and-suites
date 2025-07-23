@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import DroneOrderModal from './DroneOrderModal';
 import ReserveTableModal from '../components/ReserveTableModal';
 
@@ -23,25 +23,59 @@ const Hero = ({ setIsModalOpen }) => {
 
   // Carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slideTimeoutRef = useRef(null);
+  const [touchStartX, setTouchStartX] = useState(null);
+  const slideIntervalRef = useRef(null);
 
   // Carousel auto-advance every 7 seconds
   useEffect(() => {
-    slideTimeoutRef.current = setTimeout(() => {
+    slideIntervalRef.current = setInterval(() => {
       setCurrentSlide((idx) => (idx + 1) % carouselImages.length);
     }, 7000);
 
-    return () => clearTimeout(slideTimeoutRef.current);
-  }, [currentSlide]);
+    return () => clearInterval(slideIntervalRef.current);
+  }, []);
 
-  // Manual carousel controls
-  const nextSlide = () => {
-    clearTimeout(slideTimeoutRef.current);
+  // Manual carousel controls with useCallback for performance
+  const nextSlide = useCallback(() => {
+    clearInterval(slideIntervalRef.current);
     setCurrentSlide((idx) => (idx + 1) % carouselImages.length);
-  };
-  const prevSlide = () => {
-    clearTimeout(slideTimeoutRef.current);
+    // Restart interval
+    slideIntervalRef.current = setInterval(() => {
+      setCurrentSlide((idx) => (idx + 1) % carouselImages.length);
+    }, 7000);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    clearInterval(slideIntervalRef.current);
     setCurrentSlide((idx) => (idx === 0 ? carouselImages.length - 1 : idx - 1));
+    // Restart interval
+    slideIntervalRef.current = setInterval(() => {
+      setCurrentSlide((idx) => (idx + 1) % carouselImages.length);
+    }, 7000);
+  }, []);
+
+  // Swipe support for touch devices
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.touches[0].clientX;
+    const diffX = touchStartX - touchEndX;
+
+    // Swipe threshold: 50px
+    if (diffX > 50) {
+      nextSlide();
+      setTouchStartX(null);
+    } else if (diffX < -50) {
+      prevSlide();
+      setTouchStartX(null);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchStartX(null);
   };
 
   // Modal handlers
@@ -63,18 +97,36 @@ const Hero = ({ setIsModalOpen }) => {
         pt-[112px] md:pt-[112px] /* offset fixed header + ticker height on md and up */
       "
       aria-label="Hero section showcasing Kepong Villa Garden & Suites"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
+      <style>
+        {`
+          .carousel-image {
+            will-change: opacity, transform;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .carousel-image {
+              transition: none;
+            }
+          }
+        `}
+      </style>
+
       {/* Carousel Background Images */}
-      <div className="absolute inset-0 flex overflow-hidden"  aria-hidden="true">
+      <div className="absolute inset-0 flex overflow-hidden" aria-hidden="true">
         {carouselImages.map((image, idx) => (
           <img
             key={idx}
             src={image.src}
             alt={image.alt}
-            loading="lazy"
+            loading={idx === currentSlide ? 'eager' : 'lazy'}
+            fetchPriority={idx === currentSlide ? 'high' : 'low'}
             className={`
-              absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out
-              ${idx === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}
+              absolute inset-0 w-full h-full object-cover transition-all duration-800 ease-in-out
+              carousel-image
+              ${idx === currentSlide ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-105'}
               select-none pointer-events-none
             `}
             aria-hidden={idx !== currentSlide}
