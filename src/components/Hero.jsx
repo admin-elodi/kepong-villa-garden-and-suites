@@ -65,7 +65,7 @@ const Hero = ({ setIsModalOpen }) => {
       aria-label="Hero section showcasing Kepong Villa Garden & Suites"
     >
       {/* Carousel Background Images */}
-      <div className="absolute inset-0 flex overflow-hidden" aria-hidden="true">
+      <div className="absolute inset-0 flex overflow-hidden"  aria-hidden="true">
         {carouselImages.map((image, idx) => (
           <img
             key={idx}
