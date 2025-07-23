@@ -18,52 +18,34 @@ const KEPONG_RED = '#D62828';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   // Scrolling ticker states
   const tickerRef = useRef(null);
-  const [scrollX, setScrollX] = useState(0);
   const [tickerWidth, setTickerWidth] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(0);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Scrolling ticker animation effect
+  // Calculate ticker width for animation
   useEffect(() => {
     const tickerEl = tickerRef.current;
     if (!tickerEl) return;
 
     const calculateWidths = () => {
-      setTickerWidth(tickerEl.scrollWidth);
-      setContainerWidth(tickerEl.offsetWidth);
+      setTickerWidth(tickerEl.scrollWidth / 2); // Divide by 2 since text is duplicated
     };
 
     calculateWidths();
 
     const handleResize = () => {
       calculateWidths();
-      setScrollX(0);
     };
     window.addEventListener('resize', handleResize);
 
-    let animFrameId;
-    const speed = 0.7; // scroll speed px per frame (~60fps)
-
-    const step = () => {
-      setScrollX((prev) => {
-        const resetPosition = prev <= -tickerWidth;
-        return resetPosition ? containerWidth : prev - speed;
-      });
-      animFrameId = requestAnimationFrame(step);
-    };
-    animFrameId = requestAnimationFrame(step);
-
     return () => {
-      cancelAnimationFrame(animFrameId);
       window.removeEventListener('resize', handleResize);
     };
-  }, [tickerWidth, containerWidth]);
+  }, []);
 
   const navLinkClasses =
     'block text-base sm:text-lg tracking-wider font-semibold text-red-600 hover:text-white hover:border-b-2 hover:border-white transition-all duration-300 py-2';
@@ -75,6 +57,34 @@ const Header = () => {
                  md:border-b md:border-red-600 md:border-x-0 md:border-t-0 bg-white md:bg-black"
       role="banner"
     >
+      <style>
+        {`
+          .ticker-container {
+            overflow: hidden;
+            width: 100%;
+          }
+          .ticker-content {
+            display: inline-flex;
+            gap: 2.5rem; /* Matches original gap-10 (2.5rem) */
+            animation: scrollText 20s linear infinite;
+            will-change: transform;
+          }
+          @keyframes scrollText {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-${tickerWidth}px)); }
+          }
+          .ticker-content.paused {
+            animation-play-state: paused;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .ticker-content {
+              animation: none;
+              transform: translateX(0);
+            }
+          }
+        `}
+      </style>
+
       {/* Desktop: Title above nav */}
       <div className="hidden md:flex justify-center bg-white border-2 border-red-600 py-2 select-none">
         <h1 className="text-2xl font-bold text-red-600 tracking-[10px] uppercase">
@@ -212,14 +222,13 @@ const Header = () => {
 
       {/* Scrolling Ticker */}
       <div
-        className="bg-black border-t border-b border-red-600 select-none overflow-hidden"
+        className="bg-black border-t border-b border-red-600 select-none ticker-container"
         aria-label="Kepong facilities promotional ticker"
         role="region"
       >
         <div
           ref={tickerRef}
-          className="whitespace-nowrap flex gap-10 text-xs sm:text-sm font-semibold text-white tracking-wide py-2"
-          style={{ transform: `translateX(${scrollX}px)`, willChange: 'transform' }}
+          className="ticker-content whitespace-nowrap flex gap-10 text-xs sm:text-sm font-semibold text-white tracking-wide py-2"
         >
           {promotionalTexts.concat(promotionalTexts).map((text, idx) => (
             <span

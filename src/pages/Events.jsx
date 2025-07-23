@@ -47,9 +47,8 @@ const carouselImages = [
 
 const promoTexts = [
   "Looking to host an unforgettable event?",
-  "Kepong is the perfect backdrop for your celebrations!",
-  "Birthdays, weddings, corporate events - we've got you covered!",
-  "Attract more guests and make memories that last!",
+  "Kepong is the perfect backdrop!",
+  "For birthdays, weddings, club meetings & more",
   "Book your dream event with us today!",
   "Make your special day truly shine!",
 ];

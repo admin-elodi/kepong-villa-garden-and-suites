@@ -35,7 +35,7 @@ const FeaturedEntertainers = () => {
 
   return (
     <main
-      className="min-h-screen font-montserrat text-red-600 pt-20 md:pt-34 pb-34 bg-cover bg-center bg-fixed z-10"
+      className="min-h-screen font-montserrat text-red-600 pt-20 md:pt-40 pb-34 bg-cover bg-center bg-fixed z-10"
       style={{
         backgroundImage: `url(${rappersImage})`,
         backgroundColor: 'rgba(0, 0, 0, 0.7)',

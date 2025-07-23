@@ -102,13 +102,13 @@ const QuickLinks = () => {
   };
 
   return (
-    <main className="mt-0 font-montserrat border-4 border-red-600 text-yellow-100 bg-white">
+    <main className="mt-0 font-montserrat border-4 border-red-600 text-yellow-100 bg-black/70">
       <div className="w-full border-t border-b border-red-600">
         <section className="py-12">
-          <div className="container bg-black/70 rounded-lg max-w-screen-xl mx-auto text-center">
+          <div className="container max-w-screen-xl mx-auto text-center">
             {/* Top Cards Section */}
             <section className="py-12 flex justify-center">
-              <div className="rounded-lg p-8 max-w-6xl w-full text-center shadow-xl">
+              <div className="p-8 max-w-6xl w-full text-center shadow-xl">
                 <h2 className="text-xl md:text-xl font-dancing font-bold mb-8 animate-fade-in-up leading-tight tracking-wider text-white">
                   Book room, events, etc...
                 </h2>
