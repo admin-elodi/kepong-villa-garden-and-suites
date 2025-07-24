@@ -55,7 +55,7 @@ const Hero = ({ setIsModalOpen }) => {
     // Restart interval
     slideIntervalRef.current = setInterval(() => {
       setCurrentSlide((idx) => (idx + 1) % carouselImages.length);
-    }, 7000);
+    }, 2000);
   }, []);
 
   // Swipe support for touch devices
