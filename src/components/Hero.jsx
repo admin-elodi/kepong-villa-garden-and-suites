@@ -138,13 +138,10 @@ const Hero = ({ setIsModalOpen }) => {
         ))}
       </div>
 
-      {/* Gradient overlay to aid text readability */}
-      
-
       {/* Carousel Navigation Container */}
       <div
         className="
-          absolute bottom-0 left-0 right-0 z-20 w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8
+          absolute bottom-0 left-0 right-0 z-20 w-full px-4 sm:px-6 lg:px-0
           py-3 flex justify-center gap-4 bg-black/50
         "
         role="group"
