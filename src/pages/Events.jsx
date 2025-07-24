@@ -353,8 +353,7 @@ const Events = () => {
             display: none;
             font-size: 1.5rem;
             font-weight: bold;
-            color: red;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            color: black;
           }
           .promo-text.active {
             display: block;
