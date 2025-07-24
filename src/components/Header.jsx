@@ -124,12 +124,12 @@ const Header = () => {
           {/* Mobile: Title between logo and hamburger */}
           <div className="flex-1 flex justify-center md:hidden px-2 min-w-0">
             <span
-              className="text-[13px] sm:text-[16px] tracking-wide uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
+              className="text-[12.5px] sm:text-[16px] tracking-wide uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
               style={{
                 letterSpacing: '0.08em',
                 maxWidth: '100%',
                 transformOrigin: 'center',
-                transform: 'scaleY(2)',
+                transform: 'scaleY(3)',
               }}
             >
               Kepong Villa Garden & Suites
