@@ -117,7 +117,7 @@ const ClubK = () => {
       </video>
 
       {/* Semi-transparent overlay for content readability */}
-      <div className="relative z-10 bg-black/50 min-h-screen border-t-4 border-b-4 border-yellow-100 pt-[90px] sm:pt-[110px]">
+      <div className="relative z-10 bg-black/50 min-h-screen border-t-4 border-b-4 border-red-600 pt-[90px] sm:pt-[110px]">
         {/* Hero Section */}
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
@@ -264,7 +264,7 @@ const ClubK = () => {
               <h2 className="text-3xl text-white font-bold text-center mb-4 pb-3 px-4 py-2 rounded">Experience Club K</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 sm:gap-x-12 max-w-6xl mx-auto">
                 {features.map(({ title, img, desc }, i) => (
-                  <div key={i} className="rounded-lg overflow-hidden border-4 border-red-600 shadow-xl bg-black/80 flex flex-col items-center text-center" style={{ height: '340px' }}>
+                  <div key={i} className="rounded-lg overflow-hidden border-2 border-red-600 shadow-xl bg-black/80 flex flex-col items-center text-center" style={{ height: '340px' }}>
                     <img src={img} alt={title} className="w-full h-40 object-cover mb-4" loading="lazy" />
                     <div className="p-6 flex flex-col flex-grow justify-between w-full">
                       <div>
