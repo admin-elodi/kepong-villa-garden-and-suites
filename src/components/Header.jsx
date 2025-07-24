@@ -139,7 +139,7 @@ const Header = () => {
           {/* Hamburger Icon for Mobile */}
           <button
             id="menu-toggle"
-            className="md:hidden text-yellow-100 focus:outline-none focus:ring-2 focus:ring-amber-400 rounded shrink-0"
+            className="md:hidden text-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 rounded shrink-0"
             aria-label="Toggle Navigation Menu"
             aria-expanded={isMenuOpen}
             onClick={toggleMenu}
