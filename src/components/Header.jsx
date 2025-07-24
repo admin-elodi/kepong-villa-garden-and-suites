@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '@/assets/images/k-logo.jpg';
+import logo from '@/assets/images/company.webp';
 import DroneOrderModal from './DroneOrderModal';
 import ReserveTableModal from '../components/ReserveTableModal';
 
@@ -117,7 +117,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Kepong Villa Garden and Suites Logo"
-              className="w-10 h-10 rounded-sm"
+              className="bg-white/40 w-12 h-10 rounded-sm"
             />
           </NavLink>
 

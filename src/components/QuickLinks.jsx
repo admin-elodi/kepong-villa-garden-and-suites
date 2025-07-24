@@ -57,11 +57,13 @@ const QuickLinks = () => {
       title: 'Barber Shop',
       phone: '+234 915 177 6589',
       whatsappLink: 'https://wa.me/2349151776589',
+      social: '@barbershop.ng', // Added for testing
     },
     {
       title: 'Car Wash',
       phone: '+234 803 757 5854',
       whatsappLink: 'https://wa.me/2348037575854',  
+      social: '@carwash.ng', // Added for testing
     },
     {
       title: 'Nightclub',
@@ -74,21 +76,25 @@ const QuickLinks = () => {
       title: 'Snooker Boardman',
       phone: '+234 916 350 0634',
       whatsappLink: 'https://wa.me/2349163500634',  
+      social: '@snookerpro', // Added for testing
     },
     {
       title: 'Assorted Meat',
       phone: '+234 816 654 0841',
       whatsappLink: 'https://wa.me/2348166540841',
+      social: '@meatlover.ng', // Added for testing
     },
     {
       title: 'Laundry',
       phone: '+234 807 270 1671',
       whatsappLink: 'https://wa.me/2348072701671',
+      social: '@cleanlaundry.ng', // Added for testing
     },
     {
       title: 'Nsukka Palm Wine & Native Food',
       phone: '+234 814 559 8866',
       whatsappLink: 'https://wa.me/2348145598866',
+      social: '@nsukkapalmwine', // Added for testing
     },
   ];
 
@@ -177,8 +183,7 @@ const QuickLinks = () => {
                           <p>
                             <strong>Phone:</strong> {service.phone}
                           </p>
-
-                          {service.whatsappLink ? (
+                          {service.whatsappLink && (
                             <p>
                               <strong>WhatsApp:</strong>{' '}
                               <a
@@ -190,23 +195,24 @@ const QuickLinks = () => {
                                 Chat on WhatsApp
                               </a>
                             </p>
-                          ) : service.socialLink ? (
+                          )}
+                          {(service.social || service.socialLink) && (
                             <p>
                               <strong>Social:</strong>{' '}
-                              <a
-                                href={service.socialLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-yellow-200 hover:underline"
-                              >
-                                {service.social}
-                              </a>
+                              {service.socialLink ? (
+                                <a
+                                  href={service.socialLink}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-yellow-200 hover:underline"
+                                >
+                                  {service.social}
+                                </a>
+                              ) : (
+                                service.social
+                              )}
                             </p>
-                          ) : service.social ? (
-                            <p>
-                              <strong>Social:</strong> {service.social}
-                            </p>
-                          ) : null}
+                          )}
                         </div>
                       ) : (
                         <p className="text-yellow-100">

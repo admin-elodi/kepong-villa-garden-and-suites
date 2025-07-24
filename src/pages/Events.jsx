@@ -353,7 +353,7 @@ const Events = () => {
             display: none;
             font-size: 1.5rem;
             font-weight: bold;
-            color: white;
+            color: red;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
           }
           .promo-text.active {
@@ -431,7 +431,7 @@ const Events = () => {
         </div>
 
         {/* Text Slideshow */}
-        <div className="promo-text-container bg-white/50 md:py-6">
+        <div className="promo-text-container bg-white/80 md:py-6">
           {promoTexts.map((text, index) => (
             <div
               key={index}
