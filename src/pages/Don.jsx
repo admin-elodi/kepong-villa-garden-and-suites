@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 import promoVideo from '@/assets/videos/stars.webm'; // Background video
@@ -17,15 +17,6 @@ const crewMembers = [
   { id: 6, name: 'Ojiugo', role: 'Supervisor', img: supervisor },
 ];
 
-const customerMembers = [
-  { id: 7, name: 'Chidi Okoye', role: 'Loyal Guest', img: manager },
-  { id: 8, name: 'Amaka Igwe', role: 'VIP Customer', img: dj },
-  { id: 9, name: 'Emeka Nwosu', role: 'Frequent Visitor', img: planner },
-  { id: 10, name: 'Ngozi Eze', role: 'Event Enthusiast', img: light },
-  { id: 11, name: 'Tunde Afolabi', role: 'Regular Patron', img: light },
-  { id: 12, name: 'Chioma Obi', role: 'Celebrity Guest', img: light },
-];
-
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -41,10 +32,8 @@ const itemVariants = {
 };
 
 const Don = () => {
-  const [activeSet, setActiveSet] = useState('crew');
-
   return (
-    <main className="relative min-h-screen text-yellow-100 font-montserrat px-6 py-32 md:py-40 overflow-hidden bg-black">
+    <main className="relative min-h-screen font-montserrat px-6 py-44 md:py-54 overflow-hidden bg-black">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full -z-10 bg-black">
         <video
@@ -66,12 +55,12 @@ const Don = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="text-center text-2xl md:text-5xl font-semibold mb-12 select-none text-red-600 tracking-widest"
+          className="text-center text-2xl md:text-5xl font-semibold mb-12 select-none text-white tracking-widest"
         >
-          Face Behind The Vibe
+          The Man Behind The Vibe
         </motion.h1>
 
-       <motion.section
+        <motion.section
           className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 mb-28"
           initial="hidden"
           whileInView="visible"
@@ -93,7 +82,7 @@ const Don = () => {
             />
             <div className="mt-6">
               <h2 className="text-3xl font-bold text-white leading-tight">Uche Odogwu</h2>
-              <p className="text-red-600 text-sm font-bold uppercase tracking-wider mt-1">
+              <p className="text-red-600 text-[12px] font-extrabold uppercase tracking-wider mt-1">
                 CEO, Kepong Villa Garden & Suites
               </p>
             </div>
@@ -104,7 +93,7 @@ const Don = () => {
             variants={itemVariants}
             className="flex items-center h-full max-w-xl text-center md:text-left"
           >
-            <p className="text-lg white leading-relaxed tracking-wide" style={{ textAlign: 'justify' }}>
+            <p className="text-lg text-white leading-relaxed tracking-wide" style={{ textAlign: 'justify' }}>
               Uche Odogwu, affectionately called Odogwu Cally, is the driving force and face behind
               the vibe at Kepong Villa Garden & Suites. His visionary leadership masterfully blends
               Igbo culture with modern hospitality — inspiring the crew and engaging guests alike,
@@ -113,7 +102,19 @@ const Don = () => {
           </motion.div>
         </motion.section>
 
-        {/* Toggle Buttons */}
+        {/* Centralized, Wide Button */}
+        <div className="flex justify-center mb-10">
+          <button
+            className="w-72 py-3 rounded-lg font-semibold text-lg border-2 border-red-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-300 transform bg-red-600 text-white"
+            aria-label="Show crew members"
+            type="button"
+            disabled
+          >
+            Meet Our Crew
+          </button>
+        </div>
+
+        {/* Grid of members */}
         <motion.section
           className="max-w-6xl mx-auto"
           initial="hidden"
@@ -121,45 +122,18 @@ const Don = () => {
           viewport={{ once: true }}
           variants={containerVariants}
         >
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-10">
-            <button
-              onClick={() => setActiveSet('crew')}
-              className={`px-8 py-3 rounded-lg font-semibold text-lg border-2 border-red-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-300 transform ${
-                activeSet === 'crew'
-                  ? 'bg-red-600 text-white'
-                  : 'bg-black bg-opacity-70 text-red-600 hover:bg-red-600 hover:text-white hover:scale-105'
-              }`}
-              aria-label="Show Kepong crew members"
-            >
-              Meet Our Crew
-            </button>
-            <button
-              onClick={() => setActiveSet('customers')}
-              className={`px-8 py-3 rounded-lg font-semibold text-lg border-2 border-red-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-300 transform ${
-                activeSet === 'customers'
-                  ? 'bg-red-600 text-white'
-                  : 'bg-black bg-opacity-70 text-red-600 hover:bg-red-600 hover:text-white hover:scale-105'
-              }`}
-              aria-label="Show Kepong customers"
-            >
-              Kepong Ballers
-            </button>
-          </div>
-
-          {/* Grid of members */}
           <motion.div
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8"
-            key={activeSet}
             initial="hidden"
             animate="visible"
             variants={containerVariants}
           >
-            {(activeSet === 'crew' ? crewMembers : customerMembers).map(({ id, name, role, img }) => (
+            {crewMembers.map(({ id, name, role, img }) => (
               <motion.div
                 key={id}
                 className="flex flex-col items-center text-center"
                 variants={itemVariants}
-                whileHover={{ scale: 1.1, boxShadow: '0 0 15px #DC2626' }} // red-600 subtle glow
+                whileHover={{ scale: 1.1, boxShadow: '0 0 15px #DC2626' }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 tabIndex={0}
                 role="figure"

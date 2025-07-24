@@ -95,7 +95,7 @@ const Footer = () => {
             <h3 className="text-2xl font-bold text-white">Get in the Groove</h3>
             <ul className="space-y-3 text-sm">
               {[
-                { to: '/odogwu', label: 'Odogwu Cally' },
+                { to: '/don', label: 'Don Cally' },
                 { to: '/club-k', label: 'Club K' },
                 { to: '/booking', label: 'Book Now' },
                 { to: '/featured-entertainers', label: 'Featured Entertainers' },
