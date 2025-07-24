@@ -6,11 +6,15 @@ import ReserveTableModal from '../components/ReserveTableModal';
 import amaka from '@/assets/images/shawarma.webp';
 import chilling from '@/assets/images/snooker.webp';
 import deluxe from '@/assets/images/donj.jpg';
+import unsplash from '@/assets/images/unsplash.webp';
+import hotel from '@/assets/images/hotel.webp';
 
 const carouselImages = [
   { src: amaka, alt: 'Luxurious room at Kepong Villa Garden & Suites - Amaka' },
   { src: chilling, alt: 'Relaxing ambiance at Kepong Villa - Chilling area' },
   { src: deluxe, alt: 'Deluxe Suite at Kepong Villa Garden & Suites' },
+  { src: unsplash, alt: 'Cozy rooms' },
+  { src: hotel, alt: 'Front building' },
 ];
 
 // Kepong official red
@@ -30,7 +34,7 @@ const Hero = ({ setIsModalOpen }) => {
   useEffect(() => {
     slideIntervalRef.current = setInterval(() => {
       setCurrentSlide((idx) => (idx + 1) % carouselImages.length);
-    }, 7000);
+    }, 3000);
 
     return () => clearInterval(slideIntervalRef.current);
   }, []);
@@ -135,10 +139,7 @@ const Hero = ({ setIsModalOpen }) => {
       </div>
 
       {/* Gradient overlay to aid text readability */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full bg-gradient-to-b from-black/50 via-black/20 to-black/70"
-      />
+      
 
       {/* Carousel Navigation Container */}
       <div
