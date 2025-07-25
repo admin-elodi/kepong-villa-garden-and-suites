@@ -417,7 +417,7 @@ const Events = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: 'easeInOut' }}
         >
-          <h1>Upcoming Kepong Events!</h1>
+          <h1>Kepong Events Page!</h1>
         </motion.div>
       </section>
 
@@ -431,9 +431,7 @@ const Events = () => {
           transition={{ duration: 1 }}
         >
           <h1 className="text-2xl md:text-5xl font-extrabold tracking-tight">{event.title}</h1>
-          <p className="text-lg md:text-xl mt-4 max-w-2xl mx-auto">
-            Welcome to Kepong Villa’s Events Page! Join Amaka’s spectacular 30th birthday celebration.
-          </p>
+          
         </motion.div>
       </section>
 
@@ -468,7 +466,7 @@ const Events = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold text-red-600 mb-6">You’re Invited!</h2>
             <p className="text-yellow-100 text-lg max-w-2xl mx-auto mb-8">
-              Celebrate Amaka’s 30th birthday with music, fun, and memories at Kepong Villa Garden & Suites!
+              Celebrate with Amaka at Kepong Villa Garden & Suites!
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -623,7 +621,7 @@ const Events = () => {
                 aria-label="Send Good Wishes"
               >
                 <FaHeart size={22} />
-                Send Good Wishes
+                Send Good Wishes To The Celebrant
               </button>
               <button
                 className="endorse-btn"
@@ -631,7 +629,7 @@ const Events = () => {
                 aria-label="Monetary Support"
               >
                 <FaMoneyBillWave size={24} />
-                Monetary Support
+                Monetary Support For Celebrant
               </button>
             </div>
             {endorsementAction === 'wishes' && (

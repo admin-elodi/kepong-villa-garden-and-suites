@@ -60,7 +60,7 @@ const Header = () => {
 
   const navLinkClasses =
     'block text-base sm:text-lg tracking-wider font-semibold text-red-600 hover:text-white hover:border-b-2 hover:border-white transition-all duration-300 py-2';
-  const activeClasses = 'text-white border-b-2 border-white';
+  const activeClasses = '!text-white border-b-2 border-white'; // Added !important via Tailwind's ! prefix for higher specificity
 
   return (
     <>
@@ -170,7 +170,7 @@ const Header = () => {
           <ul
             className={`${
               isMenuOpen ? 'flex bg-black' : 'hidden'
-            } md:flex md:bg-transparent flex-col md:flex-row text-center absolute md:static top-full left-0 w-full md:w-auto space-y-4 md:space-y-0 md:space-x-20 py-4 px-6 md:p-0 transition-all duration-300 ease-in-out ${
+            } md:flex md:bg-transparent flex-col md:flex-row text-center absolute md:static top-full left-0 w-full md:w-auto space-y-4 md:space-y-0 md:gap-12 md:justify-evenly py-4 px-6 md:p-0 transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 md:opacity-100 md:max-h-full'
             } md:items-center shadow-lg md:shadow-none z-40`}
             aria-hidden={!isMenuOpen}
