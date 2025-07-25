@@ -62,7 +62,7 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
   if (showConfirmation) {
     return createPortal(
       <div
-        className="modal-overlay fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4"
+        className="modal-overlay fixed inset-0 flex items-center justify-center z-50 p-4"
         onClick={handleOutsideClick}
         role="dialog"
         aria-modal="true"
@@ -100,7 +100,7 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
 
   return createPortal(
     <div
-      className="modal-overlay fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4"
+      className="modal-overlay fixed inset-0 flex items-center justify-center z-50 p-4"
       onClick={handleOutsideClick}
       role="dialog"
       aria-modal="true"

@@ -14,6 +14,8 @@ import {
   FaMoneyBillWave,
   FaHeart,
 } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import ConfettiExplosion from 'react-confetti-explosion';
 import eventBirthday from '@/assets/images/amaka.webp';
 import snooker from '@/assets/images/snooker.webp';
 import chilling from '@/assets/images/chilling.webp';
@@ -40,17 +42,17 @@ const celebrant = {
 };
 
 const carouselImages = [
-  { src: eventBirthday, alt: 'Birthday Party' },
-  { src: snooker, alt: 'Snooker Event' },
-  { src: chilling, alt: 'Chilling Event' },
+  { src: eventBirthday, alt: 'Amaka’s Birthday Party', caption: 'Celebrate Amaka’s big day!' },
+  { src: snooker, alt: 'Snooker Event', caption: 'Fun moments at Kepong!' },
+  { src: chilling, alt: 'Chilling Event', caption: 'Vibes in our gardens!' },
 ];
 
 const promoTexts = [
-  "Looking to host an unforgettable event?",
-  "Kepong is the perfect backdrop!",
-  "For birthdays, weddings, club meetings & more",
-  "Book your dream event with us today!",
-  "Make your special day truly shine!",
+  "Join Amaka’s 30th Birthday Bash!",
+  "Celebrate with us at Kepong Villa!",
+  "Music, laughter, and memories!",
+  "Endorse Amaka’s event now!",
+  "Make your special day shine at Kepong!",
 ];
 
 const Events = () => {
@@ -58,8 +60,9 @@ const Events = () => {
   const [currentPromoIndex, setCurrentPromoIndex] = useState(0);
   const [endorseModalOpen, setEndorseModalOpen] = useState(false);
   const [endorsementAction, setEndorsementAction] = useState(null); // 'wishes' | 'monetary' | null
+  const [isConfettiActive, setIsConfettiActive] = useState(false);
 
-  // Prevent background scrolling when modal open
+  // Prevent background scrolling when modal is open
   useEffect(() => {
     if (endorseModalOpen) {
       document.body.style.overflow = 'hidden';
@@ -101,8 +104,14 @@ const Events = () => {
     `Join us at ${event.title} - an unforgettable night at Kepong Villa!`
   );
 
+  const handleEndorsementClick = () => {
+    setIsConfettiActive(true);
+    setEndorseModalOpen(true);
+    setTimeout(() => setIsConfettiActive(false), 3000); // Confetti lasts 3 seconds
+  };
+
   return (
-    <main className="relative min-h-screen bg-black bg-opacity-90 py-64 flex flex-col items-center font-montserrat text-yellow-100">
+    <main className="relative min-h-screen py-52 md:text-lg md:py-64 bg-black bg-opacity-90 font-montserrat text-yellow-100">
       <style>
         {`
           .fade-in {
@@ -110,25 +119,15 @@ const Events = () => {
             animation: fadeIn 1s ease-out forwards;
           }
           .fade-in.delay-1 { animation-delay: 0.2s; }
-          .fade-in.delay-2 { animation-delay: 0.4s; }
-          .fade-in.delay-3 { animation-delay: 0.6s; }
-          @keyframes fadeIn {
-            to { opacity: 1; }
-          }
+          @keyframes fadeIn { to { opacity: 1; } }
           .slide-up {
             opacity: 0;
             transform: translateY(30px);
-            animation: slideUp 0.9s cubic-bezier(.4,1.2,.6,1) forwards;
+            animation: slideUp 0.9s ease-in-out forwards;
           }
           .slide-up.delay-1 { animation-delay: 0.3s; }
           .slide-up.delay-2 { animation-delay: 0.5s; }
-          .slide-up.delay-3 { animation-delay: 0.7s; }
-          .slide-up.delay-4 { animation-delay: 0.9s; }
-          .slide-up.delay-6 { animation-delay: 1.1s; }
-          .slide-up.delay-7 { animation-delay: 1.3s; }
-          @keyframes slideUp {
-            to { opacity: 1; transform: translateY(0); }
-          }
+          @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
           .btn-red {
             background-color: #dc2626;
             color: white;
@@ -136,66 +135,54 @@ const Events = () => {
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             border: 2px solid white;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
           }
           .btn-red:hover {
             background-color: #b91c1c;
-            color: white;
             transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
+          }
+          .btn-pulse::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 0.5rem;
+            border: 2px solid #dc2626;
+            animation: pulse 2s infinite;
+          }
+          @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
           }
           .social-icon {
             color: #fef3c7;
             font-size: 1.75rem;
             margin: 0 0.75rem;
-            cursor: pointer;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
           }
           .social-icon:hover {
             color: #dc2626;
             transform: scale(1.2);
           }
-          .booking-invite {
-            max-width: 300px;
-            background: rgba(254, 243, 199, 0.1);
-            border: 1px solid #dc2626;
-            border-radius: 12px;
-            padding: 1.4rem;
-            text-align: center;
-            color: #fef3c7;
-            box-shadow: 0 0 18px rgba(220, 38, 38, 0.35);
-          }
-          .booking-invite strong {
-            color: #dc2626;
-          }
-          .booking-invite a {
-            color: #dc2626;
-            font-weight: 500;
-            text-decoration: underline;
-          }
-          .text-bg {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            display: inline-block;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-          }
           .carousel-container {
             width: 100%;
-            height: 28rem;
+            height: 20rem;
             position: relative;
             overflow: hidden;
             background: #11182780;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 0; /* Ensure no gap to the section above */
           }
           .carousel-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center;
             position: absolute;
             top: 0;
             left: 0;
@@ -207,6 +194,19 @@ const Events = () => {
             opacity: 1;
             z-index: 2;
           }
+          .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3;
+          }
+          .carousel-container:hover .carousel-caption { opacity: 1; }
           .carousel-button {
             background: #dc2626;
             color: white;
@@ -214,21 +214,12 @@ const Events = () => {
             border-radius: 0.375rem;
             cursor: pointer;
             border: none;
-            outline: none;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
           }
           .carousel-button:hover {
             background: #b91c1c;
             transform: scale(1.05);
           }
-          .video-section {
-            width: 100%;
-            height: 28rem;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-          }
-          /* Modal Styling */
           .modal-overlay {
             position: fixed;
             z-index: 9999;
@@ -245,10 +236,10 @@ const Events = () => {
             background: #282828;
             border-radius: 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
-            padding: 2.5rem 2rem 2rem 2rem;
+            padding: 2.5rem 2rem;
             border: 4px solid #dc2626;
             min-width: 90vw;
-            max-width: 320px;
+            max-width: 400px;
             color: #fff7db;
             animation: modalPop 0.27s cubic-bezier(.51, 1.36, .78, 1.01);
             position: relative;
@@ -336,15 +327,14 @@ const Events = () => {
           }
           .promo-text-container {
             width: 100%;
-            height: 2.5rem;
+            height: 3rem;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             border-top: 2px solid #dc2626;
             border-bottom: 2px solid #dc2626;
-            padding: 10px 0;
-            position: relative;
+            background: white;
           }
           .promo-text {
             position: absolute;
@@ -353,7 +343,7 @@ const Events = () => {
             display: none;
             font-size: 1.5rem;
             font-weight: bold;
-            color: black;
+            color: #dc2626;
           }
           .promo-text.active {
             display: block;
@@ -362,238 +352,250 @@ const Events = () => {
           @keyframes lazySlideText {
             0% { opacity: 0; transform: translateY(20px); }
             20% { opacity: 1; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(0); }
-            70% { opacity: 0; transform: translateY(-20px); }
+            80% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(-20px); }
           }
-          .fixed-caption-container {
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+          .fixed-caption-container { background: #dc2626; padding: 1rem; }
+          .fixed-caption-text { font-size: 1.5rem; font-weight: bold; color: white; }
+          .parallax-bg {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
           }
-          .fixed-caption-text {
-            font-size: 1.4rem;
-            font-weight: bolder;
-            color: #FFF;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            letter-spacing: 2px;
+          .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+          }
+          .confetti-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+          }
+          .main-caption {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #dc2626;
+            border-radius: 0.5rem;
+            margin: 0 auto 1rem;
+            max-width: 90%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          }
+          .main-caption h1 {
+            
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+          }
+          @media (max-width: 768px) {
+            .carousel-container { height: 16rem; }
+            .promo-text { font-size: 1.2rem; }
+            .fixed-caption-text { font-size: 1.3rem; }
+            .modal-content { min-width: 90vw; max-width: 320px; }
+            .main-caption h1 { font-size: 1.8rem; }
           }
           @media (min-width: 768px) {
-            .carousel-container {
-              height: 45rem;
-            }
-            .video-section {
-              height: 32rem;
-            }
+            .carousel-container { height: 32rem; }
+            .sticky-cta { bottom: 30px; right: 30px; }
             .modal-content { min-width: 470px; }
-          }
-          @media (max-width: 639px) {
-            .header-upcoming-kepong {
-              font-size: 1.5rem !important;
-              letter-spacing: 5px !important;
-              padding-top: 1rem !important;
-              padding-bottom: 1rem !important;
-              border-radius: 0.75rem !important;
-              max-width: 95% !important;
-              margin-left: auto !important;
-              margin-right: auto !important;
-              box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25) !important;
-              text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6) !important;
-              letter-spacing: 5px;
-            }
-            .promo-text {
-              font-size: 1rem;
-            }
-            .fixed-caption-text {
-              font-size: 1.2rem;
-            }
+            .main-caption h1 { font-size: 4rem; }
           }
         `}
       </style>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
-      {/* Text Hero with Slideshow */}
-      <section className="relative mt-4 z-20 slide-up delay-7 text-center w-full mb-0">
-        <div className="relative w-full h-[150px] overflow-hidden">
-          <video
-            className="absolute top-0 left-0 w-full h-full object-cover z-0"
-            src={backgroundVideo}
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-          <h1
-            className="md:text-2xl header-upcoming-kepong uppercase relative z-10 font-extrabold text-white tracking-[15px] sm:tracking-[15px] md:tracking-[15px] md:px-18 py-12 mb-4 rounded-lg"
+      {/* Main Caption */}
+      <section className="main-caption slide-up fade-in">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: 'easeInOut' }}
+        >
+          <h1>Upcoming Kepong Events!</h1>
+        </motion.div>
+      </section>
+
+      {/* Hero Section */}
+      <section className="relative h-96 flex items-center justify-center bg-cover bg-center parallax-bg" style={{ backgroundImage: `url(${eventBirthday})` }}>
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <motion.div
+          className="relative z-10 text-center text-white"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <h1 className="text-2xl md:text-5xl font-extrabold tracking-tight">{event.title}</h1>
+          <p className="text-lg md:text-xl mt-4 max-w-2xl mx-auto">
+            Welcome to Kepong Villa’s Events Page! Join Amaka’s spectacular 30th birthday celebration.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* Text Slideshow */}
+      <section className="promo-text-container">
+        {promoTexts.map((text, index) => (
+          <motion.div
+            key={index}
+            className={`promo-text ${index === currentPromoIndex ? 'active' : ''}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: index === currentPromoIndex ? 1 : 0, y: index === currentPromoIndex ? 0 : -20 }}
+            transition={{ duration: 0.5 }}
           >
-            Upcoming Kepong Events!
-          </h1>
-        </div>
+            {text}
+          </motion.div>
+        ))}
+      </section>
 
-        {/* Text Slideshow */}
-        <div className="promo-text-container bg-white/80 md:py-6">
-          {promoTexts.map((text, index) => (
-            <div
-              key={index}
-              className={`promo-text ${index === currentPromoIndex ? 'active' : ''}`}
+      {/* Fixed Caption */}
+      <div className="fixed-caption-container">
+        <div className="fixed-caption-text text-center">{event.title}</div>
+      </div>
+
+      {/* Amaka’s Event Section */}
+      <section className="py-16 bg-gray-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-red-600 mb-6">You’re Invited!</h2>
+            <p className="text-yellow-100 text-lg max-w-2xl mx-auto mb-8">
+              Celebrate Amaka’s 30th birthday with music, fun, and memories at Kepong Villa Garden & Suites!
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <motion.div
+              className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-3 shadow"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
             >
-              {text}
-            </div>
-          ))}
-        </div>
-
-        {/* Fixed Caption Container */}
-        <div className="fixed-caption-container bg-red-600">
-          <div className="fixed-caption-text">
-            {event.title}
+              <FaCalendarAlt className="text-red-600 text-2xl" />
+              <span>
+                <span className="font-semibold">{event.date}</span> | {event.time}
+              </span>
+            </motion.div>
+            <motion.div
+              className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-3 shadow"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <FaMapMarkerAlt className="text-red-600 text-2xl" />
+              <span>{event.venue}</span>
+            </motion.div>
+            <motion.div
+              className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-3 shadow"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <FaMusic className="text-red-600 text-2xl" />
+              <span>{event.host}</span>
+            </motion.div>
+            <motion.div
+              className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-3 shadow"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <FaPhoneAlt className="text-red-600 text-2xl" />
+              <span>{event.contact}</span>
+            </motion.div>
           </div>
+          <motion.div
+            className="flex justify-center gap-4 mt-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+          >
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${shareText}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <FaTwitter />
+            </a>
+            <a
+              href={`https://wa.me/?text=${shareText}%20${encodeURIComponent(shareUrl)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+            >
+              <FaWhatsapp />
+            </a>
+            <a
+              href={`mailto:?subject=Join Amaka's Birthday Bash&body=${shareText}%20${encodeURIComponent(shareUrl)}`}
+              className="social-icon"
+            >
+              <FaEnvelope />
+            </a>
+          </motion.div>
         </div>
       </section>
 
-      {/* Carousel Section */}
-      <section className="relative z-20 w-full">
-        <div className="w-full mx-auto">
+      {/* Carousel Section (Event Highlights) */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600 mb-8">Event Highlights</h2>
           <div className="carousel-container">
             {carouselImages.map((image, index) => (
-              <img
-                key={index}
-                src={image.src}
-                alt={image.alt}
-                className={`carousel-image ${index === currentImage ? 'active' : ''}`}
-                loading="lazy"
-              />
+              <React.Fragment key={index}>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className={`carousel-image ${index === currentImage ? 'active' : ''}`}
+                  loading="lazy"
+                />
+                <div className="carousel-caption">{image.caption}</div>
+              </React.Fragment>
             ))}
           </div>
           <div className="flex justify-center gap-4 mt-4">
-            <button
-              onClick={handlePrevImage}
-              className="carousel-button"
-              aria-label="Previous carousel image"
-            >
-              Previous
+            <button onClick={handlePrevImage} className="carousel-button" aria-label="Previous carousel image">
+              <FaArrowLeft />
             </button>
-            <button
-              onClick={handleNextImage}
-              className="carousel-button"
-              aria-label="Next carousel image"
-            >
-              Next
+            <button onClick={handleNextImage} className="carousel-button" aria-label="Next carousel image">
+              <FaArrowRight />
             </button>
           </div>
         </div>
       </section>
 
-      {/* Event Details Section */}
-      <section className="relative border-b border-t border-red-600 w-full min-h-[360px] flex flex-col items-center justify-center py-14">
-        <video
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster={eventBirthday}
-          src={backgroundVideo}
-          type="video/webm"
-          onError={(e) => {
-            e.currentTarget.style.display = 'none';
-          }}
-        />
-        <div className="absolute inset-0 bg-black/70 z-0" />
-        <div className="relative z-10 flex flex-col items-center justify-center text-center gap-6 w-full max-w-3xl mx-auto mb-4">
-          <div className="text-3xl md:text-4xl font-bold text-red-600 mb-2">You're Invited!</div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 text-lg">
-            <div className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-2 shadow">
-              <FaCalendarAlt className="text-red-600 text-2xl" />
-              <span>
-                <span className="font-semibold">{event.date}</span>
-                <span className="mx-1">|</span>
-                <span>{event.time}</span>
-              </span>
-            </div>
-            <div className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-2 shadow">
-              <FaMapMarkerAlt className="text-red-600 text-2xl" />
-              <span>{event.venue}</span>
-            </div>
-            <div className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-2 shadow">
-              <FaMusic className="text-red-600 text-2xl" />
-              <span>{event.host}</span>
-            </div>
-            <div className="flex items-center justify-center gap-3 bg-black/70 rounded-lg px-5 py-2 shadow">
-              <FaPhoneAlt className="text-red-600 text-2xl" />
-              <span>{event.contact}</span>
-            </div>
+      {/* Video Highlights Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-red-600 mb-8">Pre-Event Vibes</h2>
+          <div className="relative h-80 md:h-[32rem] overflow-hidden rounded-lg shadow-2xl">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              className="w-full h-full object-cover"
+              src={preEventVideo}
+              poster={eventBirthday}
+            />
           </div>
         </div>
-      </section>
-
-      {/* Pre Event Highlights Video */}
-      <section className="relative w-full flex flex-col items-center mb-16 border-b border-red-600">
-        <div className="w-full relative h-[400px] md:h-[540px] overflow-hidden rounded-lg shadow-2xl">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            controls
-            className="w-full h-full object-cover"
-            src={preEventVideo}
-            poster={eventBirthday}
-          />
-          <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-            <h3 className="text-3xl md:text-4xl font-semibold text-yellow-50 bg-black/70 px-8 py-3 rounded-md shadow-md">
-              Pre Event Highlights
-            </h3>
-          </div>
-        </div>
-      </section>
-
-      {/* Socials & Endorse Button */}
-      <section className="relative z-20 mb-8 text-center max-w-md mx-auto slide-up delay-6">
-        <h3 className="text-red-600 text-2xl font-semibold mb-4">Share This Celebration</h3>
-        <div className="flex justify-center">
-          <a
-            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Share on Facebook"
-            className="social-icon"
-          >
-            <FaFacebookF />
-          </a>
-          <a
-            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${shareText}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Share on Twitter"
-            className="social-icon"
-          >
-            <FaTwitter />
-          </a>
-          <a
-            href={`https://wa.me/?text=${shareText}%20${encodeURIComponent(shareUrl)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Share on WhatsApp"
-            className="social-icon"
-          >
-            <FaWhatsapp />
-          </a>
-          <a
-            href={`mailto:?subject=Join Amaka's Birthday Bash&body=${shareText}%20${encodeURIComponent(shareUrl)}`}
-            aria-label="Share via Email"
-            className="social-icon"
-          >
-            <FaEnvelope />
-          </a>
-        </div>
-
-        {/* Endorse Button */}
-        <button
-          className="btn-red"
-          onClick={() => setEndorseModalOpen(true)}
-          aria-label="Endorse This Event"
-        >
-          Endorse This Event
-        </button>
       </section>
 
       {/* Endorse Event Modal */}
@@ -632,7 +634,6 @@ const Events = () => {
                 Monetary Support
               </button>
             </div>
-            {/* Reveal celebrant details according to which button is clicked */}
             {endorsementAction === 'wishes' && (
               <div className="endorse-result-content">
                 <div className="mb-2">
@@ -671,12 +672,45 @@ const Events = () => {
         </div>
       )}
 
-      {/* Booking Invite */}
-      <section className="relative z-20 booking-invite slide-up delay-7 mb-2" aria-label="Booking Invitation">
-        <p>
-          Want to <strong>book this page</strong> for advertising your Kepong Event? Call us at{' '}
-          <a href="tel:08162836505">08162836505</a> or <a href="tel:07031576094">07031576094</a>
-        </p>
+      {/* Confetti Effect */}
+      {isConfettiActive && (
+        <div className="confetti-container">
+          <ConfettiExplosion
+            force={0.6}
+            duration={3000}
+            particleCount={100}
+            width={1600}
+          />
+        </div>
+      )}
+
+      {/* Sticky Endorsement Button */}
+      <motion.button
+        className="sticky-cta btn-red btn-pulse"
+        onClick={handleEndorsementClick}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <FaCalendarAlt /> Endorse This Event
+      </motion.button>
+
+      {/* Endorsement Invite Section */}
+      <section className="py-12 bg-gray-900 text-center">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-red-600 mb-6">To book this page, call...</h2>
+          <div className="flex justify-center gap-4 mb-6">
+            <a href="tel:08162836505" className="text-white font-semibold underline">08162836505</a>
+            <a href="tel:07031576094" className="text-white font-semibold underline">07031576094</a>
+          </div>
+          <motion.button
+            className="btn-red btn-pulse"
+            onClick={handleEndorsementClick}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaCalendarAlt /> Endorse This Event
+          </motion.button>
+        </div>
       </section>
     </main>
   );

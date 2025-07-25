@@ -5,16 +5,18 @@ import ReserveTableModal from '../components/ReserveTableModal';
 // Import images
 import amaka from '@/assets/images/shawarma.webp';
 import chilling from '@/assets/images/snooker.webp';
-import deluxe from '@/assets/images/donj.jpg';
+import djulio from '@/assets/images/donj.jpg';
 import unsplash from '@/assets/images/unsplash.webp';
 import hotel from '@/assets/images/hotel.webp';
+import henny from '@/assets/images/henny.jpg';
 
 const carouselImages = [
   { src: amaka, alt: 'Luxurious room at Kepong Villa Garden & Suites - Amaka' },
   { src: chilling, alt: 'Relaxing ambiance at Kepong Villa - Chilling area' },
-  { src: deluxe, alt: 'Deluxe Suite at Kepong Villa Garden & Suites' },
+  { src: djulio, alt: 'Deluxe Suite at Kepong Villa Garden & Suites' },
   { src: unsplash, alt: 'Cozy rooms' },
   { src: hotel, alt: 'Front building' },
+  { src: henny, alt: 'HennesyXO' },
 ];
 
 // Kepong official red

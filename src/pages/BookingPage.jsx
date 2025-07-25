@@ -62,7 +62,7 @@ const BookingPage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPromoIndex((prevIndex) => (prevIndex + 1) % promoTexts.length);
-    }, 3000); // Change text every 3 seconds
+    }, 2000); // Change text every 3 seconds
     return () => clearInterval(interval);
   }, []);
 
