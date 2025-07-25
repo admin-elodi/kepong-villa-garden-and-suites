@@ -8,7 +8,9 @@ import chilling from '@/assets/images/snooker.webp';
 import djulio from '@/assets/images/donj.jpg';
 import unsplash from '@/assets/images/unsplash.webp';
 import hotel from '@/assets/images/hotel.webp';
-import henny from '@/assets/images/henny.jpg';
+import salad from '@/assets/images/salad.jpg';
+import drinks from '@/assets/images/drinks.jpg';
+import palmWine from '@/assets/images/palm.webp';
 
 const carouselImages = [
   { src: amaka, alt: 'Luxurious room at Kepong Villa Garden & Suites - Amaka' },
@@ -16,7 +18,9 @@ const carouselImages = [
   { src: djulio, alt: 'Deluxe Suite at Kepong Villa Garden & Suites' },
   { src: unsplash, alt: 'Cozy rooms' },
   { src: hotel, alt: 'Front building' },
-  { src: henny, alt: 'HennesyXO' },
+  { src: salad, alt: 'Salad' },
+  { src: drinks, alt: 'Premium drinks' },
+  { src: palmWine, alt: 'Palm wine from Nsukka' },
 ];
 
 // Kepong official red
