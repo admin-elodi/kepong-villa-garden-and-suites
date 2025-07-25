@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '@/assets/images/company.webp';
-import DroneOrderModal from './DroneOrderModal';
-import ReserveTableModal from '../components/ReserveTableModal';
+
+import ReserveTableModal from '@/components/ReserveTableModal';
 
 const promotionalTexts = [
   '24hrs Light',
@@ -21,7 +21,7 @@ const KEPONG_RED = '#D62828';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDroneModalOpen, setIsDroneModalOpen] = useState(false);
+  
   const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
   // Scrolling ticker states
   const tickerRef = useRef(null);
@@ -56,8 +56,7 @@ const Header = () => {
   const openReserveModal = () => setIsReserveModalOpen(true);
   const closeReserveModal = () => setIsReserveModalOpen(false);
 
-  const openDroneModal = () => setIsDroneModalOpen(true);
-  const closeDroneModal = () => setIsDroneModalOpen(false);
+
 
   const navLinkClasses =
     'block text-base sm:text-lg tracking-wider font-semibold text-red-600 hover:text-white hover:border-b-2 hover:border-white transition-all duration-300 py-2';
@@ -130,7 +129,7 @@ const Header = () => {
                 letterSpacing: '0.08em',
                 maxWidth: '100%',
                 transformOrigin: 'center',
-                transform: 'scaleY(3)',
+                transform: 'scaleY(1.5)',
               }}
             >
               Kepong Villa Garden & Suites
@@ -275,11 +274,7 @@ const Header = () => {
       </header>
 
       {/* Modals rendered outside header for layering */}
-      <DroneOrderModal
-        isOpen={isDroneModalOpen}
-        setIsModalOpen={closeDroneModal}
-        className="transition-opacity duration-300"
-      />
+      
       <ReserveTableModal
         isOpen={isReserveModalOpen}
         setIsModalOpen={closeReserveModal}

@@ -8,9 +8,8 @@ import chilling from '@/assets/images/snooker.webp';
 import djulio from '@/assets/images/donj.jpg';
 import unsplash from '@/assets/images/unsplash.webp';
 import hotel from '@/assets/images/hotel.webp';
-import salad from '@/assets/images/salad.jpg';
-
 import palmWine from '@/assets/images/palm.webp';
+import food from '@/assets/images/food.jpg';
 
 const carouselImages = [
   { src: amaka, alt: 'Luxurious room at Kepong Villa Garden & Suites - Amaka' },
@@ -18,9 +17,8 @@ const carouselImages = [
   { src: djulio, alt: 'Deluxe Suite at Kepong Villa Garden & Suites' },
   { src: unsplash, alt: 'Cozy rooms' },
   { src: hotel, alt: 'Front building' },
-  { src: salad, alt: 'Salad' },
-
   { src: palmWine, alt: 'Palm wine from Nsukka' },
+  { src: food, alt: 'Good food' },
 ];
 
 // Kepong official red
@@ -57,7 +55,7 @@ const Hero = ({ setIsModalOpen }) => {
       // Restart interval
       slideIntervalRef.current = setInterval(() => {
         setCurrentSlide((idx) => (idx + 1) % carouselImages.length);
-      }, 5000);
+      }, 3000);
     });
   }, [isTransitioning]);
 
