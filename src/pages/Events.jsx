@@ -621,7 +621,7 @@ const Events = () => {
                 aria-label="Send Good Wishes"
               >
                 <FaHeart size={22} />
-                Send Good Wishes To The Celebrant
+                Send Good Wishes to Celebrant
               </button>
               <button
                 className="endorse-btn"
@@ -629,7 +629,7 @@ const Events = () => {
                 aria-label="Monetary Support"
               >
                 <FaMoneyBillWave size={24} />
-                Monetary Support For Celebrant
+                Send Monetary Support to Celebrant
               </button>
             </div>
             {endorsementAction === 'wishes' && (

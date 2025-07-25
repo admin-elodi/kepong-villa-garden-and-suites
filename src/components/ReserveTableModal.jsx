@@ -1,125 +1,88 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import tableImage from '@/assets/images/table-for-four.webp';
 
-const enquiryPhoneNumber = '+234 916 283 6505';
+const enquiryPhoneNumber = '+2348166540841';
+
+const tablePrice = 50000; // Price per table in Naira
+
+// Menu items with quantities per table
+const menuItems = [
+  { name: 'Grilled Suya Skewers', description: 'Spicy and smoky Nigerian beef skewers', quantity: '4 skewers per table' },
+  { name: 'Peppered Goat Meat', description: 'Tender goat meat with fiery pepper sauce', quantity: '4 servings per table' },
+  { name: 'Palm Wine', description: 'Traditional sweet and refreshing palm wine', quantity: '4 full jars + 0.5 jar free per table' },
+  { name: 'Zobo Drink', description: 'Hibiscus flower juice, tangy and healthy', quantity: '4 glasses per table' },
+  { name: 'Chapman Cocktail', description: 'A popular Nigerian citrus cocktail', quantity: '4 glasses per table' },
+];
 
 const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    date: '',
-    tables: '',
-  });
-  const [isSending, setIsSending] = useState(false);
-  const [showBank, setShowBank] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const modalRef = useRef(null);
-
-  useEffect(() => {
-    if (isOpen && modalRef.current) modalRef.current.focus();
-  }, [isOpen]);
+  const [showPayment, setShowPayment] = useState(false);
+  const [tables, setTables] = useState(1); // Number of tables booked, default 1
 
   if (!isOpen) return null;
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'tables') {
-      if (value === '' || (/^\d+$/.test(value) && parseInt(value, 10) >= 0)) {
-        setFormData((prev) => ({ ...prev, tables: value.replace(/^0+/, '') }));
-      }
-      return;
-    }
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSendBooking = (e) => {
-    e.preventDefault();
-    if (!formData.tables || parseInt(formData.tables, 10) < 1) {
-      alert('Please enter a valid number of tables (at least 1).');
-      return;
-    }
-    setIsSending(true);
-
-    // Replace with your EmailJS or booking logic
-    setTimeout(() => {
-      setIsSending(false);
-      setShowConfirmation(true);
-      setFormData({ name: '', date: '', tables: '' });
-    }, 1200);
-  };
-
   const handleClose = () => {
     setIsModalOpen(false);
-    setShowConfirmation(false);
-    setFormData({ name: '', date: '', tables: '' });
-    setShowBank(false);
+    setShowPayment(false);
+    setTables(1);
   };
 
-  const handleOutsideClick = (e) => {
-    if (e.target.classList.contains('modal-overlay')) handleClose();
+  // Ensure tables is a positive integer >= 1
+  const handleTablesChange = (e) => {
+    const val = e.target.value;
+    if (val === '') {
+      setTables('');
+      return;
+    }
+    const num = parseInt(val, 10);
+    if (!isNaN(num) && num >= 1) {
+      setTables(num);
+    }
   };
 
-  if (showConfirmation) {
-    return createPortal(
-      <div
-        className="modal-overlay fixed inset-0 flex items-center justify-center z-50 p-4"
-        onClick={handleOutsideClick}
-        role="dialog"
-        aria-modal="true"
-      >
-        <div className="bg-gradient-to-br from-emerald-900 via-emerald-700 to-emerald-800 rounded-xl shadow-lg p-8 max-w-lg w-full text-center relative">
-          <button
-            onClick={handleClose}
-            className="absolute top-2 right-2 text-white hover:text-amber-400 focus:ring-2 focus:ring-amber-500 focus:outline-none text-2xl"
-            aria-label="Close modal"
-            type="button"
-          >
-            ✕
-          </button>
-          <h2 className="text-2xl font-bold text-yellow-200 mb-4">Booking Successful!</h2>
-          <p className="text-white mb-3">
-            Thank you for reserving a table at Kepong Villa Garden & Suites.
-          </p>
-          <p className="text-emerald-200 mb-3">
-            Please proceed to the hotel with your evidence of payment. Our team will welcome you and confirm your reservation on arrival.
-          </p>
-          <div className="bg-white bg-opacity-90 rounded-lg p-4 mb-4">
-            <p className="text-gray-800 font-semibold mb-2">Bank Account Details:</p>
-            <p className="text-gray-900">Account Name: <br /><span className="font-bold">Kepong Villa Garden & Suites</span></p>
-            <p className="text-gray-900">Bank: <br /><span className="font-bold">Wema Bank</span></p>
-            <p className="text-gray-900">Account Number: <br /><span className="font-bold">0125564025</span></p>
-          </div>
-          <p className="text-gray-100 text-sm">
-            For enquiries, call <a href="tel:+2349162836505" className="text-amber-400 underline">+234 916 283 6505</a>
-          </p>
-        </div>
-      </div>,
-      document.body
+  const handleProceedToPayment = () => {
+    if (tables < 1) {
+      alert('Please enter at least 1 table.');
+      return;
+    }
+    setShowPayment(true);
+  };
+
+  // Constructs the WhatsApp group message with booking details
+  const openWhatsApp = () => {
+    // Format menu items and quantities for message
+    const menuDetails = menuItems
+      .map(
+        (item) =>
+          `${item.name}: ${item.quantity} x ${tables} table${tables > 1 ? 's' : ''}`
+      )
+      .join('\n');
+
+    const message = encodeURIComponent(
+      `Hello Kepong Villa Team,\n\nI would like to book ${tables} table${tables > 1 ? 's' : ''} for four, priced at ₦${(
+        tables * tablePrice
+      ).toLocaleString()}.\n\nMenu Details:\n${menuDetails}\n\nPlease note that payment details will follow shortly. Thank you!`
     );
-  }
+
+    window.open(`https://wa.me/${enquiryPhoneNumber.replace(/\D/g, '')}?text=${message}`, '_blank');
+  };
+
+  const totalPrice = tables && !isNaN(tables) ? tables * tablePrice : 0;
 
   return createPortal(
     <div
-      className="modal-overlay fixed inset-0 flex items-center justify-center z-50 p-4"
-      onClick={handleOutsideClick}
+      className="modal-overlay fixed inset-0 flex items-center justify-center z-50 p-4 bg-black bg-opacity-70"
       role="dialog"
       aria-modal="true"
       aria-labelledby="reserve-title"
+      onClick={(e) => {
+        if (e.target.classList.contains('modal-overlay')) handleClose();
+      }}
     >
       <div
-        ref={modalRef}
-        className="bg-gray-900 rounded-lg shadow-xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto"
+        className="bg-gray-900 rounded-lg shadow-xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto text-white"
         tabIndex="-1"
       >
-        {/* Table image at the top */}
-        <div
-          className="w-full h-40 bg-gray-700 rounded-lg mb-4 bg-center bg-cover"
-          style={{
-            backgroundImage: `url(${tableImage})`,
-            backgroundColor: '#1F2937',
-          }}
-          aria-label="Table for four"
-        />
         <button
           onClick={handleClose}
           className="absolute top-2 right-2 text-white hover:text-amber-400 focus:ring-2 focus:ring-amber-500 focus:outline-none text-2xl"
@@ -128,114 +91,122 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
         >
           ✕
         </button>
-        <h2 id="reserve-title" className="text-2xl font-bold text-white mb-2 text-center">
-          Reserve a Table
+
+        {/* Caption above image */}
+        <h2 className="text-2xl font-extrabold text-yellow-400 text-center mb-2">
+          BOOK TABLE FOR FOUR
         </h2>
-        <div className="mb-2 text-center text-gray-300 text-sm">
-          <span className="font-semibold text-amber-400">Cost:</span> ₦50,000 per table-for-four.
-        </div>
-        <form onSubmit={handleSendBooking} className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-200">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              className="mt-1 w-full px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-amber-500 focus:outline-none"
-              aria-required="true"
-            />
-          </div>
-          <div>
-            <label htmlFor="date" className="block text-sm font-medium text-gray-200">
-              Date for Reservation
-            </label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              value={formData.date}
-              onChange={handleInputChange}
-              required
-              className="mt-1 w-full px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-amber-500 focus:outline-none"
-            />
-          </div>
-          <div>
-            <label htmlFor="tables" className="block text-sm font-medium text-gray-200">
-              Number of Table-for-Four Units
-            </label>
-            <input
-              type="number"
-              id="tables"
-              name="tables"
-              min="1"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              value={formData.tables}
-              onChange={handleInputChange}
-              required
-              placeholder=""
-              className="mt-1 w-full px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-amber-500 focus:outline-none no-spinner"
-              style={
-                window.innerWidth < 768
-                  ? { appearance: 'textfield', MozAppearance: 'textfield' }
-                  : {}
-              }
-            />
-            <div className="mt-2 text-center text-amber-400 font-semibold">
-              Total tables reserved: {formData.tables || 0}
-            </div>
-            <div className="mt-1 text-center text-gray-300 text-sm">
-              Total cost: ₦{((parseInt(formData.tables, 10) || 0) * 50000).toLocaleString()}
-            </div>
-          </div>
-          {/* Show/Hide Account Details Button */}
-          <div className="flex justify-center my-4">
-            <button
-              type="button"
-              onClick={() => setShowBank((v) => !v)}
-              className="bg-yellow-200 text-black px-4 py-2 rounded-lg border-2 border-emerald-700 font-semibold hover:bg-emerald-700 hover:text-white transition"
-              aria-label={showBank ? "Hide account details" : "Show account details"}
-            >
-              {showBank ? "Hide Account Details" : "Show Account Details"}
-            </button>
-          </div>
-          {/* Account Details and Submit Button */}
-          {showBank && (
-            <div className="mb-4 bg-emerald-900 bg-opacity-95 p-5 rounded-lg shadow text-white text-center border-2 border-yellow-200">
-              <h3 className="text-lg font-bold mb-2 text-yellow-200">Bank Account Details</h3>
-              <p className="mb-1 text-amber-200 font-semibold">
-                Use <span className="underline">Bank Transfer</span> to pay before clicking Send Booking Details.
+
+        {/* Table Image with reduced height */}
+        <div
+          className="w-full rounded-lg mb-4 bg-center bg-cover mx-auto"
+          style={{
+            backgroundImage: `url(${tableImage})`,
+            height: '120px',
+            backgroundColor: '#1F2937',
+          }}
+          aria-label="Table for four"
+        />
+
+        {/* Promotional note */}
+        <p className="text-center text-amber-300 italic mb-6 px-2">
+          This menu boosts your vitality and promotes health and natural hydration.
+        </p>
+
+        {!showPayment && (
+          <>
+            {/* Number of tables input */}
+            <div className="mb-6 text-center">
+              <label
+                htmlFor="tables"
+                className="block mb-2 text-yellow-300 font-semibold text-lg"
+              >
+                Number of Table-For-Four Units
+              </label>
+              <input
+                type="number"
+                id="tables"
+                name="tables"
+                min="1"
+                value={tables}
+                onChange={handleTablesChange}
+                className="mx-auto w-24 px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-amber-500 focus:outline-none text-center"
+                aria-describedby="table-price-desc"
+                aria-label="Number of tables to book"
+              />
+              <p id="table-price-desc" className="mt-2 text-gray-300 text-sm">
+                Price per table: ₦{tablePrice.toLocaleString()}
               </p>
-              <div className="bg-white bg-opacity-90 rounded-lg p-4 mb-2 text-gray-900 text-center">
+              <p className="mt-1 text-amber-400 font-bold text-lg">
+                Total Price: ₦{totalPrice.toLocaleString()}
+              </p>
+            </div>
+
+            {/* Menu listing with quantities */}
+            <ul className="space-y-4 mb-6">
+              {menuItems.map(({ name, description, quantity }) => (
+                <li
+                  key={name}
+                  className="bg-emerald-800 bg-opacity-80 rounded-lg p-4 shadow-md"
+                >
+                  <h3 className="text-lg font-semibold text-yellow-300">{name}</h3>
+                  <p className="text-gray-200">{description}</p>
+                  <p className="text-amber-300 font-semibold mt-1">{quantity}</p>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex justify-center">
+              <button
+                type="button"
+                onClick={handleProceedToPayment}
+                className="bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-500 transition"
+                aria-label="Proceed to payment"
+              >
+                PROCEED TO PAYMENT
+              </button>
+            </div>
+          </>
+        )}
+
+        {showPayment && (
+          <div>
+            <div className="bg-emerald-900 bg-opacity-95 p-5 rounded-lg shadow text-white text-center border-2 border-yellow-200 mb-6">
+              <h3 className="text-xl font-bold mb-4 text-yellow-200">Bank Account Details</h3>
+              <p className="mb-2 font-semibold text-amber-200">
+                Please make your payment via bank transfer before confirming your reservation.
+              </p>
+              <div className="bg-white bg-opacity-90 rounded-lg p-4 mb-2 text-gray-900">
                 <p><strong>Account Name:</strong><br />Kepong Villa Garden & Suites</p>
                 <p><strong>Bank:</strong><br />Wema Bank</p>
                 <p><strong>Account Number:</strong><br />0125564025</p>
               </div>
-              <div className="text-sm text-amber-200 mt-2">
+              <p className="text-sm text-amber-200 mt-2">
                 Use your full name as payment reference.
-              </div>
-              {/* Send Booking Details button is ONLY inside this area */}
-              <button
-                type="submit"
-                disabled={isSending}
-                className={`w-full mt-4 bg-emerald-900 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-amber-500 hover:text-black hover:scale-105 transition-transform duration-300 border-2 border-emerald-500 shadow-sm focus:ring-2 focus:ring-amber-500 focus:outline-none ${
-                  isSending ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-                aria-label="Send booking details"
-              >
-                {isSending ? 'Sending...' : 'Send Booking Details'}
-              </button>
+              </p>
             </div>
-          )}
-        </form>
-        <p className="text-gray-400 text-center text-xs mt-3">
-          For enquiries, call <a href={`tel:${enquiryPhoneNumber}`} className="text-amber-400 font-semibold hover:underline">{enquiryPhoneNumber}</a>
-        </p>
+
+            <div className="flex flex-col items-center space-y-3">
+              <button
+                type="button"
+                onClick={openWhatsApp}
+                className="bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition w-full max-w-xs"
+                aria-label="Send evidence to WhatsApp"
+              >
+                Send Evidence to WhatsApp
+              </button>
+              <p className="text-gray-400 text-sm text-center">
+                Or call us at{' '}
+                <a
+                  href={`tel:${enquiryPhoneNumber}`}
+                  className="text-amber-400 font-semibold hover:underline"
+                >
+                  {enquiryPhoneNumber}
+                </a>
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>,
     document.body

@@ -14,6 +14,7 @@ const promotionalTexts = [
   'Enjoy Club K',
   'Nigerian & Ghana Jollof',
   'Drone Delivery Coming Soon!',
+  'Assorted Meats!',
 ];
 
 const KEPONG_RED = '#D62828';
