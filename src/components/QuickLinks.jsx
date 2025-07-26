@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import deluxeRoom from '@/assets/images/hotel/unsplash.webp';
-import jollofRice from '@/assets/images/food-drink/naija-jollof.webp';
+import premiumDrinks from '@/assets/images/drinks.jpg';
 import weddingReception from '@/assets/images/birthday.webp';
 import '../css/q-links.css';
 
@@ -20,12 +20,12 @@ const serviceIcons = [
 const QuickLinks = () => {
   const topCards = [
     {
-      img: jollofRice,
-      alt: 'Jollof Rice',
-      title: 'Savor the Flavor',
-      desc: 'Local & Foreign Dishes',
-      link: '/bookings',
-      btnLabel: 'Order Food',
+      img: premiumDrinks,
+      alt: 'Premium Drinks',
+      title: 'Order Premium Drinks',
+      desc: 'Local & Foreign Drinks',
+      link: '/club-k',
+      btnLabel: 'Order Drinks',
       state: { showFoodForm: true },
     },
     {

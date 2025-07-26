@@ -114,7 +114,20 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
         </p>
 
         {!showPayment && (
-          <>
+          <> 
+           {/* Menu listing with quantities */}
+            <ul className="space-y-4 mb-6">
+              {menuItems.map(({ name, description, quantity }) => (
+                <li
+                  key={name}
+                  className="bg-emerald-800 bg-opacity-80 rounded-lg p-4 shadow-md"
+                >
+                  <h3 className="text-lg font-semibold text-yellow-300">{name}</h3>
+                  <p className="text-gray-200">{description}</p>
+                  <p className="text-amber-300 font-semibold mt-1">{quantity}</p>
+                </li>
+              ))}
+            </ul>
             {/* Number of tables input */}
             <div className="mb-6 text-center">
               <label
@@ -142,19 +155,7 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
               </p>
             </div>
 
-            {/* Menu listing with quantities */}
-            <ul className="space-y-4 mb-6">
-              {menuItems.map(({ name, description, quantity }) => (
-                <li
-                  key={name}
-                  className="bg-emerald-800 bg-opacity-80 rounded-lg p-4 shadow-md"
-                >
-                  <h3 className="text-lg font-semibold text-yellow-300">{name}</h3>
-                  <p className="text-gray-200">{description}</p>
-                  <p className="text-amber-300 font-semibold mt-1">{quantity}</p>
-                </li>
-              ))}
-            </ul>
+           
 
             <div className="flex justify-center">
               <button

@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '@/assets/images/company.webp';
-
 import ReserveTableModal from '@/components/ReserveTableModal';
 
 const promotionalTexts = [
@@ -21,9 +20,7 @@ const KEPONG_RED = '#D62828';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
   const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
-  // Scrolling ticker states
   const tickerRef = useRef(null);
   const [tickerWidth, setTickerWidth] = useState(0);
 
@@ -31,42 +28,33 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Calculate ticker width for animation
   useEffect(() => {
     const tickerEl = tickerRef.current;
     if (!tickerEl) return;
 
     const calculateWidths = () => {
-      setTickerWidth(tickerEl.scrollWidth / 2); // Divide by 2 since text is duplicated
+      setTickerWidth(tickerEl.scrollWidth / 2);
     };
 
     calculateWidths();
-
-    const handleResize = () => {
-      calculateWidths();
-    };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', calculateWidths);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', calculateWidths);
     };
   }, []);
 
-  // Modal open/close handlers for reserve table and drone order
   const openReserveModal = () => setIsReserveModalOpen(true);
   const closeReserveModal = () => setIsReserveModalOpen(false);
 
-
-
   const navLinkClasses =
     'block text-base sm:text-lg tracking-wider font-semibold text-red-600 hover:text-white hover:border-b-2 hover:border-white transition-all duration-300 py-2';
-  const activeClasses = '!text-white border-b-2 border-white'; // Added !important via Tailwind's ! prefix for higher specificity
+  const activeClasses = '!text-white border-b-2 border-white';
 
   return (
     <>
       <header
-        className="fixed top-0 left-0 w-full z-50 font-montserrat border-2 border-red-600
-                   md:border-b md:border-red-600 md:border-x-0 md:border-t-0 bg-white md:bg-black"
+        className="fixed top-0 left-0 w-full z-50 font-montserrat border-2 border-red-600 md:border-b md:border-red-600 md:border-x-0 md:border-t-0 bg-white md:bg-black"
         role="banner"
       >
         <style>
@@ -97,14 +85,12 @@ const Header = () => {
           `}
         </style>
 
-        {/* Desktop: Title above nav */}
         <div className="hidden md:flex justify-center bg-white border-2 border-red-600 py-2 select-none">
           <h1 className="text-2xl font-bold text-red-600 tracking-[10px] uppercase">
             Kepong Villa Garden & Suites
           </h1>
         </div>
 
-        {/* Navigation and controls */}
         <nav
           className="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6"
           role="navigation"
@@ -121,8 +107,8 @@ const Header = () => {
             />
           </NavLink>
 
-          {/* Mobile: Title between logo and hamburger */}
-          <div className="flex-1 flex justify-center md:hidden px-2 min-w-0">
+          {/* Modified: Added min-w-[150px] sm:min-w-[200px] */}
+          <div className="flex-1 flex justify-center md:hidden px-2 min-w-[150px] sm:min-w-[200px]">
             <span
               className="text-[12.5px] sm:text-[16px] tracking-wide uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
               style={{
@@ -136,7 +122,6 @@ const Header = () => {
             </span>
           </div>
 
-          {/* Hamburger Icon for Mobile */}
           <button
             id="menu-toggle"
             className="md:hidden text-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 rounded shrink-0"
@@ -166,7 +151,6 @@ const Header = () => {
             )}
           </button>
 
-          {/* Navigation Links */}
           <ul
             className={`${
               isMenuOpen ? 'flex bg-black' : 'hidden'
@@ -232,7 +216,6 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Scrolling Ticker */}
         <div
           className="bg-black border-t border-b border-red-600 select-none ticker-container"
           aria-label="Kepong facilities promotional ticker"
@@ -250,12 +233,10 @@ const Header = () => {
           </div>
         </div>
 
-        {/* CTA Buttons Container */}
         <div className="bg-black border-b border-red-600 flex justify-center gap-6 py-3 px-4 flex-wrap">
           <NavLink
             to="/bookings"
-            className="max-w-[180px] flex-grow bg-white text-black font-semibold text-base sm:text-lg py-2 rounded-lg border-2 border-red-600 shadow-md text-center
-                       transition duration-300 hover:bg-red-600 hover:text-white hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+            className="max-w-[180px] flex-grow bg-white text-black font-semibold text-base sm:text-lg py-2 rounded-lg border-2 border-red-600 shadow-md text-center transition duration-300 hover:bg-red-600 hover:text-white hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-600 focus-visible:ring-offset-2"
             aria-label="Book your stay at Kepong Villa"
           >
             Book Hotel
@@ -264,8 +245,7 @@ const Header = () => {
           <button
             type="button"
             onClick={openReserveModal}
-            className="max-w-[180px] flex-grow bg-red-600 text-white font-semibold text-base sm:text-lg py-2 rounded-lg border-2 border-red-600 shadow-md text-center
-                       transition duration-300 hover:bg-white hover:text-black hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+            className="max-w-[180px] flex-grow bg-red-600 text-white font-semibold text-base sm:text-lg py-2 rounded-lg border-2 border-red-600 shadow-md text-center transition duration-300 hover:bg-white hover:text-black hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-600 focus-visible:ring-offset-2"
             aria-label="Reserve a table for entertainment"
           >
             Reserve Table
@@ -273,8 +253,6 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Modals rendered outside header for layering */}
-      
       <ReserveTableModal
         isOpen={isReserveModalOpen}
         setIsModalOpen={closeReserveModal}

@@ -386,8 +386,8 @@ const Events = () => {
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
           }
           .main-caption h1 {
-            
-            font-weight: 800;
+            font-size: 0.3rem
+            font-weight: 500;
             color: white;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -509,6 +509,7 @@ const Events = () => {
               <span>{event.contact}</span>
             </motion.div>
           </div>
+          <p className="text-center mt-4 font-bold">Share This Celebration</p>
           <motion.div
             className="flex justify-center gap-4 mt-6"
             initial={{ opacity: 0, y: 20 }}
