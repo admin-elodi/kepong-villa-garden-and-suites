@@ -82,6 +82,23 @@ const Header = () => {
                 transform: translateX(0);
               }
             }
+            /* Ensure header title is not affected by external styles */
+            .header-title-container {
+              min-width: 180px; /* Increased min-width for smaller screens */
+            }
+            @media (min-width: 640px) {
+              .header-title-container {
+                min-width: 240px; /* Increased for sm breakpoint */
+              }
+            }
+            .header-title-container span {
+              font-size: 12.5px; /* Explicitly set to prevent external interference */
+            }
+            @media (min-width: 640px) {
+              .header-title-container span {
+                font-size: 16px;
+              }
+            }
           `}
         </style>
 
@@ -107,10 +124,9 @@ const Header = () => {
             />
           </NavLink>
 
-          {/* Modified: Added min-w-[150px] sm:min-w-[200px] */}
-          <div className="flex-1 flex justify-center md:hidden px-2 min-w-[150px] sm:min-w-[200px]">
+          <div className="flex-1 flex justify-center md:hidden px-2 header-title-container">
             <span
-              className="text-[12.5px] sm:text-[16px] tracking-wide uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
+              className="tracking-wide uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
               style={{
                 letterSpacing: '0.08em',
                 maxWidth: '100%',

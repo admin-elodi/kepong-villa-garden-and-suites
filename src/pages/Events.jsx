@@ -386,7 +386,7 @@ const Events = () => {
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
           }
           .main-caption h1 {
-            font-size: 0.3rem
+            font-size: 1.8rem; /* Corrected font-size */
             font-weight: 500;
             color: white;
             text-transform: uppercase;
@@ -431,7 +431,6 @@ const Events = () => {
           transition={{ duration: 1 }}
         >
           <h1 className="text-2xl md:text-5xl font-extrabold tracking-tight">{event.title}</h1>
-          
         </motion.div>
       </section>
 
