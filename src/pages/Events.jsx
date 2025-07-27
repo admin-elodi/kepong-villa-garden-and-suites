@@ -20,7 +20,6 @@ import eventBirthday from '@/assets/images/amaka.webp';
 import snooker from '@/assets/images/snooker.webp';
 import chilling from '@/assets/images/chilling.webp';
 import preEventVideo from '@/assets/videos/ready.mp4';
-import backgroundVideo from '@/assets/videos/stars.webm';
 
 const event = {
   title: "Amaka's 30th Birthday Bash!",
@@ -111,24 +110,31 @@ const Events = () => {
   };
 
   return (
-    <main className="relative min-h-screen py-52 md:text-lg md:py-64 bg-black bg-opacity-90 font-montserrat text-yellow-100">
+    <main className="events-container relative min-h-screen py-24 md:text-lg md:py-32 bg-black bg-opacity-90 font-montserrat text-yellow-100">
       <style>
         {`
-          .fade-in {
+          /* CSS Reset for Events to prevent style leakage */
+          .events-container * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-size: inherit;
+          }
+          .events-container .fade-in {
             opacity: 0;
             animation: fadeIn 1s ease-out forwards;
           }
-          .fade-in.delay-1 { animation-delay: 0.2s; }
+          .events-container .fade-in.delay-1 { animation-delay: 0.2s; }
           @keyframes fadeIn { to { opacity: 1; } }
-          .slide-up {
+          .events-container .slide-up {
             opacity: 0;
             transform: translateY(30px);
             animation: slideUp 0.9s ease-in-out forwards;
           }
-          .slide-up.delay-1 { animation-delay: 0.3s; }
-          .slide-up.delay-2 { animation-delay: 0.5s; }
+          .events-container .slide-up.delay-1 { animation-delay: 0.3s; }
+          .events-container .slide-up.delay-2 { animation-delay: 0.5s; }
           @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
-          .btn-red {
+          .events-container .btn-red {
             background-color: #dc2626;
             color: white;
             font-weight: 700;
@@ -142,12 +148,12 @@ const Events = () => {
             position: relative;
             overflow: hidden;
           }
-          .btn-red:hover {
+          .events-container .btn-red:hover {
             background-color: #b91c1c;
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
           }
-          .btn-pulse::after {
+          .events-container .btn-pulse::after {
             content: '';
             position: absolute;
             inset: 0;
@@ -160,17 +166,17 @@ const Events = () => {
             50% { transform: scale(1.2); opacity: 0; }
             100% { transform: scale(1); opacity: 0; }
           }
-          .social-icon {
+          .events-container .social-icon {
             color: #fef3c7;
             font-size: 1.75rem;
             margin: 0 0.75rem;
             transition: all 0.3s ease;
           }
-          .social-icon:hover {
+          .events-container .social-icon:hover {
             color: #dc2626;
             transform: scale(1.2);
           }
-          .carousel-container {
+          .events-container .carousel-container {
             width: 100%;
             height: 20rem;
             position: relative;
@@ -178,7 +184,7 @@ const Events = () => {
             background: #11182780;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           }
-          .carousel-image {
+          .events-container .carousel-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -190,11 +196,11 @@ const Events = () => {
             transition: opacity 0.5s ease-in-out;
             z-index: 1;
           }
-          .carousel-image.active {
+          .events-container .carousel-image.active {
             opacity: 1;
             z-index: 2;
           }
-          .carousel-caption {
+          .events-container .carousel-caption {
             position: absolute;
             bottom: 20px;
             left: 20px;
@@ -206,8 +212,8 @@ const Events = () => {
             transition: opacity 0.3s ease;
             z-index: 3;
           }
-          .carousel-container:hover .carousel-caption { opacity: 1; }
-          .carousel-button {
+          .events-container .carousel-container:hover .carousel-caption { opacity: 1; }
+          .events-container .carousel-button {
             background: #dc2626;
             color: white;
             padding: 0.75rem 1.5rem;
@@ -216,11 +222,11 @@ const Events = () => {
             border: none;
             transition: all 0.3s ease;
           }
-          .carousel-button:hover {
+          .events-container .carousel-button:hover {
             background: #b91c1c;
             transform: scale(1.05);
           }
-          .modal-overlay {
+          .events-container .modal-overlay {
             position: fixed;
             z-index: 9999;
             top: 0;
@@ -232,7 +238,7 @@ const Events = () => {
             align-items: center;
             justify-content: center;
           }
-          .modal-content {
+          .events-container .modal-content {
             background: #282828;
             border-radius: 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
@@ -248,7 +254,7 @@ const Events = () => {
             0% { transform: scale(0.7) translateY(100px); }
             100% { transform: scale(1) translateY(0); }
           }
-          .modal-close {
+          .events-container .modal-close {
             position: absolute;
             top: 18px;
             right: 18px;
@@ -258,7 +264,7 @@ const Events = () => {
             font-size: 1.6rem;
             cursor: pointer;
           }
-          .modal-title {
+          .events-container .modal-title {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1.15rem;
@@ -266,13 +272,13 @@ const Events = () => {
             text-align: center;
             letter-spacing: 0.01em;
           }
-          .endorse-options {
+          .events-container .endorse-options {
             display: flex;
             flex-direction: column;
             gap: 1.35rem;
             margin-bottom: 2rem;
           }
-          .endorse-btn {
+          .events-container .endorse-btn {
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -287,12 +293,12 @@ const Events = () => {
             transition: background 0.25s, color 0.15s, transform 0.15s;
             justify-content: center;
           }
-          .endorse-btn:hover {
+          .events-container .endorse-btn:hover {
             background: #b91c1c;
             color: white;
             transform: scale(1.045);
           }
-          .endorse-result-content {
+          .events-container .endorse-result-content {
             margin: 0 auto 1.5rem auto;
             padding: 1.25rem 1.1rem 1rem 1.1rem;
             background: #221f15cc;
@@ -302,16 +308,16 @@ const Events = () => {
             max-width: 95%;
             border-left: 5px solid #dc2626;
           }
-          .endorse-result-content strong {
+          .events-container .endorse-result-content strong {
             color: #dc2626;
           }
-          .endorse-note {
+          .events-container .endorse-note {
             font-size: 1rem;
             opacity: 0.77;
             text-align: center;
             margin-bottom: 0.4rem;
           }
-          .celebrant-social-link {
+          .events-container .celebrant-social-link {
             color: #fafafa;
             background: #dc2626;
             font-weight: 600;
@@ -322,10 +328,10 @@ const Events = () => {
             transition: filter 0.2s;
             display: inline-block;
           }
-          .celebrant-social-link:hover {
+          .events-container .celebrant-social-link:hover {
             filter: brightness(1.12);
           }
-          .promo-text-container {
+          .events-container .promo-text-container {
             width: 100%;
             height: 3rem;
             overflow: hidden;
@@ -336,7 +342,7 @@ const Events = () => {
             border-bottom: 2px solid #dc2626;
             background: white;
           }
-          .promo-text {
+          .events-container .promo-text {
             position: absolute;
             width: 100%;
             text-align: center;
@@ -345,7 +351,7 @@ const Events = () => {
             font-weight: bold;
             color: #dc2626;
           }
-          .promo-text.active {
+          .events-container .promo-text.active {
             display: block;
             animation: lazySlideText 4s ease-out forwards;
           }
@@ -355,27 +361,34 @@ const Events = () => {
             80% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(-20px); }
           }
-          .fixed-caption-container { background: #dc2626; padding: 1rem; }
-          .fixed-caption-text { font-size: 1.5rem; font-weight: bold; color: white; }
-          .parallax-bg {
+          .events-container .fixed-caption-container {
+            background: #dc2626;
+            padding: 1rem;
+          }
+          .events-container .fixed-caption-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+          }
+          .events-container .parallax-bg {
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
           }
-          .sticky-cta {
+          .events-container .sticky-cta {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
           }
-          .confetti-container {
+          .events-container .confetti-container {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10000;
           }
-          .main-caption {
+          .events-container .main-caption {
             text-align: center;
             padding: 1.5rem 1rem;
             background: rgba(0, 0, 0, 0.7);
@@ -385,8 +398,8 @@ const Events = () => {
             max-width: 90%;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
           }
-          .main-caption h1 {
-            font-size: 1.8rem; /* Corrected font-size */
+          .events-container .main-caption h1 {
+            font-size: 1.8rem;
             font-weight: 500;
             color: white;
             text-transform: uppercase;
@@ -394,17 +407,17 @@ const Events = () => {
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
           }
           @media (max-width: 768px) {
-            .carousel-container { height: 16rem; }
-            .promo-text { font-size: 1.2rem; }
-            .fixed-caption-text { font-size: 1.3rem; }
-            .modal-content { min-width: 90vw; max-width: 320px; }
-            .main-caption h1 { font-size: 1.8rem; }
+            .events-container .carousel-container { height: 16rem; }
+            .events-container .promo-text { font-size: 1.2rem; }
+            .events-container .fixed-caption-text { font-size: 1.3rem; }
+            .events-container .modal-content { min-width: 90vw; max-width: 320px; }
+            .events-container .main-caption h1 { font-size: 1.8rem; }
           }
           @media (min-width: 768px) {
-            .carousel-container { height: 32rem; }
-            .sticky-cta { bottom: 30px; right: 30px; }
-            .modal-content { min-width: 470px; }
-            .main-caption h1 { font-size: 4rem; }
+            .events-container .carousel-container { height: 32rem; }
+            .events-container .sticky-cta { bottom: 30px; right: 30px; }
+            .events-container .modal-content { min-width: 470px; }
+            .events-container .main-caption h1 { font-size: 4rem; }
           }
         `}
       </style>

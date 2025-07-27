@@ -16,17 +16,13 @@ const promotionalTexts = [
   'Assorted Meats!',
 ];
 
-const KEPONG_RED = '#D62828';
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
   const tickerRef = useRef(null);
   const [tickerWidth, setTickerWidth] = useState(0);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   useEffect(() => {
     const tickerEl = tickerRef.current;
@@ -39,9 +35,7 @@ const Header = () => {
     calculateWidths();
     window.addEventListener('resize', calculateWidths);
 
-    return () => {
-      window.removeEventListener('resize', calculateWidths);
-    };
+    return () => window.removeEventListener('resize', calculateWidths);
   }, []);
 
   const openReserveModal = () => setIsReserveModalOpen(true);
@@ -49,6 +43,7 @@ const Header = () => {
 
   const navLinkClasses =
     'block text-base sm:text-lg tracking-wider font-semibold text-red-600 hover:text-white hover:border-b-2 hover:border-white transition-all duration-300 py-2';
+
   const activeClasses = '!text-white border-b-2 border-white';
 
   return (
@@ -82,26 +77,10 @@ const Header = () => {
                 transform: translateX(0);
               }
             }
-            /* Ensure header title is not affected by external styles */
-            .header-title-container {
-              min-width: 180px; /* Increased min-width for smaller screens */
-            }
-            @media (min-width: 640px) {
-              .header-title-container {
-                min-width: 240px; /* Increased for sm breakpoint */
-              }
-            }
-            .header-title-container span {
-              font-size: 12.5px; /* Explicitly set to prevent external interference */
-            }
-            @media (min-width: 640px) {
-              .header-title-container span {
-                font-size: 16px;
-              }
-            }
           `}
         </style>
 
+        {/* Desktop full title */}
         <div className="hidden md:flex justify-center bg-white border-2 border-red-600 py-2 select-none">
           <h1 className="text-2xl font-bold text-red-600 tracking-[10px] uppercase">
             Kepong Villa Garden & Suites
@@ -113,9 +92,10 @@ const Header = () => {
           role="navigation"
           aria-label="Primary Navigation"
         >
+          {/* Logo: fixed width, no shrink */}
           <NavLink
             to="/"
-            className="p-2 rounded-lg hover:scale-105 transition-transform duration-300 flex items-center shrink-0"
+            className="p-2 rounded-lg hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0"
           >
             <img
               src={logo}
@@ -124,9 +104,10 @@ const Header = () => {
             />
           </NavLink>
 
-          <div className="flex-1 flex justify-center md:hidden px-2 header-title-container">
+          {/* Center Title: flex-grow, no min-width restriction */}
+          <div className="flex-1 flex justify-center md:hidden px-2">
             <span
-              className="tracking-wide uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
+              className="text-[12.5px] sm:text-[16px] tracking-widest uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
               style={{
                 letterSpacing: '0.08em',
                 maxWidth: '100%',
@@ -138,9 +119,10 @@ const Header = () => {
             </span>
           </div>
 
+          {/* Hamburger menu button fixed width and no shrink */}
           <button
             id="menu-toggle"
-            className="md:hidden text-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 rounded shrink-0"
+            className="md:hidden text-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 rounded flex-shrink-0"
             aria-label="Toggle Navigation Menu"
             aria-expanded={isMenuOpen}
             onClick={toggleMenu}
@@ -167,6 +149,7 @@ const Header = () => {
             )}
           </button>
 
+          {/* Navigation Links */}
           <ul
             className={`${
               isMenuOpen ? 'flex bg-black' : 'hidden'
