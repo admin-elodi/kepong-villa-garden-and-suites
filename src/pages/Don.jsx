@@ -2,19 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import promoVideo from '@/assets/videos/stars.webm'; // Background video
-import manager from '@/assets/images/man.webp';
-import dj from '@/assets/images/man.webp';
-import planner from '@/assets/images/babe.webp';
-import light from '@/assets/images/hair.webp';
+import don from '@/assets/images/man.webp';
+import manager from '@/assets/images/manager.jpg';
+import light from '@/assets/images/man.webp';
+import chef from '@/assets/images/assorted.png';
+import tessy from '@/assets/images/tessy.png';
 import supervisor from '@/assets/images/supervisor.webp';
+import hotel from '@/assets/images/babe.webp';
 
 const crewMembers = [
   { id: 1, name: 'Mr John', role: 'General Manager', img: manager },
-  { id: 2, name: 'Tee Master', role: 'Disc Jockey', img: dj },
-  { id: 3, name: 'Planner Ifeoma', role: 'Event Planner', img: planner },
-  { id: 4, name: 'Light Crew Kelechi', role: 'Lighting Specialist', img: light },
-  { id: 5, name: 'Sound Crew Ada', role: 'Sound Engineer', img: light },
-  { id: 6, name: 'Ojiugo', role: 'Supervisor', img: supervisor },
+  { id: 2, name: 'Mr Daniel', role: 'Public Relations', img: light },
+  { id: 3, name: 'Madam', role: 'Manager-1, Food', img: chef },
+  { id: 4, name: 'Tessy', role: 'Manager-2, Food', img: tessy },
+  { id: 5, name: 'Ojiugo', role: 'Supervisor', img: supervisor },
+  { id: 6, name: 'Chioma', role: 'Hotel Services', img: hotel },
 ];
 
 const containerVariants = {
@@ -77,7 +79,7 @@ const Don = () => {
               className="rounded-full border-4 border-red-600 shadow-lg w-48 h-48 md:w-64 md:h-64 object-cover filter drop-shadow-lg"
               whileHover={{ scale: 1.07, boxShadow: '0 0 25px #DC2626' }}
               transition={{ type: 'spring', stiffness: 250, damping: 16 }}
-              src={manager}
+              src={don}
               loading="lazy"
             />
             <div className="mt-6">
@@ -142,7 +144,7 @@ const Don = () => {
                 <img
                   src={img}
                   alt={`${name} - ${role}`}
-                  className="rounded-full border-2 border-red-600 shadow-md w-24 h-24 object-cover mb-3 transition-transform duration-300"
+                  className="rounded-lg border-2 border-white shadow-md w-26 h-30 object-cover mb-3 transition-transform duration-300"
                   loading="lazy"
                   draggable={false}
                 />

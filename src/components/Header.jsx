@@ -49,7 +49,7 @@ const Header = () => {
   return (
     <>
       <header
-        className="fixed top-0 left-0 w-full z-50 font-montserrat border-2 border-red-600 md:border-b md:border-red-600 md:border-x-0 md:border-t-0 bg-white md:bg-black"
+        className="fixed top-0 left-0 w-full z-50 font-montserrat border-2 border-red-600 md:border-b md:border-red-600 md:border-x-0 md:border-t-0 bg-black"
         role="banner"
       >
         <style>
@@ -216,13 +216,13 @@ const Header = () => {
         </nav>
 
         <div
-          className="bg-black border-t border-b border-red-600 select-none ticker-container"
+          className="bg-white border-t border-b border-red-600 select-none ticker-container"
           aria-label="Kepong facilities promotional ticker"
           role="region"
         >
           <div
             ref={tickerRef}
-            className="ticker-content whitespace-nowrap flex gap-10 text-xs sm:text-sm font-semibold text-white tracking-wide py-2"
+            className="ticker-content whitespace-nowrap flex gap-10 text-xs sm:text-sm font-bold text-black tracking-wide py-2"
           >
             {promotionalTexts.concat(promotionalTexts).map((text, idx) => (
               <span key={idx} className="inline-block px-2">
@@ -235,7 +235,7 @@ const Header = () => {
         <div className="bg-black border-b border-red-600 flex justify-center gap-6 py-3 px-4 flex-wrap">
           <NavLink
             to="/bookings"
-            className="max-w-[180px] flex-grow bg-white text-black font-semibold text-base sm:text-lg py-2 rounded-lg border-2 border-red-600 shadow-md text-center transition duration-300 hover:bg-red-600 hover:text-white hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+            className="max-w-[180px] cursor-pointer flex-grow bg-white text-black font-semibold text-base sm:text-lg py-2 rounded-lg border-2 border-red-600 shadow-md text-center transition duration-300 hover:bg-red-600 hover:text-white hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-600 focus-visible:ring-offset-2"
             aria-label="Book your stay at Kepong Villa"
           >
             Book Hotel
@@ -244,7 +244,7 @@ const Header = () => {
           <button
             type="button"
             onClick={openReserveModal}
-            className="max-w-[180px] flex-grow bg-red-600 text-white font-semibold text-base sm:text-lg py-2 rounded-lg border-2 border-red-600 shadow-md text-center transition duration-300 hover:bg-white hover:text-black hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+            className="max-w-[180px] cursor-pointer flex-grow bg-red-600 text-white font-semibold text-base sm:text-lg py-2 rounded-lg border-2 border-red-600 shadow-md text-center transition duration-300 hover:bg-white hover:text-black hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-600 focus-visible:ring-offset-2"
             aria-label="Reserve a table for entertainment"
           >
             Reserve Table

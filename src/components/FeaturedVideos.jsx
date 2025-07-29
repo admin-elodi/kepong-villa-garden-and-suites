@@ -6,11 +6,15 @@ const FeaturedVideos = () => {
     <section className="py-10">
       <div className="w-full px-0">
         <div className="text-center mb-6 max-w-2xl mx-auto rounded-lg">
-         <div>
+          <div>
+     
             <h2 className="text-3xl sm:text-4xl font-bold text-white pb-2">
-              🎧 Featured Kepong DJ
+              Featured Kepong DJ
             </h2>
           </div>
+            <div className="text-3xl">
+              🎧 
+            </div>
           <div className="mt-2">
             <h1 className="text-lg sm:text-xl border-b-4 border-red-600 inline-block font-bold text-white pb-1">
               DJ TEA MASTER

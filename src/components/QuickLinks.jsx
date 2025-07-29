@@ -3,18 +3,31 @@ import { Link } from 'react-router-dom';
 import deluxeRoom from '@/assets/images/hotel/unsplash.webp';
 import premiumDrinks from '@/assets/images/drinks.jpg';
 import weddingReception from '@/assets/images/birthday.webp';
+
+// Import the service images with updated shawarma
+import shawarma from '@/assets/images/shaw.webp';
+import hair from '@/assets/images/barbing.jpg';
+import carWash from '@/assets/images/car.jpg';  // Replaced light.webp with shawarma.webp
+import nightClub from '@/assets/images/club/clubbers.jpg';
+import meat from '@/assets/images/meats.jpg';
+import snooker from '@/assets/images/snooker.webp';
+import shades from '@/assets/images/laundry.jpg';
+import salad from '@/assets/images/palm.webp';
+
+// Import the background video
+import starsVideo from '@/assets/videos/stars.webm';
+
 import '../css/q-links.css';
 
-// Icon set for services (emoji)
-const serviceIcons = [
-  "🌯", // Shawarma Bar
-  "💈", // Barber Shop
-  "🚗", // Car Wash
-  "🎶", // Nightclub
-  "🎱", // Snooker Boardman
-  "🍖", // Assorted Meat
-  "👗", // Boutique
-  "🍶", // Palm Wine
+const serviceImages = [
+  shawarma,      // Shawarma Bar
+  hair,          // Barber Shop
+  carWash,       // Car Wash
+  nightClub,     // Nightclub
+  snooker,       // Snooker Boardman
+  meat,          // Assorted Meat
+  shades,        // Laundry
+  salad          // Nsukka Palm Wine & Native Food
 ];
 
 const QuickLinks = () => {
@@ -57,44 +70,44 @@ const QuickLinks = () => {
       title: 'Barber Shop',
       phone: '+234 915 177 6589',
       whatsappLink: 'https://wa.me/2349151776589',
-      social: '@barbershop.ng', // Added for testing
+      social: '@barbershop.ng',
     },
     {
       title: 'Car Wash',
       phone: '+234 803 757 5854',
-      whatsappLink: 'https://wa.me/2348037575854',  
-      social: '@carwash.ng', // Added for testing
+      whatsappLink: 'https://wa.me/2348037575854',
+      social: '@carwash.ng',
     },
     {
       title: 'Nightclub',
       phone: '+234 916 943 6106',
-      whatsappLink: 'https://wa.me/2349169436106',  
+      whatsappLink: 'https://wa.me/2349169436106',
       social: '@Sunccent1_',
       socialLink: 'https://x.com/Sunccent1_?t=7LDrva2RghLEEJfOl1vWHg&s=09',
     },
     {
-      title: 'Snooker Boardman',
+      title: 'Snooker Games',
       phone: '+234 916 350 0634',
-      whatsappLink: 'https://wa.me/2349163500634',  
-      social: '@snookerpro', // Added for testing
+      whatsappLink: 'https://wa.me/2349163500634',
+      social: '@snookerpro',
     },
     {
       title: 'Assorted Meat',
       phone: '+234 816 654 0841',
       whatsappLink: 'https://wa.me/2348166540841',
-      social: '@meatlover.ng', // Added for testing
+      social: '@meatlover.ng',
     },
     {
       title: 'Laundry',
       phone: '+234 807 270 1671',
       whatsappLink: 'https://wa.me/2348072701671',
-      social: '@cleanlaundry.ng', // Added for testing
+      social: '@cleanlaundry.ng',
     },
     {
       title: 'Nsukka Palm Wine & Native Food',
       phone: '+234 814 559 8866',
       whatsappLink: 'https://wa.me/2348145598866',
-      social: '@nsukkapalmwine', // Added for testing
+      social: '@nsukkapalmwine',
     },
   ];
 
@@ -108,134 +121,140 @@ const QuickLinks = () => {
   };
 
   return (
-    <main className="mt-0 font-montserrat border-4 border-red-600 text-yellow-100 bg-black/70">
-      <div className="w-full border-t border-b border-red-600">
-        <section className="py-12">
-          <div className="container max-w-screen-xl mx-auto text-center">
-            {/* Top Cards Section */}
-            <section className="py-12 flex justify-center">
-              <div className="p-8 max-w-6xl w-full text-center shadow-xl">
-                <h2 className="text-xl md:text-xl font-dancing font-bold mb-8 animate-fade-in-up leading-tight tracking-wider text-white">
-                  Book room, events, etc...
-                </h2>
+    <>
+      {/* Background Video */}
+      <video
+        className="fixed top-0 overflow-hidden left-0 w-full h-full object-cover -z-10"
+        src={starsVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+      />
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {topCards.map((card, index) => (
-                    <div
-                      key={index}
-                      className="bg-white border-2 border-white text-black p-4 rounded-lg shadow-xl flex flex-col min-h-[360px] transition-transform hover:scale-105 hover:shadow-2xl"
-                    >
-                      <img
-                        src={card.img}
-                        alt={card.alt}
-                        className="w-full h-48 object-cover rounded-lg mb-4"
-                      />
-                      <h3 className="text-xl font-bold mb-2 drop-shadow-md">
-                        {card.title}
-                      </h3>
-                      <p>{card.desc}</p>
-                      <Link
-                        to={{
-                          pathname: card.link,
-                          state: card.state,
-                        }}
-                        className="mt-auto inline-block bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-slate-500 transition-transform hover:scale-105 duration-300 border-2 border-red shadow-lg focus:ring-2 focus:ring-amber-500"
-                        aria-label={card.btnLabel}
+      <main className="mt-0 font-montserrat border-b-2 border-t-none border-red-600 text-yellow-100 bg-black/70 relative z-10">
+        <div className="w-full border-b border-red-600">
+          <section className="py-12">
+            <div className="container max-w-screen-xl mx-auto text-center">
+              {/* Top Cards Section */}
+              <section className="py-12 flex justify-center">
+                <div className="p-8 max-w-6xl w-full text-center shadow-xl">
+                  <h2 className="text-xl md:text-xl font-dancing font-bold mb-8 animate-fade-in-up leading-tight tracking-wider text-white">
+                    Book room, events, etc...
+                  </h2>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {topCards.map((card, index) => (
+                      <div
+                        key={index}
+                        className="bg-white border-2 border-white text-black p-4 rounded-lg shadow-xl flex flex-col min-h-[360px] transition-transform hover:scale-105 hover:shadow-2xl"
                       >
-                        {card.btnLabel}
-                      </Link>
-                    </div>
-                  ))}
+                        <img
+                          src={card.img}
+                          alt={card.alt}
+                          className="w-full h-48 object-cover rounded-lg mb-4"
+                        />
+                        <h3 className="text-xl font-bold mb-2 drop-shadow-md">
+                          {card.title}
+                        </h3>
+                        <p>{card.desc}</p>
+                        <Link
+                          to={{
+                            pathname: card.link,
+                            state: card.state,
+                          }}
+                          className="mt-auto inline-block bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-slate-500 transition-transform hover:scale-105 duration-300 border-2 border-red shadow-lg focus:ring-2 focus:ring-amber-500"
+                          aria-label={card.btnLabel}
+                        >
+                          {card.btnLabel}
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
 
-            {/* More Services To Enjoy */}
-            <section className="py-12 flex justify-center border-t-2 border-red-600">
-              <div className="p-8 max-w-6xl w-full text-center shadow-xl">
-                <h2 className="text-xl md:text-xl font-bold mb-8 text-white drop-shadow-lg">
-                  More Services...
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-4 p-4 rounded-xl gap-8">
-                  {moreServices.map((service, index) => (
-                    <div
-                      key={index}
-                      className="text-white bg-black p-6 rounded-2xl border-2 border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
-                      role="button"
-                      tabIndex="0"
-                      onClick={() => toggleReveal(index)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          toggleReveal(index);
-                        }
-                      }}
-                    >
-                      {/* Colored emoji icons with custom colors, no red */}
-                      <span
-                        className={`text-3xl mb-2 block service-icon-color-${index % 4}`}
+              {/* More Services To Enjoy */}
+              <section className="py-12 flex justify-center border-t-2 border-red-600">
+                <div className="p-8 max-w-6xl w-full text-center shadow-xl">
+                  <h2 className="text-xl md:text-xl font-bold mb-8 text-white drop-shadow-lg">
+                    More Services...
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-4 p-4 rounded-xl gap-8">
+                    {moreServices.map((service, index) => (
+                      <div
+                        key={index}
+                        className="text-white bg-gray-700 p-2 rounded-2xl border-2 border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+                        role="button"
+                        tabIndex="0"
+                        onClick={() => toggleReveal(index)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            toggleReveal(index);
+                          }
+                        }}
                       >
-                        {serviceIcons[index % serviceIcons.length]}
-                      </span>
-                      <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                        {/* Service Image with uniform size and hover grow */}
+                        <img
+                          src={serviceImages[index % serviceImages.length]}
+                          alt={`${service.title} icon`}
+                          className="mx-auto mb-4 w-[90%] h-[150px] object-cover rounded-t-xl transition-transform duration-300 ease-in-out hover:scale-110"
+                          style={{ marginTop: '-1px' }} // Almost touches top of container
+                        />
+                        <h3 className="text-xl font-bold mb-2">{service.title}</h3>
 
-                      {revealedServices[index] ? (
-                        <div className="text-sm mt-2 text-white space-y-1">
-                          <p>
-                            <strong>Phone:</strong> {service.phone}
-                          </p>
-                          {service.whatsappLink && (
+                        {revealedServices[index] ? (
+                          <div className="text-sm mt-2 text-white space-y-1">
                             <p>
-                              <strong>WhatsApp:</strong>{' '}
-                              <a
-                                href={service.whatsappLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-green-300 hover:underline"
-                              >
-                                Chat on WhatsApp
-                              </a>
+                              <strong>Phone:</strong> {service.phone}
                             </p>
-                          )}
-                          {(service.social || service.socialLink) && (
-                            <p>
-                              <strong>Social:</strong>{' '}
-                              {service.socialLink ? (
+                            {service.whatsappLink && (
+                              <p>
+                                <strong>WhatsApp:</strong>{' '}
                                 <a
-                                  href={service.socialLink}
+                                  href={service.whatsappLink}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-yellow-200 hover:underline"
+                                  className="text-green-300 hover:underline"
                                 >
-                                  {service.social}
+                                  Chat on WhatsApp
                                 </a>
-                              ) : (
-                                service.social
-                              )}
-                            </p>
-                          )}
-                        </div>
-                      ) : (
-                        <p className="text-yellow-100">
-                          Click to reveal contact info
-                        </p>
-                      )}
-                    </div>
-                  ))}
+                              </p>
+                            )}
+                            {(service.social || service.socialLink) && (
+                              <p>
+                                <strong>Social:</strong>{' '}
+                                {service.socialLink ? (
+                                  <a
+                                    href={service.socialLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-yellow-200 hover:underline"
+                                  >
+                                    {service.social}
+                                  </a>
+                                ) : (
+                                  service.social
+                                )}
+                              </p>
+                            )}
+                          </div>
+                        ) : (
+                          <p className="text-yellow-100">
+                            Click to reveal contact info
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </section>
-          </div>
-        </section>
-      </div>
-
-      {/* --- Add styles for icon colors --- */}
-      <style>{`
-        .service-icon-color-0 { color: #f0f0f0; }
-        .service-icon-color-1 { color: #a0a0a0; }
-        .service-icon-color-2 { color: #c0d9f7; }
-        .service-icon-color-3 { color: #d7e6fb; }
-      `}</style>
-    </main>
+              </section>
+            </div>
+          </section>
+        </div>
+      </main>
+    </>
   );
 };
 
