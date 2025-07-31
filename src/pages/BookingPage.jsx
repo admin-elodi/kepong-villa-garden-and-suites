@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import RoomCard from '../components/booking/RoomCard';
-import ScrollToTop from '../components/ScrollToTop';
-import standardRoom from '@/assets/images/hotel/standard.webp';
+import RoomCard from '@/components/booking/RoomCard';
+import ScrollToTop from '@/components/ScrollToTop';
+import singleRoom from '@/assets/images/hotel/single.webp';
 import deluxe from '@/assets/images/hotel/deluxe.webp';
 import executive from '@/assets/images/hotel/executive.webp';
+import apartment from '@/assets/images/hotel/apartment.webp';
 import promoVideo from '@/assets/videos/couple.mp4';
 import shadesImage from '@/assets/images/shades.webp';
 
@@ -12,7 +13,7 @@ const rooms = [
     id: 1,
     roomType: 'Single',
     price: 7000,
-    imageURL: standardRoom,
+    imageURL: singleRoom,
     amenities: ['Double Bed', 'Flatscreen'],
   },
   {
@@ -33,17 +34,16 @@ const rooms = [
     id: 4,
     roomType: 'Apartment',
     price: 17000,
-    imageURL: executive, // Will be changed later
+    imageURL: apartment, // Will be changed later
     amenities: ['King Bed', 'Balcony', 'Mini Bar', 'Flatscreen', 'Room Service', 'Room & Parlor'],
   },
 ];
 
 const promoTexts = [
   'Book Room or Apartment',
-  'Room Service',
-  'Dry Cleaning',
+  'Professional Staff',
   'Luxury Comfort',
-  'Exclusive Suites',
+  'Exquisite Hospitality',
   'Unforgettable Stays',
 ];
 

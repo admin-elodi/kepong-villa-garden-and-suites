@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import DroneOrderModal from './DroneOrderModal';
-import ReserveTableModal from '../components/ReserveTableModal';
+import ReserveTableModal from '@/components/ReserveTableModal';
 
 // Import images
 import amaka from '@/assets/images/shawarma.webp';
 import chilling from '@/assets/images/snooker.webp';
 import djulio from '@/assets/images/donj.jpg';
-import unsplash from '@/assets/images/unsplash.webp';
+import unsplash from '@/assets/images//hotel/apartment.webp';
 import hotel from '@/assets/images/hotel.webp';
 import palmWine from '@/assets/images/palm.webp';
 import food from '@/assets/images/food.jpg';
@@ -157,7 +157,7 @@ const Hero = ({ setIsModalOpen }) => {
       <div
         className="
           absolute bottom-0 left-0 right-0 z-20 w-full px-4 sm:px-6 lg:px-0
-          py-3 flex justify-center gap-4 bg-black/90 border-2 border-white
+          py-3 flex justify-center gap-4 bg-black/90
         "
         role="group"
         aria-label="Carousel navigation buttons"

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import deluxeRoom from '@/assets/images/hotel/unsplash.webp';
+import apartment from '@/assets/images/hotel/apartment.webp';
 import premiumDrinks from '@/assets/images/drinks.jpg';
 import weddingReception from '@/assets/images/birthday.webp';
 
 // Import the service images with updated shawarma
-import shawarma from '@/assets/images/shaw.webp';
+import shawarma from '@/assets/images/shawarma.webp';
 import hair from '@/assets/images/barbing.jpg';
 import carWash from '@/assets/images/car.jpg';  // Replaced light.webp with shawarma.webp
 import nightClub from '@/assets/images/club/clubbers.jpg';
@@ -17,7 +17,7 @@ import salad from '@/assets/images/palm.webp';
 // Import the background video
 import starsVideo from '@/assets/videos/stars.webm';
 
-import '../css/q-links.css';
+import '@/css/q-links.css';
 
 const serviceImages = [
   shawarma,      // Shawarma Bar
@@ -42,8 +42,8 @@ const QuickLinks = () => {
       state: { showFoodForm: true },
     },
     {
-      img: deluxeRoom,
-      alt: 'Deluxe Room',
+      img: apartment,
+      alt: 'Apartment',
       title: 'Cozy Rooms',
       desc: 'Standard - Deluxe - Executive',
       link: '/bookings',
@@ -121,24 +121,15 @@ const QuickLinks = () => {
   };
 
   return (
-    <>
-      {/* Background Video */}
-      <video
-        className="fixed top-0 overflow-hidden left-0 w-full h-full object-cover -z-10"
-        src={starsVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-      />
-
+    <section>
+   
       <main className="mt-0 font-montserrat border-b-2 border-t-none border-red-600 text-yellow-100 bg-black/70 relative z-10">
         <div className="w-full border-b border-red-600">
           <section className="py-12">
             <div className="container max-w-screen-xl mx-auto text-center">
               {/* Top Cards Section */}
               <section className="py-12 flex justify-center">
+                
                 <div className="p-8 max-w-6xl w-full text-center shadow-xl">
                   <h2 className="text-xl md:text-xl font-dancing font-bold mb-8 animate-fade-in-up leading-tight tracking-wider text-white">
                     Book room, events, etc...
@@ -177,7 +168,7 @@ const QuickLinks = () => {
 
               {/* More Services To Enjoy */}
               <section className="py-12 flex justify-center border-t-2 border-red-600">
-                <div className="p-8 max-w-6xl w-full text-center shadow-xl">
+                <div className="p-8 max-w-6xl w-full text-center shadow-xl border-b-2 border-red-600">
                   <h2 className="text-xl md:text-xl font-bold mb-8 text-white drop-shadow-lg">
                     More Services...
                   </h2>
@@ -185,7 +176,7 @@ const QuickLinks = () => {
                     {moreServices.map((service, index) => (
                       <div
                         key={index}
-                        className="text-white bg-gray-700 p-2 rounded-2xl border-2 border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+                        className="text-white bg-black rounded-lg border-4 p-[5px] border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                         role="button"
                         tabIndex="0"
                         onClick={() => toggleReveal(index)}
@@ -199,7 +190,7 @@ const QuickLinks = () => {
                         <img
                           src={serviceImages[index % serviceImages.length]}
                           alt={`${service.title} icon`}
-                          className="mx-auto mb-4 w-[90%] h-[150px] object-cover rounded-t-xl transition-transform duration-300 ease-in-out hover:scale-110"
+                          className="mx-auto mb-4 w-[100%] h-[150px] object-cover rounded-t-sm transition-transform duration-300 ease-in-out hover:scale-110"
                           style={{ marginTop: '-1px' }} // Almost touches top of container
                         />
                         <h3 className="text-xl font-bold mb-2">{service.title}</h3>
@@ -254,7 +245,7 @@ const QuickLinks = () => {
           </section>
         </div>
       </main>
-    </>
+    </section>
   );
 };
 

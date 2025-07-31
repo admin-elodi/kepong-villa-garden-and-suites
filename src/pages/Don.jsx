@@ -2,21 +2,21 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import promoVideo from '@/assets/videos/stars.webm'; // Background video
-import don from '@/assets/images/man.webp';
-import manager from '@/assets/images/manager.jpg';
-import light from '@/assets/images/man.webp';
-import chef from '@/assets/images/assorted.png';
-import tessy from '@/assets/images/tessy.png';
-import supervisor from '@/assets/images/supervisor.webp';
-import hotel from '@/assets/images/babe.webp';
+import don from '@/assets/images/staff/man.webp';
+import manager from '@/assets/images/staff/manager.jpg';
+import light from '@/assets/images/staff/man.webp';
+import chef from '@/assets/images/staff/assorted.png';
+import tessy from '@/assets/images/staff/tessy.png';
+import supervisor from '@/assets/images/staff/supervisor.webp';
+import hotel from '@/assets/images/staff/chef.jpg';
 
 const crewMembers = [
   { id: 1, name: 'Mr John', role: 'General Manager', img: manager },
   { id: 2, name: 'Mr Daniel', role: 'Public Relations', img: light },
-  { id: 3, name: 'Madam', role: 'Manager-1, Food', img: chef },
-  { id: 4, name: 'Tessy', role: 'Manager-2, Food', img: tessy },
+  { id: 3, name: 'Madam Ifeoma', role: 'Madam Ezinwanne Kitchen', img: chef },
+  { id: 4, name: 'Tessy', role: 'Tessy Special Kitchen', img: tessy },
   { id: 5, name: 'Ojiugo', role: 'Supervisor', img: supervisor },
-  { id: 6, name: 'Chioma', role: 'Hotel Services', img: hotel },
+  { id: 6, name: 'Sholastica', role: 'Hotel Chef', img: hotel },
 ];
 
 const containerVariants = {
