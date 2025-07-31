@@ -6,7 +6,7 @@ import ReserveTableModal from '@/components/ReserveTableModal';
 import amaka from '@/assets/images/shawarma.webp';
 import chilling from '@/assets/images/snooker.webp';
 import djulio from '@/assets/images/donj.jpg';
-import unsplash from '@/assets/images//hotel/apartment.webp';
+import unsplash from '@/assets/images/snooker-table.jpg';
 import hotel from '@/assets/images/hotel.webp';
 import palmWine from '@/assets/images/palm.webp';
 import food from '@/assets/images/food.jpg';
