@@ -152,7 +152,7 @@ const Events = () => {
       {/* Text Slideshow */}
       <section className="py-2 border-8 rounded-xl px-8 bg-white text-black text-center">
         <div className="max-w-4xl mx-auto">
-          <p className="text-2xl md:text-2xl font-semibold transition-opacity duration-500">
+          <p className="text-lg md:text-2xl font-semibold transition-opacity duration-500">
             {slides[currentSlide % slides.length]}
           </p>
         </div>

@@ -2,9 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import ReserveTableModal from '../components/ReserveTableModal';
 import meatsBg from '@/assets/images/meats.jpg';
 import nsukka from '@/assets/images/palm.webp';
-import tessy from '@/assets/images/images.jpg';
-import banquet from '@/assets/images/foodies/chef.jpg';
-import chickenSalad from '@/assets/images/images.jpg';
+import tessy from '@/assets/images/foodies/rice-stew.jpg';
+import banquet from '@/assets/images/foodies/banquets.jpg';
+import chickenSalad from '@/assets/images/foodies/chicken.jpg';
+import fishBarbecue from '@/assets/images/foodies/barbecue.jpg';
+import abacha from '@/assets/images/foodies/abacha.jpg';
+import okpa from '@/assets/images/foodies/okpa.jpg';
 
 // Foodies array with individual menus, including isOrderable flag
 const foodies = [
@@ -12,17 +15,17 @@ const foodies = [
     id: 1,
     name: 'Madam Ezinwanne Kitchen',
     image: meatsBg,
-    phone: '+2348012345678',
-    whatsapp: '+2348012345678',
+    phone: '+2348166540841',
+    whatsapp: '+2348166540841',
     bankDetails: {
       bankName: 'Zenith Bank',
       accountName: 'Madam Ezinwanne Kitchen',
       accountNumber: '0123456789',
     },
     menu: [
-      { id: 'ezinwa1', name: 'Jollof Rice', price: 2500, isOrderable: true },
-      { id: 'ezinwa2', name: 'Egusi Soup', price: 3000, isOrderable: true },
-      { id: 'ezinwa3', name: 'Pounded Yam', price: 2000, isOrderable: false }, // In-person only
+      { id: 'ezinwa1', name: 'Assorted Meats', price: 2500, isOrderable: true },
+      { id: 'ezinwa2', name: 'Cow Leg', price: 3000, isOrderable: true },
+      { id: 'ezinwa3', name: 'Beef Pepper Soup', price: 2000, isOrderable: true }, // In-person only
     ],
   },
   {
@@ -37,17 +40,18 @@ const foodies = [
       accountNumber: '5322466243',
     },
     menu: [
-      { id: 'tessy1', name: 'Fried Rice', price: 2200, isOrderable: true },
-      { id: 'tessy2', name: 'Vegetable Soup', price: 2800, isOrderable: true },
-      { id: 'tessy3', name: 'Suya Platter', price: 3500, isOrderable: false }, // In-person only
+      { id: 'tessy1', name: 'White Rice (with Stew, Salad, etc)', price: 2200, isOrderable: true },
+      { id: 'tessy2', name: 'All Kinds of Soup with Eba, Fufu', price: 2500, isOrderable: true },
+      { id: 'tessy3', name: 'Fresh Fish Peppersoup (Head)', price: 4000, isOrderable: true }, // In-person only
+      { id: 'tessy3', name: 'Fresh Fish Peppersoup (middle & tail)', price: 3000, isOrderable: true }, // In-person only
     ],
   },
   {
     id: 3,
     name: 'De Banquet Hotel Kitchen',
-    image: '',
-    phone: '+2348023456789',
-    whatsapp: '+2348023456789',
+    image: banquet,
+    phone: '+2348032265822',
+    whatsapp: '+2348032265822',
     bankDetails: {
       bankName: 'First Bank',
       accountName: 'De Banquet Hotel Kitchen',
@@ -93,8 +97,8 @@ const foodies = [
   },
   {
     id: 6,
-    name: 'Fish Barbecue Package',
-    image: '',
+    name: 'Fresh Fish Barbecue with Chips',
+    image: fishBarbecue,
     phone: '+2348056789012',
     whatsapp: '+2348056789012',
     bankDetails: {
@@ -110,7 +114,7 @@ const foodies = [
   {
     id: 7,
     name: 'Abacha Enugu Special',
-    image: '',
+    image: abacha,
     phone: '+2348067890123',
     whatsapp: '+2348067890123',
     bankDetails: {
@@ -126,7 +130,7 @@ const foodies = [
   {
     id: 8,
     name: 'Okpa 9th Mile with Chicken',
-    image: '',
+    image: okpa,
     phone: '+2348078901234',
     whatsapp: '+2348078901234',
     bankDetails: {
@@ -147,7 +151,7 @@ const FIXED_SURCHARGE = 1500;
 // Card styles for uniform styling with override capability
 const foodieCardStyles = {
   cardBase:
-    'bg-black bg-opacity-80 rounded-lg shadow-lg hover:shadow-red-600 transition-shadow duration-300 flex flex-col min-h-[400px]',
+    'bg-black bg-opacity-80 rounded-lg shadow-lg hover:shadow-red-600 transition-shadow duration-300 flex flex-col min-h-[400px] border-2 border-white',
   cardContent: 'p-6 flex flex-col flex-grow justify-start',
   cardTitle: 'text-2xl font-semibold mb-2 text-red-600 p-6 text-center',
   cardImage: 'w-full h-48 object-cover transition-transform duration-300 hover:scale-105 flex-shrink-0',
@@ -394,7 +398,7 @@ function OrderModal({ open, onClose, foodie }) {
                 </div>
               </div>
               <p className="mb-4 text-gray-800">
-                After completing your payment, please send your payment evidence privately to {foodie.name} using the
+                After payment, please send payment evidence privately to {foodie.name} using the
                 WhatsApp button below.
               </p>
               <a
@@ -414,7 +418,7 @@ function OrderModal({ open, onClose, foodie }) {
   );
 }
 
-const specialTableDescription = `Our "Table for Four" brings a special menu from all foodies, celebrating the best of every kitchen at Kepong.`;
+const specialTableDescription = `Reserve our "Table for Four" which serves a menu from the above foodies for taste & good health.`;
 
 const KepongFoodies = () => {
   const [menuModal, setMenuModal] = useState({ open: false, foodie: null });
@@ -423,7 +427,7 @@ const KepongFoodies = () => {
 
   return (
     <main
-      className="min-h-screen font-montserrat text-white px-6 md:px-16 pt-40 pb-12 relative bg-cover bg-center bg-no-repeat"
+      className="min-h-screen font-montserrat text-white px-6 md:px-16 pt-34 pb-12 relative bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${meatsBg})` }}
     >
       {/* Background overlay */}
@@ -431,10 +435,9 @@ const KepongFoodies = () => {
 
       {/* Heading */}
       <section className="text-center max-w-4xl mx-auto py-30 relative z-10">
-        <h1 className="text-4xl font-bold text-white mb-4">Kepong Foodies Connect</h1>
-        <p className="bg-white/40 text-lg text-red-600 font-bold rounded-lg py-8 max-w-xl mx-auto">
-          Taste Kepong Foodies, vibe, and connect with the best kitchen spots in Enugu located at Kepong Villa Garden &
-          Suites. Order online or visit in person today!
+        <h1 className="text-4xl font-bold text-white mb-4">Kepong Foodies Connect - KFC</h1>
+        <p className="bg-white/50 text-lg text-red-600 font-bold rounded-lg py-8 px-8 max-w-xl mx-auto">
+          Enjoy Kepong Foodies, vibe, and connect with the best Kitchens in Enugu
         </p>
       </section>
 
@@ -511,9 +514,9 @@ const KepongFoodies = () => {
 
       {/* Call to Action Section */}
       <section className="text-center max-w-3xl mx-auto mb-12 px-6 py-10 bg-black bg-opacity-80 rounded-lg border-2 border-red-600 shadow-lg relative z-10">
-        <h3 className="text-3xl font-bold text-red-600 mb-4">Want to Join Kepong Foodies?</h3>
+        <h3 className="text-3xl font-bold text-red-600 mb-4">Do you Want to Join Kepong Foodies Connect?</h3>
         <p className="text-white mb-6 text-lg">
-          Run a food biz? Join our groove at Kepong Villa Garden & Suites — come jolly with us!
+          Join our groove at Kepong Villa Garden & Suites if interested
         </p>
         <a
           href="mailto:partnerships@kepongvilla.ng"
