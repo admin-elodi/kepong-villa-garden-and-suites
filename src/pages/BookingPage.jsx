@@ -89,7 +89,7 @@ const BookingPage = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-[900px] object-cover"
           aria-hidden="true"
         >
           Your browser does not support the video tag.

@@ -5,15 +5,18 @@ import ReserveTableModal from '@/components/ReserveTableModal';
 
 const promotionalTexts = [
   '24hrs Light',
-  'Quick & Responsive Services',
-  'Nsukka Palm Wine',
-  'Special Table for Four',
-  'Local & Foreign Foods',
-  'Play Games',
   'Enjoy Club K',
-  'Nigerian & Ghana Jollof',
-  'Drone Delivery Coming Soon!',
-  'Assorted Meats!',
+  'Play Games',
+  'DJ Tea Master in the House',
+  'Book Comfortable Room or Apartment',
+  'Enjoy Kepong Foodies Connect...',
+  '...Madam Ezinwanne Kitched',
+  'Tessy Kitchen Special',
+  'Nsukka Food & Palm Wine',
+  'De Banquet Hotel Kitchen',
+  'Chicken Salad Special',
+  'Fish Barbecue',
+  'Tasty Abacha',
 ];
 
 const Header = () => {
@@ -100,7 +103,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Kepong Villa Garden and Suites Logo"
-              className="w-12 h-18 md:w-[90px] md:h-[60px] rounded-sm"
+              className="w-12 h-8 md:w-[90px] md:h-[60px] rounded-sm"
             />
           </NavLink>
 
@@ -200,16 +203,16 @@ const Header = () => {
                 className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Events
+                Kepong Events
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="/don"
+                to="/kepong-foodies"
                 className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Don Cally
+                Kepong Foodies 
               </NavLink>
             </li>
           </ul>

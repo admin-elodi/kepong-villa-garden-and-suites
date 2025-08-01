@@ -22,6 +22,19 @@ const Events = () => {
   const bookingNumber = '2347031576094';
   const whatsappLink = `https://wa.me/${bookingNumber}`;
 
+  // Base style for social media circles
+  const socialBtnBase =
+    'transform transition-transform duration-300 rounded-full flex items-center justify-center w-12 h-12 shadow-lg';
+
+  // Individual social button styles for official brand backgrounds and hover
+  const socialBtnStyles = {
+    x: 'bg-[#1DA1F2] text-white hover:bg-[#0d8ddb]',
+    instagram:
+      'bg-gradient-to-tr from-[#f09433] via-[#e6683c] via-[#dc2743] via-[#cc2366] to-[#bc1888] text-white hover:brightness-110',
+    facebook: 'bg-[#1877F2] text-white hover:bg-[#155fbe]',
+    tiktok: 'bg-black border-2 border-white text-white hover:bg-pink-600',
+  };
+
   // Text slideshow - auto advance every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,7 +62,6 @@ const Events = () => {
 
   // Fix carousel to prevent blank spaces by duplicating images in a loop and using translateX properly
   const [carouselIndex, setCarouselIndex] = useState(0);
-  const transitionRef = useRef(null);
   const containerRef = useRef(null);
 
   // We create an extended images array for infinite seamless scroll
@@ -57,7 +69,7 @@ const Events = () => {
 
   const slideWidth = 100; // percent width per slide
 
-  // Handle automatic slide for image carousel every 3 seconds to keep it synced with text slideshow or separate
+  // Handle automatic slide for image carousel every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
@@ -65,40 +77,42 @@ const Events = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const [isTransitioningLocal, setIsTransitioningLocal] = useState(false);
+
   // Previous slide handler
   const prevSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+    if (isTransitioningLocal) return;
+    setIsTransitioningLocal(true);
     setCarouselIndex((prev) => prev - 1);
   };
 
   // Next slide handler
   const nextSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+    if (isTransitioningLocal) return;
+    setIsTransitioningLocal(true);
     setCarouselIndex((prev) => prev + 1);
   };
 
-  // Handle the transition end event to reset carouselIndex when looping to create infinite illusion
+  // Handle the transition end event to reset carouselIndex when looping
   const handleTransitionEnd = () => {
-    setIsTransitioning(false);
-    // Reset index if at boundaries
+    setIsTransitioningLocal(false);
     if (carouselIndex >= images.length) {
-      // jumped to duplicated slides, reset to original first slide silently
       setCarouselIndex(carouselIndex - images.length);
       if (containerRef.current) {
         containerRef.current.style.transition = 'none';
-        containerRef.current.style.transform = `translateX(-${(carouselIndex - images.length) * slideWidth}%)`;
-        // Force reflow to apply style immediately
-        void containerRef.current.offsetWidth;
+        containerRef.current.style.transform = `translateX(-${
+          (carouselIndex - images.length) * slideWidth
+        }%)`;
+        void containerRef.current.offsetWidth; // force reflow
         containerRef.current.style.transition = 'transform 0.5s ease';
       }
     } else if (carouselIndex < 0) {
-      // jumped before first slide, reset to original last slide silently
       setCarouselIndex(carouselIndex + images.length);
       if (containerRef.current) {
         containerRef.current.style.transition = 'none';
-        containerRef.current.style.transform = `translateX(-${(carouselIndex + images.length) * slideWidth}%)`;
+        containerRef.current.style.transform = `translateX(-${
+          (carouselIndex + images.length) * slideWidth
+        }%)`;
         void containerRef.current.offsetWidth;
         containerRef.current.style.transition = 'transform 0.5s ease';
       }
@@ -124,8 +138,10 @@ const Events = () => {
           <h1 className="text-3xl py-4 md:px-8 md:text-5xl font-bold text-center text-white">
             Kepong Events Page
           </h1>
-          <div className="bg-black/50 px-8 text-center rounded-lg border-2 border-white">
-            <h2 className="text-red-600 font-extrabold text-xl">Edition Focus...</h2>
+          <div className="text-center">
+            <h2 className="text-red-600 md:text-2xl border-b-2 border-white inline font-bold text-xl">
+              Edition Focus...
+            </h2>
             <p className="text-[1rem] md:text-[1.5rem] font-semibold text-center text-white">
               Amaka's 30th Birthday Bash!
             </p>
@@ -177,26 +193,47 @@ const Events = () => {
             </p>
           </div>
           <div className="mt-8">
-            <h3 className="text-2xl font-semibold text-white mb-6">
-              Share This Celebration
-            </h3>
+            <h3 className="text-2xl font-semibold text-white mb-6">Share This Celebration</h3>
             <div className="flex justify-center gap-6">
+               {/* Facebook button */}
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Share on Facebook"
+                className="flex flex-col items-center"
+              >
+                <div className={`${socialBtnBase} ${socialBtnStyles.facebook} hover:scale-110`}>
+                  <svg
+                    className="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+                  </svg>
+                </div>
+                <span className="mt-1 text-xs text-white">Facebook</span>
+              </a>
               {/* X (Twitter) button */}
               <a
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Share on X"
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-[#1DA1F2] text-white shadow-lg transition transform hover:scale-110 hover:bg-[#0d8ddb]"
+                className="flex flex-col items-center"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
+                <div className={`${socialBtnBase} ${socialBtnStyles.x} hover:scale-110`}>
+                  <svg
+                    className="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </div>
+                <span className="mt-1 text-xs text-white">X</span>
               </a>
 
               {/* Instagram button */}
@@ -205,35 +242,28 @@ const Events = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Share on Instagram"
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] via-[#dc2743] via-[#cc2366] to-[#bc1888] text-white shadow-lg transition transform hover:scale-110 hover:brightness-110"
+                className="flex flex-col items-center"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="white"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                <div
+                  className={`${socialBtnBase} ${socialBtnStyles.instagram} hover:scale-110`}
+                  style={{
+                    background:
+                      'linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)',
+                  }}
                 >
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.332.014 7.052.072 3.668.227 1.981 1.911 1.826 5.295.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.155 3.384 1.839 5.071 5.223 5.226 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c3.384-.155 5.071-1.839 5.226-5.223.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.155-3.384-1.839-5.071-5.223-5.226C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                </svg>
+                  <svg
+                    className="w-6 h-6"
+                    fill="white"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.332.014 7.052.072 3.668.227 1.981 1.911 1.826 5.295.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.155 3.384 1.839 5.071 5.223 5.226 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c3.384-.155 5.071-1.839 5.226-5.223.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.155-3.384-1.839-5.071-5.223-5.226C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                  </svg>
+                </div>
+                <span className="mt-1 text-xs text-white">Instagram</span>
               </a>
 
-              {/* Facebook button */}
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Share on Facebook"
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-[#1877F2] text-white shadow-lg transition transform hover:scale-110 hover:bg-[#155fbe]"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
-                </svg>
-              </a>
+             
 
               {/* TikTok button */}
               <a
@@ -241,16 +271,19 @@ const Events = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Share on TikTok"
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-black text-white border-2 border-white shadow-lg transition transform hover:scale-110 hover:bg-pink-600"
+                className="flex flex-col items-center"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6"
-                >
-                  <path d="M12 2.25c.53 0 1.04.102 1.5.289v4.362a2.84 2.84 0 01-1.5-.471 3.022 3.022 0 00-1.693-.518c-1.659 0-3 1.502-3 3.358 0 1.854 1.341 3.357 3 3.357.15 0 .298-.034.437-.061V19.5a6.022 6.022 0 01-3.936-1.568 6.318 6.318 0 01-1.425-5.006 6.04 6.04 0 015.361-4.844V2.25z" />
-                </svg>
+                <div className={`${socialBtnBase} ${socialBtnStyles.tiktok} hover:scale-110`}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    className="w-6 h-6"
+                  >
+                    <path d="M12 2.25c.53 0 1.04.102 1.5.289v4.362a2.84 2.84 0 01-1.5-.471 3.022 3.022 0 00-1.693-.518c-1.659 0-3 1.502-3 3.358 0 1.854 1.341 3.357 3 3.357.15 0 .298-.034.437-.061V19.5a6.022 6.022 0 01-3.936-1.568 6.318 6.318 0 01-1.425-5.006 6.04 6.04 0 015.361-4.844V2.25z" />
+                  </svg>
+                </div>
+                <span className="mt-1 text-xs text-white">TikTok</span>
               </a>
             </div>
           </div>
@@ -292,7 +325,7 @@ const Events = () => {
               type="button"
               onClick={prevSlide}
               aria-label="Previous Slide"
-              disabled={isTransitioning}
+              disabled={isTransitioningLocal}
               className="
                 w-10 h-10 rounded-sm border border-white/60 text-white/80 hover:text-white hover:border-opacity-100
                 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-red-600
@@ -305,7 +338,7 @@ const Events = () => {
               type="button"
               onClick={nextSlide}
               aria-label="Next Slide"
-              disabled={isTransitioning}
+              disabled={isTransitioningLocal}
               className="
                 w-10 h-10 rounded-sm border border-white/60 text-white/80 hover:text-white hover:border-opacity-100
                 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-red-600
@@ -369,9 +402,7 @@ const Events = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white p-8 rounded-lg max-w-lg w-full text-black">
-            <h3 className="text-2xl font-bold text-red-600 mb-4">
-              Endorse Amaka's Event
-            </h3>
+            <h3 className="text-2xl font-bold text-red-600 mb-4">Endorse Amaka's Event</h3>
             <div className="space-y-4">
               <div>
                 <button

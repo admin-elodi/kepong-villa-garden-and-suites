@@ -9,7 +9,7 @@ import ClubK from './pages/ClubK.jsx';
 import FeaturedEntertainers from './pages/FeaturedEntertainers.jsx';
 import BookingPage from './pages/BookingPage.jsx';
 import Events from './pages/Events.jsx';
-import Don from './pages/Don.jsx';
+import KepongFoodies from './pages/KepongFoodies.jsx';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,7 +29,7 @@ function App() {
         <Route path="/featured-entertainers" element={<FeaturedEntertainers />} />
         <Route path="/bookings" element={<BookingPage />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/don" element={<Don />} />
+        <Route path="/kepong-foodies" element={<KepongFoodies />} />
       </Routes>
       <Footer />
     </Router>

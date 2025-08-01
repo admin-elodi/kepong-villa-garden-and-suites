@@ -92,7 +92,7 @@ const QuickLinks = () => {
       social: '@snookerpro',
     },
     {
-      title: 'Assorted Meat',
+      title: 'Ezinwanne Kitchen',
       phone: '+234 816 654 0841',
       whatsappLink: 'https://wa.me/2348166540841',
       social: '@meatlover.ng',

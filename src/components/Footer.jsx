@@ -19,7 +19,7 @@ const Footer = () => {
     facebook: 'text-white border-[#1877F2] bg-[#1877F2] hover:bg-[#155fbe]',
     instagram:
       'text-white border-transparent bg-gradient-to-tr from-[#f09433] via-[#e6683c] via-[#dc2743] via-[#cc2366] to-[#bc1888] hover:brightness-110',
-    twitter: 'text-white border-[#1DA1F2] bg-[#1DA1F2] hover:bg-[#0d8ddb]',
+    x: 'text-white border-[#1DA1F2] bg-[#1DA1F2] hover:bg-[#0d8ddb]', // Twitter as X
     tiktok:
       'text-white border-white bg-black hover:bg-pink-600', // TikTok black bg with white border and pink hover
   };
@@ -82,49 +82,62 @@ const Footer = () => {
               <a
                 href="https://web.facebook.com/p/Kepong-Villa-Garden-100063802974099/?_rdc=1&_rdr#"
                 aria-label="Facebook"
-                className={`${socialBtnBase} ${socialBtnStyles.facebook}`}
+                className="flex flex-col items-center"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaFacebookF className="text-xl" />
+                <div className={`${socialBtnBase} ${socialBtnStyles.facebook}`}>
+                  <FaFacebookF className="text-xl" />
+                </div>
+                <span className="mt-1 text-xs text-white">Facebook</span>
+              </a>
+                {/* X (formerly Twitter) */}
+              <a
+                href="https://twitter.com/kepongvilla"
+                aria-label="X"
+                className="flex flex-col items-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className={`${socialBtnBase} ${socialBtnStyles.x}`}>
+                  <FaTwitter className="text-xl" />
+                </div>
+                <span className="mt-1 text-xs text-white">X</span>
               </a>
               {/* Instagram */}
               <a
                 href="https://instagram.com/kepongvilla"
                 aria-label="Instagram"
-                className={`${socialBtnBase} ${socialBtnStyles.instagram}`}
+                className="flex flex-col items-center"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaInstagram className="text-xl" />
+                <div className={`${socialBtnBase} ${socialBtnStyles.instagram}`}>
+                  <FaInstagram className="text-xl" />
+                </div>
+                <span className="mt-1 text-xs text-white">Instagram</span>
               </a>
-              {/* Twitter */}
-              <a
-                href="https://twitter.com/kepongvilla"
-                aria-label="Twitter"
-                className={`${socialBtnBase} ${socialBtnStyles.twitter}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter className="text-xl" />
-              </a>
+            
               {/* TikTok */}
               <a
                 href="https://www.tiktok.com/@kepongvilla"
                 aria-label="TikTok"
-                className={`${socialBtnBase} ${socialBtnStyles.tiktok}`}
+                className="flex flex-col items-center"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {/* TikTok SVG Icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path d="M12 2.25c.53 0 1.04.102 1.5.289v4.362a2.84 2.84 0 01-1.5-.471 3.022 3.022 0 00-1.693-.518c-1.659 0-3 1.502-3 3.358 0 1.854 1.341 3.357 3 3.357.15 0 .298-.034.437-.061V19.5a6.022 6.022 0 01-3.936-1.568 6.318 6.318 0 01-1.425-5.006 6.04 6.04 0 015.361-4.844V2.25z" />
-                </svg>
+                <div className={`${socialBtnBase} ${socialBtnStyles.tiktok}`}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path d="M12 2.25c.53 0 1.04.102 1.5.289v4.362a2.84 2.84 0 01-1.5-.471 3.022 3.022 0 00-1.693-.518c-1.659 0-3 1.502-3 3.358 0 1.854 1.341 3.357 3 3.357.15 0 .298-.034.437-.061V19.5a6.022 6.022 0 01-3.936-1.568 6.318 6.318 0 01-1.425-5.006 6.04 6.04 0 015.361-4.844V2.25z" />
+                  </svg>
+                </div>
+                <span className="mt-1 text-xs text-white">TikTok</span>
               </a>
             </div>
           </div>
@@ -159,7 +172,7 @@ const Footer = () => {
             </p>
             <p className="text-sm max-w-md mx-auto text-yellow-200 font-semibold">
               Join is Wednesdays, Fridays and Sundays for Ogene, Afrobeat Jam Sessions
-              or chill at Club K 
+              or chill at Club K
             </p>
             <p className="text-xs text-gray-400 italic max-w-md mx-auto">
               Experience the heart of Enugu music, dance, and socials
