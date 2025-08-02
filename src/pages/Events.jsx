@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import amaka from '@/assets/images/amaka.webp';
 import chilling from '@/assets/images/chilling.webp';
-import shawarma from '@/assets/images/shawarma.webp';
+import shawarma from '@/assets/images/foodies/shawarma.webp';
 import stars from '@/assets/videos/stars.webm';
 import preEventVideo from '@/assets/videos/club.mp4';
 
@@ -140,7 +140,7 @@ const Events = () => {
           </h1>
           <div className="text-center">
             <h2 className="text-red-600 md:text-2xl border-b-2 border-white inline font-bold text-xl">
-              Edition Focus...
+              This Edition...
             </h2>
             <p className="text-[1rem] md:text-[1.5rem] font-semibold text-center text-white">
               Amaka's 30th Birthday Bash!

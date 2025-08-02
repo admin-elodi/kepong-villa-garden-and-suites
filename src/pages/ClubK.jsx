@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import clubkHero from '@/assets/videos/clubbing.mp4';
 import dance2 from '@/assets/images/club/dance2.webp';
-import dj from '@/assets/images/club/dj.webp';
-import drink1 from '@/assets/images/club/drink1.webp';
+import dj from '@/assets/images/club/dj.jpg';
+import drink1 from '@/assets/images/drinks.jpg';
 import vip1 from '@/assets/images/club/vip1.webp';
 import dance1 from '@/assets/images/club/dance1.webp';
 import ambience1 from '@/assets/images/club/ambience1.webp';

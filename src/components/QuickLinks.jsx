@@ -5,14 +5,14 @@ import premiumDrinks from '@/assets/images/drinks.jpg';
 import weddingReception from '@/assets/images/birthday.webp';
 
 // Import the service images with updated shawarma
-import shawarma from '@/assets/images/shawarma.webp';
+import shawarma from '@/assets/images/foodies/shawarma.webp';
 import hair from '@/assets/images/barbing.jpg';
 import carWash from '@/assets/images/car.jpg';  // Replaced light.webp with shawarma.webp
 import nightClub from '@/assets/images/club/clubbers.jpg';
-import meat from '@/assets/images/meats.jpg';
+import meat from '@/assets/images/foodies/meats.jpg';
 import snooker from '@/assets/images/snooker.webp';
 import shades from '@/assets/images/laundry.jpg';
-import salad from '@/assets/images/palm.webp';
+import salad from '@/assets/images/foodies/palm.webp';
 
 // Import the background video
 import starsVideo from '@/assets/videos/stars.webm';

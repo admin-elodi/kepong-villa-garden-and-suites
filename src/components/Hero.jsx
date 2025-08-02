@@ -3,13 +3,13 @@ import DroneOrderModal from './DroneOrderModal';
 import ReserveTableModal from '@/components/ReserveTableModal';
 
 // Import images
-import amaka from '@/assets/images/shawarma.webp';
+import amaka from '@/assets/images/foodies/shawarma.webp';
 import chilling from '@/assets/images/snooker.webp';
 import djulio from '@/assets/images/donj.jpg';
 import unsplash from '@/assets/images/snooker-table.jpg';
 import hotel from '@/assets/images/hotel.webp';
-import palmWine from '@/assets/images/palm.webp';
-import food from '@/assets/images/food.jpg';
+import palmWine from '@/assets/images/foodies/palm.webp';
+import food from '@/assets/images/foodies/food.jpg';
 
 const carouselImages = [
   { src: amaka, alt: 'Luxurious room at Kepong Villa Garden & Suites - Amaka' },

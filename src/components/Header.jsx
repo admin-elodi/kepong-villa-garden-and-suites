@@ -10,12 +10,12 @@ const promotionalTexts = [
   'DJ Tea Master in the House',
   'Book Comfortable Room or Apartment',
   'Enjoy Kepong Foodies Connect...',
-  '...Madam Ezinwanne Kitched',
+  '...Madam Ezinwanne Kitchen',
   'Tessy Kitchen Special',
   'Nsukka Food & Palm Wine',
   'De Banquet Hotel Kitchen',
   'Chicken Salad Special',
-  'Fish Barbecue',
+  'Fresh Fish Barbecue',
   'Tasty Abacha',
 ];
 
@@ -203,7 +203,7 @@ const Header = () => {
                 className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Kepong Events
+                Events
               </NavLink>
             </li>
             <li>

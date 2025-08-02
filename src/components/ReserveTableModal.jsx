@@ -3,10 +3,8 @@ import { createPortal } from 'react-dom';
 import tableImage from '@/assets/images/table-for-four.webp';
 
 const enquiryPhoneNumber = '+2348166540841';
-
 const tablePrice = 50000; // Price per table in Naira
 
-// Menu items with quantities per table
 const menuItems = [
   { name: 'Grilled Suya Skewers', description: 'Spicy and smoky Nigerian beef skewers', quantity: '4 skewers per table' },
   { name: 'Peppered Goat Meat', description: 'Tender goat meat with fiery pepper sauce', quantity: '4 servings per table' },
@@ -15,19 +13,18 @@ const menuItems = [
   { name: 'Chapman Cocktail', description: 'A popular Nigerian citrus cocktail', quantity: '4 glasses per table' },
 ];
 
-const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
+const ReserveTableModal = ({ onClose }) => {
   const [showPayment, setShowPayment] = useState(false);
-  const [tables, setTables] = useState(1); // Number of tables booked, default 1
+  const [tables, setTables] = useState(1);
 
-  if (!isOpen) return null;
+  if (!onClose) return null;
 
   const handleClose = () => {
-    setIsModalOpen(false);
+    onClose();
     setShowPayment(false);
     setTables(1);
   };
 
-  // Ensure tables is a positive integer >= 1
   const handleTablesChange = (e) => {
     const val = e.target.value;
     if (val === '') {
@@ -41,16 +38,14 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
   };
 
   const handleProceedToPayment = () => {
-    if (tables < 1) {
+    if (!tables || tables < 1) {
       alert('Please enter at least 1 table.');
       return;
     }
     setShowPayment(true);
   };
 
-  // Constructs the WhatsApp group message with booking details
   const openWhatsApp = () => {
-    // Format menu items and quantities for message
     const menuDetails = menuItems
       .map(
         (item) =>
@@ -71,17 +66,18 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
 
   return createPortal(
     <div
-      className="modal-overlay fixed inset-0 flex items-center justify-center z-50 p-4"
+      className="modal-overlay fixed inset-0 flex items-center justify-center z-[1500] p-4 bg-black bg-opacity-70"
       role="dialog"
       aria-modal="true"
       aria-labelledby="reserve-title"
       onClick={(e) => {
         if (e.target.classList.contains('modal-overlay')) handleClose();
       }}
+      tabIndex={-1}
     >
       <div
         className="bg-gray-900 rounded-lg shadow-xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto text-white"
-        tabIndex="-1"
+        tabIndex={0}
       >
         <button
           onClick={handleClose}
@@ -92,12 +88,10 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
           ✕
         </button>
 
-        {/* Caption above image */}
-        <h2 className="text-2xl font-extrabold text-yellow-400 text-center mb-2">
+        <h2 id="reserve-title" className="text-2xl font-extrabold text-yellow-400 text-center mb-2">
           BOOK TABLE FOR FOUR
         </h2>
 
-        {/* Table Image with reduced height */}
         <div
           className="w-full rounded-lg mb-4 bg-center bg-cover mx-auto"
           style={{
@@ -108,15 +102,13 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
           aria-label="Table for four"
         />
 
-        {/* Promotional note */}
         <p className="text-center text-amber-300 italic mb-6 px-2">
           This menu boosts your vitality and promotes health and natural hydration.
         </p>
 
         {!showPayment && (
-          <> 
-           {/* Menu listing with quantities */}
-            <ul className="space-y-4 mb-6">
+          <>
+            <ul className="space-y-4 mb-6 max-h-[220px] overflow-y-auto">
               {menuItems.map(({ name, description, quantity }) => (
                 <li
                   key={name}
@@ -128,7 +120,7 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
                 </li>
               ))}
             </ul>
-            {/* Number of tables input */}
+
             <div className="mb-6 text-center">
               <label
                 htmlFor="tables"
@@ -155,14 +147,13 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
               </p>
             </div>
 
-           
-
             <div className="flex justify-center">
               <button
                 type="button"
                 onClick={handleProceedToPayment}
-                className="bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-500 transition"
+                className="bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-500 transition max-w-full whitespace-nowrap"
                 aria-label="Proceed to payment"
+                style={{ maxWidth: '100%' }}
               >
                 PROCEED TO PAYMENT
               </button>
@@ -191,12 +182,12 @@ const ReserveTableModal = ({ isOpen, setIsModalOpen }) => {
               <button
                 type="button"
                 onClick={openWhatsApp}
-                className="bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition w-full max-w-xs"
+                className="bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition w-full max-w-xs truncate"
                 aria-label="Send evidence to WhatsApp"
               >
                 Send Evidence to WhatsApp
               </button>
-              <p className="text-gray-400 text-sm text-center">
+              <p className="text-gray-400 text-sm text-center break-words max-w-xs">
                 Or call us at{' '}
                 <a
                   href={`tel:${enquiryPhoneNumber}`}
