@@ -12,13 +12,15 @@ const foodieCardStyles = {
   cardContent: 'p-6 flex flex-col flex-grow justify-start',
   cardTitle: 'text-2xl font-semibold mb-2 text-red-600 p-6 text-center',
   cardImage: 'w-full h-48 object-cover transition-transform duration-300 hover:scale-105 flex-shrink-0',
-  buttonsContainer: 'flex flex-col gap-3 flex-shrink-0 items-center min-h-[100px]',
+  buttonsContainer: 'flex flex-col border-2 border-white p-2 rounded-lg gap-3 flex-shrink-0 items-center min-h-[100px]',
   buttonBase:
-    'w-full max-w-xs whitespace-nowrap font-semibold rounded-md px-5 py-2 shadow-md transform hover:scale-105 transition-colors duration-300 focus:outline-none focus:ring-4',
+    'w-full max-w-xl whitespace-nowrap font-semibold rounded-md px-2 py-2 shadow-md transform hover:scale-105 transition-colors duration-300 focus:outline-none focus:ring-4',
   buttonViewMenu:
     'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-black focus:ring-yellow-400 text-center',
   buttonVisitPage:
     'bg-red-600 hover:bg-red-700 active:bg-red-800 text-white focus:ring-red-500 text-center',
+  orText:
+    'text-white font-bold text-lg select-none my-0.5',
 };
 
 const specialTableDescription = `Reserve our "Table for Four" based on Kepong Foodies Collective Menu`;
@@ -36,13 +38,18 @@ const KepongFoodies = () => {
       <div className="absolute inset-0 bg-black opacity-80 -z-10"></div>
 
       {/* Heading */}
-      <section className="text-center max-w-4xl mx-auto py-40 relative z-10">
+     {/* Heading with centered H1 */}
+      <section className="bg-black/60 text-center mx-auto py-20 md:py-40 relative z-10">
         <h1 className="text-4xl font-bold text-white mb-4">Kepong Foodies Connect</h1>
-        <p className="bg-white/50 text-lg text-red-600 font-bold rounded-lg py-6 px-4 max-w-3xl mx-auto">
-          View Kepong Foodies Connect menus below and visit Kepong Villa to enjoy them or you can
-          order online from any of our in-house Foodies by clicking on View Kitchen
-        </p>
       </section>
+
+      {/* Full width subtitle with bg-black/60 */}
+      <section className="w-full bg-black/60 mb-2 py-4 relative z-10 text-center border-2 border-white rounded-lg">
+        <h3 className="text-white max-w-7xl mx-auto px-4">
+          Foodies for Excellent Services at Kepong Villa Garden & Suites, Enugu. Visit or Book Online
+        </h3>
+      </section>
+
 
       {/* Foodies Grid */}
       <section
@@ -53,24 +60,35 @@ const KepongFoodies = () => {
           <article key={id} className={foodieCardStyles.cardBase}>
             <h2 className={foodieCardStyles.cardTitle}>{name}</h2>
             <div className="overflow-hidden flex-shrink-0">
-              <img src={image || meatsBg} alt={`Photo of ${name}`} className={foodieCardStyles.cardImage} loading="lazy" />
+              <img
+                src={image || meatsBg}
+                alt={`Photo of ${name}`}
+                className={foodieCardStyles.cardImage}
+                loading="lazy"
+              />
             </div>
             <div className={foodieCardStyles.cardContent}>
               <div className={foodieCardStyles.buttonsContainer}>
                 <button
                   type="button"
-                  onClick={() => setMenuModal({ open: true, foodie: foodies.find((f) => f.id === id) })}
+                  onClick={() =>
+                    setMenuModal({ open: true, foodie: foodies.find((f) => f.id === id) })
+                  }
                   className={`${foodieCardStyles.buttonBase} ${foodieCardStyles.buttonViewMenu}`}
                   aria-label={`View menu for ${name}`}
                 >
-                  View Menu
+                  See Menu & Visit Kepong
                 </button>
+
+                {/* Minimalist OR text separator */}
+                <span className={foodieCardStyles.orText}>OR</span>
+
                 <Link
                   to={branchUrl}
                   className={`${foodieCardStyles.buttonBase} ${foodieCardStyles.buttonVisitPage}`}
                   aria-label={`Visit page for ${name}`}
                 >
-                  View Kitchen
+                  Enter Kitchen to Order
                 </Link>
               </div>
             </div>
@@ -80,8 +98,8 @@ const KepongFoodies = () => {
 
       {/* Special Table for Four Section */}
       <section className="max-w-4xl mx-auto mb-16 bg-black bg-opacity-80 border-2 border-red-600 rounded-lg p-8 shadow-lg text-center relative z-10">
-        <h3 className="text-3xl font-bold text-red-600 mb-6">Special Table for Four</h3>
-        <p className="text-white text-lg mb-6">{specialTableDescription}</p>
+        <h3 className="text-3xl font-bold text-red-600 mb-6">Also Try Kepong Foodies Table for Four</h3>
+        
         <button
           type="button"
           className="inline-block bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 transition-colors duration-300 text-black font-semibold rounded-md px-8 py-3 shadow-md hover:scale-105 transform focus:outline-none focus:ring-4 focus:ring-yellow-400"
@@ -95,9 +113,6 @@ const KepongFoodies = () => {
       {/* Call to Action Section */}
       <section className="text-center max-w-3xl mx-auto mb-12 px-6 py-10 bg-black bg-opacity-80 rounded-lg border-2 border-red-600 shadow-lg relative z-10">
         <h3 className="text-3xl font-bold text-red-600 mb-4">Do you Want to Join Kepong Foodies Connect?</h3>
-        <p className="text-white mb-6 text-lg">
-          Join our groove at Kepong Villa Garden & Suites if interested
-        </p>
         <a
           href="mailto:partnerships@kepongvilla.ng"
           className="inline-block bg-red-600 hover:bg-red-700 active:bg-red-800 transition-colors duration-300 text-white font-semibold rounded-md px-8 py-3 shadow-md hover:scale-105 transform focus:outline-none focus:ring-4 focus:ring-red-500"

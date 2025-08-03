@@ -135,13 +135,11 @@ const Events = () => {
       >
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative pt-8 flex flex-col items-center">
-          <h1 className="text-3xl py-4 md:px-8 md:text-5xl font-bold text-center text-white">
+          <h1 className="text-3xl py-4 md:px-8 md:text-5xl font-bold text-center text-white mb-6">
             Kepong Events Page
           </h1>
           <div className="text-center">
-            <h2 className="text-red-600 md:text-2xl border-b-2 border-white inline font-bold text-xl">
-              This Edition...
-            </h2>
+           
             <p className="text-[1rem] md:text-[1.5rem] font-semibold text-center text-white">
               Amaka's 30th Birthday Bash!
             </p>

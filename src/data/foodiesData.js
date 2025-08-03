@@ -1,5 +1,5 @@
 import meatsBg from '@/assets/images/foodies/meats.jpg';
-import nsukka from '@/assets/images/foodies/palm.webp';
+import nsukka from '@/assets/images/foodies/achicha.webp';
 import tessy from '@/assets/images/foodies/rice-stew.jpg';
 import banquet from '@/assets/images/foodies/banquets.jpg';
 import chickenSalad from '@/assets/images/foodies/chicken.jpg';
