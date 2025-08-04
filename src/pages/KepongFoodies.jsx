@@ -10,7 +10,7 @@ const foodieCardStyles = {
   cardBase:
     'bg-black bg-opacity-80 rounded-lg shadow-lg hover:shadow-red-600 transition-shadow duration-300 flex flex-col min-h-[400px] border-2 border-white',
   cardContent: 'p-6 flex flex-col flex-grow justify-start',
-  cardTitle: 'text-2xl font-semibold mb-2 text-red-600 p-6 text-center',
+  cardTitle: 'text-2xl font-semibold mb-2 text-white p-6 text-center',
   cardImage: 'w-full h-48 object-cover transition-transform duration-300 hover:scale-105 flex-shrink-0',
   buttonsContainer: 'flex flex-col border-2 border-white p-2 rounded-lg gap-3 flex-shrink-0 items-center min-h-[100px]',
   buttonBase:

@@ -41,7 +41,7 @@ const FoodieDetail = () => {
       </button>
 
       <section className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 border-2 border-red-600">
-        <h1 className="text-4xl font-bold text-red-700 mb-4">{foodie.name}</h1>
+        <h1 className="text-4xl font-bold text-black mb-4">{foodie.name}</h1>
 
         <img
           src={foodie.image || meatsBg}
