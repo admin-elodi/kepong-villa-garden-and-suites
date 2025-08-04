@@ -39,7 +39,7 @@ const KepongFoodies = () => {
 
       {/* Heading */}
      {/* Heading with centered H1 */}
-      <section className="bg-black/60 text-center mx-auto py-20 md:py-40 relative z-10">
+      <section className="bg-black/60 text-center rounded-lg mx-auto py-20 md:py-40 relative z-10">
         <h1 className="text-4xl font-bold text-white mb-4">Kepong Foodies Connect</h1>
       </section>
 
