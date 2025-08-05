@@ -1,11 +1,11 @@
-import meatsBg from '@/assets/images/foodies/meats.jpg';
+import meatsBg from '@/assets/images/foodies/meats.webp';
 import nsukka from '@/assets/images/foodies/achicha.webp';
-import tessy from '@/assets/images/foodies/rice-stew.jpg';
-import banquet from '@/assets/images/foodies/banquets.jpg';
-import chickenSalad from '@/assets/images/foodies/chicken.jpg';
-import fishBarbecue from '@/assets/images/foodies/barbecue.jpg';
-import abacha from '@/assets/images/foodies/abacha.jpg';
-import okpa from '@/assets/images/foodies/okpa.jpg';
+import tessy from '@/assets/images/foodies/rice-stew.webp';
+import banquet from '@/assets/images/foodies/banquets.webp';
+import chickenSalad from '@/assets/images/foodies/chicken.webp';
+import fishBarbecue from '@/assets/images/foodies/max.webp';
+import abacha from '@/assets/images/foodies/abacha.webp';
+import okpa from '@/assets/images/foodies/okpa.webp';
 
 const foodies = [
   {
@@ -124,7 +124,7 @@ const foodies = [
   },
   {
     id: 7,
-    name: 'Abacha Enugu Special',
+    name: 'Abacha Nwanyi Ezeagu',
     image: abacha,
     phone: '+2348067890123',
     whatsapp: '+2348067890123',

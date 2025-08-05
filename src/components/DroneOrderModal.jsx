@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import droneImage from '@/assets/images/drone.jpeg'; // Change path as needed
+import droneImage from '@/assets/images/homepage/drone.webp'; // Change path as needed
 
 const enquiryPhoneNumber = '0916 283 6505';
 

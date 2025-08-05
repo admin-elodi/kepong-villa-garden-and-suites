@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MenuModal, OrderModal } from '@/components/Modals';
 import foodies from '@/data/foodiesData';
-import meatsBg from '@/assets/images/foodies/meats.jpg';
+import meatsBg from '@/assets/images/foodies/meats.webp';
 
 const FoodieDetail = () => {
   const { slug } = useParams();

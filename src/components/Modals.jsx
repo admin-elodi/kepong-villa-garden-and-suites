@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import meatsBg from '@/assets/images/foodies/meats.jpg';
+import meatsBg from '@/assets/images/foodies/meats.webp';
 
 const FIXED_SURCHARGE = 1500;
 

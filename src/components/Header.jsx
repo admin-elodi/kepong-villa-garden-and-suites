@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '@/assets/images/kv-logo.png';
+import logo from '@/assets/images/homepage/kv-logo.webp';
 import ReserveTableModal from '@/components/ReserveTableModal';
 
 const promotionalTexts = [
@@ -257,7 +257,7 @@ const Header = () => {
 
       <ReserveTableModal
         isOpen={isReserveModalOpen}
-        setIsModalOpen={closeReserveModal}
+        onClose={closeReserveModal}
         className="transition-opacity duration-300"
       />
     </>

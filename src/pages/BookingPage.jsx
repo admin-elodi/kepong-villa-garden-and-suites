@@ -6,7 +6,7 @@ import deluxe from '@/assets/images/hotel/deluxe.webp';
 import executive from '@/assets/images/hotel/executive.webp';
 import apartment from '@/assets/images/hotel/apartment.webp';
 import promoVideo from '@/assets/videos/couple.mp4';
-import shadesImage from '@/assets/images/shades.webp';
+import shadesImage from '@/assets/images/bookings/shades.webp';
 
 const rooms = [
   {

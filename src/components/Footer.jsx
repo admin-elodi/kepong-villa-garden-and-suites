@@ -121,7 +121,7 @@ const Footer = () => {
                 {[
                   { to: '/kepong-foodies', label: 'Kepong Foodies Connect' },
                   { to: '/club-k', label: 'Club K' },
-                  { to: '/booking', label: 'Book Now' },
+                  { to: '/bookings', label: 'Book Now' },
                   { to: '/featured-entertainers', label: 'Featured Entertainers' },
                 ].map((item) => (
                   <li key={item.to}>

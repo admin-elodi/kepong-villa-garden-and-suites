@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import apartment from '@/assets/images/hotel/apartment.webp';
-import premiumDrinks from '@/assets/images/drinks.jpg';
-import weddingReception from '@/assets/images/birthday.webp';
+import premiumDrinks from '@/assets/images/homepage/drinks.webp';
+import weddingReception from '@/assets/images/homepage/birthday.webp';
 
 // Import the service images with updated shawarma
 import shawarma from '@/assets/images/foodies/shawarma.webp';
-import hair from '@/assets/images/barbing.jpg';
-import carWash from '@/assets/images/car.jpg';  // Replaced light.webp with shawarma.webp
-import nightClub from '@/assets/images/club/clubbers.jpg';
-import meat from '@/assets/images/foodies/meats.jpg';
-import snooker from '@/assets/images/snooker.webp';
-import shades from '@/assets/images/laundry.jpg';
+import hair from '@/assets/images/homepage/barbing.webp';
+import carWash from '@/assets/images/homepage/car.webp';  // Replaced light.webp with shawarma.webp
+import nightClub from '@/assets/images/club/clubbers.webp';
+import meat from '@/assets/images/foodies/meats.webp';
+import snooker from '@/assets/images/homepage/snooker.webp';
+import shades from '@/assets/images/homepage/laundry.webp';
 import salad from '@/assets/images/foodies/palm.webp';
 
 // Import the background video

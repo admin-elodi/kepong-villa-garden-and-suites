@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // ✅ Add Link import
+import { Link } from 'react-router-dom';
 import ReserveTableModal from '@/components/ReserveTableModal';
 import { MenuModal } from '@/components/Modals';
 import foodies from '@/data/foodiesData';
-import meatsBg from '@/assets/images/foodies/trado.jpg';
+import meatsBg from '@/assets/images/foodies/trado.webp';
 
 // Card styles for uniform styling with override capability
 const foodieCardStyles = {
@@ -27,29 +27,34 @@ const specialTableDescription = `Reserve our "Table for Four" based on Kepong Fo
 
 const KepongFoodies = () => {
   const [menuModal, setMenuModal] = useState({ open: false, foodie: null });
-  const [reserveModalOpen, setReserveTableModalOpen] = useState(false);
+  const [reserveModalOpen, setReserveModalOpen] = useState(false);
+
+  const openReserveModal = () => setReserveModalOpen(true);
+  const closeReserveModal = () => setReserveModalOpen(false);
+
+  // Your phone / WhatsApp info
+  const phoneNumber = '+2349162836505'; // example number, replace with your real one
+  const whatsappLink = `https://wa.me/${phoneNumber.replace(/\D/g, '')}`; // WhatsApp direct link
 
   return (
     <main
-      className="min-h-screen font-montserrat text-white px-6 md:px-16 pt-34 pb-12 relative bg-cover bg-center bg-no-repeat py-40"
+      className="min-h-screen font-montserrat text-white px-6 md:px-16 pt-[160px] pb-12 relative bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${meatsBg})` }}
     >
       {/* Background overlay */}
       <div className="absolute inset-0 bg-black opacity-80 -z-10"></div>
 
       {/* Heading */}
-     {/* Heading with centered H1 */}
-      <section className="bg-black/60 text-center rounded-lg mx-auto py-20 md:py-40 relative z-10">
-        <h1 className="text-4xl font-bold text-white mb-4">Kepong Foodies Connect</h1>
+      <section className="bg-black/60 text-center rounded-lg mx-auto py-20 md:py-24 relative z-10 mt-8">
+        <h1 className="text-4xl font-bold text-white mb-2">Kepong Foodies Connect</h1>
       </section>
 
       {/* Full width subtitle with bg-black/60 */}
-      <section className="w-full bg-black/60 mb-2 py-4 relative z-10 text-center border-2 border-white rounded-lg">
+      <section className="w-full bg-black/60 mb-6 py-4 relative z-10 text-center border-2 border-white rounded-lg">
         <h3 className="text-white max-w-7xl mx-auto px-4">
           Foodies for Excellent Services at Kepong Villa Garden & Suites, Enugu. Visit or Book Online
         </h3>
       </section>
-
 
       {/* Foodies Grid */}
       <section
@@ -99,27 +104,41 @@ const KepongFoodies = () => {
       {/* Special Table for Four Section */}
       <section className="max-w-4xl mx-auto mb-16 bg-black bg-opacity-80 border-2 border-red-600 rounded-lg p-8 shadow-lg text-center relative z-10">
         <h3 className="text-3xl font-bold text-red-600 mb-6">Also Try Kepong Foodies Table for Four</h3>
-        
+
         <button
           type="button"
           className="inline-block bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 transition-colors duration-300 text-black font-semibold rounded-md px-8 py-3 shadow-md hover:scale-105 transform focus:outline-none focus:ring-4 focus:ring-yellow-400"
-          onClick={() => setReserveTableModalOpen(true)}
+          onClick={openReserveModal}
           aria-label="Book the Special Table for Four"
         >
           Book Your Table Now
         </button>
       </section>
 
-      {/* Call to Action Section */}
+      {/* Call to Action Section - replaced button with phone and WhatsApp link */}
       <section className="text-center max-w-3xl mx-auto mb-12 px-6 py-10 bg-black bg-opacity-80 rounded-lg border-2 border-red-600 shadow-lg relative z-10">
         <h3 className="text-3xl font-bold text-red-600 mb-4">Do you Want to Join Kepong Foodies Connect?</h3>
-        <a
-          href="mailto:partnerships@kepongvilla.ng"
-          className="inline-block bg-red-600 hover:bg-red-700 active:bg-red-800 transition-colors duration-300 text-white font-semibold rounded-md px-8 py-3 shadow-md hover:scale-105 transform focus:outline-none focus:ring-4 focus:ring-red-500"
-          aria-label="Contact Kepong Foodies Partnerships"
-        >
-          Contact Us to Get Started
-        </a>
+        <p className="text-white mb-4 font-semibold text-lg">
+          Contact or WhatsApp to get started:
+        </p>
+        <div className="flex flex-col md:flex-row md:justify-center gap-4">
+          <a
+            href={`tel:${phoneNumber}`}
+            className="inline-block bg-red-600 hover:bg-red-700 active:bg-red-800 transition-colors duration-300 text-white font-semibold rounded-md px-6 py-3 shadow-md hover:scale-105 transform focus:outline-none focus:ring-4 focus:ring-red-500"
+            aria-label="Call to get started"
+          >
+            {phoneNumber}
+          </a>
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-green-600 hover:bg-green-700 active:bg-green-800 transition-colors duration-300 text-white font-semibold rounded-md px-6 py-3 shadow-md hover:scale-105 transform focus:outline-none focus:ring-4 focus:ring-green-500"
+            aria-label="WhatsApp to get started"
+          >
+            WhatsApp Chat
+          </a>
+        </div>
       </section>
 
       {/* Modals */}
@@ -128,7 +147,10 @@ const KepongFoodies = () => {
         foodie={menuModal.foodie}
         onClose={() => setMenuModal({ open: false, foodie: null })}
       />
-      {reserveModalOpen && <ReserveTableModal onClose={() => setReserveTableModalOpen(false)} />}
+      <ReserveTableModal
+        isOpen={reserveModalOpen}
+        onClose={closeReserveModal}
+      />
     </main>
   );
 };

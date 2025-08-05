@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
-import tableImage from '@/assets/images/table-for-four.webp';
+import tableImage from '@/assets/images/homepage/table-for-four.webp';
 
 const enquiryPhoneNumber = '+2348166540841';
 const tablePrice = 50000; // Price per table in Naira
@@ -13,11 +13,11 @@ const menuItems = [
   { name: 'Chapman Cocktail', description: 'A popular Nigerian citrus cocktail', quantity: '4 glasses per table' },
 ];
 
-const ReserveTableModal = ({ onClose }) => {
+const ReserveTableModal = ({ isOpen, onClose }) => {
   const [showPayment, setShowPayment] = useState(false);
   const [tables, setTables] = useState(1);
 
-  if (!onClose) return null;
+  if (!isOpen || !onClose) return null;
 
   const handleClose = () => {
     onClose();
@@ -66,7 +66,7 @@ const ReserveTableModal = ({ onClose }) => {
 
   return createPortal(
     <div
-      className="modal-overlay fixed inset-0 flex items-center justify-center z-[1500] p-4 bg-black bg-opacity-70"
+      className="modal-overlay fixed inset-0 flex items-center justify-center z-[1500] p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby="reserve-title"
