@@ -21,8 +21,13 @@ const foodies = [
       accountNumber: '0123456789',
     },
     menu: [
+    
       { id: 'ezinwa1', name: 'Assorted Meats', price: 2500, isOrderable: true },
+
+      
       { id: 'ezinwa2', name: 'Cow Leg', price: 3000, isOrderable: true },
+
+      
       { id: 'ezinwa3', name: 'Beef Pepper Soup', price: 2000, isOrderable: true },
     ],
   },
@@ -39,11 +44,12 @@ const foodies = [
       accountNumber: '5322466243',
     },
     menu: [
+      
       { id: 'tessy1', name: 'White Rice (with Stew, Salad, etc)', price: 2200, isOrderable: true },
       { id: 'tessy2', name: 'All Kinds of Soup with Eba, Fufu', price: 2500, isOrderable: true },
       { id: 'tessy3', name: 'Fresh Fish Peppersoup (Head)', price: 4000, isOrderable: true },
       { id: 'tessy4', name: 'Fresh Fish Peppersoup (middle & tail)', price: 3000, isOrderable: true },
-      { id: 'tessy4', name: 'Assorted Meat', price: 3000, isOrderable: true },
+      { id: 'tessy5', name: 'Assorted Meat', price: 3000, isOrderable: true },
     ],
   },
   {
@@ -54,20 +60,48 @@ const foodies = [
     whatsapp: '+2348032265822',
     branchUrl: '/foodie/de-banquet-hotel-kitchen',
     bankDetails: {
-      bankName: 'First Bank',
-      accountName: 'De Banquet Hotel Kitchen',
-      accountNumber: '1122334455',
+      bankName: 'United Bank for Africa (UBA)',
+      accountName: 'Edeh Scholastica',
+      accountNumber: '2018800874',
     },
     menu: [
-      { id: 'banquet1', name: 'Grilled Fish', price: 4000, isOrderable: true },
-      { id: 'banquet2', name: 'Chicken Stew', price: 2500, isOrderable: true },
-      { id: 'banquet3', name: 'Special Platter', price: 5000, isOrderable: true },
-      { id: 'banquet3', name: 'Ofe Nsala', price: 5000, isOrderable: true },
+      { category: 'Breakfast' },
+      { id: 'banquet1', name: 'Chips and Egg Sauce', price: 4000, isOrderable: true },
+      { id: 'banquet2', name: 'Tea & Bread Toast', price: 2000, isOrderable: true },
+      { id: 'banquet3', name: 'Golden Morn', price: 2000, isOrderable: true },
+
+      { category: 'Special Banquet' },
+      { id: 'banquet4', name: 'White Rice & Stew', price: 3500, isOrderable: true },
+      { id: 'banquet5', name: 'Fried Rice', price: 3500, isOrderable: true },
+      { id: 'banquet6', name: 'Brown Sauce', price: 3500, isOrderable: true },
+      { id: 'banquet7', name: 'Chicken Sauce', price: 3500, isOrderable: true },
+      { id: 'banquet8', name: 'Beaf Sauce', price: 3500, isOrderable: true },
+      { id: 'banquet9', name: 'Vegetable Soup', price: 3500, isOrderable: true },
+      { id: 'banquet10', name: 'Ofe Uchakashir', price: 3500, isOrderable: true },
+      { id: 'banquet11', name: 'Beans Soup', price: 3500, isOrderable: true },
+
+      { category: 'A Banquet' },
+      { id: 'banquet12', name: 'White Rice & Stew', price: 2500, isOrderable: true },
+      { id: 'banquet13', name: 'Fried Rice', price: 2500, isOrderable: true },
+      { id: 'banquet14', name: 'Jellof Rice', price: 2500, isOrderable: true },
+      { id: 'banquet15', name: 'Egusi Soup', price: 2500, isOrderable: true },
+      { id: 'banquet16', name: 'Ogbono Soup', price: 2500, isOrderable: true },
+
+      { category: 'Final Banquet' },
+      { id: 'banquet17', name: 'Basmatic Rice', price: 5000, isOrderable: true },
+      { id: 'banquet18', name: 'Other Continental Dishes', price: 5000, isOrderable: true },
+
+      { category: 'Snacks & Drinks' },
+      { id: 'banquet19', name: 'Fried Chicken with Chips', price: 0, isOrderable: true },
+      { id: 'banquet20', name: 'Fried Beef with Chips', price: 0, isOrderable: true },
+      { id: 'banquet21', name: 'Pork Meat with Chips', price: 0, isOrderable: true },
+      { id: 'banquet22', name: 'Zobo Drinks', price: 0, isOrderable: true },
+      { id: 'banquet22', name: 'Tiger Nut Drinks', price: 0, isOrderable: true },
     ],
   },
   {
     id: 4,
-    name: 'Nsukka Food & Drink',
+    name: 'Nsukka Food & Fresh Palm Wine',
     image: nsukka,
     phone: '+2348034567890',
     whatsapp: '+2348034567890',
@@ -130,30 +164,34 @@ const foodies = [
     whatsapp: '+2348067890123',
     branchUrl: '/foodie/abacha-enugu-special',
     bankDetails: {
-      bankName: 'Polaris Bank',
-      accountName: 'Abacha Enugu Special',
-      accountNumber: '2233445566',
+      bankName: 'United Bank for Africa',
+      accountName: 'Lawencia Chinenye',
+      accountNumber: '0916810290',
     },
     menu: [
-      { id: 'abacha1', name: 'Abacha Special', price: 2000, isOrderable: true },
-      { id: 'abacha2', name: 'Ugba Platter', price: 2200, isOrderable: true },
+      { id: 'abacha1', name: 'Abacha', price: 3000, isOrderable: true },
+      { id: 'abacha2', name: 'Isi Efi Peppersoup', price: 2000, isOrderable: true },
+      { id: 'abacha3', name: 'Peppered Goat Meat', price: 3000, isOrderable: true },
+      { id: 'abacha4', name: 'Peppered Kanda', price: 2000, isOrderable: true },
+      { id: 'abacha5', name: 'Indomine', price: 2500, isOrderable: true },
     ],
   },
   {
     id: 8,
-    name: 'Okpa 9th Mile with Chicken',
+    name: '[Vacant Spot]',
     image: okpa,
     phone: '+2348078901234',
     whatsapp: '+2348078901234',
-    branchUrl: '/foodie/okpa-9th-mile',
+    branchUrl: '/foodie/vacant-spot',
     bankDetails: {
       bankName: 'Keystone Bank',
-      accountName: 'Okpa 9th Mile with Chicken',
+      accountName: '',
       accountNumber: '4455667788',
     },
     menu: [
-      { id: 'okpa1', name: 'Okpa with Chicken', price: 1800, isOrderable: true },
-      { id: 'okpa2', name: 'Okpa Special', price: 1500, isOrderable: true },
+      
+      { id: 'okpa1', name: '', price: 1800, isOrderable: true },
+      { id: 'okpa2', name: '', price: 1500, isOrderable: true },
     ],
   },
 ];

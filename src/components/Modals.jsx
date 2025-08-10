@@ -24,15 +24,28 @@ export function MenuModal({ open, onClose, foodie }) {
 
       <h2 className="text-2xl font-bold text-red-700 mb-4 text-center mt-2">{foodie.name} Menu</h2>
       <ul className="divide-y divide-gray-300">
-        {foodie.menu.map(({ id, name, price, isOrderable }) => (
-          <li key={id} className="flex justify-between py-3 text-black font-medium">
-            <span>{name}</span>
-            <span>
-              ₦{price.toLocaleString()}
-              {!isOrderable && <span className="text-sm text-gray-500 ml-2">(In-person only)</span>}
-            </span>
-          </li>
-        ))}
+        {foodie.menu.map((item, index) => {
+          if (item.category) {
+            return (
+              <li
+                key={`category-${index}`}
+                className="py-4 text-lg font-bold text-red-600 border-t border-gray-300"
+                aria-label={`${item.category} section`}
+              >
+                {item.category}
+              </li>
+            );
+          }
+          return (
+            <li key={item.id} className="flex justify-between py-3 text-black font-medium">
+              <span>{item.name}</span>
+              <span>
+                ₦{item.price.toLocaleString()}
+                {!item.isOrderable && <span className="text-sm text-gray-500 ml-2">(In-person only)</span>}
+              </span>
+            </li>
+          );
+        })}
       </ul>
       <div className="pb-4"></div>
     </div>
@@ -91,7 +104,7 @@ export function OrderModal({ open, onClose, foodie }) {
       if (!item || qty === 0) return null;
       return `- ${item.name} × ${qty} = ₦${(item.price * qty).toLocaleString()}`;
     })
-    .filter((x) => x)
+    .filter(Boolean)
     .join('\n');
 
   const whatsappMessage = encodeURIComponent(
@@ -128,63 +141,79 @@ export function OrderModal({ open, onClose, foodie }) {
           {!showBankDetails ? (
             <>
               <h2 className="text-xl font-bold mb-4 text-red-600">Select Your Order from {foodie.name}</h2>
-              <div className="space-y-4 mb-6">
-                {foodie.menu
-                  .filter((item) => item.isOrderable)
-                  .map(({ id, name, price }) => {
-                    const qty = selectedItems[id] || 0;
-                    return (
-                      <div key={id} className="flex items-center gap-4">
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-black">{name}</h3>
-                          <p className="text-green-700 font-bold">₦{price.toLocaleString()}</p>
+              <div className="space-y-6 mb-6">
+                {(() => {
+                  const elements = [];
+
+                  foodie.menu.forEach((item, idx) => {
+                    if (item.category) {
+                      elements.push(
+                        <h3
+                          key={`category-${idx}`}
+                          className="text-lg font-bold text-red-600 border-t border-yellow-300 pt-3"
+                          aria-label={`${item.category} section`}
+                        >
+                          {item.category}
+                        </h3>
+                      );
+                    } else if (item.isOrderable) {
+                      const qty = selectedItems[item.id] || 0;
+                      elements.push(
+                        <div key={item.id} className="flex items-center gap-4">
+                          <div className="flex-1">
+                            <h4 className="text-base font-semibold text-black">{item.name}</h4>
+                            <p className="text-green-700 font-bold">₦{item.price.toLocaleString()}</p>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <button
+                              onClick={() => updateItemQuantity(item.id, qty - 1)}
+                              className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded disabled:opacity-50"
+                              disabled={qty === 0}
+                              aria-label={`Decrease quantity of ${item.name}`}
+                              type="button"
+                            >
+                              −
+                            </button>
+                            <input
+                              type="number"
+                              min="0"
+                              value={qty}
+                              onChange={(e) => {
+                                const val = Math.max(0, Number(e.target.value));
+                                updateItemQuantity(item.id, val);
+                              }}
+                              className="w-12 text-center rounded border border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black bg-white"
+                              aria-label={`Quantity of ${item.name}`}
+                            />
+                            <button
+                              onClick={() => updateItemQuantity(item.id, qty + 1)}
+                              className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded"
+                              aria-label={`Increase quantity of ${item.name}`}
+                              type="button"
+                            >
+                              +
+                            </button>
+                          </div>
                         </div>
-                        <div className="flex items-center space-x-2">
-                          <button
-                            onClick={() => updateItemQuantity(id, qty - 1)}
-                            className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded disabled:opacity-50"
-                            disabled={qty === 0}
-                            aria-label={`Decrease quantity of ${name}`}
-                            type="button"
-                          >
-                            −
-                          </button>
-                          <input
-                            type="number"
-                            min="0"
-                            value={qty}
-                            onChange={(e) => {
-                              const val = Math.max(0, Number(e.target.value));
-                              updateItemQuantity(id, val);
-                            }}
-                            className="w-12 text-center rounded border border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black bg-white"
-                            aria-label={`Quantity of ${name}`}
-                          />
-                          <button
-                            onClick={() => updateItemQuantity(id, qty + 1)}
-                            className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded"
-                            aria-label={`Increase quantity of ${name}`}
-                            type="button"
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    }
+                  });
+
+                  return elements;
+                })()}
               </div>
               <div className="flex flex-col gap-2 mb-6 border-t border-yellow-300 pt-4">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-semibold text-black">Subtotal:</span>
-                  <span className="text-lg font-semibold text-green-700">₦${totalPrice.toLocaleString()}</span>
+                  <span className="text-lg font-semibold text-green-700">₦{totalPrice.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-semibold text-black">Surcharge:</span>
-                  <span className="text-lg font-semibold text-green-700">₦${FIXED_SURCHARGE.toLocaleString()}</span>
+                  <span className="text-lg font-semibold text-green-700">₦{FIXED_SURCHARGE.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center font-bold text-xl border-t border-yellow-300 pt-2">
                   <span>Total:</span>
-                  <span className="text-green-800">₦${totalWithSurcharge.toLocaleString()}</span>
+                  <span className="text-green-800">₦{totalWithSurcharge.toLocaleString()}</span>
                 </div>
               </div>
               <p className="mb-4 text-black text-justify font-medium">
@@ -230,7 +259,7 @@ export function OrderModal({ open, onClose, foodie }) {
                   <span className="font-semibold">Account Number:</span> {foodie.bankDetails.accountNumber}
                 </div>
                 <div>
-                  <span className="font-semibold">Amount:</span> ₦${totalWithSurcharge.toLocaleString()}
+                  <span className="font-semibold">Amount:</span> ₦{totalWithSurcharge.toLocaleString()}
                 </div>
               </div>
               <p className="mb-4 text-gray-800">

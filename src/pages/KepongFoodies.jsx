@@ -23,8 +23,6 @@ const foodieCardStyles = {
     'text-white font-bold text-lg select-none my-0.5',
 };
 
-const specialTableDescription = `Reserve our "Table for Four" based on Kepong Foodies Collective Menu`;
-
 const KepongFoodies = () => {
   const [menuModal, setMenuModal] = useState({ open: false, foodie: null });
   const [reserveModalOpen, setReserveModalOpen] = useState(false);
@@ -45,8 +43,8 @@ const KepongFoodies = () => {
       <div className="absolute inset-0 bg-black opacity-80 -z-10"></div>
 
       {/* Heading */}
-      <section className="bg-black/60 text-center rounded-lg mx-auto py-20 md:py-24 relative z-10 mt-8">
-        <h1 className="text-4xl font-bold text-white mb-2">Kepong Foodies Connect</h1>
+      <section className="bg-black/60 text-center rounded-lg mx-auto py-20 md:py-30 relative z-10">
+        <h1 className="text-4xl font-bold text-white mb-2">Kepong Foodies</h1>
       </section>
 
       {/* Full width subtitle with bg-black/60 */}

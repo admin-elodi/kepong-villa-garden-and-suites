@@ -9,7 +9,7 @@ const promotionalTexts = [
   'Play Games',
   'DJ Tea Master in the House',
   'Book Comfortable Room or Apartment',
-  'Enjoy Kepong Foodies Connect...',
+  'Enjoy Kepong Foodies...',
   '...Madam Ezinwanne Kitchen',
   'Tessy Kitchen Special',
   'Nsukka Food & Palm Wine',
@@ -19,7 +19,7 @@ const promotionalTexts = [
   'Tasty Abacha',
 ];
 
-const Header = () => {
+const Header = ({ visiblePages, setIsModalOpen }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isReserveModalOpen, setIsReserveModalOpen] = useState(false);
   const tickerRef = useRef(null);
@@ -37,7 +37,6 @@ const Header = () => {
 
     calculateWidths();
     window.addEventListener('resize', calculateWidths);
-
     return () => window.removeEventListener('resize', calculateWidths);
   }, []);
 
@@ -85,7 +84,7 @@ const Header = () => {
 
         {/* Desktop full title */}
         <div className="hidden md:flex justify-center bg-white border-2 border-red-600 py-2 select-none">
-          <h1 className="text-2xl font-bold text-red-600 tracking-[10px] uppercase">
+          <h1 className="text-2xl font-extrabold text-red-600 tracking-[10px] uppercase">
             Kepong Villa Garden & Suites
           </h1>
         </div>
@@ -95,7 +94,7 @@ const Header = () => {
           role="navigation"
           aria-label="Primary Navigation"
         >
-          {/* Logo: fixed width, no shrink */}
+          {/* Logo */}
           <NavLink
             to="/"
             className="p-2 rounded-lg hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0"
@@ -107,7 +106,7 @@ const Header = () => {
             />
           </NavLink>
 
-          {/* Center Title: flex-grow, no min-width restriction */}
+          {/* Center title (mobile only) */}
           <div className="flex-1 flex justify-center md:hidden px-2">
             <span
               className="text-[12.5px] sm:text-[16px] tracking-widest uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
@@ -122,7 +121,7 @@ const Header = () => {
             </span>
           </div>
 
-          {/* Hamburger menu button fixed width and no shrink */}
+          {/* Hamburger button */}
           <button
             id="menu-toggle"
             className="md:hidden text-red-600 focus:outline-none focus:ring-2 focus:ring-red-600 rounded flex-shrink-0"
@@ -161,65 +160,78 @@ const Header = () => {
             } md:items-center shadow-lg md:shadow-none z-40`}
             aria-hidden={!isMenuOpen}
           >
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/club-k"
-                className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Club K
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/featured-entertainers"
-                className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Entertainment
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/bookings"
-                className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Bookings
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/events"
-                className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Events
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/kepong-foodies"
-                className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Kepong Foodies 
-              </NavLink>
-            </li>
+            {visiblePages.home && (
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Home
+                </NavLink>
+              </li>
+            )}
+            {visiblePages.clubK && (
+              <li>
+                <NavLink
+                  to="/club-k"
+                  className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Club K
+                </NavLink>
+              </li>
+            )}
+            {visiblePages.featuredEntertainers && (
+              <li>
+                <NavLink
+                  to="/featured-entertainers"
+                  className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Entertainment
+                </NavLink>
+              </li>
+            )}
+            {visiblePages.bookings && (
+              <li>
+                <NavLink
+                  to="/bookings"
+                  className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Bookings
+                </NavLink>
+              </li>
+            )}
+            {visiblePages.events && (
+              <li>
+                <NavLink
+                  to="/events"
+                  className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Events
+                </NavLink>
+              </li>
+            )}
+            {visiblePages.kepongFoodies && (
+              <li>
+                <NavLink
+                  to="/kepong-foodies"
+                  className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Kepong Foodies
+                </NavLink>
+              </li>
+            )}
           </ul>
         </nav>
 
+        {/* Ticker */}
         <div
-          className="bg-white border-t border-b border-red-600 select-none ticker-container"
+          className="bg-white border border-2 border-red-600 select-none ticker-container"
           aria-label="Kepong facilities promotional ticker"
           role="region"
         >
@@ -235,6 +247,7 @@ const Header = () => {
           </div>
         </div>
 
+        {/* Buttons */}
         <div className="bg-black border-b border-red-600 flex justify-center gap-6 py-3 px-4 flex-wrap">
           <NavLink
             to="/bookings"

@@ -14,23 +14,42 @@ import FoodieDetail from './components/FoodieDetail.jsx';
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // 🔧 Centralized visibility control for all pages
+  const visiblePages = {
+    home: true,
+    clubK: true,
+    featuredEntertainers: true,
+    bookings: true,
+    events: true, // 👈 Set to false to hide from UI and nav
+    kepongFoodies: true,
+    foodieDetail: true, // This is route-only, no nav link expected
+  };
+
   return (
     <Router>
       <ScrollToTop />
-      <Header setIsModalOpen={setIsModalOpen} />
+      <Header visiblePages={visiblePages} setIsModalOpen={setIsModalOpen} />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
-          }
-        />
-        <Route path="/club-k" element={<ClubK />} />
-        <Route path="/featured-entertainers" element={<FeaturedEntertainers />} />
-        <Route path="/bookings" element={<BookingPage />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/kepong-foodies" element={<KepongFoodies />} />
-        <Route path="/foodie/:slug" element={<FoodieDetail />} />
+        {visiblePages.home && (
+          <Route
+            path="/"
+            element={
+              <Home isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+            }
+          />
+        )}
+        {visiblePages.clubK && <Route path="/club-k" element={<ClubK />} />}
+        {visiblePages.featuredEntertainers && (
+          <Route path="/featured-entertainers" element={<FeaturedEntertainers />} />
+        )}
+        {visiblePages.bookings && <Route path="/bookings" element={<BookingPage />} />}
+        {visiblePages.events && <Route path="/events" element={<Events />} />}
+        {visiblePages.kepongFoodies && (
+          <Route path="/kepong-foodies" element={<KepongFoodies />} />
+        )}
+        {visiblePages.foodieDetail && (
+          <Route path="/foodie/:slug" element={<FoodieDetail />} />
+        )}
       </Routes>
       <Footer />
     </Router>

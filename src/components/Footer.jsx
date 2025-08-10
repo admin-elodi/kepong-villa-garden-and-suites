@@ -75,17 +75,7 @@ const Footer = () => {
                 </div>
                 <span className="mt-1 text-xs text-white">Facebook</span>
               </a>
-              <a
-                href="https://twitter.com/kepongvilla"
-                className="flex flex-col items-center"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className={`${socialBtnBase} ${socialBtnStyles.x}`}>
-                  <FaTwitter className="text-xl" />
-                </div>
-                <span className="mt-1 text-xs text-white">X</span>
-              </a>
+          
               <a
                 href="https://instagram.com/kepongvilla"
                 className="flex flex-col items-center"
@@ -98,7 +88,7 @@ const Footer = () => {
                 <span className="mt-1 text-xs text-white">Instagram</span>
               </a>
               <a
-                href="https://www.tiktok.com/@kepongvilla"
+                href="https://www.tiktok.com/@kepongviilagardennsuites?_t=ZM-8yeKoqSqLpu&_r=1"
                 className="flex flex-col items-center"
                 target="_blank"
                 rel="noopener noreferrer"

@@ -6,8 +6,8 @@ import drink1 from '@/assets/images/homepage/drinks.webp';
 import vip1 from '@/assets/images/club/vip1.webp';
 import dance1 from '@/assets/images/club/dance1.webp';
 import ambience1 from '@/assets/images/club/ambience1.webp';
-import redLabel from '@/assets/images/club/don.webp';
-import vodka from '@/assets/images/club/donj.webp';
+import redLabel from '@/assets/images/club/donj.webp';
+import vodka from '@/assets/images/club/henny.webp';
 import redWine from '@/assets/images/club/wine.webp';
 
 const ClubK = () => {
