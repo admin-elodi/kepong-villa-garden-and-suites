@@ -51,7 +51,7 @@ const Footer = () => {
             <div>
               <h3 className="text-2xl font-bold animate-pulse text-white">Featured Events</h3>
               <p className="text-sm max-w-md mx-auto text-white">
-                Join the ultimate entertainment experience at Kepong Villa Garden & Suites, Enugu!
+                Join the entertainment experience at Kepong Villa Garden & Suites, Enugu!
               </p>
               <p className="mt-2 text-yellow-200 font-semibold max-w-md mx-auto">
                 Main entertainment days: Wednesdays, Fridays and Sundays
