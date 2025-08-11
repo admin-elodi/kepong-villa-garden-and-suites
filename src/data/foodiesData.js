@@ -21,14 +21,17 @@ const foodies = [
       accountNumber: '0123456789',
     },
     menu: [
-    
-      { id: 'ezinwa1', name: 'Assorted Meats', price: 2500, isOrderable: true },
-
       
+      {category: 'Traditional Delicacies'},
+      { id: 'ezinwa1', name: 'Ukwa', price: 4000, isOrderable: true },      
       { id: 'ezinwa2', name: 'Cow Leg', price: 3000, isOrderable: true },
-
-      
-      { id: 'ezinwa3', name: 'Beef Pepper Soup', price: 2000, isOrderable: true },
+      { id: 'ezinwa3', name: 'Cow Tail', price: 3000, isOrderable: true },
+      { id: 'ezinwa4', name: 'Dry Fish', price: 5000, isOrderable: true },
+      { id: 'ezinwa5', name: 'Vegetable Stew', price: 2000, isOrderable: true },
+      { id: 'ezinwa6', name: 'Goat Leg', price: 2000, isOrderable: true },
+      { id: 'ezinwa7', name: 'Peppered Meat', price: 1000, isOrderable: true },
+      { id: 'ezinwa8', name: 'Snail', price: 4000, isOrderable: true },
+      { id: 'ezinwa9', name: 'Dry Fish, Green & Ukpaka', price: 2000, isOrderable: true },
     ],
   },
   {
@@ -101,30 +104,31 @@ const foodies = [
   },
   {
     id: 4,
-    name: 'Nsukka Food & Fresh Palm Wine',
+    name: 'Mama Chioma Enterprises',
     image: nsukka,
     phone: '+2348034567890',
     whatsapp: '+2348034567890',
     branchUrl: '/foodie/nsukka-food-drink',
     bankDetails: {
-      bankName: 'United Bank for Africa',
-      accountName: 'Nsukka Food & Drink',
-      accountNumber: '5566778899',
+      bankName: 'Moniepoint',
+      accountName: 'Chioma Obodoechi',
+      accountNumber: '5581205263',
     },
     menu: [
-      { id: 'nsukka1', name: 'Nsukka Palm Wine', price: 1500, isOrderable: true },
+      { id: 'nsukka1', name: 'Nsukka Palm Wine', price: 2500, isOrderable: true },
       { id: 'nsukka2', name: 'Achicha/Agbugbu with Fish', price: 2000, isOrderable: true },
       { id: 'nsukka3', name: 'Plantain', price: 2000, isOrderable: true },
       { id: 'nsukka4', name: 'Chicken Vegetable', price: 2000, isOrderable: true },
-      { id: 'nsukka5', name: 'Fried Chicken', price: 2000, isOrderable: true },
-      { id: 'nsukka6', name: 'Agbugbu na Ji', price: 2000, isOrderable: true },
-      { id: 'nsukka7', name: 'Bush Meat', price: 2000, isOrderable: true },
-      { id: 'nsukka8', name: 'Ukwa Fresh with dried fish', price: 2000, isOrderable: true },
+      { id: 'nsukka5', name: 'Chicken Peppersoup', price: 3000, isOrderable: true },
+      { id: 'nsukka6', name: 'Fried Chicken', price: 1000, isOrderable: true },
+      { id: 'nsukka7', name: 'Agbugbu na Ji', price: 2000, isOrderable: true },
+      { id: 'nsukka8', name: 'Bush Meat', price: 3000, isOrderable: true },
+      { id: 'nsukka9', name: 'Ukwa Fresh with dried fish', price: 2000, isOrderable: true },
     ],
   },
   {
     id: 5,
-    name: 'Chicken Salad Special',
+    name: 'Chop with Nazzy',
     image: chickenSalad,
     phone: '+2348045678901',
     whatsapp: '+2348045678901',
