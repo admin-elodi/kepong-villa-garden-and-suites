@@ -563,7 +563,7 @@ const Events = () => {
       {/* Sponsor’s Message Button */}
       <button
         onClick={() => setIsModalOpen(true) || setModalView('sponsorMessage')}
-        className="fixed bottom-10 right-4 border-2 border-white px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-yellow-300 transition shadow-lg z-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-offset-2"
+        className="fixed bottom-10 right-4 border-2 border-white px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-black cursor-pointer transition shadow-lg z-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-offset-2"
         aria-haspopup="dialog"
         aria-label="Open sponsor's message modal"
         type="button"

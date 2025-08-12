@@ -7,7 +7,7 @@ import amaka from '@/assets/images/foodies/shawarma.webp';
 import chilling from '@/assets/images/homepage/snooker.webp';
 import djulio from '@/assets/images/homepage/donj.webp';
 import unsplash from '@/assets/images/homepage/snooker-table.webp';
-import hotel from '@/assets/images/homepage/hotel.webp';
+import hotel from '@/assets/images/foodies/max.webp';
 import palmWine from '@/assets/images/foodies/palm.webp';
 import food from '@/assets/images/foodies/food.webp';
 
