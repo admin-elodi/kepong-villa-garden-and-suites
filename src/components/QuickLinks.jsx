@@ -104,7 +104,7 @@ const QuickLinks = () => {
       social: '@cleanlaundry.ng',
     },
     {
-      title: 'Nsukka Palm Wine & Native Food',
+      title: 'Mama Chioma Enterprises',
       phone: '+234 814 559 8866',
       whatsappLink: 'https://wa.me/2348145598866',
       social: '@nsukkapalmwine',
@@ -123,7 +123,7 @@ const QuickLinks = () => {
   return (
     <section>
    
-      <main className="mt-0 font-montserrat border-b-2 border-t-none border-red-600 text-yellow-100 bg-black/70 relative z-10">
+      <main className="mt-0 font-montserrat border-b-2 border-t-none border-red-600 text-yellow-100 bg-black relative z-10">
         <div className="w-full border-b border-red-600">
           <section className="py-12">
             <div className="container max-w-screen-xl mx-auto text-center">
@@ -176,7 +176,7 @@ const QuickLinks = () => {
                     {moreServices.map((service, index) => (
                       <div
                         key={index}
-                        className="text-white bg-black rounded-lg border-4 p-[5px] border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+                        className="text-red-600 bg-white rounded-lg border-2 p-[5px] border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                         role="button"
                         tabIndex="0"
                         onClick={() => toggleReveal(index)}
@@ -196,7 +196,7 @@ const QuickLinks = () => {
                         <h3 className="text-xl font-bold mb-2">{service.title}</h3>
 
                         {revealedServices[index] ? (
-                          <div className="text-sm mt-2 text-white space-y-1">
+                          <div className="text-sm mt-2 text-black space-y-1">
                             <p>
                               <strong>Phone:</strong> {service.phone}
                             </p>
@@ -207,7 +207,7 @@ const QuickLinks = () => {
                                   href={service.whatsappLink}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-green-300 hover:underline"
+                                  className="text-green-300 font-bold hover:underline"
                                 >
                                   Chat on WhatsApp
                                 </a>
@@ -232,7 +232,7 @@ const QuickLinks = () => {
                             )}
                           </div>
                         ) : (
-                          <p className="text-yellow-100">
+                          <p className="text-black font-semibold">
                             Click to reveal contact info
                           </p>
                         )}

@@ -4,7 +4,7 @@ import tessy from '@/assets/images/foodies/rice-stew.webp';
 import banquet from '@/assets/images/foodies/banquets.webp';
 import chickenSalad from '@/assets/images/foodies/chicken.webp';
 import fishBarbecue from '@/assets/images/foodies/max.webp';
-import abacha from '@/assets/images/foodies/abacha.webp';
+import abacha from '@/assets/images/foodies/ezeagu.webp';
 import okpa from '@/assets/images/foodies/okpa.webp';
 
 const foodies = [
