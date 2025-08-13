@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import ReserveTableModal from '@/components/ReserveTableModal';
 import { MenuModal } from '@/components/Modals';
 import foodies from '@/data/foodiesData';
-import meatsBg from '@/assets/images/foodies/trado.webp';
 
 // Card styles for uniform styling with override capability
 const foodieCardStyles = {
@@ -15,12 +14,9 @@ const foodieCardStyles = {
   buttonsContainer: 'flex flex-col border-2 border-white p-2 rounded-lg gap-3 flex-shrink-0 items-center min-h-[100px]',
   buttonBase:
     'w-full max-w-xl whitespace-nowrap font-semibold rounded-md px-2 py-2 shadow-md transform hover:scale-105 transition-colors duration-300 focus:outline-none focus:ring-4',
-  buttonViewMenu:
-    'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-black focus:ring-yellow-400 text-center',
-  buttonVisitPage:
-    'bg-red-600 hover:bg-red-700 active:bg-red-800 text-white focus:ring-red-500 text-center',
-  orText:
-    'text-white font-bold text-lg select-none my-0.5',
+  buttonViewMenu: 'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-black focus:ring-yellow-400 text-center',
+  buttonVisitPage: 'bg-red-600 hover:bg-red-700 active:bg-red-800 text-white focus:ring-red-500 text-center',
+  orText: 'text-white font-bold text-lg select-none my-0.5',
 };
 
 const KepongFoodies = () => {
@@ -31,13 +27,14 @@ const KepongFoodies = () => {
   const closeReserveModal = () => setReserveModalOpen(false);
 
   // Your phone / WhatsApp info
-  const phoneNumber = '+2349162836505'; // example number, replace with your real one
+  const phoneNumber = '+2349162836505'; // example number, replace with your own
   const whatsappLink = `https://wa.me/${phoneNumber.replace(/\D/g, '')}`; // WhatsApp direct link
 
   return (
     <main
       className="min-h-screen font-montserrat text-white px-6 md:px-16 pt-[160px] pb-12 relative bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${meatsBg})` }}
+      // Remove background image here if you want the video preview only
+      // style={{ backgroundImage: `url(${meatsBg})` }}
     >
       {/* Background overlay */}
       <div className="absolute inset-0 bg-black opacity-80 -z-10"></div>
@@ -63,12 +60,27 @@ const KepongFoodies = () => {
           <article key={id} className={foodieCardStyles.cardBase}>
             <h2 className={foodieCardStyles.cardTitle}>{name}</h2>
             <div className="overflow-hidden flex-shrink-0">
-              <img
-                src={image || meatsBg}
-                alt={`Photo of ${name}`}
-                className={foodieCardStyles.cardImage}
-                loading="lazy"
-              />
+              {/* Render video for Madam Ezinwanne Kitchen (id:1); else show image */}
+              {id === 1 ? (
+                <video
+                  src={image}
+                  className={foodieCardStyles.cardImage}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-label={`Video of ${name}`}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img
+                  src={image}
+                  alt={`Photo of ${name}`}
+                  className={foodieCardStyles.cardImage}
+                  loading="lazy"
+                />
+              )}
             </div>
             <div className={foodieCardStyles.cardContent}>
               <div className={foodieCardStyles.buttonsContainer}>
@@ -113,12 +125,10 @@ const KepongFoodies = () => {
         </button>
       </section>
 
-      {/* Call to Action Section - replaced button with phone and WhatsApp link */}
+      {/* Call to Action Section */}
       <section className="text-center max-w-3xl mx-auto mb-12 px-6 py-10 bg-black bg-opacity-80 rounded-lg border-2 border-red-600 shadow-lg relative z-10">
         <h3 className="text-3xl font-bold text-red-600 mb-4">Do you Want to Join Kepong Foodies Connect?</h3>
-        <p className="text-white mb-4 font-semibold text-lg">
-          Contact or WhatsApp to get started:
-        </p>
+        <p className="text-white mb-4 font-semibold text-lg">Contact or WhatsApp to get started:</p>
         <div className="flex flex-col md:flex-row md:justify-center gap-4">
           <a
             href={`tel:${phoneNumber}`}
@@ -145,10 +155,7 @@ const KepongFoodies = () => {
         foodie={menuModal.foodie}
         onClose={() => setMenuModal({ open: false, foodie: null })}
       />
-      <ReserveTableModal
-        isOpen={reserveModalOpen}
-        onClose={closeReserveModal}
-      />
+      <ReserveTableModal isOpen={reserveModalOpen} onClose={closeReserveModal} />
     </main>
   );
 };

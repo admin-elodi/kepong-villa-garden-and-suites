@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { MenuModal, OrderModal } from '@/components/Modals';
 import foodies from '@/data/foodiesData';
 import meatsBg from '@/assets/images/foodies/meats.webp';
+import ezinwanneVideo from '@/assets/videos/ezinwanne.mp4'; // Import the video file
 
 const FoodieDetail = () => {
   const { slug } = useParams();
@@ -70,10 +71,45 @@ const FoodieDetail = () => {
         </div>
 
         <div className="text-gray-700 mb-6">
-          <p><strong>Phone: </strong> <a href={`tel:${foodie.phone}`} className="text-blue-600 underline">{foodie.phone}</a></p>
-          <p><strong>WhatsApp: </strong> <a href={`https://wa.me/${foodie.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="text-green-600 underline">Chat on WhatsApp</a></p>
-          <p><strong>Share this page: </strong> <a href={shareUrl} className="text-blue-600 underline">{shareUrl}</a></p>
+          <p>
+            <strong>Phone: </strong>{' '}
+            <a href={`tel:${foodie.phone}`} className="text-blue-600 underline">
+              {foodie.phone}
+            </a>
+          </p>
+          <p>
+            <strong>WhatsApp: </strong>{' '}
+            <a
+              href={`https://wa.me/${foodie.whatsapp.replace(/\D/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-600 underline"
+            >
+              Chat on WhatsApp
+            </a>
+          </p>
+          <p>
+            <strong>Share this page: </strong>{' '}
+            <a href={shareUrl} className="text-blue-600 underline">
+              {shareUrl}
+            </a>
+          </p>
         </div>
+
+        {/* Conditionally render the video section only for Madam Ezinwanne Kitchen (id:1) */}
+        {foodie.id === 1 && (
+          <section className="mt-12 w-full">
+            <h2 className="text-3xl font-bold text-black mb-4">About Madam Ezinwanne Kitchen</h2>
+            <video
+              controls
+              src={ezinwanneVideo}
+              className="w-full h-auto max-h-[80vh] rounded-lg shadow-md"
+              aria-label="Video about Madam Ezinwanne Kitchen"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </section>
+        )}
       </section>
 
       <MenuModal open={menuModalOpen} onClose={() => setMenuModalOpen(false)} foodie={foodie} />

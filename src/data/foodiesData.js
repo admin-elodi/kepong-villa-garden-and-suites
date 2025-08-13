@@ -1,4 +1,4 @@
-import meatsBg from '@/assets/images/foodies/meats.webp';
+import ezinwanneVideo from '@/assets/videos/ezinwanne.mp4';
 import nsukka from '@/assets/images/foodies/achicha.webp';
 import tessy from '@/assets/images/foodies/rice-stew.webp';
 import banquet from '@/assets/images/foodies/banquets.webp';
@@ -11,7 +11,7 @@ const foodies = [
   {
     id: 1,
     name: 'Madam Ezinwanne Kitchen',
-    image: meatsBg,
+    image: ezinwanneVideo,  // replaced meatsBg with video asset
     phone: '+2348166540841',
     whatsapp: '+2348166540841',
     branchUrl: '/foodie/madam-ezinwanne-kitchen',
