@@ -16,9 +16,9 @@ const foodies = [
     whatsapp: '+2348166540841',
     branchUrl: '/foodie/madam-ezinwanne-kitchen',
     bankDetails: {
-      bankName: 'Zenith Bank',
-      accountName: 'Madam Ezinwanne Kitchen',
-      accountNumber: '0123456789',
+      bankName: 'Moniepoint Microfinance Bank',
+      accountName: 'Ezinwanne Kitchen',
+      accountNumber: '5322011454',
     },
     menu: [
       

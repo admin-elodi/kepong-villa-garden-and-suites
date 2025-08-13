@@ -1,3 +1,4 @@
+// ClubK.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import clubkHero from '@/assets/videos/clubbing.mp4';
 import dance2 from '@/assets/images/club/dance2.webp';
@@ -25,10 +26,56 @@ const ClubK = () => {
     { title: 'Immersive Ambiance', img: ambience1, desc: 'Neon lights & energy' },
   ];
 
+  // Updated drinksList with menu from images
   const drinksList = [
-    { id: 'whisky', name: 'Don Julio', price: 500000, img: redLabel },
-    { id: 'hennessyxo', name: 'Henessy X.O', price: 450000, img: vodka },
-    { id: 'wine', name: 'Four cousins', price: 20000, img: redWine },
+    // Wines
+    { id: 'blue_nun', name: 'Blue Nun', price: 40000, img: redWine },
+    { id: 'four_cousins', name: 'Four Cousins', price: 20000, img: redWine },
+    { id: 'dangelus', name: 'Dangelus', price: 20000, img: redWine },
+    { id: 'carlo_rossi', name: 'Carlo Rossi', price: 20000, img: redWine },
+    { id: 'sole_vino', name: 'Sole Vino', price: 20000, img: redWine },
+    { id: 'rich_lady', name: 'Rich Lady', price: 20000, img: redWine },
+    { id: 'baileys', name: 'Baileys', price: 20000, img: vodka },
+    { id: 'moregan', name: 'Moregan', price: 20000, img: redWine },
+
+    // Soft Drinks
+    { id: 'hollandia', name: 'Hollandia', price: 3000, img: drink1 },
+    { id: 'chi_exotic', name: 'Chi Exotic', price: 3000, img: drink1 },
+    { id: 'coke', name: 'Coke', price: 500, img: drink1 },
+    { id: 'water', name: 'Water', price: 500, img: drink1 },
+    { id: 'black_bullet', name: 'Black Bullet', price: 3000, img: drink1 },
+    { id: 'all_beers', name: 'All Beers', price: 3000, img: drink1 },
+    { id: 'all_cigarette', name: 'All Cigarette', price: 2000, img: drink1 },
+    { id: 'energy_drink', name: 'Energy Drink', price: 3000, img: drink1 },
+    { id: 'tiger_vodka', name: 'Tiger Vodka', price: 3000, img: vodka },
+    { id: 'tiger_cream_berry', name: 'Tiger Cream Berry', price: 3000, img: vodka },
+    { id: 'red_bull', name: 'Red Bull', price: 3000, img: drink1 },
+    { id: 'power_horse', name: 'Power Horse', price: 3000, img: drink1 },
+
+    // Whiskies
+    { id: 'azul', name: 'Azul', price: 450000, img: redLabel },
+    { id: 'don_julio', name: 'Don Julio', price: 500000, img: redLabel },
+    { id: 'hennessy_xo', name: 'Hennessy X.O', price: 450000, img: vodka },
+    { id: 'hennessy_vsop', name: 'Hennessy V.S.O.P', price: 160000, img: vodka },
+    { id: 'balantine', name: 'Balantine', price: 40000, img: redLabel },
+    { id: 'hennessy_vs', name: 'Hennessy V.S', price: 85000, img: vodka },
+    { id: 'martel_vsop', name: 'Martel V.S.O.P', price: 100000, img: redLabel },
+    { id: 'glenfiddich_18', name: 'Glenfiddich 18 Years', price: 200000, img: redLabel },
+    { id: 'glenfiddich_21', name: 'Glenfiddich 21 Years', price: 300000, img: redLabel },
+    { id: 'black_jameson', name: 'Black Jameson', price: 50000, img: redLabel },
+    { id: 'green_jameson', name: 'Green Jameson', price: 40000, img: redLabel },
+    { id: 'chinese_herbal', name: 'Chinese Herbal', price: 20000, img: redLabel },
+    { id: 'red_label', name: 'Red Label', price: 35000, img: redLabel },
+    { id: 'the_nines', name: 'The Nines', price: 20000, img: redLabel },
+    { id: 'remy_martins_vsop', name: 'Remy Martins V.S.O.P', price: 150000, img: vodka },
+    { id: 'moet', name: 'Moet', price: 180000, img: redWine },
+    { id: 'khort', name: 'Khort', price: 35000, img: redLabel },
+    { id: 'henkel', name: 'Henkel', price: 20000, img: redLabel },
+    { id: 'medium_campari', name: 'Medium Campari', price: 35000, img: redLabel },
+    { id: 'royal_oak', name: 'Royal Oak', price: 40000, img: redLabel },
+    { id: 'jadon', name: 'Jadon', price: 25000, img: redLabel },
+    { id: 'singleton', name: 'Singleton', price: 150000, img: redLabel },
+    { id: 'belaire', name: 'Belaire', price: 80000, img: redWine },
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
@@ -143,7 +190,7 @@ const ClubK = () => {
 
         {/* Modal */}
         {isModalOpen && (
-          <div className="fixed inset-0 mt-16 md:mt-40 flex items-center justify-center z-50 px-4">
+          <div className="fixed inset-0 flex items-center justify-center px-4" style={{ zIndex: 9999 }}>
             <div
               ref={modalRef}
               className="bg-[#fef3c7] rounded-xl border-4 border-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] max-w-md w-full p-0 relative max-h-[80vh] overflow-y-auto"
