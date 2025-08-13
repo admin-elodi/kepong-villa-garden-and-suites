@@ -37,7 +37,7 @@ const FoodieDetail = () => {
         className="mb-6 bg-red-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-red-400 inline-flex items-center gap-2"
         aria-label="Go back to foodies list"
       >
-        <span>&larr;</span> Back to Foodies List
+        <span>&larr;</span> Back to Foodies Page
       </button>
 
       <section className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 border-2 border-red-600">
