@@ -42,7 +42,7 @@ const foodies = [
     whatsapp: '+2348063025640',
     branchUrl: '/foodie/tessy-special-kitchen',
     bankDetails: {
-      bankName: 'Moniepoint',
+      bankName: 'Moniepoint Microfinance Bank',
       accountName: 'Tessy Special',
       accountNumber: '5322466243',
     },
