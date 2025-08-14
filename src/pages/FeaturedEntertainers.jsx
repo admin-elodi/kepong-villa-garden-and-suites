@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ReserveTableModal from '../components/ReserveTableModal';
-import FeaturedVideos from '../components/FeaturedVideos';
+import ReserveTableModal from '@/components/ReserveTableModal';
+import FeaturedVideos from '@/components/FeaturedVideos';
 import rappersImage from '@/assets/images/entertainment/rappers.webp';
 
 const ENTERTAINER_CAROUSEL = [

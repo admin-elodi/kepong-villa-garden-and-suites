@@ -1,4 +1,3 @@
-// ClubK.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import clubkHero from '@/assets/videos/clubbing.mp4';
 import dance2 from '@/assets/images/club/dance2.webp';
@@ -26,7 +25,6 @@ const ClubK = () => {
     { title: 'Immersive Ambiance', img: ambience1, desc: 'Neon lights & energy' },
   ];
 
-  // Updated drinksList with menu from images
   const drinksList = [
     // Wines
     { id: 'blue_nun', name: 'Blue Nun', price: 40000, img: redWine },
@@ -37,7 +35,6 @@ const ClubK = () => {
     { id: 'rich_lady', name: 'Rich Lady', price: 20000, img: redWine },
     { id: 'baileys', name: 'Baileys', price: 20000, img: vodka },
     { id: 'moregan', name: 'Moregan', price: 20000, img: redWine },
-
     // Soft Drinks
     { id: 'hollandia', name: 'Hollandia', price: 3000, img: drink1 },
     { id: 'chi_exotic', name: 'Chi Exotic', price: 3000, img: drink1 },
@@ -51,7 +48,6 @@ const ClubK = () => {
     { id: 'tiger_cream_berry', name: 'Tiger Cream Berry', price: 3000, img: vodka },
     { id: 'red_bull', name: 'Red Bull', price: 3000, img: drink1 },
     { id: 'power_horse', name: 'Power Horse', price: 3000, img: drink1 },
-
     // Whiskies
     { id: 'azul', name: 'Azul', price: 450000, img: redLabel },
     { id: 'don_julio', name: 'Don Julio', price: 500000, img: redLabel },
@@ -79,8 +75,6 @@ const ClubK = () => {
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
-
-  // WhatsApp number for barman (international format, no '+' or spaces)
   const barmanNumber = '2349169436106';
 
   const openModal = () => {
@@ -150,7 +144,6 @@ const ClubK = () => {
 
   return (
     <main className="relative min-h-screen font-montserrat text-yellow-100">
-      {/* Full-page video background */}
       <video
         src={clubkHero}
         autoPlay
@@ -163,9 +156,7 @@ const ClubK = () => {
         Your browser does not support the video tag.
       </video>
 
-      {/* Semi-transparent overlay for content readability */}
       <div className="relative z-10 bg-black/50 min-h-screen border-t-4 border-b-4 border-red-600 pt-[90px] sm:pt-[110px]">
-        {/* Hero Section */}
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
             <div className="mb-8">
@@ -188,9 +179,8 @@ const ClubK = () => {
           </div>
         </section>
 
-        {/* Modal */}
         {isModalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center px-4" style={{ zIndex: 9999 }}>
+          <div className="fixed inset-0 bg-black/60 flex items-center justify-center px-4 z-[10000]">
             <div
               ref={modalRef}
               className="bg-[#fef3c7] rounded-xl border-4 border-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] max-w-md w-full p-0 relative max-h-[80vh] overflow-y-auto"

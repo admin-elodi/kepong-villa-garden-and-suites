@@ -1,6 +1,6 @@
 import ezinwanneVideo from '@/assets/videos/ezin.mp4';
-import nsukka from '@/assets/images/foodies/achicha.webp';
-import tessy from '@/assets/images/foodies/rice-stew.webp';
+import nsukka from '@/assets/images/foodies/abu.webp';
+import tessy from '@/assets/images/foodies/nsala.jpg';
 import banquet from '@/assets/images/foodies/banquets.webp';
 import chickenSalad from '@/assets/images/foodies/chicken.webp';
 import fishBarbecue from '@/assets/images/foodies/max.webp';
@@ -48,7 +48,11 @@ const foodies = [
     },
     menu: [
       
-      { id: 'tessy1', name: 'White Rice (with Stew, Salad, etc)', price: 2200, isOrderable: true },
+      { id: 'tessy1', name: 'White Rice-Stew', price: 2500, isOrderable: true },
+      { id: 'tessy1', name: 'White Rice-Egg Stew', price: 2500, isOrderable: true },
+      { id: 'tessy1', name: 'White Rice-Vegetable Stew', price: 2500, isOrderable: true },
+      { id: 'tessy1', name: 'White Rice-White Sauce ', price: 2500, isOrderable: true },
+      { id: 'tessy1', name: 'White Rice Stew', price: 2500, isOrderable: true },
       { id: 'tessy2', name: 'All Kinds of Soup with Eba, Fufu', price: 2500, isOrderable: true },
       { id: 'tessy3', name: 'Fresh Fish Peppersoup (Head)', price: 4000, isOrderable: true },
       { id: 'tessy4', name: 'Fresh Fish Peppersoup (middle & tail)', price: 3000, isOrderable: true },
@@ -95,11 +99,11 @@ const foodies = [
       { id: 'banquet18', name: 'Other Continental Dishes', price: 5000, isOrderable: true },
 
       { category: 'Snacks & Drinks' },
-      { id: 'banquet19', name: 'Fried Chicken with Chips', price: 0, isOrderable: true },
-      { id: 'banquet20', name: 'Fried Beef with Chips', price: 0, isOrderable: true },
-      { id: 'banquet21', name: 'Pork Meat with Chips', price: 0, isOrderable: true },
-      { id: 'banquet22', name: 'Zobo Drinks', price: 0, isOrderable: true },
-      { id: 'banquet22', name: 'Tiger Nut Drinks', price: 0, isOrderable: true },
+      { id: 'banquet19', name: 'Fried Chicken with Chips', price: 5000, isOrderable: true },
+      { id: 'banquet20', name: 'Fried Beef with Chips', price: 2500, isOrderable: true },
+      { id: 'banquet21', name: 'Pork Meat with Chips', price: 2500, isOrderable: true },
+      { id: 'banquet22', name: 'Zobo Drinks', price: 500, isOrderable: true },
+      { id: 'banquet22', name: 'Tiger Nut Drinks', price: 1000, isOrderable: true },
     ],
   },
   {

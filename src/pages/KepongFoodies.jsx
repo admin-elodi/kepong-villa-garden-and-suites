@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReserveTableModal from '@/components/ReserveTableModal';
 import { MenuModal } from '@/components/Modals';
+import foodiesBg from '@/assets/images/foodies/trado.webp';
 import foodies from '@/data/foodiesData';
 
 // Card styles for uniform styling with override capability
@@ -33,8 +34,7 @@ const KepongFoodies = () => {
   return (
     <main
       className="min-h-screen font-montserrat text-white px-6 md:px-16 pt-[160px] pb-12 relative bg-cover bg-center bg-no-repeat"
-      // Remove background image here if you want the video preview only
-      // style={{ backgroundImage: `url(${meatsBg})` }}
+  style={{ backgroundImage: `url(${foodiesBg})` }}
     >
       {/* Background overlay */}
       <div className="absolute inset-0 bg-black opacity-80 -z-10"></div>
