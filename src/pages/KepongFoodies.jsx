@@ -15,7 +15,7 @@ const foodieCardStyles = {
   buttonsContainer: 'flex flex-col border-2 border-white p-2 rounded-lg gap-3 flex-shrink-0 items-center min-h-[100px]',
   buttonBase:
     'w-full max-w-xl whitespace-nowrap font-semibold rounded-md px-2 py-2 shadow-md transform hover:scale-105 transition-colors duration-300 focus:outline-none focus:ring-4',
-  buttonViewMenu: 'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-black focus:ring-yellow-400 text-center',
+  buttonViewMenu: 'bg-yellow-700 hover:bg-yellow-600 active:bg-yellow-700 text-white focus:ring-yellow-400 text-center',
   buttonVisitPage: 'bg-red-600 hover:bg-red-700 active:bg-red-800 text-white focus:ring-red-500 text-center',
   orText: 'text-white font-bold text-lg select-none my-0.5',
 };
