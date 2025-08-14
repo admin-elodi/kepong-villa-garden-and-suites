@@ -53,7 +53,7 @@ const foodies = [
       { id: 'tessy3', name: 'White Rice - Vegetable Stew', price: 2500, isOrderable: true },
       { id: 'tessy4', name: 'White Rice-White Sauce ', price: 2500, isOrderable: true },
       { id: 'tessy5', name: 'Onugbu-Vegetable', price: 2500, isOrderable: true },
-      { id: 'tessy6', name: 'Nsala,Vegetable,Okra', price: 2500, isOrderable: true },
+      { id: 'tessy6', name: 'Nsala,Vegetable,Okra - Swallow', price: 2500, isOrderable: true },
       { id: 'tessy6', name: 'Eba,Fufu,Semo - Soup', price: 2500, isOrderable: true },
       { id: 'tessy6', name: 'Fresh Fish Peppersoup (Head)', price: 4000, isOrderable: true },
       { id: 'tessy7', name: 'Fresh Fish Peppersoup (middle & tail)', price: 3000, isOrderable: true },

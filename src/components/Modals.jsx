@@ -3,15 +3,30 @@ import meatsBg from '@/assets/images/foodies/meats.webp';
 
 const FIXED_SURCHARGE = 1500;
 
+// Food-inspired background colors for each foodie
+const foodieBackgroundColors = [
+  'bg-red-100', // Tomato red for Madam Ezinwanne Kitchen
+  'bg-green-100', // Olive green for Tessy Special Kitchen
+  'bg-yellow-100', // Mustard yellow for De Banquet Hotel Kitchen
+  'bg-orange-100', // Carrot orange for Mama Chioma Enterprises
+  'bg-lime-100', // Lime green for Chop with Nazzy
+  'bg-rose-100', // Salmon pink for Fresh Fish Barbecue
+  'bg-amber-100', // Honey amber for Abacha Nwanyi Ezeagu
+  'bg-teal-100', // Mint teal for Vacant Spot
+];
+
 export function MenuModal({ open, onClose, foodie }) {
   if (!open || !foodie) return null;
+
+  // Select background color based on foodie ID (id - 1 for 0-based index)
+  const bgColor = foodieBackgroundColors[foodie.id - 1] || 'bg-amber-100';
 
   return (
     <div
       role="dialog"
       aria-modal="true"
       tabIndex={-1}
-      className="fixed inset-x-0 top-[calc(120px+1rem)] mx-auto max-w-md rounded-xl shadow-2xl p-6 bg-white z-[1100] max-h-[80vh] overflow-y-auto"
+      className={`fixed inset-x-0 top-[calc(120px+1rem)] mx-auto max-w-md rounded-xl shadow-2xl p-6 ${bgColor} z-[1100] max-h-[80vh] overflow-y-auto`}
     >
       <button
         onClick={onClose}
@@ -47,7 +62,22 @@ export function MenuModal({ open, onClose, foodie }) {
           );
         })}
       </ul>
-      <div className="pb-4"></div>
+      <div className="pt-4 text-center">
+        <p className="text-gray-700 mb-2">
+          <strong>Phone: </strong>
+          <a href={`tel:${foodie.phone}`} className="text-blue-600 underline">
+            {foodie.phone}
+          </a>
+        </p>
+        <button
+          onClick={onClose}
+          className="w-full max-w-xs bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400"
+          aria-label="Close menu modal"
+          type="button"
+        >
+          Close
+        </button>
+      </div>
     </div>
   );
 }
