@@ -1,6 +1,6 @@
 import ezinwanneVideo from '@/assets/videos/ezin.mp4';
-import nsukka from '@/assets/images/foodies/abu.webp';
-import tessy from '@/assets/images/foodies/nsala.jpg';
+import nsukka from '@/assets/images/foodies/fish.webp';
+import tessy from '@/assets/images/foodies/nsala.webp';
 import banquet from '@/assets/images/foodies/banquets.webp';
 import chickenSalad from '@/assets/images/foodies/chicken.webp';
 import fishBarbecue from '@/assets/images/foodies/max.webp';
@@ -48,15 +48,16 @@ const foodies = [
     },
     menu: [
       
-      { id: 'tessy1', name: 'White Rice-Stew', price: 2500, isOrderable: true },
-      { id: 'tessy1', name: 'White Rice-Egg Stew', price: 2500, isOrderable: true },
-      { id: 'tessy1', name: 'White Rice-Vegetable Stew', price: 2500, isOrderable: true },
-      { id: 'tessy1', name: 'White Rice-White Sauce ', price: 2500, isOrderable: true },
-      { id: 'tessy1', name: 'White Rice Stew', price: 2500, isOrderable: true },
-      { id: 'tessy2', name: 'All Kinds of Soup with Eba, Fufu', price: 2500, isOrderable: true },
-      { id: 'tessy3', name: 'Fresh Fish Peppersoup (Head)', price: 4000, isOrderable: true },
-      { id: 'tessy4', name: 'Fresh Fish Peppersoup (middle & tail)', price: 3000, isOrderable: true },
-      { id: 'tessy5', name: 'Assorted Meat', price: 3000, isOrderable: true },
+      { id: 'tessy1', name: 'White Rice - Stew', price: 2500, isOrderable: true },
+      { id: 'tessy2', name: 'White Rice - Egg Stew', price: 2500, isOrderable: true },
+      { id: 'tessy3', name: 'White Rice - Vegetable Stew', price: 2500, isOrderable: true },
+      { id: 'tessy4', name: 'White Rice-White Sauce ', price: 2500, isOrderable: true },
+      { id: 'tessy5', name: 'Onugbu-Vegetable', price: 2500, isOrderable: true },
+      { id: 'tessy6', name: 'Nsala,Vegetable,Okra', price: 2500, isOrderable: true },
+      { id: 'tessy6', name: 'Eba,Fufu,Semo - Soup', price: 2500, isOrderable: true },
+      { id: 'tessy6', name: 'Fresh Fish Peppersoup (Head)', price: 4000, isOrderable: true },
+      { id: 'tessy7', name: 'Fresh Fish Peppersoup (middle & tail)', price: 3000, isOrderable: true },
+      { id: 'tessy8', name: 'Assorted Meat', price: 3000, isOrderable: true },
     ],
   },
   {
@@ -160,8 +161,8 @@ const foodies = [
       accountNumber: '7788990011',
     },
     menu: [
-      { id: 'fish1', name: 'BBQ Fish', price: 3500, isOrderable: true },
-      { id: 'fish2', name: 'Fish Pepper Soup', price: 2500, isOrderable: true },
+      { id: 'fish1', name: 'Barbecue Fish', price: 15000, isOrderable: true },
+      { id: 'fish2', name: 'Barbecue Fish with Chips', price: 20000, isOrderable: true },
     ],
   },
   {

@@ -127,7 +127,7 @@ const KepongFoodies = () => {
 
       {/* Call to Action Section */}
       <section className="text-center max-w-3xl mx-auto mb-12 px-6 py-10 bg-black bg-opacity-80 rounded-lg border-2 border-red-600 shadow-lg relative z-10">
-        <h3 className="text-3xl font-bold text-red-600 mb-4">Do you Want to Join Kepong Foodies Connect?</h3>
+        <h3 className="text-3xl font-bold text-red-600 mb-4">Do you Want to Join Kepong Foodies?</h3>
         <p className="text-white mb-4 font-semibold text-lg">Contact or WhatsApp to get started:</p>
         <div className="flex flex-col md:flex-row md:justify-center gap-4">
           <a
