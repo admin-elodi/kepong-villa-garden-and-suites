@@ -1,4 +1,4 @@
-import ezinwanneVideo from '@/assets/videos/ezinwanne.mp4';
+import ezinwanneVideo from '@/assets/videos/ezin.mp4';
 import nsukka from '@/assets/images/foodies/achicha.webp';
 import tessy from '@/assets/images/foodies/rice-stew.webp';
 import banquet from '@/assets/images/foodies/banquets.webp';
