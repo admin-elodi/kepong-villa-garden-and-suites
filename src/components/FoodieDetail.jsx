@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { MenuModal, OrderModal } from '@/components/Modals';
 import foodies from '@/data/foodiesData';
 import meatsBg from '@/assets/images/foodies/meats.webp';
-import ezinwanneVideo from '@/assets/videos/ezinwanne.mp4'; // Import the video file
+import ezinwanneVideo from '@/assets/videos/ezinwanne.mp4';
 
 const FoodieDetail = () => {
   const { slug } = useParams();
@@ -32,7 +32,7 @@ const FoodieDetail = () => {
   const shareUrl = window.location.origin + foodie.branchUrl;
 
   return (
-    <main className="min-h-screen bg-gray-50 font-montserrat p-6 md:p-12 mt-60">
+    <main className="min-h-screen bg-gray-50 font-montserrat p-6 md:p-12 pt-[160px]">
       <button
         onClick={() => navigate('/kepong-foodies')}
         className="mb-6 bg-red-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-red-400 inline-flex items-center gap-2"
@@ -95,6 +95,29 @@ const FoodieDetail = () => {
             </a>
           </p>
         </div>
+
+        {/* Tessy Special Kitchen Single Video */}
+        {foodie.id === 2 && (
+          <section className="mt-12 w-full">
+            <h2 className="text-3xl font-bold text-red-600 mb-4 text-center">How Tessy Cooks Nsala Soup</h2>
+            <div className="relative bg-yellow-50 rounded-lg p-6 shadow-md border-2 border-red-600">
+              <div className="overflow-hidden">
+                <iframe
+                  src="https://www.youtube.com/embed/yOr7sx6Usfg"
+                  title="Nsala Soup"
+                  className="w-full h-64 md:h-80 rounded-lg"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="mt-4 text-center">
+                <h3 className="text-xl font-semibold text-black">Nsala Soup</h3>
+                <p className="text-gray-700">See the spicy and flavorful Nsala soup come to life with goat meat and uyayak.</p>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Conditionally render the video section only for Madam Ezinwanne Kitchen (id:1) */}
         {foodie.id === 1 && (
