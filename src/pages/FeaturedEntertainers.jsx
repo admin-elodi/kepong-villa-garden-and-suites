@@ -8,7 +8,6 @@ import clubbing from '@/assets/videos/clubbing.mp4';
 import club from '@/assets/videos/club.mp4';
 import djDemure from '@/assets/videos/dj-demure.mp4';
 
-// Confetti component implementing canvas with animation loop
 const Confetti = ({ active }) => {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
@@ -16,7 +15,6 @@ const Confetti = ({ active }) => {
 
   useEffect(() => {
     if (!active) {
-      // Clear particles and canvas
       cancelAnimationFrame(animationRef.current);
       const canvas = canvasRef.current;
       if (canvas) {
@@ -27,7 +25,6 @@ const Confetti = ({ active }) => {
       return;
     }
 
-    // Initialize canvas and particles
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const screenW = window.innerWidth;
@@ -49,7 +46,6 @@ const Confetti = ({ active }) => {
       velocityY: Math.random() * 3 + 2,
     });
 
-    // Create 100 confetti particles
     particlesRef.current = Array.from({ length: 100 }, createParticle);
 
     let angle = 0;
@@ -65,7 +61,6 @@ const Confetti = ({ active }) => {
         p.y += p.velocityY;
         p.tilt = Math.sin(p.tiltAngle) * 15;
 
-        // Draw confetti piece
         ctx.fillStyle = p.color;
         ctx.beginPath();
         ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
@@ -75,7 +70,6 @@ const Confetti = ({ active }) => {
         ctx.closePath();
         ctx.fill();
 
-        // Reset particle position when off screen
         if (p.y > screenH || p.x > screenW || p.x < 0) {
           p.x = Math.random() * screenW;
           p.y = -10;
@@ -89,7 +83,6 @@ const Confetti = ({ active }) => {
 
     animationRef.current = requestAnimationFrame(update);
 
-    // Cleanup on unmount or deactivate
     return () => cancelAnimationFrame(animationRef.current);
   }, [active]);
 
@@ -112,7 +105,7 @@ const Confetti = ({ active }) => {
 const weekendLineupVideos = {
   comedians: [
     { label: 'MC Afrobeats Live', src: clubbing, title: 'MC Afrobeats Performance' },
-    { label: 'MC Bar Beach Special', src: clubbing, title: 'MC Bar Beach Comedy Night' },
+    { label: 'MC Prof', src: clubbing, title: 'MC Prof' },
   ],
   dancers: [
     { label: 'Afrobeat Crew Dance', src: club, title: 'Afrobeat Crew Dance Performance' },
@@ -148,7 +141,7 @@ const FeaturedEntertainers = () => {
     >
       <div className="w-full mx-auto">
         <header className="text-center bg-red-600/50 m-0 p-4 relative z-20 border-0 rounded-md">
-          <h1 className="text-3xl sm:text-5xl tracking-widest font-bold tracking-tight mb-1 text-white md:pt-4 drop-shadow-md">
+          <h1 className="text-3xl sm:text-5xl md:pt-4 tracking-widest font-bold tracking-tight mb-1 text-white drop-shadow-md">
             Entertainment
           </h1>
           <p className="text-white text-lg mt-1 font-medium">Wednesdays, Fridays & Sundays</p>
@@ -159,16 +152,19 @@ const FeaturedEntertainers = () => {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-white mb-6 border-b-2 border-red-600 inline-block pb-2 text-center">
-            Weekend Lineup
-          </h2>
+          <div className="w-full text-center mb-6">
+            <h2 className="text-2xl font-bold text-white border-b-2 border-red-600 inline-block pb-2">
+              Weekend Lineup
+            </h2>
+          </div>
 
-          <div className="flex justify-center gap-6 mb-8 flex-wrap">
+          {/* Buttons container: overflow-x-auto removed on desktop */}
+          <div className="flex justify-center gap-4 mb-8 flex-nowrap px-2 max-w-xs sm:max-w-none mx-auto">
             {['comedians', 'dancers', 'hypemen'].map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-lg font-semibold transition focus:outline-none focus:ring-2 focus:ring-red-400 ${
+                className={`flex-shrink-0 w-24 sm:w-auto px-4 py-3 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-red-400 ${
                   selectedCategory === category
                     ? 'bg-red-600 text-white shadow-lg transform scale-105'
                     : 'bg-gray-900/50 text-gray-300 hover:bg-red-600 hover:text-white'
@@ -207,8 +203,7 @@ const FeaturedEntertainers = () => {
 
         <section className="text-center mb-8 max-w-3xl mx-auto">
           <p className="text-white text-lg md:text-xl font-semibold mb-6">
-            Enjoy great food and drinks while entertained at Kepong — book your table,
-            secure a nearby hotel, or explore Kepong’s finest foodies.
+            Enjoy good food & drink at Kepong & maybe book hotel
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
             <button

@@ -84,7 +84,7 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
 
         {/* Desktop full title */}
         <div className="hidden md:flex justify-center bg-white border-2 border-red-600 py-2 select-none">
-          <h1 className="text-2xl font-extrabold text-red-600 tracking-[10px] uppercase">
+          <h1 className="text-2xl font-bold text-red-600 tracking-[10px] uppercase">
             Kepong Villa Garden & Suites
           </h1>
         </div>
