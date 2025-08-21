@@ -5,7 +5,7 @@ import banquet from '@/assets/images/foodies/banquets.webp';
 import chickenSalad from '@/assets/images/foodies/chicken.webp';
 import fishBarbecue from '@/assets/images/foodies/max.webp';
 import abacha from '@/assets/images/foodies/ezeagu.webp';
-import okpa from '@/assets/images/foodies/okpa.webp';
+
 
 const foodies = [
   {
@@ -193,8 +193,8 @@ const foodies = [
   },
   {
     id: 8,
-    name: '[Vacant Spot]',
-    image: okpa,
+    name: '',
+    image: '',
     phone: '+2348078901234',
     whatsapp: '+2348078901234',
     branchUrl: '/foodie/vacant-spot',
