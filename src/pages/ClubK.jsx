@@ -8,7 +8,7 @@ import dance1 from '@/assets/images/club/dance1.webp';
 import ambience1 from '@/assets/images/club/ambience1.webp';
 import redLabel from '@/assets/images/club/donj.webp';
 import vodka from '@/assets/images/club/henny.webp';
-import redWine from '@/assets/images/club/wine.webp';
+
 
 const ClubK = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,51 +27,51 @@ const ClubK = () => {
 
   const drinksList = [
     // Wines
-    { id: 'blue_nun', name: 'Blue Nun', price: 40000, img: redWine },
-    { id: 'four_cousins', name: 'Four Cousins', price: 20000, img: redWine },
-    { id: 'dangelus', name: 'Dangelus', price: 20000, img: redWine },
-    { id: 'carlo_rossi', name: 'Carlo Rossi', price: 20000, img: redWine },
-    { id: 'sole_vino', name: 'Sole Vino', price: 20000, img: redWine },
-    { id: 'rich_lady', name: 'Rich Lady', price: 20000, img: redWine },
-    { id: 'baileys', name: 'Baileys', price: 20000, img: vodka },
-    { id: 'moregan', name: 'Moregan', price: 20000, img: redWine },
+    { id: 'blue_nun', name: 'Blue Nun', price: 40000 },
+    { id: 'four_cousins', name: 'Four Cousins', price: 20000 },
+    { id: 'dangelus', name: 'Dangelus', price: 20000 },
+    { id: 'carlo_rossi', name: 'Carlo Rossi', price: 20000 },
+    { id: 'sole_vino', name: 'Sole Vino', price: 20000 },
+    { id: 'rich_lady', name: 'Rich Lady', price: 20000 },
+    { id: 'baileys', name: 'Baileys', price: 20000 },
+    { id: 'moregan', name: 'Moregan', price: 20000 },
     // Soft Drinks
-    { id: 'hollandia', name: 'Hollandia', price: 3000, img: drink1 },
-    { id: 'chi_exotic', name: 'Chi Exotic', price: 3000, img: drink1 },
-    { id: 'coke', name: 'Coke', price: 500, img: drink1 },
-    { id: 'water', name: 'Water', price: 500, img: drink1 },
-    { id: 'black_bullet', name: 'Black Bullet', price: 3000, img: drink1 },
-    { id: 'all_beers', name: 'All Beers', price: 3000, img: drink1 },
-    { id: 'all_cigarette', name: 'All Cigarette', price: 2000, img: drink1 },
-    { id: 'energy_drink', name: 'Energy Drink', price: 3000, img: drink1 },
-    { id: 'tiger_vodka', name: 'Tiger Vodka', price: 3000, img: vodka },
-    { id: 'tiger_cream_berry', name: 'Tiger Cream Berry', price: 3000, img: vodka },
-    { id: 'red_bull', name: 'Red Bull', price: 3000, img: drink1 },
-    { id: 'power_horse', name: 'Power Horse', price: 3000, img: drink1 },
+    { id: 'hollandia', name: 'Hollandia', price: 3000 },
+    { id: 'chi_exotic', name: 'Chi Exotic', price: 3000 },
+    { id: 'coke', name: 'Coke', price: 500 },
+    { id: 'water', name: 'Water', price: 500 },
+    { id: 'black_bullet', name: 'Black Bullet', price: 3000 },
+    { id: 'all_beers', name: 'All Beers', price: 3000 },
+    { id: 'all_cigarette', name: 'All Cigarette', price: 2000 },
+    { id: 'energy_drink', name: 'Energy Drink', price: 3000 },
+    { id: 'tiger_vodka', name: 'Tiger Vodka', price: 3000 },
+    { id: 'tiger_cream_berry', name: 'Tiger Cream Berry', price: 3000 },
+    { id: 'red_bull', name: 'Red Bull', price: 3000 },
+    { id: 'power_horse', name: 'Power Horse', price: 3000 },
     // Whiskies
-    { id: 'azul', name: 'Azul', price: 450000, img: redLabel },
-    { id: 'don_julio', name: 'Don Julio', price: 500000, img: redLabel },
-    { id: 'hennessy_xo', name: 'Hennessy X.O', price: 450000, img: vodka },
-    { id: 'hennessy_vsop', name: 'Hennessy V.S.O.P', price: 160000, img: vodka },
-    { id: 'balantine', name: 'Balantine', price: 40000, img: redLabel },
-    { id: 'hennessy_vs', name: 'Hennessy V.S', price: 85000, img: vodka },
-    { id: 'martel_vsop', name: 'Martel V.S.O.P', price: 100000, img: redLabel },
-    { id: 'glenfiddich_18', name: 'Glenfiddich 18 Years', price: 200000, img: redLabel },
-    { id: 'glenfiddich_21', name: 'Glenfiddich 21 Years', price: 300000, img: redLabel },
-    { id: 'black_jameson', name: 'Black Jameson', price: 50000, img: redLabel },
-    { id: 'green_jameson', name: 'Green Jameson', price: 40000, img: redLabel },
-    { id: 'chinese_herbal', name: 'Chinese Herbal', price: 20000, img: redLabel },
-    { id: 'red_label', name: 'Red Label', price: 35000, img: redLabel },
-    { id: 'the_nines', name: 'The Nines', price: 20000, img: redLabel },
-    { id: 'remy_martins_vsop', name: 'Remy Martins V.S.O.P', price: 150000, img: vodka },
-    { id: 'moet', name: 'Moet', price: 180000, img: redWine },
-    { id: 'khort', name: 'Khort', price: 35000, img: redLabel },
-    { id: 'henkel', name: 'Henkel', price: 20000, img: redLabel },
-    { id: 'medium_campari', name: 'Medium Campari', price: 35000, img: redLabel },
-    { id: 'royal_oak', name: 'Royal Oak', price: 40000, img: redLabel },
+    { id: 'azul', name: 'Azul', price: 450000 },
+    { id: 'don_julio', name: 'Don Julio', price: 500000 },
+    { id: 'hennessy_xo', name: 'Hennessy X.O', price: 450000 },
+    { id: 'hennessy_vsop', name: 'Hennessy V.S.O.P', price: 160000 },
+    { id: 'balantine', name: 'Balantine', price: 40000 },
+    { id: 'hennessy_vs', name: 'Hennessy V.S', price: 85000 },
+    { id: 'martel_vsop', name: 'Martel V.S.O.P', price: 100000 },
+    { id: 'glenfiddich_18', name: 'Glenfiddich 18 Years', price: 200000 },
+    { id: 'glenfiddich_21', name: 'Glenfiddich 21 Years', price: 300000 },
+    { id: 'black_jameson', name: 'Black Jameson', price: 50000 },
+    { id: 'green_jameson', name: 'Green Jameson', price: 40000 },
+    { id: 'chinese_herbal', name: 'Chinese Herbal', price: 20000 },
+    { id: 'red_label', name: 'Red Label', price: 35000 },
+    { id: 'the_nines', name: 'The Nines', price: 20000 },
+    { id: 'remy_martins_vsop', name: 'Remy Martins V.S.O.P', price: 150000 },
+    { id: 'moet', name: 'Moet', price: 180000 },
+    { id: 'khort', name: 'Khort', price: 35000 },
+    { id: 'henkel', name: 'Henkel', price: 20000 },
+    { id: 'medium_campari', name: 'Medium Campari', price: 35000 },
+    { id: 'royal_oak', name: 'Royal Oak', price: 40000 },
     { id: 'jadon', name: 'Jadon', price: 25000, img: redLabel },
-    { id: 'singleton', name: 'Singleton', price: 150000, img: redLabel },
-    { id: 'belaire', name: 'Belaire', price: 80000, img: redWine },
+    { id: 'singleton', name: 'Singleton', price: 150000 },
+    { id: 'belaire', name: 'Belaire', price: 80000 },
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
@@ -156,7 +156,7 @@ const ClubK = () => {
         Your browser does not support the video tag.
       </video>
 
-      <div className="relative z-10 bg-black/50 min-h-screen border-t-4 border-b-4 border-red-600 pt-[90px] sm:pt-[110px]">
+      <div className="relative bg-black/50 min-h-screen border-t-4 border-b-4 border-red-600 pt-[90px] sm:pt-[110px]">
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
             <div className="mb-8">
@@ -198,11 +198,11 @@ const ClubK = () => {
                   <>
                     <h2 className="text-xl font-bold mb-4 text-red-600">Select Your Drinks</h2>
                     <div className="space-y-4 mb-6">
-                      {drinksList.map(({ id, name, price, img }) => {
+                      {drinksList.map(({ id, name, price }) => {
                         const qty = selectedDrinks[id] || 0;
                         return (
                           <div key={id} className="flex items-center gap-4">
-                            <img src={img} alt={name} className="w-16 h-16 object-cover rounded-lg border border-yellow-300" loading="lazy" />
+                            
                             <div className="flex-1">
                               <h3 className="text-lg font-semibold text-black">{name}</h3>
                               <p className="text-green-700 font-bold">₦{price.toLocaleString()}</p>

@@ -32,7 +32,7 @@ const FoodieDetail = () => {
   const shareUrl = window.location.origin + foodie.branchUrl;
 
   return (
-    <main className="min-h-screen bg-gray-50 font-montserrat p-6 md:p-12 pt-[160px]">
+    <main className="min-h-screen bg-gray-50 font-montserrat p-6 md:p-12 pt-[220px] md:pt-[280px]">
       <button
         onClick={() => navigate('/kepong-foodies')}
         className="mb-6 bg-red-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-red-400 inline-flex items-center gap-2"

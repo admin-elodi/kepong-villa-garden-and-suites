@@ -60,6 +60,7 @@ const foodies = [
       { id: 'tessy8', name: 'Okra Soup', price: 2500, isOrderable: true },
       { id: 'tessy9', name: 'Afang Soup', price: 2500, isOrderable: true },
       { id: 'tessy10', name: 'Vegetable-Onugbu', price: 2500, isOrderable: true },
+      { category: 'Pepper Soup Specials'},
       { id: 'tessy11', name: 'Fresh Fish Peppersoup (Head)', price: 4000, isOrderable: true },
       { id: 'tessy12', name: 'Fresh Fish Peppersoup (middle & tail)', price: 3000, isOrderable: true },
       { id: 'tessy13', name: 'Assorted Meat', price: 3000, isOrderable: true },

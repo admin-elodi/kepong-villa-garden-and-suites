@@ -40,8 +40,8 @@ const KepongFoodies = () => {
       <div className="absolute inset-0 bg-black opacity-80 -z-10"></div>
 
       {/* Heading */}
-      <section className="bg-black/60 text-center rounded-lg mx-auto py-20 md:py-30 relative z-10">
-        <h1 className="text-4xl font-bold text-white mb-2">Kepong Foodies</h1>
+      <section className="bg-black/60 text-center rounded-lg mx-auto py-20 md:py-40 relative z-10">
+        <h1 className="text-4xl font-bold text-white">Kepong Foodies</h1>
       </section>
 
       {/* Full width subtitle with bg-black/60 */}
