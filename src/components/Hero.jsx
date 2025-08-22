@@ -157,7 +157,7 @@ const Hero = ({ setIsModalOpen }) => {
       <div
         className="
           absolute bottom-0 left-0 right-0 z-20 w-full px-4 sm:px-6 lg:px-0
-          py-3 flex justify-center gap-4 bg-slate-800 border-b-2 border-t-2 border-red-600
+          py-3 flex justify-center gap-4 bg-slate-800 border-b-2 border-t-2 border-white
         "
         role="group"
         aria-label="Carousel navigation buttons"

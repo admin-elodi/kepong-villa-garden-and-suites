@@ -97,7 +97,7 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="border-b-4 border-r-4 border-red-600 hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0"
+            className="border-b-4 border-r-4 border-red-600 hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0 rounded-sm"
           >
             <img
               src={logo}
