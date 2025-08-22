@@ -157,7 +157,7 @@ const Hero = ({ setIsModalOpen }) => {
       <div
         className="
           absolute bottom-0 left-0 right-0 z-20 w-full px-4 sm:px-6 lg:px-0
-          py-3 flex justify-center gap-4 bg-slate-800 border-b-2 border-white
+          py-3 flex justify-center gap-4 bg-slate-800 border-b-2 border-t-2 border-red-600
         "
         role="group"
         aria-label="Carousel navigation buttons"
@@ -168,7 +168,7 @@ const Hero = ({ setIsModalOpen }) => {
           aria-label="Previous Slide"
           disabled={isTransitioning}
           className="
-            w-10 h-10 rounded-sm border border-white/60 text-white/80 hover:text-white hover:border-opacity-100
+            w-10 h-10 rounded-sm border border-white text-white font-bold hover:text-white hover:border-opacity-100
             transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-red-600
             focus-visible:ring-offset-2 bg-black/30 disabled:opacity-50
           "
@@ -181,7 +181,7 @@ const Hero = ({ setIsModalOpen }) => {
           aria-label="Next Slide"
           disabled={isTransitioning}
           className="
-            w-10 h-10 rounded-sm border border-white/60 text-white/80 hover:text-white hover:border-opacity-100
+            w-10 h-10 rounded-sm border border-white text-white font-bold hover:text-white hover:border-opacity-100
             transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-red-600
             focus-visible:ring-offset-2 bg-black/30 disabled:opacity-50
           "

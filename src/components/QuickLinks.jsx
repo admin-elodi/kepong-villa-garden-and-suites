@@ -123,7 +123,7 @@ const QuickLinks = () => {
   return (
     <section>
    
-      <main className="mt-0 font-montserrat border-b-2 border-t-none border-red-600 text-yellow-100 bg-black relative z-10">
+      <main className="mt-0 font-montserrat border-b-2 border-t-none border-red-600 text-yellow-100 bg-slate-800 relative z-10">
         <div className="w-full border-b border-red-600">
           <section className="py-12">
             <div className="container max-w-screen-xl mx-auto text-center">

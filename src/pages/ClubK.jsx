@@ -9,7 +9,6 @@ import ambience1 from '@/assets/images/club/ambience1.webp';
 import redLabel from '@/assets/images/club/donj.webp';
 import vodka from '@/assets/images/club/henny.webp';
 
-
 const ClubK = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showBankDetails, setShowBankDetails] = useState(false);
@@ -26,52 +25,64 @@ const ClubK = () => {
   ];
 
   const drinksList = [
-    // Wines
-    { id: 'blue_nun', name: 'Blue Nun', price: 40000 },
-    { id: 'four_cousins', name: 'Four Cousins', price: 20000 },
-    { id: 'dangelus', name: 'Dangelus', price: 20000 },
-    { id: 'carlo_rossi', name: 'Carlo Rossi', price: 20000 },
-    { id: 'sole_vino', name: 'Sole Vino', price: 20000 },
-    { id: 'rich_lady', name: 'Rich Lady', price: 20000 },
-    { id: 'baileys', name: 'Baileys', price: 20000 },
-    { id: 'moregan', name: 'Moregan', price: 20000 },
-    // Soft Drinks
-    { id: 'hollandia', name: 'Hollandia', price: 3000 },
-    { id: 'chi_exotic', name: 'Chi Exotic', price: 3000 },
-    { id: 'coke', name: 'Coke', price: 500 },
-    { id: 'water', name: 'Water', price: 500 },
-    { id: 'black_bullet', name: 'Black Bullet', price: 3000 },
-    { id: 'all_beers', name: 'All Beers', price: 3000 },
-    { id: 'all_cigarette', name: 'All Cigarette', price: 2000 },
-    { id: 'energy_drink', name: 'Energy Drink', price: 3000 },
-    { id: 'tiger_vodka', name: 'Tiger Vodka', price: 3000 },
-    { id: 'tiger_cream_berry', name: 'Tiger Cream Berry', price: 3000 },
-    { id: 'red_bull', name: 'Red Bull', price: 3000 },
-    { id: 'power_horse', name: 'Power Horse', price: 3000 },
-    // Whiskies
-    { id: 'azul', name: 'Azul', price: 450000 },
-    { id: 'don_julio', name: 'Don Julio', price: 500000 },
-    { id: 'hennessy_xo', name: 'Hennessy X.O', price: 450000 },
-    { id: 'hennessy_vsop', name: 'Hennessy V.S.O.P', price: 160000 },
-    { id: 'balantine', name: 'Balantine', price: 40000 },
-    { id: 'hennessy_vs', name: 'Hennessy V.S', price: 85000 },
-    { id: 'martel_vsop', name: 'Martel V.S.O.P', price: 100000 },
-    { id: 'glenfiddich_18', name: 'Glenfiddich 18 Years', price: 200000 },
-    { id: 'glenfiddich_21', name: 'Glenfiddich 21 Years', price: 300000 },
-    { id: 'black_jameson', name: 'Black Jameson', price: 50000 },
-    { id: 'green_jameson', name: 'Green Jameson', price: 40000 },
-    { id: 'chinese_herbal', name: 'Chinese Herbal', price: 20000 },
-    { id: 'red_label', name: 'Red Label', price: 35000 },
-    { id: 'the_nines', name: 'The Nines', price: 20000 },
-    { id: 'remy_martins_vsop', name: 'Remy Martins V.S.O.P', price: 150000 },
-    { id: 'moet', name: 'Moet', price: 180000 },
-    { id: 'khort', name: 'Khort', price: 35000 },
-    { id: 'henkel', name: 'Henkel', price: 20000 },
-    { id: 'medium_campari', name: 'Medium Campari', price: 35000 },
-    { id: 'royal_oak', name: 'Royal Oak', price: 40000 },
-    { id: 'jadon', name: 'Jadon', price: 25000, img: redLabel },
-    { id: 'singleton', name: 'Singleton', price: 150000 },
-    { id: 'belaire', name: 'Belaire', price: 80000 },
+    {
+      category: 'Wines',
+      drinks: [
+        { id: 'blue_nun', name: 'Blue Nun', price: 40000 },
+        { id: 'four_cousins', name: 'Four Cousins', price: 20000 },
+        { id: 'dangelus', name: 'Dangelus', price: 20000 },
+        { id: 'carlo_rossi', name: 'Carlo Rossi', price: 20000 },
+        { id: 'sole_vino', name: 'Sole Vino', price: 20000 },
+        { id: 'rich_lady', name: 'Rich Lady', price: 20000 },
+        { id: 'baileys', name: 'Baileys', price: 20000 },
+        { id: 'moregan', name: 'Moregan', price: 20000 },
+      ],
+    },
+    {
+      category: 'Soft Drinks',
+      drinks: [
+        { id: 'hollandia', name: 'Hollandia', price: 3000 },
+        { id: 'chi_exotic', name: 'Chi Exotic', price: 3000 },
+        { id: 'coke', name: 'Coke', price: 500 },
+        { id: 'water', name: 'Water', price: 500 },
+        { id: 'black_bullet', name: 'Black Bullet', price: 3000 },
+        { id: 'all_beers', name: 'All Beers', price: 3000 },
+        { id: 'all_cigarette', name: 'All Cigarette', price: 2000 },
+        { id: 'energy_drink', name: 'Energy Drink', price: 3000 },
+        { id: 'tiger_vodka', name: 'Tiger Vodka', price: 3000 },
+        { id: 'tiger_cream_berry', name: 'Tiger Cream Berry', price: 3000 },
+        { id: 'red_bull', name: 'Red Bull', price: 3000 },
+        { id: 'power_horse', name: 'Power Horse', price: 3000 },
+      ],
+    },
+    {
+      category: 'Whiskies',
+      drinks: [
+        { id: 'azul', name: 'Azul', price: 450000 },
+        { id: 'don_julio', name: 'Don Julio', price: 500000 },
+        { id: 'hennessy_xo', name: 'Hennessy X.O', price: 450000 },
+        { id: 'hennessy_vsop', name: 'Hennessy V.S.O.P', price: 160000 },
+        { id: 'balantine', name: 'Balantine', price: 40000 },
+        { id: 'hennessy_vs', name: 'Hennessy V.S', price: 85000 },
+        { id: 'martel_vsop', name: 'Martel V.S.O.P', price: 100000 },
+        { id: 'glenfiddich_18', name: 'Glenfiddich 18 Years', price: 200000 },
+        { id: 'glenfiddich_21', name: 'Glenfiddich 21 Years', price: 300000 },
+        { id: 'black_jameson', name: 'Black Jameson', price: 50000 },
+        { id: 'green_jameson', name: 'Green Jameson', price: 40000 },
+        { id: 'chinese_herbal', name: 'Chinese Herbal', price: 20000 },
+        { id: 'red_label', name: 'Red Label', price: 35000 },
+        { id: 'the_nines', name: 'The Nines', price: 20000 },
+        { id: 'remy_martins_vsop', name: 'Remy Martins V.S.O.P', price: 150000 },
+        { id: 'moet', name: 'Moet', price: 180000 },
+        { id: 'khort', name: 'Khort', price: 35000 },
+        { id: 'henkel', name: 'Henkel', price: 20000 },
+        { id: 'medium_campari', name: 'Medium Campari', price: 35000 },
+        { id: 'royal_oak', name: 'Royal Oak', price: 40000 },
+        { id: 'jadon', name: 'Jadon', price: 25000, img: redLabel },
+        { id: 'singleton', name: 'Singleton', price: 150000 },
+        { id: 'belaire', name: 'Belaire', price: 80000 },
+      ],
+    },
   ];
 
   const SERVICE_CHARGE_RATE = 0.05;
@@ -114,7 +125,9 @@ const ClubK = () => {
   };
 
   const totalPrice = Object.entries(selectedDrinks).reduce((total, [id, qty]) => {
-    const drink = drinksList.find((d) => d.id === id);
+    const drink = drinksList
+      .flatMap((category) => category.drinks)
+      .find((d) => d.id === id);
     return total + (drink ? drink.price * qty : 0);
   }, 0);
 
@@ -130,11 +143,13 @@ const ClubK = () => {
 
   const orderLines = Object.entries(selectedDrinks)
     .map(([id, qty]) => {
-      const drink = drinksList.find(d => d.id === id);
+      const drink = drinksList
+        .flatMap((category) => category.drinks)
+        .find((d) => d.id === id);
       if (!drink) return null;
       return `- ${drink.name} × ${qty} = ₦${(drink.price * qty).toLocaleString()}`;
     })
-    .filter(x => x)
+    .filter((x) => x)
     .join('\n');
 
   const whatsappMessage = encodeURIComponent(
@@ -180,7 +195,7 @@ const ClubK = () => {
         </section>
 
         {isModalOpen && (
-          <div className="fixed inset-0 bg-black/60 flex items-center justify-center px-4 z-[10000]">
+          <div className="fixed inset-0 flex items-center justify-center px-4 z-[10000]">
             <div
               ref={modalRef}
               className="bg-[#fef3c7] rounded-xl border-4 border-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] max-w-md w-full p-0 relative max-h-[80vh] overflow-y-auto"
@@ -197,47 +212,51 @@ const ClubK = () => {
                 {!showBankDetails ? (
                   <>
                     <h2 className="text-xl font-bold mb-4 text-red-600">Select Your Drinks</h2>
-                    <div className="space-y-4 mb-6">
-                      {drinksList.map(({ id, name, price }) => {
-                        const qty = selectedDrinks[id] || 0;
-                        return (
-                          <div key={id} className="flex items-center gap-4">
-                            
-                            <div className="flex-1">
-                              <h3 className="text-lg font-semibold text-black">{name}</h3>
-                              <p className="text-green-700 font-bold">₦{price.toLocaleString()}</p>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <button
-                                onClick={() => updateDrinkQuantity(id, qty - 1)}
-                                className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded disabled:opacity-50"
-                                disabled={qty === 0}
-                                aria-label={`Decrease quantity of ${name}`}
-                              >
-                                −
-                              </button>
-                              <input
-                                type="number"
-                                min="0"
-                                value={qty}
-                                onChange={(e) => {
-                                  const val = Math.max(0, Number(e.target.value));
-                                  updateDrinkQuantity(id, val);
-                                }}
-                                className="w-12 text-center rounded border border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black bg-white"
-                                aria-label={`Quantity of ${name}`}
-                              />
-                              <button
-                                onClick={() => updateDrinkQuantity(id, qty + 1)}
-                                className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded"
-                                aria-label={`Increase quantity of ${name}`}
-                              >
-                                +
-                              </button>
-                            </div>
-                          </div>
-                        );
-                      })}
+                    <div className="space-y-6 mb-6">
+                      {drinksList.map((category, index) => (
+                        <div key={index} className="space-y-4">
+                          <h3 className="text-lg font-bold text-red-600 border-b border-yellow-300 pb-2">{category.category}</h3>
+                          {category.drinks.map(({ id, name, price }) => {
+                            const qty = selectedDrinks[id] || 0;
+                            return (
+                              <div key={id} className="flex items-center gap-4">
+                                <div className="flex-1">
+                                  <h4 className="text-md font-semibold text-black">{name}</h4>
+                                  <p className="text-green-700 font-bold">₦{price.toLocaleString()}</p>
+                                </div>
+                                <div className="flex items-center space-x-2">
+                                  <button
+                                    onClick={() => updateDrinkQuantity(id, qty - 1)}
+                                    className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded disabled:opacity-50"
+                                    disabled={qty === 0}
+                                    aria-label={`Decrease quantity of ${name}`}
+                                  >
+                                    −
+                                  </button>
+                                  <input
+                                    type="number"
+                                    min="0"
+                                    value={qty}
+                                    onChange={(e) => {
+                                      const val = Math.max(0, Number(e.target.value));
+                                      updateDrinkQuantity(id, val);
+                                    }}
+                                    className="w-12 text-center rounded border border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black bg-white"
+                                    aria-label={`Quantity of ${name}`}
+                                  />
+                                  <button
+                                    onClick={() => updateDrinkQuantity(id, qty + 1)}
+                                    className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold px-3 rounded"
+                                    aria-label={`Increase quantity of ${name}`}
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ))}
                     </div>
                     <div className="flex flex-col gap-2 mb-6 border-t border-yellow-300 pt-4">
                       <div className="flex justify-between items-center">
