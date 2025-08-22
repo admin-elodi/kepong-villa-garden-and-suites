@@ -1,7 +1,7 @@
 import ezinwanneVideo from '@/assets/videos/ezin.mp4';
 import nsukka from '@/assets/images/foodies/fish.webp';
 import tessy from '@/assets/images/foodies/nsala.webp';
-import banquet from '@/assets/images/foodies/banquets.webp';
+import banquet from '@/assets/images/foodies/meals.jpg';
 import chickenSalad from '@/assets/images/foodies/chicken.webp';
 import fishBarbecue from '@/assets/images/foodies/max.webp';
 import abacha from '@/assets/images/foodies/ezeagu.webp';
@@ -80,7 +80,7 @@ const foodies = [
     },
     menu: [
       { category: 'Breakfast' },
-      { id: 'banquet1', name: 'Chips and Egg Sauce', price: 4000, isOrderable: true },
+      { id: 'banquet1', name: 'Chips and Egg Sauce', price: 2000, isOrderable: true },
       { id: 'banquet2', name: 'Tea & Bread Toast', price: 2000, isOrderable: true },
       { id: 'banquet3', name: 'Golden Morn', price: 2000, isOrderable: true },
 

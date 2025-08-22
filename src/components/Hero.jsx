@@ -3,19 +3,21 @@ import DroneOrderModal from './DroneOrderModal';
 import ReserveTableModal from '@/components/ReserveTableModal';
 
 // Import images
-import amaka from '@/assets/images/foodies/shawarma.webp';
-import chilling from '@/assets/images/homepage/snooker.webp';
 import djulio from '@/assets/images/homepage/donj.webp';
-import unsplash from '@/assets/images/homepage/snooker-table.webp';
-import hotel from '@/assets/images/foodies/max.webp';
+import nsala from '@/assets/images/foodies/nsala.webp';
+import chilling from '@/assets/images/homepage/snooker.webp';
+
+import rice from '@/assets/images/foodies/rice-eggstew.jpg';
+import hotel from '@/assets/images/hotel/executive.webp';
 import palmWine from '@/assets/images/foodies/palm.webp';
-import food from '@/assets/images/foodies/food.webp';
+import food from '@/assets/images/foodies/max.webp';
 
 const carouselImages = [
-  { src: amaka, alt: 'Luxurious room at Kepong Villa Garden & Suites - Amaka' },
-  { src: chilling, alt: 'Relaxing ambiance at Kepong Villa - Chilling area' },
   { src: djulio, alt: 'Deluxe Suite at Kepong Villa Garden & Suites' },
-  { src: unsplash, alt: 'Cozy rooms' },
+  { src: nsala, alt: 'Luxurious room at Kepong Villa Garden & Suites - Nsala' },
+  { src: chilling, alt: 'Relaxing ambiance at Kepong Villa - Chilling area' },
+
+  { src: rice, alt: 'rice' },
   { src: hotel, alt: 'Front building' },
   { src: palmWine, alt: 'Palm wine from Nsukka' },
   { src: food, alt: 'Good food' },
@@ -112,7 +114,7 @@ const Hero = ({ setIsModalOpen }) => {
   return (
     <section
       className="
-        relative min-h-screen w-full m-0 p-0 font-montserrat text-gray-200 overflow-hidden
+        relative min-h-screen md:min-h-[160vh] w-full m-0 p-0 font-montserrat text-gray-200 overflow-hidden
         pt-[112px] md:pt-[112px] /* offset fixed header + ticker height on md and up */
       "
       aria-label="Hero section showcasing Kepong Villa Garden & Suites"
