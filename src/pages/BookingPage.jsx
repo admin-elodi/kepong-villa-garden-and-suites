@@ -11,21 +11,21 @@ import shadesImage from '@/assets/images/bookings/shades.webp';
 const rooms = [
   {
     id: 1,
-    roomType: 'Single',
+    roomType: 'Single Room',
     price: 7000,
     imageURL: singleRoom,
     amenities: ['Double Bed', 'Flatscreen'],
   },
   {
     id: 2,
-    roomType: 'Deluxe',
+    roomType: 'Deluxe Suite',
     price: 10000,
     imageURL: deluxe,
     amenities: ['Queen Bed', 'Work Desk', 'Flatscreen'],
   },
   {
     id: 3,
-    roomType: 'Executive',
+    roomType: 'Executive Suite',
     price: 15000,
     imageURL: executive,
     amenities: ['King Bed', 'Balcony', 'Flatscreen', 'Mini Bar'],
@@ -136,10 +136,14 @@ const BookingPage = () => {
             className="text-center py-12 rounded-lg bg-gradient-to-br from-red-600 to-red-800 shadow-lg max-w-3xl mx-auto"
           >
             <h2 className="text-3xl font-semibold text-white mb-6 drop-shadow-md">
-              Booking Confirmation
+              Confirm Your Booking
             </h2>
             <p className="text-gray-100 mb-4 text-lg leading-relaxed px-6">
-              Thank you for booking a {selectedRoom?.roomType} at Kepong Villa Garden & Suites! Please make your payment via bank transfer using the details below:
+              Thanks for choosing {selectedRoom?.roomType} at Kepong Villa Garden & Suites! 
+            </p>
+            <p>
+              Please make payment via bank transfer to:
+
             </p>
             <div className="text-left max-w-md mx-auto bg-gray-900/50 p-4 rounded-lg mb-6">
               <p className="text-gray-100 mb-2"><strong>Bank:</strong> Wema Bank</p>
@@ -148,17 +152,17 @@ const BookingPage = () => {
               <p className="text-gray-100 mb-2"><strong>Reference:</strong> Your Full Name</p>
             </div>
             <p className="text-gray-100 mb-6 text-lg leading-relaxed px-6">
-              For further assistance, please call us at <a href="tel:08134493949" className="text-white underline">08134493949</a>.
+              For further assistance, please call us at <a href="tel:09162836505" className="text-white underline">09162836505</a>.
             </p>
             <div className="flex justify-center gap-6">
               <a
-                href="https://wa.me/08134493949?text=Hello,%20I%20have%20made%20a%20booking%20for%20a%20room%20at%20Kepong%20Villa.%20Please%20confirm%20my%20payment."
+                href="https://wa.me/09162836505?text=Hello,%20I%20have%20made%20a%20booking%20for%20a%20room%20at%20Kepong%20Villa.%20Please%20confirm%20my%20payment."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold text-lg border-2 border-white shadow-md hover:bg-gray-100 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
                 aria-label="Contact us on WhatsApp to confirm your booking"
               >
-                Confirm via WhatsApp
+                Send Evidence via WhatsApp
               </a>
               <button
                 onClick={handleCloseModal}
