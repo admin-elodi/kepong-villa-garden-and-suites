@@ -97,19 +97,19 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="p-2 rounded-lg hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0"
+            className="border-4 border-red-600 rounded-sm hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0"
           >
             <img
               src={logo}
               alt="Kepong Villa Garden and Suites Logo"
-              className="w-12 h-8 md:w-[90px] md:h-[60px] rounded-sm"
+              className="w-12 h-8 md:w-[90px] md:h-[60px] border-2 border-white rounded-sm"
             />
           </NavLink>
 
           {/* Center title (mobile only) */}
           <div className="flex-1 flex justify-center md:hidden px-2">
             <span
-              className="text-[12.5px] sm:text-[16px] tracking-widest uppercase font-extrabold text-red-600 select-none whitespace-nowrap overflow-hidden text-ellipsis"
+              className="text-[12.5px] sm:text-[16px] tracking-widest uppercase font-extrabold text-white select-none whitespace-nowrap overflow-hidden text-ellipsis"
               style={{
                 letterSpacing: '0.08em',
                 maxWidth: '100%',
@@ -144,9 +144,9 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
               </svg>
             ) : (
               <div className="flex flex-col justify-between w-7 h-6">
-                <span className="block h-[3px] bg-red-600"></span>
-                <span className="block h-[3px] bg-red-600"></span>
-                <span className="block h-[3px] bg-red-600"></span>
+                <span className="block h-[3px] bg-white"></span>
+                <span className="block h-[3px] bg-white"></span>
+                <span className="block h-[3px] bg-white"></span>
               </div>
             )}
           </button>

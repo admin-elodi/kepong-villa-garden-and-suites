@@ -33,21 +33,17 @@ const KepongFoodies = () => {
 
   return (
     <main
-      className="min-h-screen font-montserrat text-white px-6 md:px-16 pt-[160px] pb-12 relative bg-cover bg-center bg-no-repeat"
+      className="min-h-screen font-montserrat text-white px-6 md:px-16 pt-[160px] pb-2 relative bg-cover bg-center bg-no-repeat"
   style={{ backgroundImage: `url(${foodiesBg})` }}
     >
       {/* Background overlay */}
       <div className="absolute inset-0 bg-black opacity-80 -z-10"></div>
 
       {/* Heading */}
-      <section className="bg-black/60 text-center rounded-lg mx-auto py-20 md:py-40 relative z-10">
-        <h1 className="text-4xl font-bold text-white">Kepong Foodies</h1>
-      </section>
-
-      {/* Full width subtitle with bg-black/60 */}
-      <section className="w-full bg-black/60 mb-6 py-4 relative z-10 text-center border-2 border-white rounded-lg">
+      <section className="bg-black/60 text-center rounded-lg mx-auto py-8 md:py-30 relative z-10">
+        <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Kepong Foodies</h1>
         <h3 className="text-white max-w-7xl mx-auto px-4">
-          Foodies for Excellent Services at Kepong Villa Garden & Suites, Enugu. Visit or Book Online
+          Visit Kepong or Book Online For Delivery to Your Home or Office
         </h3>
       </section>
 
