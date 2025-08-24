@@ -211,10 +211,10 @@ const FeaturedEntertainers = () => {
               </p>
               <button
                 onClick={handleReserveTable}
-                className="bg-red-600 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-700 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="bg-red-600 text-white font-bold border-2 border-white px-8 py-2 rounded-lg text-base hover:bg-red-700 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
                 aria-label="Reserve your table"
               >
-                Reserve Table-For-Four
+                Book Table-For-Four
               </button>
             </div>
             <div>
@@ -223,7 +223,7 @@ const FeaturedEntertainers = () => {
               </p>
               <Link
                 to="/kepong-foodies"
-                className="bg-gray-900/70 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-600 hover:border-red-600 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center"
+                className="bg-gray-900/70 text-white font-bold border-2 border-white px-8 py-2 rounded-lg text-base hover:bg-red-600 hover:border-red-600 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center"
                 aria-label="Enjoy Kepong Foodies"
               >
                 Visit Foodies Page
@@ -235,7 +235,7 @@ const FeaturedEntertainers = () => {
               </p>
               <Link
                 to="/bookings"
-                className="bg-gray-900/70 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-600 hover:border-red-600 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center"
+                className="bg-gray-900/70 text-white font-bold border-2 border-white px-8 py-2 rounded-lg text-base hover:bg-red-600 hover:border-red-600 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center"
                 aria-label="Book Hotel"
               >
                 Book Hotel
