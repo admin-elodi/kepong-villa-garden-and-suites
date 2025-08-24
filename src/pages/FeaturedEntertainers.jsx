@@ -3,7 +3,6 @@ import ReserveTableModal from '@/components/ReserveTableModal';
 import FeaturedVideos from '@/components/FeaturedVideos';
 import { Link } from 'react-router-dom';
 import rappersImage from '@/assets/images/entertainment/rappers.webp';
-
 import clubbing from '@/assets/videos/clubbing.mp4';
 import club from '@/assets/videos/club.mp4';
 import djDemure from '@/assets/videos/dj-demure.mp4';
@@ -158,13 +157,13 @@ const FeaturedEntertainers = () => {
             </h2>
           </div>
 
-          {/* Buttons container: overflow-x-auto removed on desktop */}
+          {/* Buttons container: Adjusted for consistent text centering */}
           <div className="flex justify-center gap-4 mb-8 flex-nowrap px-2 max-w-xs sm:max-w-none mx-auto">
             {['comedians', 'dancers', 'hypemen'].map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`flex-shrink-0 w-24 sm:w-auto px-4 py-3 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-red-400 ${
+                className={`flex-shrink-0 w-auto min-w-fit px-4 py-3 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center ${
                   selectedCategory === category
                     ? 'bg-red-600 text-white shadow-lg transform scale-105'
                     : 'bg-gray-900/50 text-gray-300 hover:bg-red-600 hover:text-white'

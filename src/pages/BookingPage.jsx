@@ -156,7 +156,7 @@ const BookingPage = () => {
                 Thanks for choosing {selectedRoom?.roomType} at <br />Kepong Villa Garden & Suites! 
               </p>
               <p>
-                Please make payment with your bank app & <br /> send evidence via link whatsapp number below:
+                Make payment with your bank app to below account & <br /> send evidence through the WhatsApp link:
               </p>
               <div className="text-left max-w-md mx-auto bg-gray-900/50 p-4 rounded-lg mb-6">
                 <p className="text-gray-100 mb-2"><strong>Bank:</strong> Wema Bank</p>
