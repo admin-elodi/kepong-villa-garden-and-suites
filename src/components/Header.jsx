@@ -51,7 +51,7 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
   return (
     <>
       <header
-        className="fixed top-0 left-0 w-full z-20 font-montserrat border-2 border-red-600 md:border-b md:border-red-600 md:border-x-0 md:border-t-0 bg-black"
+        className="fixed top-0 left-0 w-full z-30 font-montserrat border-2 border-red-600 md:border-b md:border-red-600 md:border-x-0 md:border-t-0 bg-black"
         role="banner"
       >
         <style>

@@ -131,7 +131,7 @@ const FeaturedEntertainers = () => {
 
   return (
     <main
-      className="min-h-screen font-montserrat text-red-600 pt-[185px] md:pt-[250px] pb-34 bg-cover bg-center bg-fixed absolute z-10"
+      className="min-h-screen font-montserrat text-red-600 pt-[185px] md:pt-[250px] pb-34 bg-cover bg-center bg-fixed z-10"
       style={{
         backgroundImage: `url(${rappersImage})`,
         backgroundColor: 'rgba(0, 0, 0, 0.7)',
@@ -202,9 +202,9 @@ const FeaturedEntertainers = () => {
 
         <section className="text-center mb-8 max-w-3xl mx-auto">
           <p className="text-white text-lg md:text-xl font-semibold mb-6">
-            Enjoy food, drink, entertainment and hotel
+            Enjoy Kepong Foodies, Book Hotel
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
+          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8 px-12">
             <button
               onClick={handleReserveTable}
               className="bg-red-600 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-700 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"

@@ -12,6 +12,7 @@ import hotel from '@/assets/images/hotel/executive.webp';
 import palmWine from '@/assets/images/foodies/palm.webp';
 import food from '@/assets/images/foodies/max.webp';
 
+
 const carouselImages = [
   { src: djulio, alt: 'Deluxe Suite at Kepong Villa Garden & Suites' },
   { src: nsala, alt: 'Luxurious room at Kepong Villa Garden & Suites - Nsala' },
@@ -21,6 +22,7 @@ const carouselImages = [
   { src: hotel, alt: 'Front building' },
   { src: palmWine, alt: 'Palm wine from Nsukka' },
   { src: food, alt: 'Good food' },
+ 
 ];
 
 // Kepong official red
