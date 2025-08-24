@@ -133,7 +133,7 @@ const BookingPage = () => {
         ) : (
           <section
             ref={modalRef}
-            className="text-center py-12 rounded-lg bg-gradient-to-br from-red-600 to-red-800 shadow-lg max-w-3xl mx-auto"
+            className="z-50 text-center py-12 px-2 rounded-lg bg-gradient-to-br from-red-600 to-red-800 shadow-lg max-w-3xl mx-auto"
           >
             <h2 className="text-3xl font-semibold text-white mb-6 drop-shadow-md">
               Confirm Your Booking

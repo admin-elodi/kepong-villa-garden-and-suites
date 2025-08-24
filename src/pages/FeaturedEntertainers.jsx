@@ -203,7 +203,7 @@ const FeaturedEntertainers = () => {
 
         <section className="text-center mb-8 max-w-3xl mx-auto">
           <p className="text-white text-lg md:text-xl font-semibold mb-6">
-            Enjoy good food & drink at Kepong & maybe book hotel
+            Enjoy food, drink, entertainment and hotel
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
             <button

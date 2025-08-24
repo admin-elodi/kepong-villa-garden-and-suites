@@ -51,7 +51,7 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
   return (
     <>
       <header
-        className="fixed top-0 left-0 w-full z-50 font-montserrat border-2 border-red-600 md:border-b md:border-red-600 md:border-x-0 md:border-t-0 bg-black"
+        className="fixed top-0 left-0 w-full z-20 font-montserrat border-2 border-red-600 md:border-b md:border-red-600 md:border-x-0 md:border-t-0 bg-black"
         role="banner"
       >
         <style>
@@ -97,12 +97,12 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="border-b-4 border-r-4 border-red-600 hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0 rounded-sm"
+            className="border-b-4 border-red-600 hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0 rounded-sm"
           >
             <img
               src={logo}
               alt="Kepong Villa Garden and Suites Logo"
-              className="w-12 h-8 md:w-[90px] md:h-[60px] border-b-2 border-r-2 border-white rounded-sm"
+              className="w-12 h-8 md:w-[90px] md:h-[60px] border-b-2 border-white rounded-sm"
             />
           </NavLink>
 
