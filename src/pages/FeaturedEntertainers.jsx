@@ -153,7 +153,7 @@ const FeaturedEntertainers = () => {
         <section className="mb-16">
           <div className="w-full text-center mb-6">
             <h2 className="text-2xl font-bold text-white border-b-2 border-red-600 inline-block pb-2">
-              Weekend Lineup
+              Weekly Lineup
             </h2>
           </div>
 
@@ -166,7 +166,7 @@ const FeaturedEntertainers = () => {
                 className={`flex-shrink-0 w-auto min-w-fit px-4 py-3 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center ${
                   selectedCategory === category
                     ? 'bg-red-600 text-white shadow-lg transform scale-105'
-                    : 'bg-gray-900/50 text-gray-300 hover:bg-red-600 hover:text-white'
+                    : 'bg-gray-900/50 text-gray-300 hover:bg-red-600 hover:text-white border-2 border-white'
                 }`}
                 aria-pressed={selectedCategory === category}
               >
@@ -200,37 +200,49 @@ const FeaturedEntertainers = () => {
           </div>
         </section>
 
-        <section className="text-center mb-8 max-w-3xl mx-auto">
-          <p className="text-white text-lg md:text-xl font-semibold mb-6">
-            Enjoy Kepong Foodies, Book Hotel
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8 px-12">
-            <button
-              onClick={handleReserveTable}
-              className="bg-red-600 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-700 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
-              aria-label="Reserve your table"
-            >
-              Reserve Table
-            </button>
-
-            <Link
-              to="/bookings"
-              className="bg-gray-900/70 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-600 hover:border-red-600 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center"
-              aria-label="Book Hotel"
-            >
-              Book Hotel
-            </Link>
-
-            <Link
-              to="/kepong-foodies"
-              className="bg-gray-900/70 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-600 hover:border-red-600 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center"
-              aria-label="Enjoy Kepong Foodies"
-            >
-              Enjoy Kepong Foodies
-            </Link>
+        <section className="text-center mb-8 mx-auto p-2">
+          
+         
+         
+          <div className="flex flex-col sm:flex-row justify-center gap-6 px-12">
+            <div>
+              <p className="text-white text-lg md:text-xl font-semibold">
+                Reserve Kepong Foodies "Table-For-Four" For Best View of Weekly Entertainment
+              </p>
+              <button
+                onClick={handleReserveTable}
+                className="bg-red-600 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-700 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
+                aria-label="Reserve your table"
+              >
+                Reserve Table-For-Four
+              </button>
+            </div>
+            <div>
+              <p className="text-white text-lg md:text-xl font-semibold">
+               Also visit Foodies Page on this site to enjoy their specials on individual basis
+              </p>
+              <Link
+                to="/kepong-foodies"
+                className="bg-gray-900/70 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-600 hover:border-red-600 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center"
+                aria-label="Enjoy Kepong Foodies"
+              >
+                Visit Foodies Page
+              </Link>
+            </div>
+            <div>
+              <p className="text-white text-lg md:text-xl font-semibold">
+               Book hotel for the night
+              </p>
+              <Link
+                to="/bookings"
+                className="bg-gray-900/70 text-white font-bold border-2 border-white px-8 py-3 rounded-lg text-base hover:bg-red-600 hover:border-red-600 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center"
+                aria-label="Book Hotel"
+              >
+                Book Hotel
+              </Link>
+            </div>
           </div>
         </section>
-
         <section className="text-center mb-20">
           <button
             onClick={celebrate}
