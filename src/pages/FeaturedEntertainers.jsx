@@ -200,14 +200,14 @@ const FeaturedEntertainers = () => {
           </div>
         </section>
 
-        <section className="text-center mb-8 mx-auto p-2">
+        <section className="text-center mb-8 mx-auto ml-2 mr-2 py-4 p-2 border-2 border-white rounded-lg bg-black/70">
           
          
          
           <div className="flex flex-col sm:flex-row justify-center gap-6 px-12">
             <div>
-              <p className="text-white text-lg md:text-xl font-semibold">
-                Reserve Kepong Foodies "Table-For-Four" For Best View of Weekly Entertainment
+              <p className="text-white text-lg md:text-xl font-semibold mb-2">
+                For Best Views
               </p>
               <button
                 onClick={handleReserveTable}
@@ -218,8 +218,8 @@ const FeaturedEntertainers = () => {
               </button>
             </div>
             <div>
-              <p className="text-white text-lg md:text-xl font-semibold">
-               Also visit Foodies Page on this site to enjoy their specials on individual basis
+              <p className="text-white text-lg md:text-xl font-semibold mb-2">
+                 Enjoy Foodies Menu
               </p>
               <Link
                 to="/kepong-foodies"
@@ -230,7 +230,7 @@ const FeaturedEntertainers = () => {
               </Link>
             </div>
             <div>
-              <p className="text-white text-lg md:text-xl font-semibold">
+              <p className="text-white text-lg md:text-xl font-semibold mb-2">
                Book hotel for the night
               </p>
               <Link
@@ -243,7 +243,7 @@ const FeaturedEntertainers = () => {
             </div>
           </div>
         </section>
-        <section className="text-center mb-20">
+        <section className="text-center">
           <button
             onClick={celebrate}
             className="inline-block bg-yellow-400 text-black font-extrabold px-10 py-4 rounded-full shadow-xl hover:bg-yellow-300 transition transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-yellow-500 focus:ring-opacity-60"
@@ -252,6 +252,7 @@ const FeaturedEntertainers = () => {
             Celebrate the Weekend!
           </button>
         </section>
+        
 
         <ReserveTableModal isOpen={showModal} onClose={closeModal} />
         <Confetti active={confettiActive} />
