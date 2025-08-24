@@ -34,7 +34,7 @@ const rooms = [
     id: 4,
     roomType: 'Apartment',
     price: 17000,
-    imageURL: apartment, // Will be changed later
+    imageURL: apartment,
     amenities: ['King Bed', 'Balcony', 'Mini Bar', 'Flatscreen', 'Room Service', 'Room & Parlor'],
   },
 ];
@@ -62,14 +62,27 @@ const BookingPage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPromoIndex((prevIndex) => (prevIndex + 1) % promoTexts.length);
-    }, 2000); // Change text every 3 seconds
+    }, 2000); // Change text every 2 seconds
     return () => clearInterval(interval);
   }, []);
 
+  // Scroll to modal when it opens
   useEffect(() => {
     if (showModal && modalRef.current) {
       modalRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }, [showModal]);
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, [showModal]);
 
   const handleCloseModal = () => {
@@ -131,48 +144,49 @@ const BookingPage = () => {
             </div>
           </div>
         ) : (
-          <section
-            ref={modalRef}
-            className="z-50 text-center py-12 px-2 rounded-lg bg-gradient-to-br from-red-600 to-red-800 shadow-lg max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl font-semibold text-white mb-6 drop-shadow-md">
-              Confirm Your Booking
-            </h2>
-            <p className="text-gray-100 mb-4 text-lg leading-relaxed px-6">
-              Thanks for choosing {selectedRoom?.roomType} at Kepong Villa Garden & Suites! 
-            </p>
-            <p>
-              Please make payment via bank transfer to:
-
-            </p>
-            <div className="text-left max-w-md mx-auto bg-gray-900/50 p-4 rounded-lg mb-6">
-              <p className="text-gray-100 mb-2"><strong>Bank:</strong> Wema Bank</p>
-              <p className="text-gray-100 mb-2"><strong>Account Name:</strong> Kepong Villa Garden & Suites</p>
-              <p className="text-gray-100 mb-2"><strong>Account Number:</strong> 0125564025</p>
-              <p className="text-gray-100 mb-2"><strong>Reference:</strong> Your Full Name</p>
-            </div>
-            <p className="text-gray-100 mb-6 text-lg leading-relaxed px-6">
-              For further assistance, please call us at <a href="tel:09162836505" className="text-white underline">09162836505</a>.
-            </p>
-            <div className="flex justify-center gap-6">
-              <a
-                href="https://wa.me/09162836505?text=Hello,%20I%20have%20made%20a%20booking%20for%20a%20room%20at%20Kepong%20Villa.%20Please%20confirm%20my%20payment."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold text-lg border-2 border-white shadow-md hover:bg-gray-100 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
-                aria-label="Contact us on WhatsApp to confirm your booking"
-              >
-                Send Evidence via WhatsApp
-              </a>
-              <button
-                onClick={handleCloseModal}
-                className="bg-gray-700 text-gray-100 px-8 py-3 rounded-lg font-semibold text-lg border-2 border-gray-600 shadow-md hover:bg-gray-800 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-600"
-                aria-label="Close confirmation modal"
-              >
-                Close
-              </button>
-            </div>
-          </section>
+          <div className="fixed inset-0 z-40 flex items-center justify-center">
+            <section
+              ref={modalRef}
+              className="z-50 text-center py-12 px-2 rounded-lg bg-gradient-to-br from-red-600 to-red-800 shadow-lg max-w-3xl mx-auto"
+            >
+              <h2 className="text-3xl font-semibold text-white mb-6 drop-shadow-md">
+                Confirm Your Booking
+              </h2>
+              <p className="text-gray-100 mb-4 text-lg leading-relaxed px-6">
+                Thanks for choosing {selectedRoom?.roomType} at <br />Kepong Villa Garden & Suites! 
+              </p>
+              <p>
+                Please make payment with your bank app & <br /> send evidence via link whatsapp number below:
+              </p>
+              <div className="text-left max-w-md mx-auto bg-gray-900/50 p-4 rounded-lg mb-6">
+                <p className="text-gray-100 mb-2"><strong>Bank:</strong> Wema Bank</p>
+                <p className="text-gray-100 mb-2"><strong>Account Name:</strong> Kepong Villa Garden & Suites</p>
+                <p className="text-gray-100 mb-2"><strong>Account Number:</strong> 0125564025</p>
+                <p className="text-gray-100 mb-2"><strong>Reference:</strong> Your Full Name</p>
+              </div>
+              <p className="text-gray-100 mb-6 text-lg leading-relaxed px-6">
+                For further assistance, please call us at <a href="tel:09162836505" className="text-white underline">09162836505</a>.
+              </p>
+              <div className="flex justify-center gap-6">
+                <a
+                  href="https://wa.me/09162836505?text=Hello,%20I%20have%20made%20a%20booking%20for%20a%20room%20at%20Kepong%20Villa.%20Please%20confirm%20my%20payment."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold text-lg border-2 border-white shadow-md hover:bg-gray-100 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
+                  aria-label="Contact us on WhatsApp to confirm your booking"
+                >
+                  Send Evidence via WhatsApp
+                </a>
+                <button
+                  onClick={handleCloseModal}
+                  className="bg-gray-700 text-gray-100 px-8 py-3 rounded-lg font-semibold text-lg border-2 border-gray-600 shadow-md hover:bg-gray-800 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-600"
+                  aria-label="Close confirmation modal"
+                >
+                  Close
+                </button>
+              </div>
+            </section>
+          </div>
         )}
       </main>
 
