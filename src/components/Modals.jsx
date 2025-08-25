@@ -1,3 +1,4 @@
+// Modals.js
 import React, { useState, useRef, useEffect } from 'react';
 import meatsBg from '@/assets/images/foodies/meats.webp';
 
@@ -26,7 +27,7 @@ export function MenuModal({ open, onClose, foodie }) {
       role="dialog"
       aria-modal="true"
       tabIndex={-1}
-      className={`fixed inset-x-0 top-[calc(120px+1rem)] mx-auto max-w-md rounded-xl shadow-2xl p-6 ${bgColor} z-[1100] max-h-[80vh] overflow-y-auto`}
+      className={`fixed inset-x-0 top-[calc(120px+1rem)] mx-auto w-full max-w-[90vw] sm:max-w-md rounded-xl shadow-2xl p-6 ${bgColor} z-[1100] max-h-[80vh] overflow-y-auto`}
     >
       <button
         onClick={onClose}
@@ -130,18 +131,17 @@ export function OrderModal({ open, onClose, foodie }) {
 
   const orderLines = Object.entries(selectedItems)
     .map(([id, qty]) => {
-      const item = foodie?.menu.find((i) => i.id === id);
+      const item = foodie.menu.find((i) => i.id === id);
       if (!item || qty === 0) return null;
       return `- ${item.name} × ${qty} = ₦${(item.price * qty).toLocaleString()}`;
     })
     .filter(Boolean)
     .join('\n');
 
+  const whatsappNum = foodie?.whatsapp ? foodie.whatsapp.replace(/\D/g, '') : '2348123456789';
   const whatsappMessage = encodeURIComponent(
     `Hello, I have made payment for the following order from ${foodie?.name}:\n${orderLines}\n\nSubtotal: ₦${totalPrice.toLocaleString()}\nSurcharge: ₦${FIXED_SURCHARGE.toLocaleString()}\nTOTAL: ₦${totalWithSurcharge.toLocaleString()}\n\nPlease confirm from evidence of payment after this message as required by your system.`
   );
-
-  const whatsappNum = foodie?.whatsapp ? foodie.whatsapp.replace(/\D/g, '') : '2348123456789';
   const whatsappLink = `https://wa.me/${whatsappNum}?text=${whatsappMessage}`;
 
   if (!open || !foodie) return null;
@@ -150,7 +150,7 @@ export function OrderModal({ open, onClose, foodie }) {
     <div className="fixed inset-0 mt-16 md:mt-40 flex items-center justify-center z-[1100] px-4">
       <div
         ref={modalRef}
-        className="bg-[#fef3c7] rounded-xl border-4 border-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] max-w-md w-full p-0 relative max-h-[80vh] overflow-y-auto"
+        className="bg-[#fef3c7] rounded-xl border-4 border-red-600 shadow-[0_0_10px_rgba(220,38,38,0.5)] w-full max-w-[90vw] sm:max-w-md p-0 relative max-h-[80vh] overflow-y-auto"
       >
         <button
           onClick={onClose}

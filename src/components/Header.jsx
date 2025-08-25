@@ -97,12 +97,12 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="border-b-4 border-red-600 hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0 rounded-sm"
+            className="border-b-4 border-red-600 hover:scale-105 transition-transform duration-300 flex items-center flex-shrink-0"
           >
             <img
               src={logo}
               alt="Kepong Villa Garden and Suites Logo"
-              className="w-12 h-8 md:w-[90px] md:h-[60px] border-b-2 border-white rounded-sm"
+              className="w-12 h-8 md:w-[90px] md:h-[60px] border-b-2 border-white"
             />
           </NavLink>
 

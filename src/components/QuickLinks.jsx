@@ -176,7 +176,7 @@ const QuickLinks = () => {
                     {moreServices.map((service, index) => (
                       <div
                         key={index}
-                        className="text-red-600 bg-white rounded-lg border-2 p-[5px] border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+                        className="text-red-600 bg-black rounded-lg border-2 p-[5px] border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                         role="button"
                         tabIndex="0"
                         onClick={() => toggleReveal(index)}
@@ -196,7 +196,7 @@ const QuickLinks = () => {
                         <h3 className="text-xl font-bold mb-2">{service.title}</h3>
 
                         {revealedServices[index] ? (
-                          <div className="text-sm mt-2 text-black space-y-1">
+                          <div className="text-sm mt-2 text-white space-y-1">
                             <p>
                               <strong>Phone:</strong> {service.phone}
                             </p>
@@ -221,7 +221,7 @@ const QuickLinks = () => {
                                     href={service.socialLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-yellow-200 hover:underline"
+                                    className="text-white hover:underline"
                                   >
                                     {service.social}
                                   </a>
@@ -232,7 +232,7 @@ const QuickLinks = () => {
                             )}
                           </div>
                         ) : (
-                          <p className="text-black font-semibold">
+                          <p className="text-white font-semibold">
                             Click to reveal contact info
                           </p>
                         )}
