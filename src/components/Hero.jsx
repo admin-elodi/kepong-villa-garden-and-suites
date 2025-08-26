@@ -7,7 +7,7 @@ import djulio from '@/assets/images/homepage/donj.webp';
 import nsala from '@/assets/images/foodies/nsala.webp';
 import chilling from '@/assets/images/homepage/snooker.webp';
 
-import rice from '@/assets/images/foodies/rice-eggstew.jpg';
+import rice from '@/assets/images/foodies/meats.webp';
 import hotel from '@/assets/images/hotel/executive.webp';
 import palmWine from '@/assets/images/foodies/palm.webp';
 import food from '@/assets/images/foodies/max.webp';
