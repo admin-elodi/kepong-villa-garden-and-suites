@@ -163,7 +163,7 @@ const FeaturedEntertainers = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`flex-shrink-0 w-auto min-w-fit px-4 py-3 rounded-lg font-semibold text-center transition focus:outline-none focus:ring-2 focus:ring-red-400 flex items-center justify-center ${
+                className={`flex-shrink-0 w-auto min-w-fit px-4 py-3 rounded-lg font-semibold text-center transition focus:outline-none flex items-center justify-center ${
                   selectedCategory === category
                     ? 'bg-red-600 text-white shadow-lg transform scale-105'
                     : 'bg-gray-900/50 text-gray-300 hover:bg-red-600 hover:text-white border-2 border-white'
@@ -207,7 +207,7 @@ const FeaturedEntertainers = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-6 px-12">
             <div>
               <p className="text-white text-lg md:text-xl font-semibold mb-2">
-                For Best Views
+                For Best Views...
               </p>
               <button
                 onClick={handleReserveTable}
@@ -219,7 +219,7 @@ const FeaturedEntertainers = () => {
             </div>
             <div>
               <p className="text-white text-lg md:text-xl font-semibold mb-2">
-                 Enjoy Foodies Menu
+                 For Great Food...
               </p>
               <Link
                 to="/kepong-foodies"
@@ -231,7 +231,7 @@ const FeaturedEntertainers = () => {
             </div>
             <div>
               <p className="text-white text-lg md:text-xl font-semibold mb-2">
-               Book hotel for the night
+               For Good Night...
               </p>
               <Link
                 to="/bookings"
