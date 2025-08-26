@@ -4,30 +4,31 @@ import apartment from '@/assets/images/hotel/apartment.webp';
 import premiumDrinks from '@/assets/images/homepage/drinks.webp';
 import weddingReception from '@/assets/images/homepage/birthday.webp';
 
-// Import the service images with updated shawarma
+// Import the service images
 import shawarma from '@/assets/images/foodies/shawarma.webp';
 import hair from '@/assets/images/homepage/barbing.webp';
-import carWash from '@/assets/images/homepage/car.webp';  // Replaced light.webp with shawarma.webp
+import carWash from '@/assets/images/homepage/car.webp';
 import nightClub from '@/assets/images/club/clubbers.webp';
 import meat from '@/assets/images/foodies/meats.webp';
 import snooker from '@/assets/images/homepage/snooker.webp';
 import shades from '@/assets/images/homepage/laundry.webp';
 import salad from '@/assets/images/foodies/palm.webp';
 
-// Import the background video
+// Background assets
 import starsVideo from '@/assets/videos/stars.webm';
+import quickBg from '@/assets/images/homepage/drinks.webp';
 
 import '@/css/q-links.css';
 
 const serviceImages = [
-  shawarma,      // Shawarma Bar
-  hair,          // Barber Shop
-  carWash,       // Car Wash
-  nightClub,     // Nightclub
-  snooker,       // Snooker Boardman
-  meat,          // Assorted Meat
-  shades,        // Laundry
-  salad          // Nsukka Palm Wine & Native Food
+  shawarma,
+  hair,
+  carWash,
+  nightClub,
+  snooker,
+  meat,
+  shades,
+  salad,
 ];
 
 const QuickLinks = () => {
@@ -121,15 +122,32 @@ const QuickLinks = () => {
   };
 
   return (
-    <section>
-   
-      <main className="mt-0 font-montserrat border-b-2 border-t-none border-red-600 text-yellow-100 bg-slate-800 relative z-10">
+    <section className="relative z-10">
+      {/* Background Layer */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={quickBg}
+          alt="Quick Links Background"
+          className="w-full h-full object-cover"
+        />
+        <video
+          src={starsVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        />
+        <div className="absolute inset-0 bg-black/50" /> {/* dark overlay for readability */}
+      </div>
+
+      {/* Content */}
+      <main className="mt-0 font-montserrat border-b-2 border-t-none border-red-600 text-yellow-100 relative">
         <div className="w-full border-b border-red-600">
           <section className="py-12">
             <div className="container max-w-screen-xl mx-auto text-center">
               {/* Top Cards Section */}
               <section className="py-12 flex justify-center">
-                
                 <div className="p-8 max-w-6xl w-full text-center shadow-xl">
                   <h2 className="text-xl md:text-xl font-dancing font-bold mb-8 animate-fade-in-up leading-tight tracking-wider text-white">
                     Book room, events, etc...
@@ -176,7 +194,7 @@ const QuickLinks = () => {
                     {moreServices.map((service, index) => (
                       <div
                         key={index}
-                        className="text-red-600 bg-black rounded-lg border-2 p-[5px] border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
+                        className="text-red-600 bg-black/80 rounded-lg border-2 p-[5px] border-red-600 transition-transform hover:scale-105 hover:shadow-2xl cursor-pointer"
                         role="button"
                         tabIndex="0"
                         onClick={() => toggleReveal(index)}
@@ -186,12 +204,11 @@ const QuickLinks = () => {
                           }
                         }}
                       >
-                        {/* Service Image with uniform size and hover grow */}
                         <img
                           src={serviceImages[index % serviceImages.length]}
                           alt={`${service.title} icon`}
                           className="mx-auto mb-4 w-[100%] h-[150px] object-cover rounded-t-sm transition-transform duration-300 ease-in-out hover:scale-110"
-                          style={{ marginTop: '-1px' }} // Almost touches top of container
+                          style={{ marginTop: '-1px' }}
                         />
                         <h3 className="text-xl font-bold mb-2">{service.title}</h3>
 

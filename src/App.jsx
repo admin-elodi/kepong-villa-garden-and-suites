@@ -26,7 +26,9 @@ function App() {
   };
 
   return (
+    
     <Router>
+      
       <ScrollToTop />
       <Header visiblePages={visiblePages} setIsModalOpen={setIsModalOpen} />
       <Routes>
