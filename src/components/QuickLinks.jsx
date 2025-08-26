@@ -157,7 +157,7 @@ const QuickLinks = () => {
                     {topCards.map((card, index) => (
                       <div
                         key={index}
-                        className="bg-white border-2 border-white text-black p-4 rounded-lg shadow-xl flex flex-col min-h-[360px] transition-transform hover:scale-105 hover:shadow-2xl"
+                        className="bg-black text-white p-4 rounded-lg shadow-xl flex flex-col min-h-[360px] transition-transform hover:scale-105 hover:shadow-2xl"
                       >
                         <img
                           src={card.img}
@@ -173,7 +173,7 @@ const QuickLinks = () => {
                             pathname: card.link,
                             state: card.state,
                           }}
-                          className="mt-auto inline-block bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-slate-500 transition-transform hover:scale-105 duration-300 border-2 border-red shadow-lg focus:ring-2 focus:ring-amber-500"
+                          className="mt-auto inline-block bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-slate-500 transition-transform hover:scale-105 duration-300 border-2 border-white shadow-lg focus:ring-2 focus:ring-amber-500"
                           aria-label={card.btnLabel}
                         >
                           {card.btnLabel}
