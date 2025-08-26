@@ -275,7 +275,7 @@ const QuickLinks = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 bg-black/50" /> {/* dark overlay for readability */}
+        <div className="absolute inset-0" /> {/* dark overlay for readability */}
       </div>
 
       {/* Content */}
@@ -353,6 +353,9 @@ const QuickLinks = () => {
                         <img
                           src={serviceImages[index % serviceImages.length]}
                           alt={`${service.title} icon`}
+                          width="300"
+                          height="150"
+                          loading="lazy"
                           className="mx-auto mb-4 w-[100%] h-[150px] object-cover rounded-t-sm transition-transform duration-300 ease-in-out hover:scale-110"
                           style={{ marginTop: '-1px' }}
                         />
