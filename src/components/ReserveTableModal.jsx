@@ -3,19 +3,58 @@ import { createPortal } from 'react-dom';
 import tableImage from '@/assets/images/homepage/table-for-four.webp';
 
 const enquiryPhoneNumber = '+2348166540841';
-const tablePrice = 50000; // Price per table in Naira
 
-const menuItems = [
-  { name: 'Grilled Suya Skewers', description: 'Spicy and smoky Nigerian beef skewers', quantity: '4 skewers per table' },
-  { name: 'Peppered Goat Meat', description: 'Tender goat meat with fiery pepper sauce', quantity: '4 servings per table' },
-  { name: 'Palm Wine', description: 'Traditional sweet and refreshing palm wine', quantity: '4 full jars + 0.5 jar free per table' },
-  { name: 'Zobo Drink', description: 'Hibiscus flower juice, tangy and healthy', quantity: '4 glasses per table' },
-  { name: 'Chapman Cocktail', description: 'A popular Nigerian citrus cocktail', quantity: '4 glasses per table' },
+// Integrated Table For Four menu with combo offerings
+const tableForFourMenus = [
+  {
+    combo: 'Vitality Feast',
+    description: 'For boosting energy and wellness',
+    dineIn: [
+      { name: 'Ukwa', quantity: 2, description: 'Traditional African breadfruit, rich in fiber and vitamins.' },
+      { name: 'Nsala Soup with Eba', quantity: 4, description: 'Light, spicy white soup for digestive health.' },
+      { name: 'Chicken Salad', quantity: 2, description: 'Fresh, protein-rich salad for vitality.' },
+      { name: 'Zobo Drink', quantity: 4, description: 'Hibiscus juice, high in antioxidants.' },
+    ],
+    takeHome: [
+      { name: 'Abacha', quantity: 2, description: 'Tasty African salad, perfect for sharing.' },
+      { name: 'Tiger Nut Drinks', quantity: 4, description: 'Nutrient-dense drink for home enjoyment.' },
+    ],
+    price: 50000, // Unified price per table
+  },
+  {
+    combo: 'Traditional Delight',
+    description: 'Very rich local dishes and flavors',
+    dineIn: [
+      { name: 'Peppered Goat Meat', quantity: 4, description: 'Fiery, protein-packed goat meat.' },
+      { name: 'Jollof Rice & Chicken', quantity: 4, description: 'Flavorful rice with tender chicken.' },
+      { name: 'Palm Wine', quantity: 4, description: 'Sweet, traditional drink for relaxation.' },
+    ],
+    takeHome: [
+      { name: 'Fried Chicken with Chips', quantity: 2, description: 'Crispy chicken for home feasts.' },
+      { name: 'Ukwa Fresh with Dried Fish', quantity: 2, description: 'Portable breadfruit delicacy.' },
+    ],
+    price: 50000, // Unified price per table
+  },
+  {
+    combo: 'Seafood Special',
+    description: 'Dishes that celebrate Nigeria’s seafood',
+    dineIn: [
+      { name: 'Barbecue Fish', quantity: 1, description: 'Grilled fish, rich in omega-3.' },
+      { name: 'Fresh Fish Peppersoup (Head)', quantity: 2, description: 'Spicy, warming fish soup.' },
+      { name: 'Chapman Cocktail', quantity: 4, description: 'Refreshing citrus cocktail.' },
+    ],
+    takeHome: [
+      { name: 'Achicha/Agbugbu with Fish', quantity: 2, description: 'Fish-infused delicacy for sharing.' },
+      { name: 'Dry Fish, Green & Ukpaka', quantity: 2, description: 'Flavorful fish mix for home.' },
+    ],
+    price: 50000, // Unified price per table
+  },
 ];
 
 const ReserveTableModal = ({ isOpen, onClose }) => {
   const [showPayment, setShowPayment] = useState(false);
   const [tables, setTables] = useState(1);
+  const [selectedCombo, setSelectedCombo] = useState(tableForFourMenus[0]);
 
   if (!isOpen || !onClose) return null;
 
@@ -23,6 +62,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
     onClose();
     setShowPayment(false);
     setTables(1);
+    setSelectedCombo(tableForFourMenus[0]);
   };
 
   const handleTablesChange = (e) => {
@@ -37,6 +77,11 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
     }
   };
 
+  const handleComboChange = (e) => {
+    const combo = tableForFourMenus.find((menu) => menu.combo === e.target.value);
+    setSelectedCombo(combo);
+  };
+
   const handleProceedToPayment = () => {
     if (!tables || tables < 1) {
       alert('Please enter at least 1 table.');
@@ -46,23 +91,27 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
   };
 
   const openWhatsApp = () => {
-    const menuDetails = menuItems
-      .map(
+    const menuDetails = [
+      ...selectedCombo.dineIn.map(
         (item) =>
-          `${item.name}: ${item.quantity} x ${tables} table${tables > 1 ? 's' : ''}`
-      )
-      .join('\n');
+          `${item.name}: ${item.quantity} serving${item.quantity > 1 ? 's' : ''} per table × ${tables} table${tables > 1 ? 's' : ''}`
+      ),
+      ...selectedCombo.takeHome.map(
+        (item) =>
+          `${item.name}: ${item.quantity} serving${item.quantity > 1 ? 's' : ''} per table × ${tables} table${tables > 1 ? 's' : ''} (Take-Home)`
+      ),
+    ].join('\n');
 
     const message = encodeURIComponent(
-      `Hello Kepong Villa Team,\n\nI would like to book ${tables} table${tables > 1 ? 's' : ''} for four, priced at ₦${(
-        tables * tablePrice
-      ).toLocaleString()}.\n\nMenu Details:\n${menuDetails}\n\nPlease note that payment details will follow shortly. Thank you!`
+      `Hello Kepong Villa Team,\n\nI would like to book ${tables} Table${tables > 1 ? 's' : ''} For Four, combo "${selectedCombo.combo}" at ₦${(
+        tables * selectedCombo.price
+      ).toLocaleString()} each.\n\nMenu Details:\n${menuDetails}\n\nPlease provide payment details and confirmation. Thank you!`
     );
 
     window.open(`https://wa.me/${enquiryPhoneNumber.replace(/\D/g, '')}?text=${message}`, '_blank');
   };
 
-  const totalPrice = tables && !isNaN(tables) ? tables * tablePrice : 0;
+  const totalPrice = tables && !isNaN(tables) ? tables * selectedCombo.price : 0;
 
   return createPortal(
     <div
@@ -76,57 +125,125 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
       tabIndex={-1}
     >
       <div
-        className="bg-gray-900 rounded-lg shadow-xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto text-white"
+        className="bg-gray-900 rounded-xl shadow-2xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-amber-400 scrollbar-track-gray-900"
+        style={{ scrollBehavior: 'smooth' }}
         tabIndex={0}
       >
         <button
           onClick={handleClose}
-          className="absolute top-2 right-2 text-white hover:text-amber-400 focus:ring-2 focus:ring-amber-500 focus:outline-none text-2xl"
+          className="absolute top-4 right-4 text-white hover:text-amber-400 focus:ring-2 focus:ring-amber-400 focus:outline-none text-2xl transition-colors duration-200"
           aria-label="Close modal"
           type="button"
         >
           ✕
         </button>
 
-        <h2 id="reserve-title" className="text-2xl font-extrabold text-yellow-400 text-center mb-2">
-          BOOK TABLE FOR FOUR
+        <h2 id="reserve-title" className="text-3xl font-extrabold text-yellow-400 text-center mb-4 tracking-tight">
+          Book Table For Four
         </h2>
 
         <div
-          className="w-full rounded-lg mb-4 bg-center bg-cover mx-auto"
+          className="w-full rounded-lg mb-6 bg-center bg-cover mx-auto shadow-inner"
           style={{
             backgroundImage: `url(${tableImage})`,
-            height: '120px',
+            height: '140px',
             backgroundColor: '#1F2937',
           }}
           aria-label="Table for four"
         />
 
-        <p className="text-center text-amber-300 italic mb-6 px-2">
-          This menu boosts your vitality and promotes health and natural hydration.
+        <p className="text-center text-amber-200 italic mb-8 px-4 text-lg">
+          Enjoy Kepong's "Table For Four" Special. Dine-in and take some home
         </p>
 
         {!showPayment && (
           <>
-            <ul className="space-y-4 mb-6 max-h-[220px] overflow-y-auto">
-              {menuItems.map(({ name, description, quantity }) => (
-                <li
-                  key={name}
-                  className="bg-emerald-800 bg-opacity-80 rounded-lg p-4 shadow-md"
-                >
-                  <h3 className="text-lg font-semibold text-yellow-300">{name}</h3>
-                  <p className="text-gray-200">{description}</p>
-                  <p className="text-amber-300 font-semibold mt-1">{quantity}</p>
-                </li>
-              ))}
-            </ul>
+            <div className="mb-8">
+              <label
+                htmlFor="combo-select"
+                className="block mb-2 text-yellow-300 font-semibold text-xl text-center"
+              >
+                Select Your Table Combo
+              </label>
+              <select
+                id="combo-select"
+                value={selectedCombo.combo}
+                onChange={handleComboChange}
+                className="md:w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-amber-400 focus:outline-none transition-colors duration-200"
+                aria-label="Select menu combo"
+              >
+                {tableForFourMenus.map((menu) => (
+                  <option key={menu.combo} value={menu.combo}>
+                    {menu.combo}
+                  </option>
+                ))}
+              </select>
+              <p className="text-gray-300 text-sm mt-3 text-center">{selectedCombo.description}</p>
+            </div>
 
-            <div className="mb-6 text-center">
+            <div className="space-y-8 mb-8">
+              <div>
+                <h3 className="text-xl font-semibold text-yellow-300 mb-4">Dine-In Menu</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse rounded-lg overflow-hidden">
+                    <thead>
+                      <tr className="bg-emerald-900 text-yellow-300 uppercase">
+                        <th className="p-3 font-semibold">Dish</th>
+                        <th className="p-3 font-semibold">Description</th>
+                        <th className="p-3 font-semibold text-center">Servings</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {selectedCombo.dineIn.map(({ name, description, quantity }, index) => (
+                        <tr
+                          key={name}
+                          className="bg-emerald-800 bg-opacity-70 hover:bg-opacity-90 transition-all duration-200"
+                          style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
+                        >
+                          <td className="p-3 border-b border-gray-700 text-yellow-200 font-medium">{name}</td>
+                          <td className="p-3 border-b border-gray-700 text-gray-100">{description}</td>
+                          <td className="p-3 border-b border-gray-700 text-amber-300 text-center">{quantity} serving{quantity > 1 ? 's' : ''}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-yellow-300 mb-4">Take-Home Menu</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse rounded-lg overflow-hidden">
+                    <thead>
+                      <tr className="bg-emerald-900 text-yellow-300 uppercase">
+                        <th className="p-3 font-semibold">Dish</th>
+                        <th className="p-3 font-semibold">Description</th>
+                        <th className="p-3 font-semibold text-center">Servings</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {selectedCombo.takeHome.map(({ name, description, quantity }, index) => (
+                        <tr
+                          key={name}
+                          className="bg-emerald-800 bg-opacity-70 hover:bg-opacity-90 transition-all duration-200"
+                          style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
+                        >
+                          <td className="p-3 border-b border-gray-700 text-yellow-200 font-medium">{name}</td>
+                          <td className="p-3 border-b border-gray-700 text-gray-100">{description}</td>
+                          <td className="p-3 border-b border-gray-700 text-amber-300 text-center">{quantity} serving{quantity > 1 ? 's' : ''}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-8 text-center">
               <label
                 htmlFor="tables"
-                className="block mb-2 text-yellow-300 font-semibold text-lg"
+                className="block mb-2 text-yellow-300 font-semibold text-xl"
               >
-                Number of Table-For-Four Units
+                Choose Number of Tables
               </label>
               <input
                 type="number"
@@ -135,14 +252,14 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
                 min="1"
                 value={tables}
                 onChange={handleTablesChange}
-                className="mx-auto w-24 px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:ring-2 focus:ring-amber-500 focus:outline-none text-center"
+                className="mx-auto w-24 px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-amber-400 focus:outline-none text-center transition-colors duration-200"
                 aria-describedby="table-price-desc"
                 aria-label="Number of tables to book"
               />
               <p id="table-price-desc" className="mt-2 text-gray-300 text-sm">
-                Price per table: ₦{tablePrice.toLocaleString()}
+                Price per table (fixed bundle): ₦{selectedCombo.price.toLocaleString()}
               </p>
-              <p className="mt-1 text-amber-400 font-bold text-lg">
+              <p className="mt-2 text-amber-400 font-bold text-xl">
                 Total Price: ₦{totalPrice.toLocaleString()}
               </p>
             </div>
@@ -151,11 +268,10 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 onClick={handleProceedToPayment}
-                className="bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg hover:bg-yellow-500 transition max-w-full whitespace-nowrap"
+                className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-yellow-300 focus:ring-2 focus:ring-amber-400 transition-all duration-200 shadow-md"
                 aria-label="Proceed to payment"
-                style={{ maxWidth: '100%' }}
               >
-                PROCEED TO PAYMENT
+                Proceed to Payment
               </button>
             </div>
           </>
@@ -163,26 +279,26 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
 
         {showPayment && (
           <div>
-            <div className="bg-emerald-900 bg-opacity-95 p-5 rounded-lg shadow text-white text-center border-2 border-yellow-200 mb-6">
+            <div className="bg-emerald-900 bg-opacity-95 p-6 rounded-lg shadow-lg text-white text-center border border-yellow-300 mb-6">
               <h3 className="text-xl font-bold mb-4 text-yellow-200">Bank Account Details</h3>
-              <p className="mb-2 font-semibold text-amber-200">
+              <p className="mb-3 font-semibold text-amber-200">
                 Please make your payment via bank transfer before confirming your reservation.
               </p>
-              <div className="bg-white bg-opacity-90 rounded-lg p-4 mb-2 text-gray-900">
+              <div className="bg-white bg-opacity-90 rounded-lg p-4 mb-3 text-gray-900">
                 <p><strong>Account Name:</strong><br />Kepong Villa Garden & Suites</p>
                 <p><strong>Bank:</strong><br />Wema Bank</p>
                 <p><strong>Account Number:</strong><br />0125564025</p>
               </div>
-              <p className="text-sm text-amber-200 mt-2">
+              <p className="text-sm text-amber-200">
                 Use your full name as payment reference.
               </p>
             </div>
 
-            <div className="flex flex-col items-center space-y-3">
+            <div className="flex flex-col items-center space-y-4">
               <button
                 type="button"
                 onClick={openWhatsApp}
-                className="bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition w-full max-w-xs truncate"
+                className="bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-500 focus:ring-2 focus:ring-green-400 transition-all duration-200 shadow-md w-full max-w-xs"
                 aria-label="Send evidence to WhatsApp"
               >
                 Send Evidence to WhatsApp
@@ -200,6 +316,29 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
           </div>
         )}
       </div>
+
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .scrollbar-thin::-webkit-scrollbar {
+            width: 8px;
+          }
+          .scrollbar-thin::-webkit-scrollbar-track {
+            background: #1F2937;
+            border-radius: 4px;
+          }
+          .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: #FBBF24;
+            border-radius: 4px;
+          }
+          .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+            background: #F59E0B;
+          }
+        `}
+      </style>
     </div>,
     document.body
   );

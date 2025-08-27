@@ -139,7 +139,7 @@ const foodies = [
   },
   {
     id: 5,
-    name: 'Chop with Nazzy',
+    name: 'Chop with Nazzy Chicken',
     image: chickenSalad,
     phone: '+2348045678901',
     whatsapp: '+2348045678901',
