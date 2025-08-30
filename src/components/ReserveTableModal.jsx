@@ -115,7 +115,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
 
   return createPortal(
     <div
-      className="modal-overlay fixed inset-0 flex items-center justify-center z-[1500] p-4"
+      className="modal-overlay fixed inset-0 flex items-center justify-center z-[1500] p-4 bg-black bg-opacity-60"
       role="dialog"
       aria-modal="true"
       aria-labelledby="reserve-title"
@@ -125,7 +125,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
       tabIndex={-1}
     >
       <div
-        className="bg-black border-2 border-white rounded-xl shadow-2xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-black"
+        className="bg-black rounded-xl shadow-2xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-black"
         style={{ scrollBehavior: 'smooth' }}
         tabIndex={0}
       >
@@ -169,7 +169,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
                 id="combo-select"
                 value={selectedCombo.combo}
                 onChange={handleComboChange}
-                className="w-full px-4 py-3 rounded-lg bg-black text-white border border-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none transition-colors duration-200"
+                className="w-full max-w-[calc(100%-2rem)] sm:max-w-full px-4 py-3 rounded-lg bg-black text-white border border-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none transition-colors duration-200"
                 aria-label="Select menu combo"
               >
                 {tableForFourMenus.map((menu) => (
