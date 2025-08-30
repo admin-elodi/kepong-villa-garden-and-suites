@@ -115,7 +115,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
 
   return createPortal(
     <div
-      className="modal-overlay fixed inset-0 flex items-center justify-center z-[1500] p-4 bg-black bg-opacity-60"
+      className="modal-overlay fixed inset-0 flex items-center justify-center z-[1500] p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby="reserve-title"
@@ -125,7 +125,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
       tabIndex={-1}
     >
       <div
-        className="bg-black rounded-xl shadow-2xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-black"
+        className="bg-black border-2 border-white rounded-xl shadow-2xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-black"
         style={{ scrollBehavior: 'smooth' }}
         tabIndex={0}
       >
@@ -192,7 +192,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
                       style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
                     >
                       <h4 className="text-lg font-bold text-white uppercase">{name}</h4>
-                      <p className="text-red-600 text-sm">{quantity} serving{quantity > 1 ? 's' : ''}</p>
+                      <p className="text-yellow-200 text-sm">{quantity} serving{quantity > 1 ? 's' : ''}</p>
                       <p className="text-white text-sm">{description}</p>
                     </div>
                   ))}
@@ -208,7 +208,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
                       style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
                     >
                       <h4 className="text-lg font-bold text-white uppercase">{name}</h4>
-                      <p className="text-red-600 text-sm">{quantity} serving{quantity > 1 ? 's' : ''} (Take-Home)</p>
+                      <p className="text-yellow-200 text-sm">{quantity} serving{quantity > 1 ? 's' : ''} (Take-Home)</p>
                       <p className="text-white text-sm">{description}</p>
                     </div>
                   ))}
