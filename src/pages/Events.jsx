@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import amaka from '@/assets/images/events/amaka.webp';
 import chilling from '@/assets/images/events/chilling.webp';
 import shawarma from '@/assets/images/foodies/max.webp';
+import logo from '@/assets/images/foodies/max.webp';
 import stars from '@/assets/videos/stars.webm';
 import preEventVideo from '@/assets/videos/club.mp4';
 import {
@@ -94,7 +95,7 @@ const Events = () => {
     logoUrl: 'https://dummyimage.com/150x50/00aaff/fff&text=CoolBrew',
     message:
       "CoolBrew proudly refreshes the fun at Amaka's 30th Birthday Bash at Kepong Villa Garden & Suites!",
-    url: 'https://coolbrew.example.com',
+    image: {logo},
     additionalLinks: [
       { label: 'Visit CoolBrew', url: 'https://coolbrew.example.com' },
       { label: 'CoolBrew Promotions', url: 'https://coolbrew.example.com/promotions' },
@@ -327,7 +328,7 @@ const Events = () => {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
-            style={{ position: 'fixed', zIndex: 9999, top: '160px', left: 0, right: 0 }}
+            style={{ position: 'fixed', zIndex: 9999, top: '147px', left: 0, right: 0 }}
             className="max-w-[90%] mx-auto bg-[#00aaff] bg-opacity-90 border-2 border-[#00aaff] rounded-lg p-4 flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg sm:max-w-none sm:justify-start sm:pl-6 sm:pr-4 justify-center relative top-[-50px] sm:top-0"
             aria-label="Sponsored Event Highlight"
           >
@@ -340,7 +341,7 @@ const Events = () => {
                 className="flex-shrink-0"
               >
                 <img
-                  src={sponsor.logoUrl}
+                  src=''
                   alt={`${sponsor.name} logo`}
                   className="h-16 w-auto rounded"
                   loading="lazy"
@@ -530,7 +531,7 @@ const Events = () => {
           whileHover={{ scale: 1.1 }}
           whileFocus={{ scale: 1.1 }}
           onClick={() => setIsModalOpen(true) || setModalView('info')}
-          className="px-6 py-3 cursor-pointer border border-white bg-red-600 text-white font-bold text-lg rounded-lg hover:bg-yellow-300 hover:shadow-lg transition-transform duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-offset-2"
+          className="px-6 py-3 cursor-pointer border border-white bg-red-600 text-white font-bold text-lg rounded-lg hover:bg-slate-500 hover:shadow-lg transition-transform duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-400 focus-visible:ring-offset-2"
           aria-haspopup="dialog"
           aria-controls="advertise-modal"
           aria-expanded={isModalOpen}

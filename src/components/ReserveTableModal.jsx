@@ -125,34 +125,34 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
       tabIndex={-1}
     >
       <div
-        className="bg-gray-900 rounded-xl shadow-2xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-amber-400 scrollbar-track-gray-900"
+        className="bg-black border-2 border-white rounded-xl shadow-2xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-black"
         style={{ scrollBehavior: 'smooth' }}
         tabIndex={0}
       >
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 text-white hover:text-amber-400 focus:ring-2 focus:ring-amber-400 focus:outline-none text-2xl transition-colors duration-200"
+          className="absolute top-4 right-4 text-white hover:text-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none text-2xl transition-colors duration-200"
           aria-label="Close modal"
           type="button"
         >
           ✕
         </button>
 
-        <h2 id="reserve-title" className="text-3xl font-extrabold text-yellow-400 text-center mb-4 tracking-tight">
+        <h2 id="reserve-title" className="text-3xl font-extrabold text-red-600 text-center mb-4 tracking-tight">
           Book Table For Four
         </h2>
 
         <div
-          className="w-full rounded-lg mb-6 bg-center bg-cover mx-auto shadow-inner"
+          className="w-full rounded-lg mb-6 bg-center bg-cover mx-auto shadow-inner border border-red-600"
           style={{
             backgroundImage: `url(${tableImage})`,
             height: '140px',
-            backgroundColor: '#1F2937',
+            backgroundColor: '#000000',
           }}
           aria-label="Table for four"
         />
 
-        <p className="text-center text-amber-200 italic mb-8 px-4 text-lg">
+        <p className="text-center text-white italic mb-8 px-4 text-lg">
           Enjoy Kepong's "Table For Four" Special. Dine-in and take some home
         </p>
 
@@ -161,7 +161,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
             <div className="mb-8">
               <label
                 htmlFor="combo-select"
-                className="block mb-2 text-yellow-300 font-semibold text-xl text-center"
+                className="block mb-2 text-red-600 font-semibold text-xl text-center"
               >
                 Select Your Table Combo
               </label>
@@ -169,71 +169,49 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
                 id="combo-select"
                 value={selectedCombo.combo}
                 onChange={handleComboChange}
-                className="md:w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-amber-400 focus:outline-none transition-colors duration-200"
+                className="w-full px-4 py-3 rounded-lg bg-black text-white border border-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none transition-colors duration-200"
                 aria-label="Select menu combo"
               >
                 {tableForFourMenus.map((menu) => (
-                  <option key={menu.combo} value={menu.combo}>
+                  <option key={menu.combo} value={menu.combo} className="bg-black text-white">
                     {menu.combo}
                   </option>
                 ))}
               </select>
-              <p className="text-gray-300 text-sm mt-3 text-center">{selectedCombo.description}</p>
+              <p className="text-white text-sm mt-3 text-center">{selectedCombo.description}</p>
             </div>
 
             <div className="space-y-8 mb-8">
               <div>
-                <h3 className="text-xl font-semibold text-yellow-300 mb-4">Dine-In Menu</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse rounded-lg overflow-hidden">
-                    <thead>
-                      <tr className="bg-emerald-900 text-yellow-300 uppercase">
-                        <th className="p-3 font-semibold">Dish</th>
-                        <th className="p-3 font-semibold">Description</th>
-                        <th className="p-3 font-semibold text-center">Servings</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {selectedCombo.dineIn.map(({ name, description, quantity }, index) => (
-                        <tr
-                          key={name}
-                          className="bg-emerald-800 bg-opacity-70 hover:bg-opacity-90 transition-all duration-200"
-                          style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
-                        >
-                          <td className="p-3 border-b border-gray-700 text-yellow-200 font-medium">{name}</td>
-                          <td className="p-3 border-b border-gray-700 text-gray-100">{description}</td>
-                          <td className="p-3 border-b border-gray-700 text-amber-300 text-center">{quantity} serving{quantity > 1 ? 's' : ''}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <h3 className="text-xl font-semibold text-red-600 mb-4">Dine-In Menu</h3>
+                <div className="bg-black p-6 rounded-lg border border-red-600 transition-all duration-200">
+                  {selectedCombo.dineIn.map(({ name, description, quantity }, index) => (
+                    <div
+                      key={name}
+                      className="py-2 first:pt-0 last:pb-0"
+                      style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
+                    >
+                      <h4 className="text-lg font-bold text-white uppercase">{name}</h4>
+                      <p className="text-red-600 text-sm">{quantity} serving{quantity > 1 ? 's' : ''}</p>
+                      <p className="text-white text-sm">{description}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-yellow-300 mb-4">Take-Home Menu</h3>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse rounded-lg overflow-hidden">
-                    <thead>
-                      <tr className="bg-emerald-900 text-yellow-300 uppercase">
-                        <th className="p-3 font-semibold">Dish</th>
-                        <th className="p-3 font-semibold">Description</th>
-                        <th className="p-3 font-semibold text-center">Servings</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {selectedCombo.takeHome.map(({ name, description, quantity }, index) => (
-                        <tr
-                          key={name}
-                          className="bg-emerald-800 bg-opacity-70 hover:bg-opacity-90 transition-all duration-200"
-                          style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
-                        >
-                          <td className="p-3 border-b border-gray-700 text-yellow-200 font-medium">{name}</td>
-                          <td className="p-3 border-b border-gray-700 text-gray-100">{description}</td>
-                          <td className="p-3 border-b border-gray-700 text-amber-300 text-center">{quantity} serving{quantity > 1 ? 's' : ''}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <h3 className="text-xl font-semibold text-red-600 mb-4">Take-Home Menu</h3>
+                <div className="bg-black p-6 rounded-lg border border-red-600 transition-all duration-200">
+                  {selectedCombo.takeHome.map(({ name, description, quantity }, index) => (
+                    <div
+                      key={name}
+                      className="py-2 first:pt-0 last:pb-0"
+                      style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
+                    >
+                      <h4 className="text-lg font-bold text-white uppercase">{name}</h4>
+                      <p className="text-red-600 text-sm">{quantity} serving{quantity > 1 ? 's' : ''} (Take-Home)</p>
+                      <p className="text-white text-sm">{description}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -241,7 +219,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
             <div className="mb-8 text-center">
               <label
                 htmlFor="tables"
-                className="block mb-2 text-yellow-300 font-semibold text-xl"
+                className="block mb-2 text-red-600 font-semibold text-xl"
               >
                 Choose Number of Tables
               </label>
@@ -252,14 +230,14 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
                 min="1"
                 value={tables}
                 onChange={handleTablesChange}
-                className="mx-auto w-24 px-3 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:ring-2 focus:ring-amber-400 focus:outline-none text-center transition-colors duration-200"
+                className="mx-auto w-24 px-3 py-2 rounded-lg bg-black text-white border border-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none text-center transition-colors duration-200"
                 aria-describedby="table-price-desc"
                 aria-label="Number of tables to book"
               />
-              <p id="table-price-desc" className="mt-2 text-gray-300 text-sm">
+              <p id="table-price-desc" className="mt-2 text-white text-sm">
                 Price per table (fixed bundle): ₦{selectedCombo.price.toLocaleString()}
               </p>
-              <p className="mt-2 text-amber-400 font-bold text-xl">
+              <p className="mt-2 text-red-600 font-bold text-xl">
                 Total Price: ₦{totalPrice.toLocaleString()}
               </p>
             </div>
@@ -268,7 +246,7 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 onClick={handleProceedToPayment}
-                className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-yellow-300 focus:ring-2 focus:ring-amber-400 transition-all duration-200 shadow-md"
+                className="bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-500 focus:ring-2 focus:ring-red-600 transition-all duration-200 shadow-md"
                 aria-label="Proceed to payment"
               >
                 Proceed to Payment
@@ -279,17 +257,17 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
 
         {showPayment && (
           <div>
-            <div className="bg-emerald-900 bg-opacity-95 p-6 rounded-lg shadow-lg text-white text-center border border-yellow-300 mb-6">
-              <h3 className="text-xl font-bold mb-4 text-yellow-200">Bank Account Details</h3>
-              <p className="mb-3 font-semibold text-amber-200">
+            <div className="bg-black p-6 rounded-lg shadow-lg text-white text-center border border-red-600 mb-6">
+              <h3 className="text-xl font-bold mb-4 text-red-600">Bank Account Details</h3>
+              <p className="mb-3 font-semibold text-white">
                 Please make your payment via bank transfer before confirming your reservation.
               </p>
-              <div className="bg-white bg-opacity-90 rounded-lg p-4 mb-3 text-gray-900">
+              <div className="bg-white bg-opacity-90 rounded-lg p-4 mb-3 text-black">
                 <p><strong>Account Name:</strong><br />Kepong Villa Garden & Suites</p>
                 <p><strong>Bank:</strong><br />Wema Bank</p>
                 <p><strong>Account Number:</strong><br />0125564025</p>
               </div>
-              <p className="text-sm text-amber-200">
+              <p className="text-sm text-white">
                 Use your full name as payment reference.
               </p>
             </div>
@@ -298,16 +276,16 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 onClick={openWhatsApp}
-                className="bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-500 focus:ring-2 focus:ring-green-400 transition-all duration-200 shadow-md w-full max-w-xs"
+                className="bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-500 focus:ring-2 focus:ring-red-600 transition-all duration-200 shadow-md w-full max-w-xs"
                 aria-label="Send evidence to WhatsApp"
               >
                 Send Evidence to WhatsApp
               </button>
-              <p className="text-gray-400 text-sm text-center break-words max-w-xs">
+              <p className="text-white text-sm text-center break-words max-w-xs">
                 Or call us at{' '}
                 <a
                   href={`tel:${enquiryPhoneNumber}`}
-                  className="text-amber-400 font-semibold hover:underline"
+                  className="text-red-600 font-semibold hover:underline"
                 >
                   {enquiryPhoneNumber}
                 </a>
@@ -327,15 +305,15 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
             width: 8px;
           }
           .scrollbar-thin::-webkit-scrollbar-track {
-            background: #1F2937;
+            background: #000000;
             border-radius: 4px;
           }
           .scrollbar-thin::-webkit-scrollbar-thumb {
-            background: #FBBF24;
+            background: #DC2626;
             border-radius: 4px;
           }
           .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-            background: #F59E0B;
+            background: #B91C1C;
           }
         `}
       </style>

@@ -429,6 +429,7 @@ const QuickLinks = () => {
                 {!showBankDetails ? (
                   <>
                     <h2 className="text-xl font-bold mb-4 text-red-600">Select Your Drinks</h2>
+                    <p className="text-black font-semibold">Check Payment Details Below Drink List</p>
                     <div className="space-y-6 mb-6">
                       {drinksList.map((category, index) => (
                         <div key={index} className="space-y-4">

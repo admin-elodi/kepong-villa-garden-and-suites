@@ -18,7 +18,7 @@ function App() {
   const visiblePages = {
     home: true,
     clubK: true,
-    featuredEntertainers: true,
+    featuredEntertainers: true,   
     bookings: true,
     events: true, // 👈 Set to false to hide from UI and nav
     kepongFoodies: true,

@@ -43,7 +43,7 @@ const Hero = ({ setIsModalOpen }) => {
   useEffect(() => {
     slideIntervalRef.current = setInterval(() => {
       setCurrentSlide((idx) => (idx + 1) % carouselImages.length);
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(slideIntervalRef.current);
   }, []);

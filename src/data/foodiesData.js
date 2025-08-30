@@ -1,6 +1,6 @@
 import ezinwanneVideo from '@/assets/videos/ezin.mp4';
 import nsukka from '@/assets/images/foodies/fish.webp';
-import tessy from '@/assets/images/foodies/nsala.webp';
+import tessy from '@/assets/images/foodies/egusi.jpg';
 import banquet from '@/assets/images/foodies/meals.jpg';
 import chickenSalad from '@/assets/images/foodies/chicken.webp';
 import fishBarbecue from '@/assets/images/foodies/max.webp';
@@ -32,6 +32,7 @@ const foodies = [
       { id: 'ezinwa7', name: 'Peppered Meat', price: 1000, isOrderable: true },
       { id: 'ezinwa8', name: 'Snail', price: 4000, isOrderable: true },
       { id: 'ezinwa9', name: 'Dry Fish, Green & Ukpaka', price: 2000, isOrderable: true },
+      { id: 'ezinwa10', name: 'Boiled Eggs(easy peeling)', price: 300, isOrderable: false },
     ],
   },
   {
@@ -175,8 +176,8 @@ const foodies = [
     id: 7,
     name: 'Abacha Nwanyi Ezeagu',
     image: abacha,
-    phone: '+2348067890123',
-    whatsapp: '+2348067890123',
+    phone: '+2349168102690',
+    whatsapp: '+2349168102690',
     branchUrl: '/foodie/abacha-enugu-special',
     bankDetails: {
       bankName: 'United Bank for Africa',
