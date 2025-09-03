@@ -29,7 +29,7 @@ const FoodieDetail = () => {
     );
   }
 
-  const shareUrl = window.location.origin + foodie.branchUrl;
+  
 
   return (
     <main className="min-h-screen bg-gray-50 font-montserrat p-6 md:p-12 pt-[220px] md:pt-[280px]">
@@ -88,12 +88,7 @@ const FoodieDetail = () => {
               Chat on WhatsApp
             </a>
           </p>
-          <p>
-            <strong>Share this page: </strong>{' '}
-            <a href={shareUrl} className="text-blue-600 underline">
-              {shareUrl}
-            </a>
-          </p>
+      
         </div>
 
         {/* Tessy Special Kitchen Single Video */}
