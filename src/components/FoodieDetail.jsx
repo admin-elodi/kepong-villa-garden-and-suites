@@ -29,8 +29,6 @@ const FoodieDetail = () => {
     );
   }
 
-  
-
   return (
     <main className="min-h-screen bg-gray-50 font-montserrat p-6 md:p-12 pt-[220px] md:pt-[280px]">
       <button
@@ -88,7 +86,6 @@ const FoodieDetail = () => {
               Chat on WhatsApp
             </a>
           </p>
-      
         </div>
 
         {/* Tessy Special Kitchen Single Video */}
@@ -109,6 +106,18 @@ const FoodieDetail = () => {
               <div className="mt-4 text-center">
                 <h3 className="text-xl font-semibold text-black">Nsala Soup</h3>
                 <p className="text-gray-700">See the spicy and flavorful Nsala soup come to life with goat meat and uyayak.</p>
+                <p className="text-gray-600 mt-2">
+                  This video was created by{' '}
+                  <a
+                    href="https://www.youtube.com/watch?v=yOr7sx6Usfg&t=51s"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 underline"
+                  >
+                    Kikifoodies
+                  </a>
+                  . Follow Kikifoodies on YouTube for more amazing recipes!
+                </p>
               </div>
             </div>
           </section>
