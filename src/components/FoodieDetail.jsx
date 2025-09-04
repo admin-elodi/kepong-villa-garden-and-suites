@@ -105,7 +105,7 @@ const FoodieDetail = () => {
               </div>
               <div className="mt-4 text-center">
                 <h3 className="text-xl font-semibold text-black">Nsala Soup</h3>
-                <p className="text-gray-700">See the spicy and flavorful Nsala soup come to life with goat meat and uyayak.</p>
+                <p className="text-gray-700">See spicy Nsala soup come to life with goat meat and uyayak.</p>
                 <p className="text-gray-600 mt-2">
                   This video was created by{' '}
                   <a
