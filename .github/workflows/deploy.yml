@@ -3,27 +3,36 @@ name: Build and Deploy to TrueHost
 on:
   push:
     branches:
-      - main   # Trigger on pushes to main branch
+      - main   # Trigger workflow on pushes to main branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # or the version you use locally
+          node-version: 18  # Match your local version if different
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
+      # Step 4: Build project (creates dist/)
       - name: Build project
         run: npm run build
 
+      # Step 5: Diagnostic - confirm dist/ contents
+      - name: List dist folder contents
+        run: ls -R dist/
+
+      # Step 6: Deploy dist/ to TrueHost via FTP
       - name: Deploy dist folder to TrueHost
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -31,6 +40,6 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           protocol: ftp
-          port: ${{ secrets.FTP_PORT }}
+          port: 21
           local-dir: dist/
           server-dir: /public_html/
