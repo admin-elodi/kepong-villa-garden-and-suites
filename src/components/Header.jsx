@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '@/assets/images/homepage/kv-logo.webp';
+import logo from '@/assets/images/homepage/logo.webp';
 import ReserveTableModal from '@/components/ReserveTableModal';
 
 const promotionalTexts = [
@@ -9,14 +9,13 @@ const promotionalTexts = [
   'Play Games',
   'DJ Tea Master in the House',
   'Book Comfortable Room or Apartment',
-  'Enjoy Kepong Foodies...',
-  'Madam Ezinwanne Kitchen',
-  'Tessy Special Kitchen',
-  'Nsukka Food & Palm Wine',
-  'De Banquet Hotel Kitchen',
-  'Chicken Salad Special',
+  'Watch Football',
+  'Enjoy Kepong Chefs',
+  'Local & Foreign Dishes',
   'Fresh Fish Barbecue',
-  'Tasty Abacha',
+  'Nsukka Food & Palm Wine',
+  'Chicken Salad Special',
+  'Enjoy Kepong Vitality Tables',
 ];
 
 const Header = ({ visiblePages, setIsModalOpen }) => {
@@ -44,9 +43,9 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
   const closeReserveModal = () => setIsReserveModalOpen(false);
 
   const navLinkClasses =
-    'block text-base sm:text-lg tracking-wider font-semibold text-red-600 hover:text-white hover:border-b-2 hover:border-white transition-all duration-300 py-2';
+    'block text-base sm:text-lg tracking-wider font-semibold text-white hover:text-red-600 hover:border-b-2 hover:border-red-600 transition-all duration-300 py-2';
 
-  const activeClasses = '!text-white border-b-2 border-white';
+  const activeClasses = '!text-red-600 border-b-2 border-red-600';
 
   return (
     <>
@@ -102,7 +101,7 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
             <img
               src={logo}
               alt="Kepong Villa Garden and Suites Logo"
-              className="w-12 h-8 md:w-[90px] md:h-[60px] border-b-2 border-white"
+              className="w-12 h-8 md:w-[90px] md:h-[60px]"
             />
           </NavLink>
 
@@ -151,11 +150,11 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
             )}
           </button>
 
-          {/* Navigation Links */}
+          {/* Navigation Links with crystalline style dropdown */}
           <ul
             className={`${
-              isMenuOpen ? 'flex bg-black' : 'hidden'
-            } md:flex md:bg-transparent flex-col md:flex-row text-center absolute md:static top-full left-0 w-full md:w-auto space-y-4 md:space-y-0 md:gap-12 md:justify-evenly py-4 px-6 md:p-0 transition-all duration-300 ease-in-out ${
+              isMenuOpen ? 'flex' : 'hidden'
+            } md:flex md:bg-transparent flex-col md:flex-row text-center absolute md:static top-18 right-1 max-w-[280px] md:max-w-none bg-black/60 backdrop-blur-md rounded-sm md:bg-transparent md:backdrop-blur-0 md:rounded-none md:w-auto space-y-4 md:space-y-0 md:gap-12 md:justify-evenly py-6 px-6 md:p-0 transition-all duration-300 ease-in-out ${
               isMenuOpen ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 md:opacity-100 md:max-h-full'
             } md:items-center shadow-lg md:shadow-none z-40`}
             aria-hidden={!isMenuOpen}
@@ -200,7 +199,7 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
                   className={({ isActive }) => `${navLinkClasses} ${isActive ? activeClasses : ''}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Bookings
+                  Book Hotel
                 </NavLink>
               </li>
             )}
@@ -237,7 +236,7 @@ const Header = ({ visiblePages, setIsModalOpen }) => {
         >
           <div
             ref={tickerRef}
-            className="ticker-content whitespace-nowrap flex gap-10 text-xs sm:text-sm font-bold text-black tracking-wide py-2"
+            className="ticker-content whitespace-nowrap flex gap-10 text-[14px] sm:text-sm font-bold text-black tracking-wide py-1"
           >
             {promotionalTexts.concat(promotionalTexts).map((text, idx) => (
               <span key={idx} className="inline-block px-2">

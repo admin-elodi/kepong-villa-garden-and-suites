@@ -53,7 +53,7 @@ const Card = ({ children, className = "" }) => {
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-16 font-montserrat">
+    <footer className="bg-black/90 text-white py-16 font-montserrat">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Featured Events */}
@@ -67,7 +67,7 @@ const Footer = () => {
                 Suites, Enugu!
               </p>
               <p className="mt-2 text-yellow-200 font-semibold max-w-md mx-auto">
-                Main entertainment days: Wednesdays, Fridays and Sundays
+                Main entertainment days: Wednesdays, Fridays an
               </p>
             </div>
             <div className="mt-6 bg-red-600/20 bg-opacity-80 rounded-lg p-4 max-w-md mx-auto text-left">
@@ -140,7 +140,7 @@ const Footer = () => {
                   <li key={item.to}>
                     <Link
                       to={item.to}
-                      className="text-white hover:text-yellow-200 transition-colors duration-300 border-b border-red-600 pb-1"
+                      className="text-white hover:text-yellow-200 transition-colors duration-300 border-b-2 border-red-600 pb-1"
                     >
                       {item.label}
                     </Link>
@@ -236,8 +236,8 @@ const Footer = () => {
             © {new Date().getFullYear()} Kepong Villa Garden & Suites. All rights
             reserved.
           </p>
-          <small className="text-yellow-100 text-xm mt-2 block">
-            Site Design: Elodi Nigeria Enterprises, Enugu:{" "}
+          <small className="text-yellow-100 text-[9px] md:text-[11px] mt-2 block">
+            Website design by <span className="uppercase font-bold">Elodi Nigeria Enterprises: </span>{" "}
             <a href="tel:08136573235" className="hover:text-yellow-100">
               08136573235
             </a>

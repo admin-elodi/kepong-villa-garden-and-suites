@@ -19,7 +19,7 @@ const FoodieDetail = () => {
           <h1 className="text-3xl font-bold mb-4">Foodie Not Found</h1>
           <button
             onClick={() => navigate('/')}
-            className="text-white bg-red-600 hover:bg-red-700 py-2 px-4 rounded"
+            className="text-white bg-red-600 hover:bg-red-600 py-2 px-4 rounded"
             aria-label="Back to homepage"
           >
             Back to Home
@@ -33,7 +33,7 @@ const FoodieDetail = () => {
     <main className="min-h-screen bg-gray-50 font-montserrat p-6 md:p-12 pt-[220px] md:pt-[280px]">
       <button
         onClick={() => navigate('/kepong-foodies')}
-        className="mb-6 bg-red-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-red-400 inline-flex items-center gap-2"
+        className="mb-6 bg-red-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-red-400 inline-flex items-center gap-2"
         aria-label="Go back to foodies list"
       >
         <span>&larr;</span> Back to Kepong Foodies Page
@@ -60,7 +60,7 @@ const FoodieDetail = () => {
           </button>
           <button
             onClick={() => setOrderModalOpen(true)}
-            className="flex-grow bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition duration-300 focus:outline-none focus:ring-4 focus:ring-red-500"
+            className="flex-grow bg-red-600 hover:bg-red-600 text-white font-bold py-3 rounded-lg transition duration-300 focus:outline-none focus:ring-4 focus:ring-red-500"
             aria-label={`Order from ${foodie.name}`}
             type="button"
           >
@@ -116,7 +116,7 @@ const FoodieDetail = () => {
                   >
                     Kikifoodies
                   </a>
-                  . Follow Kikifoodies on YouTube for more amazing recipes!
+                  whose work Tessy Special Kitchen admires. Please follow Kikifoodies on YouTube!
                 </p>
               </div>
             </div>

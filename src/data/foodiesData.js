@@ -54,7 +54,7 @@ const foodies = [
       { id: 'tessy2', name: 'White Rice & Egg Stew', price: 2500, isOrderable: true },
       { id: 'tessy3', name: 'White Rice & Vegetable Stew', price: 2500, isOrderable: true },
       { id: 'tessy4', name: 'White Rice & White Sauce ', price: 2500, isOrderable: true },
-      { id: 'tessy5', name: 'Jollof Rice & Chicken', price: 3000, isOrderable: true },
+      { id: 'tessy5', name: 'Jollof Rice & Chicken', price: 2500, isOrderable: true },
       { category: 'Soups with Eba, Fufu or Semo'},
       { id: 'tessy6', name: 'Nsala', price: 2500, isOrderable: true },
       { id: 'tessy7', name: 'Vegetable Soup', price: 2500, isOrderable: true },
@@ -64,7 +64,7 @@ const foodies = [
       { category: 'Pepper Soup Specials'},
       { id: 'tessy11', name: 'Fresh Fish Peppersoup (Head)', price: 4000, isOrderable: true },
       { id: 'tessy12', name: 'Fresh Fish Peppersoup (middle & tail)', price: 3000, isOrderable: true },
-      { id: 'tessy13', name: 'Assorted Meat', price: 3000, isOrderable: true },
+      { id: 'tessy13', name: 'Assorted Meat', price: 1500, isOrderable: true },
     ],
   },
   {

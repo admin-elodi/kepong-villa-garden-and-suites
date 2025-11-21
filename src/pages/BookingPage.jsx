@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import RoomCard from '@/components/booking/RoomCard';
 import ScrollToTop from '@/components/ScrollToTop';
 import singleRoom from '@/assets/images/hotel/single.webp';
-import deluxe from '@/assets/images/hotel/deluxe.webp';
-import executive from '@/assets/images/hotel/executive.webp';
-import apartment from '@/assets/images/hotel/apartment.webp';
-import promoVideo from '@/assets/videos/couple.mp4';
-import shadesImage from '@/assets/images/bookings/shades.webp';
+import deluxe from '@/assets/images/hotel/apart.webp';
+import executive from '@/assets/images/hotel/exec.webp';
+import apartment from '@/assets/images/hotel/apartment.jpeg';
+import promoVideo from '@/assets/videos/dancing.mp4';
+import shadesImage from '@/assets/images/hotel/hotel-front.webp';
 
 const rooms = [
   {
@@ -99,7 +99,6 @@ const BookingPage = () => {
         <video
           src={promoVideo}
           autoPlay
-          loop
           muted
           playsInline
           className="absolute inset-0 w-full h-[900px] object-cover"
@@ -158,7 +157,7 @@ const BookingPage = () => {
               <p>
                 Make payment with your bank app to below account & <br /> send evidence through the WhatsApp link:
               </p>
-              <div className="text-left max-w-md mx-auto bg-gray-900/50 p-4 rounded-lg mb-6">
+              <div className="text-left max-w-md mx-auto bg-gray-900 p-4 rounded-lg mb-6">
                 <p className="text-gray-100 mb-2"><strong>Bank:</strong> Wema Bank</p>
                 <p className="text-gray-100 mb-2"><strong>Account Name:</strong> Kepong Villa Garden & Suites</p>
                 <p className="text-gray-100 mb-2"><strong>Account Number:</strong> 0125564025</p>

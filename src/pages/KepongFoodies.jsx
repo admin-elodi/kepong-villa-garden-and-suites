@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReserveTableModal from '@/components/ReserveTableModal';
 import { MenuModal } from '@/components/Modals';
-import foodiesBg from '@/assets/images/foodies/trado.webp';
+import foodiesBg from '@/assets/images/foodies/back.webp';
 import foodies from '@/data/foodiesData';
 
 // Card styles for uniform styling with override capability
@@ -16,7 +16,7 @@ const foodieCardStyles = {
   buttonBase:
     'w-full max-w-xl whitespace-nowrap font-semibold rounded-md px-2 py-2 shadow-md transform hover:scale-105 transition-colors duration-300',
   buttonViewMenu: 'bg-yellow-700 hover:bg-yellow-600 active:bg-yellow-700 text-white text-center',
-  buttonVisitPage: 'bg-red-600 hover:bg-red-700 active:bg-red-800 text-white text-center',
+  buttonVisitPage: 'bg-red-600 hover:bg-red-600 active:bg-red-800 text-white text-center',
   orText: 'text-white font-bold text-lg select-none my-0.5',
 };
 
@@ -128,7 +128,7 @@ const KepongFoodies = () => {
         <div className="flex flex-col md:flex-row md:justify-center gap-4">
           <a
             href={`tel:${phoneNumber}`}
-            className="inline-block bg-red-600 hover:bg-red-700 active:bg-red-800 transition-colors duration-300 text-white font-semibold rounded-md px-6 py-3 shadow-md hover:scale-105 transform focus:outline-none focus:ring-4 focus:ring-red-500"
+            className="inline-block bg-red-900/40 hover:bg-red-600 active:bg-red-800 transition-colors duration-300 text-white font-semibold rounded-md px-6 py-3 shadow-md hover:scale-105 transform focus:outline-none focus:ring-4 focus:ring-red-500"
             aria-label="Call to get started"
           >
             {phoneNumber}

@@ -1,90 +1,163 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  FaUtensils, 
+  FaFish, 
+  FaLeaf, 
+  FaGlassCheers, 
+  FaCheckCircle, 
+  FaTimes, 
+  FaChevronDown, 
+  FaChevronUp, 
+  FaUser, 
+  FaCalendarAlt, 
+  FaClock,
+  FaChair,
+  FaPeace
+} from 'react-icons/fa';
 import tableImage from '@/assets/images/homepage/table-for-four.webp';
 
-const enquiryPhoneNumber = '+2348166540841';
+const enquiryPhoneNumber = '+2348162482304';
 
-// Integrated Table For Four menu with combo offerings
-const tableForFourMenus = [
+// CURRENT LIVE MENUS — UPDATED PRICES & FOOD COSTS
+const eventTables = [
   {
-    combo: 'Vitality Feast',
-    description: 'For boosting energy and wellness',
+    id: "traditional",
+    name: "Traditional Igbo Feast",
+    description: "Deep ancestral roots, swallow-based, soulful Igbo celebration",
+    icon: <FaLeaf className="text-white/70" />,
+    price: "₦26,000",
+    foodCost: 22200,
     dineIn: [
-      { name: 'Ukwa', quantity: 2, description: 'Traditional African breadfruit, rich in fiber and vitamins.' },
-      { name: 'Nsala Soup with Eba', quantity: 4, description: 'Light, spicy white soup for digestive health.' },
-      { name: 'Chicken Salad', quantity: 2, description: 'Fresh, protein-rich salad for vitality.' },
-      { name: 'Zobo Drink', quantity: 4, description: 'Hibiscus juice, high in antioxidants.' },
+      { name: "Nsala Soup with Eba", quantity: 2, chef: "Chef Tessy Special Kitchen", description: "Silky white soup, light on the belly" },
+      { name: "Oha Soup with Poundo", quantity: 2, chef: "Madam Ezinwanne Kitchen", description: "Rich, aromatic, medicinal greens" },
+      { name: "Ukwa (Breadfruit)", quantity: 1, chef: "Madam Ezinwanne Kitchen", description: "Ancient superfood, naturally sweet & filling" },
+      { name: "Peppered Goat Meat", quantity: 2, chef: "Abacha Nwanyi Ezeagu", description: "Spicy, bold, straight from the fire" },
+      { name: "Zobo Drink", quantity: 4, chef: "De Banquet Hotel Kitchen", description: "Tangy, refreshing, antioxidant-rich" },
     ],
     takeHome: [
-      { name: 'Abacha', quantity: 2, description: 'Tasty African salad, perfect for sharing.' },
-      { name: 'Tiger Nut Drinks', quantity: 4, description: 'Nutrient-dense drink for home enjoyment.' },
+      { name: "Abacha (African Salad)", quantity: 1, chef: "Abacha Nwanyi Ezeagu", description: "Crunchy, peppery, legendary Nsukka style" },
+      { name: "Tiger Nut Drink", quantity: 2, chef: "De Banquet Hotel Kitchen", description: "Natural energy & vitality boost" },
+      { name: "Ugba & Stockfish Mix", quantity: 1, chef: "Madam Ezinwanne Kitchen", description: "Fermented locust bean delicacy" },
     ],
-    price: 50000, // Unified price per table
   },
   {
-    combo: 'Traditional Delight',
-    description: 'Very rich local dishes and flavors',
+    id: "seafood",
+    name: "Seafood Special",
+    description: "Ocean luxury — whole fish, premium indulgence",
+    icon: <FaFish className="text-white/70" />,
+    price: "₦35,000",
+    foodCost: 30700,
     dineIn: [
-      { name: 'Peppered Goat Meat', quantity: 4, description: 'Fiery, protein-packed goat meat.' },
-      { name: 'Jollof Rice & Chicken', quantity: 4, description: 'Flavorful rice with tender chicken.' },
-      { name: 'Palm Wine', quantity: 4, description: 'Sweet, traditional drink for relaxation.' },
+      { name: "Whole Barbecue Fish", quantity: 1, chef: "Fresh Fish Barbecue", description: "Fresh tilapia, smoky, perfectly spiced" },
+      { name: "Peppered Snails", quantity: 1, chef: "Madam Ezinwanne Kitchen", description: "Giant snails in fiery pepper sauce" },
+      { name: "White Rice & Stew", quantity: 2, chef: "De Banquet Hotel Kitchen", description: "Fresh garden stew, light & balanced" },
+      { name: "Chapman", quantity: 4, chef: "Kepong Bar", description: "Signature tropical mocktail toast" },
+      { name: "Vegetable Soup", quantity: 1, chef: "Madam Ezinwanne Kitchen", description: "Green goodness, light & hearty" },
     ],
     takeHome: [
-      { name: 'Fried Chicken with Chips', quantity: 2, description: 'Crispy chicken for home feasts.' },
-      { name: 'Ukwa Fresh with Dried Fish', quantity: 2, description: 'Portable breadfruit delicacy.' },
+      { name: "Achicha Ede with Fish", quantity: 1, chef: "Mama Chioma Enterprises", description: "Cocoyam porridge with dried fish" },
+      { name: "Zobo (1 Liter)", quantity: 1, chef: "De Banquet Hotel Kitchen", description: "Take the refreshment home" },
+      { name: "Peppered Fish Wrap", quantity: 1, chef: "Fresh Fish Barbecue", description: "Leftover fish in foil, ready to reheat" },
     ],
-    price: 50000, // Unified price per table
   },
   {
-    combo: 'Seafood Special',
-    description: 'Dishes that celebrate Nigeria’s seafood',
+    id: "wedding",
+    name: "Wedding Mini-Banquet",
+    description: "Elegant, celebratory, perfect for love & legacy",
+    icon: <FaUtensils className="text-white/70" />,
+    price: "₦25,000",
+    foodCost: 21900,
     dineIn: [
-      { name: 'Barbecue Fish', quantity: 1, description: 'Grilled fish, rich in omega-3.' },
-      { name: 'Fresh Fish Peppersoup (Head)', quantity: 2, description: 'Spicy, warming fish soup.' },
-      { name: 'Chapman Cocktail', quantity: 4, description: 'Refreshing citrus cocktail.' },
+      { name: "Jollof Rice & Chicken", quantity: 2, chef: "Chef Tessy Special Kitchen", description: "Golden, fragrant, wedding classic" },
+      { name: "Fried Rice & Plantain", quantity: 2, chef: "De Banquet Hotel Kitchen", description: "Colorful, sweet & savory balance" },
+      { name: "Nsala Soup with Eba", quantity: 1, chef: "Chef Tessy Special Kitchen", description: "Light, elegant swallow option" },
+      { name: "Peppered Meat Assorted", quantity: 2, chef: "Madam Ezinwanne Kitchen", description: "Goat, cowleg, shaki — full celebration" },
+      { name: "Chapman & Zobo Mix", quantity: 4, chef: "Kepong Bar", description: "Love in a glass" },
     ],
     takeHome: [
-      { name: 'Achicha/Agbugbu with Fish', quantity: 2, description: 'Fish-infused delicacy for sharing.' },
-      { name: 'Dry Fish, Green & Ukpaka', quantity: 2, description: 'Flavorful fish mix for home.' },
+      { name: "Fruit Salad Bowl", quantity: 1, chef: "Chop with Nazzy", description: "Fresh pineapple, watermelon, banana" },
+      { name: "Tiger Nut Drink", quantity: 2, chef: "De Banquet Hotel Kitchen", description: "Fertility & legacy booster" },
+      { name: "Small Jollof Pack", quantity: 1, chef: "Chef Tessy Special Kitchen", description: "For midnight cravings" },
     ],
-    price: 50000, // Unified price per table
+  },
+  {
+    id: "hangout",
+    name: "Chill & Grill Hangout",
+    description: "Settle beef, drink palm wine, swallow heavy — pure Nsukka vibes",
+    icon: <FaGlassCheers className="text-white/70" />,
+    price: "₦26,000",
+    foodCost: 22800,
+    dineIn: [
+      { name: "Peppered Goat Meat", quantity: 2, chef: "Abacha Nwanyi Ezeagu", description: "Hot, spicy, straight from the grill" },
+      { name: "Oha Soup with Poundo", quantity: 2, chef: "Madam Ezinwanne Kitchen", description: "Bitterleaf’s cousin — deep flavor" },
+      { name: "Bitterleaf Soup with Eba", quantity: 2, chef: "Chef Tessy Special Kitchen", description: "Wash away the bitterness of beef" },
+      { name: "Fresh Palm Wine (Ngwo-Ngwo)", quantity: 2, chef: "Mama Chioma Enterprises", description: "Tapped today — sweet, frothy, peace-bringing" },
+      { name: "Abacha & Ugba", quantity: 1, chef: "Abacha Nwanyi Ezeagu", description: "The ultimate hangout starter" },
+    ],
+    takeHome: [
+      { name: "Palm Wine (Sealed 75cl)", quantity: 1, chef: "Mama Chioma Enterprises", description: "Continue the peace at home" },
+      { name: "Abacha Full Pack", quantity: 1, chef: "Abacha Nwanyi Ezeagu", description: "Midnight reconciliation snack" },
+      { name: "Peppered Meat Pack", quantity: 1, chef: "Abacha Nwanyi Ezeagu", description: "Leftover fire for tomorrow" },
+      { name: "Ukwa (Small Bowl)", quantity: 1, chef: "Madam Ezinwanne Kitchen", description: "Ancient wisdom to go" },
+    ],
   },
 ];
 
+const TableCard = ({ children, className = "", onClick, isOpen }) => (
+  <motion.div
+    whileHover={{ y: -3, scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
+    onClick={onClick}
+    className={`relative p-5 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-md rounded-2xl border-2 transition-all duration-300 cursor-pointer shadow-lg ${
+      isOpen 
+        ? "border-red-500/60 bg-red-900/20 shadow-red-500/20" 
+        : "border-white/20 hover:border-red-500/40 hover:shadow-red-500/10"
+    } ${className}`}
+  >
+    {children}
+  </motion.div>
+);
+
 const ReserveTableModal = ({ isOpen, onClose }) => {
   const [showPayment, setShowPayment] = useState(false);
-  const [tables, setTables] = useState(1);
-  const [selectedCombo, setSelectedCombo] = useState(tableForFourMenus[0]);
+  const [units, setUnits] = useState(1);
+  const [selectedTable, setSelectedTable] = useState(eventTables[0]);
+  const [expandedId, setExpandedId] = useState(null);
+  const [hostName, setHostName] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
 
   if (!isOpen || !onClose) return null;
 
   const handleClose = () => {
     onClose();
     setShowPayment(false);
-    setTables(1);
-    setSelectedCombo(tableForFourMenus[0]);
+    setUnits(1);
+    setSelectedTable(eventTables[0]);
+    setExpandedId(null);
+    setHostName("");
+    setSelectedDate("");
+    setSelectedTime("");
   };
 
-  const handleTablesChange = (e) => {
+  const toggleExpand = (id) => {
+    const newId = expandedId === id ? null : id;
+    setExpandedId(newId);
+    if (newId) setSelectedTable(eventTables.find(t => t.id === id));
+  };
+
+  const handleUnitsChange = (e) => {
     const val = e.target.value;
-    if (val === '') {
-      setTables('');
-      return;
-    }
+    if (val === '') return setUnits('');
     const num = parseInt(val, 10);
-    if (!isNaN(num) && num >= 1) {
-      setTables(num);
-    }
-  };
-
-  const handleComboChange = (e) => {
-    const combo = tableForFourMenus.find((menu) => menu.combo === e.target.value);
-    setSelectedCombo(combo);
+    if (!isNaN(num) && num >= 1 && num <= 6) setUnits(num);
   };
 
   const handleProceedToPayment = () => {
-    if (!tables || tables < 1) {
-      alert('Please enter at least 1 table.');
+    if (!units || units < 1 || !hostName.trim() || !selectedDate || !selectedTime) {
+      alert('Please fill all fields: Host Name, Date, Time, and Units (max 6).');
       return;
     }
     setShowPayment(true);
@@ -92,234 +165,163 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
 
   const openWhatsApp = () => {
     const menuDetails = [
-      ...selectedCombo.dineIn.map(
-        (item) =>
-          `${item.name}: ${item.quantity} serving${item.quantity > 1 ? 's' : ''} per table × ${tables} table${tables > 1 ? 's' : ''}`
-      ),
-      ...selectedCombo.takeHome.map(
-        (item) =>
-          `${item.name}: ${item.quantity} serving${item.quantity > 1 ? 's' : ''} per table × ${tables} table${tables > 1 ? 's' : ''} (Take-Home)`
-      ),
+      ...selectedTable.dineIn.map(i => `${i.name}: ${i.quantity} serving${i.quantity > 1 ? 's' : ''} — by ${i.chef}`),
+      ...selectedTable.takeHome.map(i => `${i.name}: ${i.quantity} serving${i.quantity > 1 ? 's' : ''} (Take-Home) — by ${i.chef}`),
     ].join('\n');
 
+    const totalPrice = units * parseInt(selectedTable.price.replace(/[^0-9]/g, ''), 10);
+    const totalFoodCost = units * selectedTable.foodCost;
+    const totalAddOn = units * 3000;
+
     const message = encodeURIComponent(
-      `Hello Kepong Villa Team,\n\nI would like to book ${tables} Table${tables > 1 ? 's' : ''} For Four, combo "${selectedCombo.combo}" at ₦${(
-        tables * selectedCombo.price
-      ).toLocaleString()} each.\n\nMenu Details:\n${menuDetails}\n\nPlease provide payment details and confirmation. Thank you!`
+      `Hello Kepong Villa Team,\n\nHost: ${hostName.trim()}\nEvent: ${selectedDate} at ${selectedTime}\n\nBooking ${units} × "${selectedTable.name}"\nTotal: ₦${totalPrice.toLocaleString()}\n\nMenu per Table:\n${menuDetails}\n\n[INTERNAL ONLY]\nFood Cost: ₦${totalFoodCost.toLocaleString()}\nExperience Add-On ×${units}: ₦${totalAddOn.toLocaleString()}\nGrand Total: ₦${totalPrice.toLocaleString()}\n\nPlease confirm & send payment details.\n\nOne Table, One Vibe!`
     );
 
     window.open(`https://wa.me/${enquiryPhoneNumber.replace(/\D/g, '')}?text=${message}`, '_blank');
   };
 
-  const totalPrice = tables && !isNaN(tables) ? tables * selectedCombo.price : 0;
+  const totalPrice = units ? units * parseInt(selectedTable.price.replace(/[^0-9]/g, ''), 10) : 0;
 
-  return createPortal(
-    <div
-      className="modal-overlay fixed inset-0 flex items-center justify-center z-[1500] p-4"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="reserve-title"
-      onClick={(e) => {
-        if (e.target.classList.contains('modal-overlay')) handleClose();
-      }}
-      tabIndex={-1}
-    >
-      <div
-        className="bg-black border-2 border-white rounded-xl shadow-2xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-red-600 scrollbar-track-black"
-        style={{ scrollBehavior: 'smooth' }}
-        tabIndex={0}
+  const modalContent = (
+    <>
+      {/* Instant backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.15 }}
+        className="fixed inset-0 z-[999] bg-black/40 flex items-center justify-center p-4 border-2 border-white"
+        onClick={handleClose}
+      />
+
+      {/* Super-fast, crisp modal entrance */}
+      <motion.div
+        initial={{ scale: 0.94, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.94, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 800, damping: 35, duration: 0.25 }}
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] max-w-sm sm:w-[96%] sm:max-w-md bg-gradient-to-br from-black/60 via-black/50 to-black/60 backdrop-blur-xl rounded-3xl shadow-2xl border-2 border-white/30 p-5 sm:p-6 max-h-[84vh] overflow-y-auto z-[1000] scrollbar-thin"
+        onClick={e => e.stopPropagation()}
       >
-        <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 text-white hover:text-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none text-2xl transition-colors duration-200"
-          aria-label="Close modal"
-          type="button"
-        >
-          ✕
+        <button onClick={handleClose} className="absolute top-3 right-3 sm:top-4 sm:right-4 text-white/60 hover:text-white text-xl z-10">
+          <FaTimes />
         </button>
 
-        <h2 id="reserve-title" className="text-3xl font-extrabold text-red-600 text-center mb-4 tracking-tight">
-          Book Table For Four
-        </h2>
+        <div className="text-center mb-4">
+          <h3 className="text-xl sm:text-2xl font-black text-white tracking-widest">Event & Hangout Tables</h3>
+          <p className="text-xs sm:text-sm text-gray-300 mt-1 italic">Premium Tables • 4 Chairs Each</p>
+          <p className="text-xs text-yellow-400 font-bold mt-2">Featuring Kepong’s Legendary Chefs!</p>
+        </div>
 
-        <div
-          className="w-full rounded-lg mb-6 bg-center bg-cover mx-auto shadow-inner border border-red-600"
-          style={{
-            backgroundImage: `url(${tableImage})`,
-            height: '140px',
-            backgroundColor: '#000000',
-          }}
-          aria-label="Table for four"
-        />
+        <div className="w-full h-36 sm:h-44 rounded-2xl overflow-hidden mb-5 shadow-inner relative" style={{backgroundImage: `url(${tableImage})`, backgroundSize:'cover', backgroundPosition:'center'}}>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white"><FaChair className="text-lg" /><span className="text-xs font-bold">4-Chair Cane Table</span></div>
+        </div>
 
-        <p className="text-center text-white italic mb-8 px-4 text-lg">
-          Enjoy Kepong's "Table For Four" Special. Dine-in and take some home
-        </p>
+        <p className="text-white/90 text-sm font-medium text-center mb-3">Select Your Table</p>
 
-        {!showPayment && (
-          <>
-            <div className="mb-8">
-              <label
-                htmlFor="combo-select"
-                className="block mb-2 text-red-600 font-semibold text-xl text-center"
-              >
-                Select Your Table Combo
-              </label>
-              <select
-                id="combo-select"
-                value={selectedCombo.combo}
-                onChange={handleComboChange}
-                className="w-full max-w-[calc(100%-2rem)] sm:max-w-full px-4 py-3 rounded-lg bg-black text-white border border-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none transition-colors duration-200"
-                aria-label="Select menu combo"
-              >
-                {tableForFourMenus.map((menu) => (
-                  <option key={menu.combo} value={menu.combo} className="bg-black text-white">
-                    {menu.combo}
-                  </option>
-                ))}
-              </select>
-              <p className="text-white text-sm mt-3 text-center">{selectedCombo.description}</p>
-            </div>
+        <div className="space-y-4">
+          {eventTables.map(table => {
+            const isOpen = expandedId === table.id;
+            const isHangout = table.id === "hangout";
 
-            <div className="space-y-8 mb-8">
-              <div>
-                <h3 className="text-xl font-semibold text-red-600 mb-4">Dine-In Menu</h3>
-                <div className="bg-black p-6 rounded-lg border border-red-600 transition-all duration-200">
-                  {selectedCombo.dineIn.map(({ name, description, quantity }, index) => (
-                    <div
-                      key={name}
-                      className="py-2 first:pt-0 last:pb-0"
-                      style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
-                    >
-                      <h4 className="text-lg font-bold text-white uppercase">{name}</h4>
-                      <p className="text-yellow-200 text-sm">{quantity} serving{quantity > 1 ? 's' : ''}</p>
-                      <p className="text-white text-sm">{description}</p>
+            return (
+              <div key={table.id}>
+                <TableCard isOpen={isOpen} onClick={() => toggleExpand(table.id)}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      {table.icon}
+                      <div>
+                        <p className="text-white font-bold text-[15px] sm:text-base">{table.name}</p>
+                        <p className="text-gray-300 text-xs italic">{table.description}</p>
+                        {isHangout && (
+                          <p className="text-green-400 text-xs font-bold mt-1 flex items-center gap-1">
+                            <FaPeace className="text-sm" /> Perfect for settling beef with palm wine
+                          </p>
+                        )}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-red-600 mb-4">Take-Home Menu</h3>
-                <div className="bg-black p-6 rounded-lg border border-red-600 transition-all duration-200">
-                  {selectedCombo.takeHome.map(({ name, description, quantity }, index) => (
-                    <div
-                      key={name}
-                      className="py-2 first:pt-0 last:pb-0"
-                      style={{ animation: `fadeIn 0.3s ease-in ${index * 0.1}s forwards`, opacity: 0 }}
-                    >
-                      <h4 className="text-lg font-bold text-white uppercase">{name}</h4>
-                      <p className="text-yellow-200 text-sm">{quantity} serving{quantity > 1 ? 's' : ''} (Take-Home)</p>
-                      <p className="text-white text-sm">{description}</p>
+                    <div className="text-right">
+                      <p className="text-yellow-100 font-black text-sm sm:text-base">{table.price}</p>
+                      {isOpen ? <FaChevronUp className="text-white/60 mt-1"/> : <FaChevronDown className="text-white/60 mt-1"/>}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                </TableCard>
+
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                      <div className="mt-3 bg-white/10 rounded-2xl p-4 border border-white/20 space-y-5 text-xs sm:text-sm">
+                        <div>
+                          <h5 className="font-bold text-yellow-100 mb-2">Dine-In Menu (Per Table)</h5>
+                          {table.dineIn.map(item => (
+                            <div key={item.name} className="mb-2">
+                              <p className="font-medium uppercase text-white">{item.name}</p>
+                              <p className="text-sky-400">{item.quantity} serving{item.quantity > 1 ? 's' : ''}</p>
+                              <p className="text-yellow-300 text-xs font-medium mt-1">by {item.chef}</p>
+                              <p className="text-gray-300 text-xs">{item.description}</p>
+                            </div>
+                          ))}
+                        </div>
+
+                        {table.takeHome.length > 0 && (
+                          <div>
+                            <h5 className="font-bold text-yellow-100 mb-2">Take-Home (Per Table)</h5>
+                            {table.takeHome.map(item => (
+                              <div key={item.name} className="mb-2">
+                                <p className="font-medium uppercase text-white">{item.name}</p>
+                                <p className="text-sky-400">{item.quantity} serving{item.quantity > 1 ? 's' : ''} (Take-Home)</p>
+                                <p className="text-yellow-300 text-xs font-medium mt-1">by {item.chef}</p>
+                                <p className="text-gray-300 text-xs">{item.description}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {!showPayment ? (
+                          <div className="mt-4 space-y-3">
+                            <div>
+                              <div className="flex items-center gap-2 mb-1"><FaUser className="text-white/60 text-sm"/><span className="text-white text-xs font-medium">Host Name</span></div>
+                              <input type="text" value={hostName} onChange={e => setHostName(e.target.value)} placeholder="Enter host name" className="w-full p-2 rounded-lg text-black text-sm"/>
+                            </div>
+
+                            <div>
+                              <div className="flex items-center gap-2 mb-1"><FaCalendarAlt className="text-white/60 text-sm"/><span className="text-white text-xs font-medium">Date</span></div>
+                              <input type="date" value={selectedDate} onChange={e => setSelectedDate(e.target.value)} className="w-full p-2 rounded-lg text-black text-sm"/>
+                            </div>
+
+                            <div>
+                              <div className="flex items-center gap-2 mb-1"><FaClock className="text-white/60 text-sm"/><span className="text-white text-xs font-medium">Time</span></div>
+                              <input type="time" value={selectedTime} onChange={e => setSelectedTime(e.target.value)} className="w-full p-2 rounded-lg text-black text-sm"/>
+                            </div>
+
+                            <div>
+                              <div className="flex items-center gap-2 mb-1"><FaChair className="text-white/60 text-sm"/><span className="text-white text-xs font-medium">Units</span></div>
+                              <input type="number" value={units} onChange={handleUnitsChange} placeholder="1" min="1" max="6" className="w-full p-2 rounded-lg text-black text-sm"/>
+                            </div>
+
+                            <button onClick={handleProceedToPayment} className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-xl mt-3 text-sm">Proceed to WhatsApp</button>
+                          </div>
+                        ) : (
+                          <div className="mt-4 flex flex-col items-center gap-3">
+                            <p className="text-green-400 font-bold text-sm"><FaCheckCircle className="inline mb-1"/> Ready to Confirm!</p>
+                            <p className="text-white text-xs">Total Price: ₦{totalPrice.toLocaleString()}</p>
+                            <button onClick={openWhatsApp} className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded-xl text-sm">Send via WhatsApp</button>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-            </div>
-
-            <div className="mb-8 text-center">
-              <label
-                htmlFor="tables"
-                className="block mb-2 text-red-600 font-semibold text-xl"
-              >
-                Choose Number of Tables
-              </label>
-              <input
-                type="number"
-                id="tables"
-                name="tables"
-                min="1"
-                value={tables}
-                onChange={handleTablesChange}
-                className="mx-auto w-24 px-3 py-2 rounded-lg bg-black text-white border border-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none text-center transition-colors duration-200"
-                aria-describedby="table-price-desc"
-                aria-label="Number of tables to book"
-              />
-              <p id="table-price-desc" className="mt-2 text-white text-sm">
-                Price per table (fixed bundle): ₦{selectedCombo.price.toLocaleString()}
-              </p>
-              <p className="mt-2 text-red-600 font-bold text-xl">
-                Total Price: ₦{totalPrice.toLocaleString()}
-              </p>
-            </div>
-
-            <div className="flex justify-center">
-              <button
-                type="button"
-                onClick={handleProceedToPayment}
-                className="bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-500 focus:ring-2 focus:ring-red-600 transition-all duration-200 shadow-md"
-                aria-label="Proceed to payment"
-              >
-                Proceed to Payment
-              </button>
-            </div>
-          </>
-        )}
-
-        {showPayment && (
-          <div>
-            <div className="bg-black p-6 rounded-lg shadow-lg text-white text-center border border-red-600 mb-6">
-              <h3 className="text-xl font-bold mb-4 text-red-600">Bank Account Details</h3>
-              <p className="mb-3 font-semibold text-white">
-                Please make your payment via bank transfer before confirming your reservation.
-              </p>
-              <div className="bg-white bg-opacity-90 rounded-lg p-4 mb-3 text-black">
-                <p><strong>Account Name:</strong><br />Kepong Villa Garden & Suites</p>
-                <p><strong>Bank:</strong><br />Wema Bank</p>
-                <p><strong>Account Number:</strong><br />0125564025</p>
-              </div>
-              <p className="text-sm text-white">
-                Use your full name as payment reference.
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center space-y-4">
-              <button
-                type="button"
-                onClick={openWhatsApp}
-                className="bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-500 focus:ring-2 focus:ring-red-600 transition-all duration-200 shadow-md w-full max-w-xs"
-                aria-label="Send evidence to WhatsApp"
-              >
-                Send Evidence to WhatsApp
-              </button>
-              <p className="text-white text-sm text-center break-words max-w-xs">
-                Or call us at{' '}
-                <a
-                  href={`tel:${enquiryPhoneNumber}`}
-                  className="text-red-600 font-semibold hover:underline"
-                >
-                  {enquiryPhoneNumber}
-                </a>
-              </p>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <style>
-        {`
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .scrollbar-thin::-webkit-scrollbar {
-            width: 8px;
-          }
-          .scrollbar-thin::-webkit-scrollbar-track {
-            background: #000000;
-            border-radius: 4px;
-          }
-          .scrollbar-thin::-webkit-scrollbar-thumb {
-            background: #DC2626;
-            border-radius: 4px;
-          }
-          .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-            background: #B91C1C;
-          }
-        `}
-      </style>
-    </div>,
-    document.body
+            )
+          })}
+        </div>
+      </motion.div>
+    </>
   );
+
+  return createPortal(modalContent, document.body);
 };
 
 export default ReserveTableModal;

@@ -10,6 +10,8 @@ import BookingPage from './pages/BookingPage.jsx';
 import Events from './pages/Events.jsx';
 import KepongFoodies from './pages/KepongFoodies.jsx';
 import FoodieDetail from './components/FoodieDetail.jsx';
+import LuxuryCollections from './components/LuxuryCollections.jsx'; // Import your new page
+import AdminDashboard from './pages/AdminDashboard.jsx';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,9 +22,11 @@ function App() {
     clubK: true,
     featuredEntertainers: true,   
     bookings: true,
-    events: false, // 👈 Set to false to hide from UI and nav
+    events: true, // 👈 Set to false to hide from UI and nav
     kepongFoodies: true,
     foodieDetail: true, // This is route-only, no nav link expected
+    luxuryCollections: true, // Added visibility control for new page
+    adminDashboard: true,
   };
 
   return (
@@ -51,6 +55,12 @@ function App() {
         )}
         {visiblePages.foodieDetail && (
           <Route path="/foodie/:slug" element={<FoodieDetail />} />
+        )}
+            {visiblePages.luxuryCollections && (
+          <Route path="/luxury-collections" element={<LuxuryCollections />} />
+        )}
+        {visiblePages.adminDashboard && (
+          <Route path="/admin" element={<AdminDashboard />} />
         )}
       </Routes>
       <Footer />

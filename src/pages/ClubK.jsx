@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { FaInstagram, FaFacebook, FaWhatsapp } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import clubkHero from '@/assets/videos/clubbing.mp4';
 import dance2 from '@/assets/images/club/dance2.webp';
 import dj from '@/assets/images/club/dj.webp';
@@ -13,15 +15,52 @@ const ClubK = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showBankDetails, setShowBankDetails] = useState(false);
   const [selectedDrinks, setSelectedDrinks] = useState({});
+  const [showPrices, setShowPrices] = useState(false);
   const modalRef = useRef(null);
 
   const features = [
-    { title: 'World-Class DJs', img: dj, desc: 'Electrifying beats every weekend' },
-    { title: 'Premium Drinks', img: drink1, desc: 'Expertly crafted cocktails' },
-    { title: 'Exclusive VIP Areas', img: vip1, desc: 'Luxury private booths' },
-    { title: 'Themed Events', img: dance1, desc: 'Unforgettable party nights' },
-    { title: 'Vibrant Dance Floor', img: dance2, desc: 'State-of-the-art visuals' },
-    { title: 'Immersive Ambiance', img: ambience1, desc: 'Neon lights & energy' },
+    { 
+      title: 'Ebube', 
+      img: drink1, 
+      desc: 'Flair mixes & shot games.', 
+      designation: 'Bar Man',
+      socials: { ig: '@ricoflair_k', xLink: 'https://x.com/Sunccent1_?t=7LDrva2RghLEEJfOl1vWHg&s=09', whatsapp: 'https://wa.me/2349169436106' }
+    },
+    { 
+      title: 'DJ Tea Master & Co', 
+      img: dj, 
+      desc: 'Bass drops & live spins.', 
+      designation: 'Disc Jockeys',
+      socials: { ig: '@djs_kclub', fb: '@djsunleashedk', whatsapp: 'https://wa.me/2349169436106' }
+    },
+    { 
+      title: 'Mia', 
+      img: dance2, 
+      desc: 'Flash mobs & glow ups.', 
+      designation: 'Nightclub Hostess',
+      socials: { ig: '@miamoves_k', fb: '@mianightk', whatsapp: 'https://wa.me/2349169436106' }
+    },
+    { 
+      title: 'Lena', 
+      img: vip1, 
+      desc: 'VIP lounges & secret tales.', 
+      designation: 'Nightclub Hostess',
+      socials: { ig: '@lenavip_k', fb: '@lenaloungek', whatsapp: 'https://wa.me/2349169436106' }
+    },
+    { 
+      title: 'Zoe', 
+      img: dance1, 
+      desc: 'Conga lines & confetti blasts.', 
+      designation: 'Nightclub Hostess',
+      socials: { ig: '@zoeenergy_k', fb: '@zoehypek', whatsapp: 'https://wa.me/2349169436106' }
+    },
+    { 
+      title: 'Gigi', 
+      img: ambience1, 
+      desc: 'Neon art & light magic.', 
+      designation: 'Nightclub Hostess',
+      socials: { ig: '@gigiglow_k', fb: '@gigiglowclub', whatsapp: 'https://wa.me/2349169436106' }
+    },
   ];
 
   const drinksList = [
@@ -92,12 +131,14 @@ const ClubK = () => {
     setIsModalOpen(true);
     setShowBankDetails(false);
     setSelectedDrinks({});
+    setShowPrices(false);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
     setShowBankDetails(false);
     setSelectedDrinks({});
+    setShowPrices(false);
   };
 
   useEffect(() => {
@@ -157,6 +198,55 @@ const ClubK = () => {
   );
   const whatsappLink = `https://wa.me/${barmanNumber}?text=${whatsappMessage}`;
 
+  const SocialLinks = ({ socials }) => (
+    <div className="flex justify-center space-x-4 mt-4">
+      {socials.ig && (
+        <a
+          href={`https://www.instagram.com/${socials.ig.replace(/^@/, '')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-pink-400 hover:text-pink-300 text-xl transition-colors duration-300"
+          aria-label="Instagram"
+        >
+          <FaInstagram />
+        </a>
+      )}
+      {socials.fb && (
+        <a
+          href={`https://www.facebook.com/${socials.fb.replace(/^@/, '')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:text-blue-300 text-xl transition-colors duration-300"
+          aria-label="Facebook"
+        >
+          <FaFacebook />
+        </a>
+      )}
+      {socials.xLink && (
+        <a
+          href={socials.xLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:text-blue-300 text-xl transition-colors duration-300"
+          aria-label="X"
+        >
+          <FaXTwitter />
+        </a>
+      )}
+      {socials.whatsapp && (
+        <a
+          href={socials.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-green-500 hover:text-green-300 text-xl transition-colors duration-300"
+          aria-label="WhatsApp"
+        >
+          <FaWhatsapp />
+        </a>
+      )}
+    </div>
+  );
+
   return (
     <main className="relative min-h-screen font-montserrat text-yellow-100">
       <video
@@ -174,11 +264,11 @@ const ClubK = () => {
       <div className="relative bg-black/50 min-h-screen border-t-4 border-b-4 border-red-600 pt-[90px] sm:pt-[110px]">
         <section className="relative w-full h-[600px] sm:h-[520px] md:h-[640px] lg:h-[720px] xl:h-[800px] flex items-center justify-center">
           <div className="flex flex-col items-center justify-center h-full px-6 text-center max-w-3xl mx-auto gap-6 sm:gap-8">
-            <div className="mb-8">
-              <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white px-6 py-4 mb-2 rounded-xl animate-fadeInUp">
+            <div className="mb-8 animate-fadeInUp">
+              <h1 className="text-5xl sm:text-5xl md:text-6xl font-bold tracking-widest leading-tight text-white px-6 py-4 mb-2 rounded-xl">
                 Club K Nightclub
               </h1>
-              <p className="bg-white/10 border-2 border-red-600 rounded-lg text-lg sm:text-xl md:text-2xl text-white font-bold max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] px-2 py-2 md:px-4 rounded animate-fadeInUp-delayed">
+              <p className="bg-white/10 border-2 border-red-600 rounded-lg text-lg sm:text-xl md:text-2xl text-white font-bold max-w-md mx-auto leading-relaxed drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)] px-2 py-2 md:px-4 rounded">
                 Open Wednesdays, Fridays & Sundays<br className="block sm:hidden" />
               </p>
             </div>
@@ -213,6 +303,19 @@ const ClubK = () => {
                   <>
                     <h2 className="text-xl font-bold mb-4 text-red-600">Select Your Drinks</h2>
                     <p className="text-black font-semibold">Check Payment Details Below</p>
+                    
+                    {/* Toggle Prices Button */}
+                    <div className="mb-4 text-center">
+                      <button
+                        onClick={() => setShowPrices(!showPrices)}
+                        className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400"
+                        aria-label={showPrices ? 'Hide prices' : 'Show prices'}
+                        type="button"
+                      >
+                        {showPrices ? 'Hide Prices' : 'Show Prices'}
+                      </button>
+                    </div>
+
                     <div className="space-y-6 mb-6">
                       {drinksList.map((category, index) => (
                         <div key={index} className="space-y-4">
@@ -223,7 +326,11 @@ const ClubK = () => {
                               <div key={id} className="flex items-center gap-4">
                                 <div className="flex-1">
                                   <h4 className="text-md font-semibold text-black">{name}</h4>
-                                  <p className="text-green-700 font-bold">₦{price.toLocaleString()}</p>
+                                  {showPrices ? (
+                                    <p className="text-green-700 font-bold">₦{price.toLocaleString()}</p>
+                                  ) : (
+                                    <p className="text-gray-400 italic text-sm">₦ ???</p>
+                                  )}
                                 </div>
                                 <div className="flex items-center space-x-2">
                                   <button
@@ -317,17 +424,24 @@ const ClubK = () => {
 
         <div className="w-full relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <section className="py-4 sm:py-16">
+            <section className="py-8 sm:py-20 space-y-8">
               <h2 className="text-3xl text-white font-bold text-center mb-4 pb-3 px-4 py-2 rounded">Experience Club K</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8 sm:gap-x-12 max-w-6xl mx-auto">
-                {features.map(({ title, img, desc }, i) => (
-                  <div key={i} className="rounded-lg overflow-hidden border-2 border-red-600 shadow-xl bg-black/80 flex flex-col items-center text-center" style={{ height: '340px' }}>
-                    <img src={img} alt={title} className="w-full h-40 object-cover mb-4" loading="lazy" />
-                    <div className="p-6 flex flex-col flex-grow justify-between w-full">
-                      <div>
-                        <h3 className="text-xl font-semibold mb-4 text-white drop-shadow-md">{title}</h3>
-                        <p className="text-white text-base">{desc}</p>
-                      </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 max-w-6xl mx-auto">
+                {features.map(({ title, img, desc, designation, socials }, i) => (
+                  <div 
+                    key={i} 
+                    className="group cursor-pointer rounded-xl overflow-hidden border-2 border-red-600 shadow-xl bg-black/60 flex flex-col items-center text-center hover:shadow-[0_0_25px_rgba(220,38,38,0.6)] transition-all duration-500 transform hover:scale-105 hover:bg-black/80 p-6 space-y-4" 
+                    style={{ height: '380px', minHeight: '380px' }}
+                  >
+                    <div className="relative w-full h-48 overflow-hidden rounded-lg">
+                      <img src={img} alt={title} className="w-full h-full object-cover group-hover:brightness-125 transition-all duration-500 group-hover:scale-110" loading="lazy" />
+                    </div>
+                    <div className="flex flex-col flex-grow justify-center space-y-3 px-2">
+      
+                      <h3 className="text-yellow-300 font-semibold text-xl">{designation}</h3>
+                      <span className="text-sm font-bold text-white drop-shadow-lg group-hover:text-yellow-300 transition-colors duration-300">{title}</span>
+                      <p className="text-yellow-100 text-sm leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-300 px-2">{desc}</p>
+                      <SocialLinks socials={socials} />
                     </div>
                   </div>
                 ))}

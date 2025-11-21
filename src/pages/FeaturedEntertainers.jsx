@@ -139,7 +139,7 @@ const FeaturedEntertainers = () => {
       }}
     >
       <div className="w-full mx-auto">
-        <header className="text-center bg-red-600/50 m-0 p-4 relative z-20 border-0 rounded-md">
+        <header className="text-center bg-red-600/40 m-0 p-4 relative z-20 border-0 rounded-md">
           <h1 className="text-3xl sm:text-5xl md:pt-4 tracking-widest font-bold tracking-tight mb-1 text-white drop-shadow-md">
             Entertainment
           </h1>
@@ -211,7 +211,7 @@ const FeaturedEntertainers = () => {
               </p>
               <button
                 onClick={handleReserveTable}
-                className="bg-red-600 text-white font-bold border-2 border-white px-8 py-2 rounded-lg text-base hover:bg-red-700 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="bg-red-600 text-white font-bold border-2 border-white px-8 py-2 rounded-lg text-base hover:bg-red-600 shadow-md transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
                 aria-label="Reserve your table"
               >
                 Book Table-For-Four

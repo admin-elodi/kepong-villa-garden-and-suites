@@ -11,7 +11,7 @@ const RoomCard = ({ room, onSelect, isApartment = false }) => {
         className="w-full h-40 sm:h-56 object-cover"
         loading="lazy"
       />
-      <div className="p-2 sm:p-5 text-left bg-gray-900/50 text-white flex flex-col flex-grow min-h-[220px]">
+      <div className="p-2 sm:p-5 text-left bg-black text-white flex flex-col flex-grow min-h-[220px]">
         <div>
           <h3 className="text-xl sm:text-2xl font-semibold text-red-600">
             {room.roomType}
@@ -56,7 +56,7 @@ const RoomCard = ({ room, onSelect, isApartment = false }) => {
         <div className="mt-auto pt-4">
           <button
             onClick={() => onSelect(room)}
-            className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 hover:text-white transition-transform duration-300 text-base sm:text-lg font-semibold border-2 border-red-600 shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
+            className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-600 hover:text-white transition-transform duration-300 text-base sm:text-lg font-semibold border-2 border-red-600 shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-red-400"
             aria-label={`Book ${room.roomType}`}
           >
             Book Now
