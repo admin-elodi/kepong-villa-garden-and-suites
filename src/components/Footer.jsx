@@ -237,7 +237,7 @@ const Footer = () => {
             reserved.
           </p>
           <small className="text-yellow-100 text-[9px] md:text-[11px] mt-2 block">
-            Website design by <span className="uppercase font-bold">Elodi Nigeria Enterprises: </span>{" "}
+            Website design by <span className="uppercase font-bold">Jungle X: </span>{" "}
             <a href="tel:08136573235" className="hover:text-yellow-100">
               08136573235
             </a>

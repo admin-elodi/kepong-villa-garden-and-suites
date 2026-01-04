@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:mobile": "vite --host --port 0",
     "convert:images": "node convert-to-webp.js",
     "build": "vite build",
     "lint": "eslint .",

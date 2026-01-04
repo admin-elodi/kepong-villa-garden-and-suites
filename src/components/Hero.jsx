@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Volume2, VolumeX, ChevronLeft, ChevronRight } from "lucide-react";
-import friendsBar from "@/assets/videos/service1.mp4";
+
 import tradoDance from "@/assets/videos/trado.mp4";
 import egusi from "@/assets/images/foodies/egusi.webp";
 import fullVoltage from "@/assets/videos/service2.mp4";
@@ -18,12 +18,6 @@ const Hero = () => {
     - You can adjust per slide as needed
   */
   const slides = [
-    {
-      type: "video",
-      src: friendsBar,
-      text: "This is Kepong",
-      crop: { x: "50%", y: "40%" }, // crop region
-    },
     {
       type: "video",
       src: tradoDance,
@@ -132,7 +126,7 @@ const Hero = () => {
       </div>
 
       {/* Navigation controls */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-6 z-30">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-6">
         <button
           onClick={() => handleManualSlide("prev")}
           className="bg-white/10 hover:bg-red-600/80 text-white rounded-full p-3 md:p-4 shadow-md transition-all duration-300 border border-white/30 hover:border-red-500"
@@ -152,7 +146,7 @@ const Hero = () => {
       {/* Mute / Unmute button */}
       <button
         onClick={toggleMute}
-        className="absolute bottom-6 right-6 z-30 bg-white/20 backdrop-blur-md text-white rounded-full p-3 shadow-lg hover:bg-white/30 transition-all duration-300"
+        className="absolute bottom-6 right-6 bg-white/20 backdrop-blur-md text-white rounded-full p-3 shadow-lg hover:bg-white/30 transition-all duration-300"
         aria-label={isMuted ? "Unmute video" : "Mute video"}
       >
         {isMuted ? <VolumeX size={26} /> : <Volume2 size={26} />}

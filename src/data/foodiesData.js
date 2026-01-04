@@ -26,7 +26,7 @@ const foodies = [
       { id: 'ezinwa1', name: 'Ukwa', price: 4000, isOrderable: true },      
       { id: 'ezinwa2', name: 'Cow Leg', price: 3000, isOrderable: true },
       { id: 'ezinwa3', name: 'Cow Tail', price: 3000, isOrderable: true },
-      { id: 'ezinwa4', name: 'Dry Fish', price: 5000, isOrderable: true },
+      { id: 'ezinwa4', name: 'Dry Fish', price: 6000, isOrderable: true },
       { id: 'ezinwa5', name: 'Vegetable Stew', price: 2000, isOrderable: true },
       { id: 'ezinwa6', name: 'Goat Leg', price: 2000, isOrderable: true },
       { id: 'ezinwa7', name: 'Peppered Meat', price: 1000, isOrderable: true },
