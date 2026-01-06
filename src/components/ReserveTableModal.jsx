@@ -73,7 +73,7 @@ const eventTables = [
     name: "Chill & Grill Hangout",
     description: "Palm wine, peppered meat, relaxed Nsukka vibes",
     icon: <FaGlassCheers />,
-    price: 20000, // 15,500 food + 4,500 fee (4 square meals)
+    price: 19500, // 15,500 food + 4,500 fee (4 square meals)
     menu: [
       "Cow Leg (1)", 
       "White Rice & Stew (1)",
@@ -81,7 +81,7 @@ const eventTables = [
       "Jollof Rice & Chicken (1)",
       "Nsukka Palm Wine (1)",
       "Peppered Meat (1)",
-      "Zobo Drink (2)",
+      "Zobo Drink (1)",
     ],
   },
 ];
