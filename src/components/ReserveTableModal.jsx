@@ -12,7 +12,7 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 
-import tableImage from "@/assets/images/grey.png";
+import tableImage from "@/assets/images/greyt.webp";
 import nblBg from "@/assets/images/nbl.png";
 import aquaImg from "@/assets/images/aqua.jpeg";
 
@@ -41,7 +41,6 @@ const eventTables = [
     id: "traditional",
     code: "IGF",
     name: "Traditional Igbo Feast",
-    description: "Swallow, soups & cultural meals",
     icon: <FaLeaf />,
     foodPrice: 26000,
     menu: [
@@ -58,7 +57,6 @@ const eventTables = [
     id: "seafood",
     code: "SFD",
     name: "Seafood Special",
-    description: "Premium grill experience",
     icon: <FaFish />,
     foodPrice: 28000,
     menu: [
@@ -73,7 +71,6 @@ const eventTables = [
     id: "wedding",
     code: "WMB",
     name: "Wedding Mini-Banquet",
-    description: "Elegant celebration table",
     icon: <FaUtensils />,
     foodPrice: 17000,
     menu: [
@@ -89,7 +86,6 @@ const eventTables = [
     id: "hangout",
     code: "CHG",
     name: "Chill & Grill Hangout",
-    description: "Outdoor grill & weekend vibes",
     icon: <FaGlassCheers />,
     foodPrice: 20000,
     menu: [
@@ -213,7 +209,6 @@ Account Number: ${BANK_DETAILS.account}
           backgroundPosition: "center",
         }}
       >
-        {/* Strong dark overlay */}
         <div className="absolute inset-0 bg-black/90 rounded-2xl -z-10" />
 
         <button
@@ -240,14 +235,12 @@ Account Number: ${BANK_DETAILS.account}
 
           return (
             <div key={table.id} className="mb-4">
-              {/* CARD */}
               <div
                 onClick={() =>
                   setExpandedId(open ? null : table.id)
                 }
                 className={`p-4 rounded-2xl border cursor-pointer
-                backdrop-blur-xl
-                bg-black/80
+                backdrop-blur-xl bg-black/80
                 ${
                   open
                     ? "border-red-500"
@@ -257,20 +250,9 @@ Account Number: ${BANK_DETAILS.account}
                 <div className="flex justify-between items-center text-white">
                   <div className="flex gap-3 items-center">
                     {table.icon}
-                    <div>
-                      <p className="font-semibold text-lg">
-                        {table.name}
-                      </p>
-
-                      {/* CAPTION FIX */}
-                      <p
-                        className="text-sm font-bold tracking-wide
-                        bg-black px-3 py-1 rounded-md
-                        mt-1 inline-block"
-                      >
-                        {table.description}
-                      </p>
-                    </div>
+                    <p className="font-semibold text-lg">
+                      {table.name}
+                    </p>
                   </div>
 
                   <p className="font-black text-yellow-300">
@@ -285,10 +267,8 @@ Account Number: ${BANK_DETAILS.account}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="mt-3
-                    bg-black/85
-                    backdrop-blur-md
-                    rounded-2xl p-4"
+                    className="mt-3 bg-black/85
+                    backdrop-blur-md rounded-2xl p-4"
                   >
                     <ul className="text-sm text-white mb-4 space-y-2">
                       {table.menu.map((item) => (
