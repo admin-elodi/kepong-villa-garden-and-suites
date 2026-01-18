@@ -22,7 +22,7 @@ function App() {
     clubK: true,
     featuredEntertainers: true,   
     bookings: true,
-    events: true, // 👈 Set to false to hide from UI and nav
+    events: false, // 👈 Set to false to hide from UI and nav
     kepongFoodies: true,
     foodieDetail: true, // This is route-only, no nav link expected
     luxuryCollections: true, // Added visibility control for new page
