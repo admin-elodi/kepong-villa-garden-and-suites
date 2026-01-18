@@ -11,14 +11,22 @@ import {
   FaClock,
   FaCheckCircle,
 } from "react-icons/fa";
-import tableImage from "@/assets/images/tables.png";
 
-/* ======================================================
-   CONFIGURATION
-====================================================== */
+import tableImage from "@/assets/images/grey.png";
+import nblBg from "@/assets/images/nbl.png";
+import aquaImg from "@/assets/images/aqua.jpeg";
 
-const WHATSAPP_NUMBER = "08162482304"; // ✅ ONE NUMBER ONLY
-const SERVICE_FEE = 4500; // Service fee per table (already included in totals)
+/* ================= CONFIG ================= */
+
+const WHATSAPP_NUMBER = "08162482304";
+
+const NBL_BUNDLE = 7200;
+const JUNGLEX_FEE = 4500;
+const PALM_WINE = 5000;
+const WATER = 2000;
+
+const ADD_ON_TOTAL =
+  NBL_BUNDLE + JUNGLEX_FEE + PALM_WINE + WATER;
 
 const BANK_DETAILS = {
   name: "Kepong Villa Garden and Suites",
@@ -26,89 +34,81 @@ const BANK_DETAILS = {
   account: "0125564025",
 };
 
-/* ======================================================
-   TABLE PACKAGES
-====================================================== */
+/* ================= TABLE PACKAGES ================= */
 
 const eventTables = [
   {
     id: "traditional",
     code: "IGF",
     name: "Traditional Igbo Feast",
-    description: "Soulful Igbo classics, heavy swallow, ancestral depth",
+    description: "Swallow, soups & cultural meals",
     icon: <FaLeaf />,
-    foodPrice: 18000,
+    foodPrice: 26000,
     menu: [
-      "Nsala Soup with Eba (2)",
-      "Oha Soup with Poundo (2)",
-      "Ukwa (1)",
-      "Peppered Meat (2)",
-      "Zobo Drink (4)",
-    ],
-  },
-  {
-    id: "seafood",
-    code: "SFD",
-    name: "Seafood Special",
-    description: "Premium ocean indulgence, bold and luxurious",
-    icon: <FaFish />,
-    foodPrice: 25500,
-    menu: [
-      "Barbecue Fish (1)",
-      "Snail (1)",
-      "White Rice & Stew (1)",
-      "Vegetable Soup (1)",
-      "Zobo Drink (3)",
-    ],
-  },
-  {
-    id: "wedding",
-    code: "WMB",
-    name: "Wedding Mini-Banquet",
-    description: "Elegant, celebratory, perfectly balanced",
-    icon: <FaUtensils />,
-    foodPrice: 20500,
-    menu: [
-      "Jollof Rice & Chicken (2)",
+      "Nsala (2)",
+      "Vegetable Soup (2)",
+      "Abacha (1)",
       "White Rice & Stew (2)",
-      "Nsala Soup (1)",
       "Peppered Goat Meat (2)",
       "Zobo Drink (4)",
     ],
   },
+
+  {
+    id: "seafood",
+    code: "SFD",
+    name: "Seafood Special",
+    description: "Premium grill experience",
+    icon: <FaFish />,
+    foodPrice: 28000,
+    menu: [
+      "Barbecue Fish with Chips (1)",
+      "White Rice & Stew (1)",
+      "Vegetable Soup (1)",
+      "Zobo Drink (4)",
+    ],
+  },
+
+  {
+    id: "wedding",
+    code: "WMB",
+    name: "Wedding Mini-Banquet",
+    description: "Elegant celebration table",
+    icon: <FaUtensils />,
+    foodPrice: 17000,
+    menu: [
+      "Jollof Rice & Chicken (2)",
+      "White Rice & Stew (2)",
+      "Egusi Soup (1)",
+      "Fried Beef & Chips (1)",
+      "Zobo Drink (4)",
+    ],
+  },
+
   {
     id: "hangout",
     code: "CHG",
     name: "Chill & Grill Hangout",
-    description: "Palm wine, peppered meat, relaxed Nsukka vibes",
+    description: "Outdoor grill & weekend vibes",
     icon: <FaGlassCheers />,
-    foodPrice: 15000,
+    foodPrice: 20000,
     menu: [
-      "Cow Leg (1)",
-      "Fried Beef with Chips (1)",
-      "Jollof Rice & Chicken (1)",
-      "Nsukka Palm Wine (1)",
-      "Abacha (1)",
-      "Zobo Drink (3)",
+      "Barbecue Fish (1)",
+      "Agbugbu na Ji (1)",
+      "Bush Meat (1)",
     ],
   },
 ];
 
-/* ======================================================
-   HELPERS
-====================================================== */
+/* ================= HELPERS ================= */
 
 const toInternational = (phone) =>
   phone.startsWith("0") ? "234" + phone.slice(1) : phone;
 
-const generateReference = (code) => {
-  const rand = Math.floor(1000 + Math.random() * 9000);
-  return `KVG-${code}-${rand}`;
-};
+const generateReference = (code) =>
+  `KVG-${code}-${Math.floor(1000 + Math.random() * 9000)}`;
 
-/* ======================================================
-   COMPONENT
-====================================================== */
+/* ================= COMPONENT ================= */
 
 const ReserveTableModal = ({ isOpen, onClose }) => {
   const [expandedId, setExpandedId] = useState(null);
@@ -123,29 +123,29 @@ const ReserveTableModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const selectedTable = eventTables.find(t => t.id === expandedId);
+  const selectedTable = eventTables.find(
+    (t) => t.id === expandedId
+  );
 
   const sendWhatsApp = () => {
-    if (!hostName || !date || !time || !units || !selectedTable) {
+    if (!hostName || !date || !time || !selectedTable) {
       alert("Please complete all booking details.");
       return;
     }
 
-    const reference = generateReference(selectedTable.code);
+    const ref = generateReference(selectedTable.code);
 
     const foodTotal = selectedTable.foodPrice * units;
-    const serviceTotal = SERVICE_FEE * units;
-    const grandTotal = foodTotal + serviceTotal;
+    const addOnTotal = ADD_ON_TOTAL * units;
+    const grandTotal = foodTotal + addOnTotal;
 
-    const message = encodeURIComponent(
-`KEPONG EVENT / HANGOUT TABLE BOOKING
+    const message = encodeURIComponent(`
+KEPONG EVENT TABLE BOOKING
 
---------------------------------
-BOOKING REFERENCE
-${reference}
---------------------------------
+REFERENCE
+${ref}
 
-CUSTOMER NAME / CORPORATE TABLE SPONSOR
+CUSTOMER / CORPORATE TABLE SPONSOR
 ${hostName}
 
 DATE & TIME
@@ -158,49 +158,64 @@ NUMBER OF TABLES
 ${units}
 
 --------------------------------
-TOTAL AMOUNT PAYABLE
+COST BREAKDOWN
+--------------------------------
+Food: ₦${foodTotal.toLocaleString()}
+NBL Drinks: ₦${(NBL_BUNDLE * units).toLocaleString()}
+Palm Wine: ₦${(PALM_WINE * units).toLocaleString()}
+Water: ₦${(WATER * units).toLocaleString()}
+JungleX Marketing: ₦${(JUNGLEX_FEE * units).toLocaleString()}
+
+--------------------------------
+TOTAL PAYABLE
 --------------------------------
 ₦${grandTotal.toLocaleString()}
 
 --------------------------------
-PAYMENT INSTRUCTIONS
+PAYMENT DETAILS
 --------------------------------
 Bank: ${BANK_DETAILS.bank}
 Account Name: ${BANK_DETAILS.name}
 Account Number: ${BANK_DETAILS.account}
 
-➡ Please make payment and SEND YOUR PROOF OF PAYMENT
-   in this same WhatsApp chat.
-
-➡ If you have any enquiries or need clarification,
-   kindly CALL this number directly.
-
-Kepong Villa Garden & Suites
-`
-    );
+➡ Send proof of payment here
+➡ Call this number for enquiries
+`);
 
     window.open(
-      `https://wa.me/${toInternational(WHATSAPP_NUMBER)}?text=${message}`,
+      `https://wa.me/${toInternational(
+        WHATSAPP_NUMBER
+      )}?text=${message}`,
       "_blank"
     );
-
 
     setSent(true);
   };
 
   return createPortal(
     <>
+      {/* Overlay */}
       <div
-        className="fixed inset-0 bg-black/60 z-[999]"
+        className="fixed inset-0 bg-black/70 z-[999]"
         onClick={onClose}
       />
 
+      {/* Modal */}
       <div
-        className="fixed top-10 left-1/2 -translate-x-1/2 w-[94%] max-w-md
-                   bg-black/90 backdrop-blur-xl rounded-xl
-                   border border-white/20 p-6 z-[1000]
-                   max-h-[90vh] overflow-y-auto"
+        className="fixed top-10 left-1/2 -translate-x-1/2
+        w-[94%] max-w-md rounded-2xl p-6
+        z-[1000] max-h-[90vh] overflow-y-auto
+        border border-white/20
+        bg-black"
+        style={{
+          backgroundImage: `url(${nblBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
+        {/* Strong dark overlay */}
+        <div className="absolute inset-0 bg-black/90 rounded-2xl -z-10" />
+
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-white/70"
@@ -210,38 +225,54 @@ Kepong Villa Garden & Suites
 
         <img
           src={tableImage}
-          alt="Event Table Setup"
+          alt="Event Table"
           className="w-full h-48 object-cover rounded-2xl mb-6"
         />
 
-        <h3 className="text-center text-white tracking-widest mb-6">
-          Event & Hangout Tables
+        <h3 className="text-center text-white tracking-widest mb-6 font-semibold">
+          Branded Event Tables
         </h3>
 
-        {eventTables.map(table => {
+        {eventTables.map((table) => {
           const open = expandedId === table.id;
-          const displayPrice = table.foodPrice + SERVICE_FEE;
+          const displayPrice =
+            table.foodPrice + ADD_ON_TOTAL;
 
           return (
             <div key={table.id} className="mb-4">
+              {/* CARD */}
               <div
-                onClick={() => setExpandedId(open ? null : table.id)}
-                className={`p-4 rounded-2xl border cursor-pointer ${
+                onClick={() =>
+                  setExpandedId(open ? null : table.id)
+                }
+                className={`p-4 rounded-2xl border cursor-pointer
+                backdrop-blur-xl
+                bg-black/80
+                ${
                   open
-                    ? "border-red-500 bg-red-500/10"
-                    : "border-white/20"
+                    ? "border-red-500"
+                    : "border-white/30"
                 }`}
               >
                 <div className="flex justify-between items-center text-white">
                   <div className="flex gap-3 items-center">
                     {table.icon}
                     <div>
-                      <p className="font-semibold">{table.name}</p>
-                      <p className="text-xs text-gray-400">
+                      <p className="font-semibold text-lg">
+                        {table.name}
+                      </p>
+
+                      {/* CAPTION FIX */}
+                      <p
+                        className="text-sm font-bold tracking-wide
+                        bg-black px-3 py-1 rounded-md
+                        mt-1 inline-block"
+                      >
                         {table.description}
                       </p>
                     </div>
                   </div>
+
                   <p className="font-black text-yellow-300">
                     ₦{displayPrice.toLocaleString()}
                   </p>
@@ -254,60 +285,71 @@ Kepong Villa Garden & Suites
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="mt-3 bg-white/5 rounded-2xl p-4"
+                    className="mt-3
+                    bg-black/85
+                    backdrop-blur-md
+                    rounded-2xl p-4"
                   >
-                    <ul className="text-sm text-gray-200 mb-4 space-y-1">
-                      {table.menu.map(item => (
+                    <ul className="text-sm text-white mb-4 space-y-2">
+                      {table.menu.map((item) => (
                         <li key={item}>• {item}</li>
                       ))}
                     </ul>
 
+                    <p className="text-xs text-gray-300 mb-4">
+                      Includes: 2 Palm Wine, 4 Bottled Water,
+                      NBL Drinks & JungleX Marketing
+                    </p>
+
                     {!sent ? (
                       <div className="space-y-4">
-                        {/* 🔔 IMPORTANT NOTE */}
-                        <p className="text-xs text-gray-400">
-                          Please enter a name that matches the <strong>bank account name</strong> you will be paying from.
-                          This helps us confirm your payment faster.
-                        </p>
-
                         <input
-                          placeholder="Customer Name / Corporate Table Sponsor"
+                          placeholder="Customer / Corporate Table Sponsor"
                           value={hostName}
-                          onChange={e => setHostName(e.target.value)}
-                          className="w-full p-3 rounded-xl bg-black/40 text-white"
+                          onChange={(e) =>
+                            setHostName(e.target.value)
+                          }
+                          className="w-full p-3 rounded-xl
+                          bg-black/60 text-white"
                         />
 
                         <div
-                          onClick={() => dateRef.current?.showPicker()}
-                          className="flex items-center gap-3 bg-black/40 p-3 rounded-xl cursor-pointer"
+                          onClick={() =>
+                            dateRef.current?.showPicker()
+                          }
+                          className="flex gap-3 bg-black/60
+                          p-3 rounded-xl cursor-pointer text-white"
                         >
-                          <FaCalendarAlt className="text-gray-400" />
-                          <span className="text-white text-sm">
-                            {date || "Select preferred date"}
-                          </span>
+                          <FaCalendarAlt />
+                          {date || "Select event date"}
                           <input
                             ref={dateRef}
                             type="date"
                             value={date}
-                            onChange={e => setDate(e.target.value)}
-                            className="absolute opacity-0 pointer-events-none"
+                            onChange={(e) =>
+                              setDate(e.target.value)
+                            }
+                            className="hidden"
                           />
                         </div>
 
                         <div
-                          onClick={() => timeRef.current?.showPicker()}
-                          className="flex items-center gap-3 bg-black/40 p-3 rounded-xl cursor-pointer"
+                          onClick={() =>
+                            timeRef.current?.showPicker()
+                          }
+                          className="flex gap-3 bg-black/60
+                          p-3 rounded-xl cursor-pointer text-white"
                         >
-                          <FaClock className="text-gray-400" />
-                          <span className="text-white text-sm">
-                            {time || "Select preferred time"}
-                          </span>
+                          <FaClock />
+                          {time || "Select event time"}
                           <input
                             ref={timeRef}
                             type="time"
                             value={time}
-                            onChange={e => setTime(e.target.value)}
-                            className="absolute opacity-0 pointer-events-none"
+                            onChange={(e) =>
+                              setTime(e.target.value)
+                            }
+                            className="hidden"
                           />
                         </div>
 
@@ -315,27 +357,26 @@ Kepong Villa Garden & Suites
                           type="number"
                           min="1"
                           value={units}
-                          onChange={e => setUnits(Number(e.target.value))}
-                          className="w-full p-3 rounded-xl bg-black/40 text-white"
+                          onChange={(e) =>
+                            setUnits(Number(e.target.value))
+                          }
+                          className="w-full p-3 rounded-xl
+                          bg-black/60 text-white"
                         />
 
                         <button
                           onClick={sendWhatsApp}
-                          className="w-full bg-red-500 hover:bg-red-600
-                                     text-white font-bold py-3 rounded-xl"
+                          className="w-full bg-red-600
+                          hover:bg-red-700 text-white
+                          font-bold py-3 rounded-xl"
                         >
-                          Proceed to Payment via WhatsApp
+                          Proceed to Payment
                         </button>
                       </div>
                     ) : (
                       <div className="text-center text-green-400 py-6">
                         <FaCheckCircle className="mx-auto text-3xl mb-2" />
-                        <p className="font-semibold">
-                          Booking Sent Successfully
-                        </p>
-                        <p className="text-sm text-gray-400">
-                          Kindly complete payment and follow the instructions on WhatsApp.
-                        </p>
+                        Booking Sent Successfully
                       </div>
                     )}
                   </motion.div>
@@ -344,6 +385,13 @@ Kepong Villa Garden & Suites
             </div>
           );
         })}
+
+        {/* Aqua banner */}
+        <img
+          src={aquaImg}
+          alt="Water Brand"
+          className="w-full h-20 object-cover rounded-xl mt-6"
+        />
       </div>
     </>,
     document.body
